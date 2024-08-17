@@ -33,8 +33,8 @@ namespace Nike_Shop_Management.MappingLayer
         }
         public UserAccountDTO AccountMapperToEnity(user_account user)
         {
-            if (user==null)
-                throw new ArgumentNullException(nameof(user));
+            if (user == null)
+                return null;
             return new UserAccountDTO
             {
                 Username = user.user_username,
@@ -45,10 +45,11 @@ namespace Nike_Shop_Management.MappingLayer
                 Address = user.user_address,
                 First_name = user.user_first_name,
                 Last_name = user.user_last_name,
-                Member_tier = (int)user.user_member_tier,
-                Point = (int)user.user_point,
+                Member_tier = user.user_member_tier != null ? Int32.Parse(user.user_member_tier.ToString()) : 0,
+                Point = user.user_point != null ? Int32.Parse(user.user_member_tier.ToString()) : 0,
                 Url = user.user_url
             };
         }
+
     }
 }

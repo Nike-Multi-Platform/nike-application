@@ -16,7 +16,8 @@ namespace Nike_Shop_Management.DTO
         private string gender;
         private string email;
         private string phone_number, address, first_name, last_name, url;
-        private int point, member_tier;
+        private int? point;
+        private int? member_tier;
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
         public string Gender { get => gender; set => gender = value; }
@@ -25,8 +26,8 @@ namespace Nike_Shop_Management.DTO
         public string Address { get => address; set => address = value; }
         public string First_name { get => first_name; set => first_name = value; }
         public string Last_name { get => last_name; set => last_name = value; }
-        public int Member_tier { get => member_tier; set => member_tier = value; }
-        public int Point { get => point; set => point = value; }
+        public int? Member_tier { get => member_tier; set => member_tier = value; }
+        public int? Point { get => point; set => point = value; }
         public string Url { get => url; set => url = value; }
         public string Id { get => id; set => id = value; }
     }

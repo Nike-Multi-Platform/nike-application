@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Nike_Shop_Management.GUI;
 namespace Nike_Shop_Management
 {
     static class Program
@@ -16,7 +16,7 @@ namespace Nike_Shop_Management
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
+            Application.Run(new Form1());
         }
     }
 }

@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_BanQuanAo" Class="DbContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MSI\SQLEXPRESS;Initial Catalog=db_BanQuanAo;Integrated Security=True" SettingsObjectName="Nike_Shop_Management.Properties.Settings" SettingsPropertyName="db_BanQuanAoConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.bag" Member="bags">
+    <Type Name="bag">
+      <Column Name="bag_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="product_size_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="product_size_bag" Member="product_size" ThisKey="product_size_id" OtherKey="product_size_id" Type="product_size" IsForeignKey="true" />
+      <Association Name="user_account_bag" Member="user_account" ThisKey="user_id" OtherKey="user_id" Type="user_account" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_order_products" Member="user_order_products">
+    <Type Name="user_order_product">
+      <Column Name="user_order_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="product_size_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="product_size_user_order_product" Member="product_size" ThisKey="product_size_id" OtherKey="product_size_id" Type="product_size" IsForeignKey="true" />
+      <Association Name="user_order_user_order_product" Member="user_order" ThisKey="user_order_id" OtherKey="user_order_id" Type="user_order" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.category_discount_event" Member="category_discount_events">
+    <Type Name="category_discount_event">
+      <Column Name="discount_event_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="category_product_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="discount_event_name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="discount_event_description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="discount_event_img" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="discount_event_dateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="category_product_category_discount_event" Member="category_product" ThisKey="category_product_id" OtherKey="category_product_id" Type="category_product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.category_product" Member="category_products">
+    <Type Name="category_product">
+      <Column Name="category_product_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="category_product_name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="category_product_description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="category_product_category_discount_event" Member="category_discount_events" ThisKey="category_product_id" OtherKey="category_product_id" Type="category_discount_event" />
+      <Association Name="category_product_product_parent" Member="product_parents" ThisKey="category_product_id" OtherKey="product_category_id" Type="product_parent" />
+    </Type>
+  </Table>
+  <Table Name="dbo.history_search" Member="history_searches">
+    <Type Name="history_search">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="text_search" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="user_account_history_search" Member="user_account" ThisKey="user_id" OtherKey="user_id" Type="user_account" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.product" Member="products">
+    <Type Name="product">
+      <Column Name="product_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="product_parent_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="product_more_info" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="product_img" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="product_size_and_fit" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="product_style_code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="product_color_shown" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="product_description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="product_description2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="product_product_img" Member="product_imgs" ThisKey="product_id" OtherKey="product_id" Type="product_img" />
+      <Association Name="product_product_review" Member="product_reviews" ThisKey="product_id" OtherKey="product_id" Type="product_review" />
+      <Association Name="product_product_size" Member="product_sizes" ThisKey="product_id" OtherKey="product_id" Type="product_size" />
+      <Association Name="product_user_favorite_product" Member="user_favorite_products" ThisKey="product_id" OtherKey="product_id" Type="user_favorite_product" />
+      <Association Name="product_parent_product" Member="product_parent" ThisKey="product_parent_id" OtherKey="product_parent_id" Type="product_parent" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.product_icons" Member="product_icons">
+    <Type Name="product_icon">
+      <Column Name="product_icons_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="icon_name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="thumbnail" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="product_icon_product_parent" Member="product_parents" ThisKey="product_icons_id" OtherKey="product_icons_id" Type="product_parent" />
+    </Type>
+  </Table>
+  <Table Name="dbo.product_img" Member="product_imgs">
+    <Type Name="product_img">
+      <Column Name="product_img_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="product_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="product_img_file_name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="product_product_img" Member="product" ThisKey="product_id" OtherKey="product_id" Type="product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.product_object" Member="product_objects">
+    <Type Name="product_object">
+      <Column Name="product_object_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="product_object_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="product_object_product_parent" Member="product_parents" ThisKey="product_object_id" OtherKey="product_object_id" Type="product_parent" />
+    </Type>
+  </Table>
+  <Table Name="dbo.product_parent" Member="product_parents">
+    <Type Name="product_parent">
+      <Column Name="product_parent_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="product_parent_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="product_object_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="product_category_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="thumbnail" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="product_price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="is_new_release" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="product_icons_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="product_parent_product" Member="products" ThisKey="product_parent_id" OtherKey="product_parent_id" Type="product" />
+      <Association Name="category_product_product_parent" Member="category_product" ThisKey="product_category_id" OtherKey="category_product_id" Type="category_product" IsForeignKey="true" />
+      <Association Name="product_object_product_parent" Member="product_object" ThisKey="product_object_id" OtherKey="product_object_id" Type="product_object" IsForeignKey="true" />
+      <Association Name="product_icon_product_parent" Member="product_icon" ThisKey="product_icons_id" OtherKey="product_icons_id" Type="product_icon" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.product_review" Member="product_reviews">
+    <Type Name="product_review">
+      <Column Name="product_review_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="product_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="product_review_Title" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="product_review_content" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="product_review_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="product_review_rate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="product_product_review" Member="product" ThisKey="product_id" OtherKey="product_id" Type="product" IsForeignKey="true" />
+      <Association Name="user_account_product_review" Member="user_account" ThisKey="user_id" OtherKey="user_id" Type="user_account" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.product_size" Member="product_sizes">
+    <Type Name="product_size">
+      <Column Name="product_size_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="product_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="size_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="soluong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="product_size_bag" Member="bags" ThisKey="product_size_id" OtherKey="product_size_id" Type="bag" />
+      <Association Name="product_size_user_order_product" Member="user_order_products" ThisKey="product_size_id" OtherKey="product_size_id" Type="user_order_product" />
+      <Association Name="product_product_size" Member="product" ThisKey="product_id" OtherKey="product_id" Type="product" IsForeignKey="true" />
+      <Association Name="size_product_size" Member="size" ThisKey="size_id" OtherKey="size_id" Type="size" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.size" Member="sizes">
+    <Type Name="size">
+      <Column Name="size_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="size_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="size_product_size" Member="product_sizes" ThisKey="size_id" OtherKey="size_id" Type="product_size" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_account" Member="user_accounts">
+    <Type Name="user_account">
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_username" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="user_password" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="user_gender" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="user_email" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="user_phone_number" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="user_address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="user_first_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="user_last_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="user_member_tier" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="user_point" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="user_url" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="user_account_bag" Member="bags" ThisKey="user_id" OtherKey="user_id" Type="bag" />
+      <Association Name="user_account_history_search" Member="history_searches" ThisKey="user_id" OtherKey="user_id" Type="history_search" />
+      <Association Name="user_account_product_review" Member="product_reviews" ThisKey="user_id" OtherKey="user_id" Type="product_review" />
+      <Association Name="user_account_user_favorite_product" Member="user_favorite_products" ThisKey="user_id" OtherKey="user_id" Type="user_favorite_product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_favorite_products" Member="user_favorite_products">
+    <Type Name="user_favorite_product">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="product_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="product_user_favorite_product" Member="product" ThisKey="product_id" OtherKey="product_id" Type="product" IsForeignKey="true" />
+      <Association Name="user_account_user_favorite_product" Member="user_account" ThisKey="user_id" OtherKey="user_id" Type="user_account" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_order" Member="user_orders">
+    <Type Name="user_order">
+      <Column Name="user_order_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="first_name" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="last_name" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="phone_number" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="is_processed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="payment_method" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="total_price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="createdAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="updatedAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="user_order_user_order_product" Member="user_order_products" ThisKey="user_order_id" OtherKey="user_order_id" Type="user_order_product" />
+    </Type>
+  </Table>
+</Database>

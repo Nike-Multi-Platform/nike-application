@@ -21,8 +21,16 @@ namespace Nike_Shop_Management.GUI
             InitializeComponent();
             DbContext db = new DbContext();
             accountManager = new UserAccountManager(new UserAccountRepository(db));
-        }
+            load_data();
 
+        }
+        public void load_data()
+        {
+            List<UserAccountDTO> list = new List<UserAccountDTO>();
+            list = accountManager.GetUserAccounts();
+            dataGridView.DataSource = list;
+            
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
            

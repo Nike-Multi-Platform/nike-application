@@ -29,6 +29,12 @@ namespace Nike_Shop_Management.DAL
             ObjectMapper objectMapper = new ObjectMapper();
             return objectMapper.AccountMapperToEnity(_db.user_accounts.Where(o => o.user_email==email && o.user_password == password).FirstOrDefault());
         }
-
+        public List<UserAccountDTO> GetAccounts()
+        {
+            ObjectMapper objectMapper = new ObjectMapper();
+            return _db.user_accounts
+               .Select(user => objectMapper.AccountMapperToEnity(user))
+               .ToList();
+        }
     }
 }

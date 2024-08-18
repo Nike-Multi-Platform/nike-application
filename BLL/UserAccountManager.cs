@@ -27,5 +27,9 @@ namespace Nike_Shop_Management.BLL
         {
             return _accountRepository.GetAccount(mail,password);
         }
+        public List<UserAccountDTO> GetUserAccounts()
+        {
+            return _accountRepository.GetAccounts();
+        }
     }
 }

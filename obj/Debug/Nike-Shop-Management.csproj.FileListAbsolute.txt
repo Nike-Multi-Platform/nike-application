@@ -11,3 +11,4 @@ D:\barovinh\Nike-application\Nike-Shop-Management\obj\Debug\Nike-Shop-Management
 D:\barovinh\Nike-application\Nike-Shop-Management\obj\Debug\Nike-Shop-Management.exe
 D:\barovinh\Nike-application\Nike-Shop-Management\obj\Debug\Nike-Shop-Management.pdb
 D:\barovinh\Nike-application\Nike-Shop-Management\obj\Debug\Nike_Shop_Management.GUI.Form1.resources
+D:\barovinh\Nike-application\Nike-Shop-Management\obj\Debug\Nike_Shop_Management.GUI.Menu.resources

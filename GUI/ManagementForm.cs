@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Nike_Shop_Management.GUI;
 
 namespace Nike_Shop_Management.GUI
 {
     public partial class ManagementForm : Form
     {
+        Util util = new Util();
         public ManagementForm()
         {
             InitializeComponent();
@@ -21,8 +23,8 @@ namespace Nike_Shop_Management.GUI
         {
             if (menuExpand == false)
             {
-                menuContainer.Height += 10;
-                if (menuContainer.Height >= 190)
+                menuContainer.Height += 5;
+                if (menuContainer.Height >= 185)
                 {
                     menuTransition.Stop();
                     menuExpand = true;
@@ -30,7 +32,7 @@ namespace Nike_Shop_Management.GUI
             }
             else
             {
-                menuContainer.Height -= 10;
+                menuContainer.Height -= 5;
                 if (menuContainer.Height <= 58)
                 {
                     menuTransition.Stop();
@@ -49,7 +51,7 @@ namespace Nike_Shop_Management.GUI
         {
             if (sidebarExpland)
             {
-                sidebar.Width -= 10;
+                sidebar.Width -= 5;
                 if (sidebar.Width <= 60)
                 {
                     sidebarExpland = false;
@@ -58,7 +60,7 @@ namespace Nike_Shop_Management.GUI
             }
             else
             {
-                sidebar.Width += 10;
+                sidebar.Width += 5;
                 if (sidebar.Width >= 200)
                 {
                     sidebarExpland = true;
@@ -70,6 +72,11 @@ namespace Nike_Shop_Management.GUI
         private void btn_Menu_Click(object sender, EventArgs e)
         {
             sidebarTransition.Start();
+        }
+
+        private void btn_product_Click(object sender, EventArgs e)
+        {
+            util.OpenChildForm(new GUI.ProductForm(), panelBody);
         }
     }
 }

@@ -27,3 +27,4 @@ D:\UngDungThongMinh\nike-application\bin\Debug\Nike-Shop-Management.pdb
 D:\UngDungThongMinh\nike-application\bin\Debug\ComponentFactory.Krypton.Toolkit.pdb
 D:\UngDungThongMinh\nike-application\obj\Debug\Nike-Shop-Management.csproj.CopyComplete
 D:\UngDungThongMinh\nike-application\obj\Debug\Nike_Shop_Management.GUI.ManagementForm.resources
+D:\UngDungThongMinh\nike-application\obj\Debug\Nike_Shop_Management.GUI.ProductForm.resources

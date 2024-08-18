@@ -33,9 +33,6 @@ namespace Nike_Shop_Management.DAL
     partial void Insertbag(bag instance);
     partial void Updatebag(bag instance);
     partial void Deletebag(bag instance);
-    partial void Insertuser_order_product(user_order_product instance);
-    partial void Updateuser_order_product(user_order_product instance);
-    partial void Deleteuser_order_product(user_order_product instance);
     partial void Insertcategory_discount_event(category_discount_event instance);
     partial void Updatecategory_discount_event(category_discount_event instance);
     partial void Deletecategory_discount_event(category_discount_event instance);
@@ -72,16 +69,19 @@ namespace Nike_Shop_Management.DAL
     partial void Insertuser_account(user_account instance);
     partial void Updateuser_account(user_account instance);
     partial void Deleteuser_account(user_account instance);
-    partial void Insertuser_favorite_product(user_favorite_product instance);
-    partial void Updateuser_favorite_product(user_favorite_product instance);
-    partial void Deleteuser_favorite_product(user_favorite_product instance);
     partial void Insertuser_order(user_order instance);
     partial void Updateuser_order(user_order instance);
     partial void Deleteuser_order(user_order instance);
+    partial void Insertuser_order_product(user_order_product instance);
+    partial void Updateuser_order_product(user_order_product instance);
+    partial void Deleteuser_order_product(user_order_product instance);
+    partial void Insertuser_favorite_product(user_favorite_product instance);
+    partial void Updateuser_favorite_product(user_favorite_product instance);
+    partial void Deleteuser_favorite_product(user_favorite_product instance);
     #endregion
 		
 		public DbContext() : 
-				base(global::Nike_Shop_Management.Properties.Settings.Default.db_BanQuanAoConnectionString, mappingSource)
+				base(global::Nike_Shop_Management.Properties.Settings.Default.db_BanQuanAoConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -115,14 +115,6 @@ namespace Nike_Shop_Management.DAL
 			get
 			{
 				return this.GetTable<bag>();
-			}
-		}
-		
-		public System.Data.Linq.Table<user_order_product> user_order_products
-		{
-			get
-			{
-				return this.GetTable<user_order_product>();
 			}
 		}
 		
@@ -222,19 +214,27 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<user_favorite_product> user_favorite_products
-		{
-			get
-			{
-				return this.GetTable<user_favorite_product>();
-			}
-		}
-		
 		public System.Data.Linq.Table<user_order> user_orders
 		{
 			get
 			{
 				return this.GetTable<user_order>();
+			}
+		}
+		
+		public System.Data.Linq.Table<user_order_product> user_order_products
+		{
+			get
+			{
+				return this.GetTable<user_order_product>();
+			}
+		}
+		
+		public System.Data.Linq.Table<user_favorite_product> user_favorite_products
+		{
+			get
+			{
+				return this.GetTable<user_favorite_product>();
 			}
 		}
 	}
@@ -430,198 +430,6 @@ namespace Nike_Shop_Management.DAL
 						this._user_id = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("user_account");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_order_products")]
-	public partial class user_order_product : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _user_order_id;
-		
-		private int _product_size_id;
-		
-		private System.Nullable<int> _amount;
-		
-		private EntityRef<product_size> _product_size;
-		
-		private EntityRef<user_order> _user_order;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onuser_order_idChanging(int value);
-    partial void Onuser_order_idChanged();
-    partial void Onproduct_size_idChanging(int value);
-    partial void Onproduct_size_idChanged();
-    partial void OnamountChanging(System.Nullable<int> value);
-    partial void OnamountChanged();
-    #endregion
-		
-		public user_order_product()
-		{
-			this._product_size = default(EntityRef<product_size>);
-			this._user_order = default(EntityRef<user_order>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_order_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int user_order_id
-		{
-			get
-			{
-				return this._user_order_id;
-			}
-			set
-			{
-				if ((this._user_order_id != value))
-				{
-					if (this._user_order.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onuser_order_idChanging(value);
-					this.SendPropertyChanging();
-					this._user_order_id = value;
-					this.SendPropertyChanged("user_order_id");
-					this.Onuser_order_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_size_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int product_size_id
-		{
-			get
-			{
-				return this._product_size_id;
-			}
-			set
-			{
-				if ((this._product_size_id != value))
-				{
-					if (this._product_size.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onproduct_size_idChanging(value);
-					this.SendPropertyChanging();
-					this._product_size_id = value;
-					this.SendPropertyChanged("product_size_id");
-					this.Onproduct_size_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_amount", DbType="Int")]
-		public System.Nullable<int> amount
-		{
-			get
-			{
-				return this._amount;
-			}
-			set
-			{
-				if ((this._amount != value))
-				{
-					this.OnamountChanging(value);
-					this.SendPropertyChanging();
-					this._amount = value;
-					this.SendPropertyChanged("amount");
-					this.OnamountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_size_user_order_product", Storage="_product_size", ThisKey="product_size_id", OtherKey="product_size_id", IsForeignKey=true)]
-		public product_size product_size
-		{
-			get
-			{
-				return this._product_size.Entity;
-			}
-			set
-			{
-				product_size previousValue = this._product_size.Entity;
-				if (((previousValue != value) 
-							|| (this._product_size.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._product_size.Entity = null;
-						previousValue.user_order_products.Remove(this);
-					}
-					this._product_size.Entity = value;
-					if ((value != null))
-					{
-						value.user_order_products.Add(this);
-						this._product_size_id = value.product_size_id;
-					}
-					else
-					{
-						this._product_size_id = default(int);
-					}
-					this.SendPropertyChanged("product_size");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_order_user_order_product", Storage="_user_order", ThisKey="user_order_id", OtherKey="user_order_id", IsForeignKey=true)]
-		public user_order user_order
-		{
-			get
-			{
-				return this._user_order.Entity;
-			}
-			set
-			{
-				user_order previousValue = this._user_order.Entity;
-				if (((previousValue != value) 
-							|| (this._user_order.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._user_order.Entity = null;
-						previousValue.user_order_products.Remove(this);
-					}
-					this._user_order.Entity = value;
-					if ((value != null))
-					{
-						value.user_order_products.Add(this);
-						this._user_order_id = value.user_order_id;
-					}
-					else
-					{
-						this._user_order_id = default(int);
-					}
-					this.SendPropertyChanged("user_order");
 				}
 			}
 		}
@@ -2390,13 +2198,13 @@ namespace Nike_Shop_Management.DAL
 		
 		private System.Nullable<int> _product_id;
 		
-		private string _product_review_Title;
-		
 		private string _product_review_content;
+		
+		private System.Nullable<double> _product_review_rate;
 		
 		private System.Nullable<System.DateTime> _product_review_time;
 		
-		private System.Nullable<double> _product_review_rate;
+		private string _product_review_Title;
 		
 		private EntityRef<product> _product;
 		
@@ -2412,14 +2220,14 @@ namespace Nike_Shop_Management.DAL
     partial void Onuser_idChanged();
     partial void Onproduct_idChanging(System.Nullable<int> value);
     partial void Onproduct_idChanged();
-    partial void Onproduct_review_TitleChanging(string value);
-    partial void Onproduct_review_TitleChanged();
     partial void Onproduct_review_contentChanging(string value);
     partial void Onproduct_review_contentChanged();
-    partial void Onproduct_review_timeChanging(System.Nullable<System.DateTime> value);
-    partial void Onproduct_review_timeChanged();
     partial void Onproduct_review_rateChanging(System.Nullable<double> value);
     partial void Onproduct_review_rateChanged();
+    partial void Onproduct_review_timeChanging(System.Nullable<System.DateTime> value);
+    partial void Onproduct_review_timeChanged();
+    partial void Onproduct_review_TitleChanging(string value);
+    partial void Onproduct_review_TitleChanged();
     #endregion
 		
 		public product_review()
@@ -2497,26 +2305,6 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_review_Title", DbType="NVarChar(255)")]
-		public string product_review_Title
-		{
-			get
-			{
-				return this._product_review_Title;
-			}
-			set
-			{
-				if ((this._product_review_Title != value))
-				{
-					this.Onproduct_review_TitleChanging(value);
-					this.SendPropertyChanging();
-					this._product_review_Title = value;
-					this.SendPropertyChanged("product_review_Title");
-					this.Onproduct_review_TitleChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_review_content", DbType="NVarChar(255)")]
 		public string product_review_content
 		{
@@ -2533,6 +2321,26 @@ namespace Nike_Shop_Management.DAL
 					this._product_review_content = value;
 					this.SendPropertyChanged("product_review_content");
 					this.Onproduct_review_contentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_review_rate", DbType="Float")]
+		public System.Nullable<double> product_review_rate
+		{
+			get
+			{
+				return this._product_review_rate;
+			}
+			set
+			{
+				if ((this._product_review_rate != value))
+				{
+					this.Onproduct_review_rateChanging(value);
+					this.SendPropertyChanging();
+					this._product_review_rate = value;
+					this.SendPropertyChanged("product_review_rate");
+					this.Onproduct_review_rateChanged();
 				}
 			}
 		}
@@ -2557,22 +2365,22 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_review_rate", DbType="Float")]
-		public System.Nullable<double> product_review_rate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_review_Title", DbType="NVarChar(255)")]
+		public string product_review_Title
 		{
 			get
 			{
-				return this._product_review_rate;
+				return this._product_review_Title;
 			}
 			set
 			{
-				if ((this._product_review_rate != value))
+				if ((this._product_review_Title != value))
 				{
-					this.Onproduct_review_rateChanging(value);
+					this.Onproduct_review_TitleChanging(value);
 					this.SendPropertyChanging();
-					this._product_review_rate = value;
-					this.SendPropertyChanged("product_review_rate");
-					this.Onproduct_review_rateChanged();
+					this._product_review_Title = value;
+					this.SendPropertyChanged("product_review_Title");
+					this.Onproduct_review_TitleChanged();
 				}
 			}
 		}
@@ -3490,198 +3298,6 @@ namespace Nike_Shop_Management.DAL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_favorite_products")]
-	public partial class user_favorite_product : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private int _user_id;
-		
-		private int _product_id;
-		
-		private EntityRef<product> _product;
-		
-		private EntityRef<user_account> _user_account;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Onuser_idChanging(int value);
-    partial void Onuser_idChanged();
-    partial void Onproduct_idChanging(int value);
-    partial void Onproduct_idChanged();
-    #endregion
-		
-		public user_favorite_product()
-		{
-			this._product = default(EntityRef<product>);
-			this._user_account = default(EntityRef<user_account>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int NOT NULL")]
-		public int user_id
-		{
-			get
-			{
-				return this._user_id;
-			}
-			set
-			{
-				if ((this._user_id != value))
-				{
-					if (this._user_account.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onuser_idChanging(value);
-					this.SendPropertyChanging();
-					this._user_id = value;
-					this.SendPropertyChanged("user_id");
-					this.Onuser_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_id", DbType="Int NOT NULL")]
-		public int product_id
-		{
-			get
-			{
-				return this._product_id;
-			}
-			set
-			{
-				if ((this._product_id != value))
-				{
-					if (this._product.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onproduct_idChanging(value);
-					this.SendPropertyChanging();
-					this._product_id = value;
-					this.SendPropertyChanged("product_id");
-					this.Onproduct_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_user_favorite_product", Storage="_product", ThisKey="product_id", OtherKey="product_id", IsForeignKey=true)]
-		public product product
-		{
-			get
-			{
-				return this._product.Entity;
-			}
-			set
-			{
-				product previousValue = this._product.Entity;
-				if (((previousValue != value) 
-							|| (this._product.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._product.Entity = null;
-						previousValue.user_favorite_products.Remove(this);
-					}
-					this._product.Entity = value;
-					if ((value != null))
-					{
-						value.user_favorite_products.Add(this);
-						this._product_id = value.product_id;
-					}
-					else
-					{
-						this._product_id = default(int);
-					}
-					this.SendPropertyChanged("product");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_account_user_favorite_product", Storage="_user_account", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
-		public user_account user_account
-		{
-			get
-			{
-				return this._user_account.Entity;
-			}
-			set
-			{
-				user_account previousValue = this._user_account.Entity;
-				if (((previousValue != value) 
-							|| (this._user_account.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._user_account.Entity = null;
-						previousValue.user_favorite_products.Remove(this);
-					}
-					this._user_account.Entity = value;
-					if ((value != null))
-					{
-						value.user_favorite_products.Add(this);
-						this._user_id = value.user_id;
-					}
-					else
-					{
-						this._user_id = default(int);
-					}
-					this.SendPropertyChanged("user_account");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_order")]
 	public partial class user_order : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -4033,6 +3649,390 @@ namespace Nike_Shop_Management.DAL
 		{
 			this.SendPropertyChanging();
 			entity.user_order = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_order_products")]
+	public partial class user_order_product : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _user_order_id;
+		
+		private int _product_size_id;
+		
+		private System.Nullable<int> _amount;
+		
+		private EntityRef<product_size> _product_size;
+		
+		private EntityRef<user_order> _user_order;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onuser_order_idChanging(int value);
+    partial void Onuser_order_idChanged();
+    partial void Onproduct_size_idChanging(int value);
+    partial void Onproduct_size_idChanged();
+    partial void OnamountChanging(System.Nullable<int> value);
+    partial void OnamountChanged();
+    #endregion
+		
+		public user_order_product()
+		{
+			this._product_size = default(EntityRef<product_size>);
+			this._user_order = default(EntityRef<user_order>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_order_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int user_order_id
+		{
+			get
+			{
+				return this._user_order_id;
+			}
+			set
+			{
+				if ((this._user_order_id != value))
+				{
+					if (this._user_order.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onuser_order_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_order_id = value;
+					this.SendPropertyChanged("user_order_id");
+					this.Onuser_order_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_size_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int product_size_id
+		{
+			get
+			{
+				return this._product_size_id;
+			}
+			set
+			{
+				if ((this._product_size_id != value))
+				{
+					if (this._product_size.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onproduct_size_idChanging(value);
+					this.SendPropertyChanging();
+					this._product_size_id = value;
+					this.SendPropertyChanged("product_size_id");
+					this.Onproduct_size_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_amount", DbType="Int")]
+		public System.Nullable<int> amount
+		{
+			get
+			{
+				return this._amount;
+			}
+			set
+			{
+				if ((this._amount != value))
+				{
+					this.OnamountChanging(value);
+					this.SendPropertyChanging();
+					this._amount = value;
+					this.SendPropertyChanged("amount");
+					this.OnamountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_size_user_order_product", Storage="_product_size", ThisKey="product_size_id", OtherKey="product_size_id", IsForeignKey=true)]
+		public product_size product_size
+		{
+			get
+			{
+				return this._product_size.Entity;
+			}
+			set
+			{
+				product_size previousValue = this._product_size.Entity;
+				if (((previousValue != value) 
+							|| (this._product_size.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._product_size.Entity = null;
+						previousValue.user_order_products.Remove(this);
+					}
+					this._product_size.Entity = value;
+					if ((value != null))
+					{
+						value.user_order_products.Add(this);
+						this._product_size_id = value.product_size_id;
+					}
+					else
+					{
+						this._product_size_id = default(int);
+					}
+					this.SendPropertyChanged("product_size");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_order_user_order_product", Storage="_user_order", ThisKey="user_order_id", OtherKey="user_order_id", IsForeignKey=true)]
+		public user_order user_order
+		{
+			get
+			{
+				return this._user_order.Entity;
+			}
+			set
+			{
+				user_order previousValue = this._user_order.Entity;
+				if (((previousValue != value) 
+							|| (this._user_order.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user_order.Entity = null;
+						previousValue.user_order_products.Remove(this);
+					}
+					this._user_order.Entity = value;
+					if ((value != null))
+					{
+						value.user_order_products.Add(this);
+						this._user_order_id = value.user_order_id;
+					}
+					else
+					{
+						this._user_order_id = default(int);
+					}
+					this.SendPropertyChanged("user_order");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_favorite_products")]
+	public partial class user_favorite_product : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _user_id;
+		
+		private int _product_id;
+		
+		private EntityRef<product> _product;
+		
+		private EntityRef<user_account> _user_account;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onuser_idChanging(int value);
+    partial void Onuser_idChanged();
+    partial void Onproduct_idChanging(int value);
+    partial void Onproduct_idChanged();
+    #endregion
+		
+		public user_favorite_product()
+		{
+			this._product = default(EntityRef<product>);
+			this._user_account = default(EntityRef<user_account>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int NOT NULL")]
+		public int user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					if (this._user_account.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_id", DbType="Int NOT NULL")]
+		public int product_id
+		{
+			get
+			{
+				return this._product_id;
+			}
+			set
+			{
+				if ((this._product_id != value))
+				{
+					if (this._product.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onproduct_idChanging(value);
+					this.SendPropertyChanging();
+					this._product_id = value;
+					this.SendPropertyChanged("product_id");
+					this.Onproduct_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_user_favorite_product", Storage="_product", ThisKey="product_id", OtherKey="product_id", IsForeignKey=true)]
+		public product product
+		{
+			get
+			{
+				return this._product.Entity;
+			}
+			set
+			{
+				product previousValue = this._product.Entity;
+				if (((previousValue != value) 
+							|| (this._product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._product.Entity = null;
+						previousValue.user_favorite_products.Remove(this);
+					}
+					this._product.Entity = value;
+					if ((value != null))
+					{
+						value.user_favorite_products.Add(this);
+						this._product_id = value.product_id;
+					}
+					else
+					{
+						this._product_id = default(int);
+					}
+					this.SendPropertyChanged("product");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_account_user_favorite_product", Storage="_user_account", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
+		public user_account user_account
+		{
+			get
+			{
+				return this._user_account.Entity;
+			}
+			set
+			{
+				user_account previousValue = this._user_account.Entity;
+				if (((previousValue != value) 
+							|| (this._user_account.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user_account.Entity = null;
+						previousValue.user_favorite_products.Remove(this);
+					}
+					this._user_account.Entity = value;
+					if ((value != null))
+					{
+						value.user_favorite_products.Add(this);
+						this._user_id = value.user_id;
+					}
+					else
+					{
+						this._user_id = default(int);
+					}
+					this.SendPropertyChanged("user_account");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

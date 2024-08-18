@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_BanQuanAo" Class="DbContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=MSI\SQLEXPRESS;Initial Catalog=db_BanQuanAo;Integrated Security=True" SettingsObjectName="Nike_Shop_Management.Properties.Settings" SettingsPropertyName="db_BanQuanAoConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MSI\QUANGDIEU;Initial Catalog=db_BanQuanAo;User ID=sa" SettingsObjectName="Nike_Shop_Management.Properties.Settings" SettingsPropertyName="db_BanQuanAoConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.bag" Member="bags">
     <Type Name="bag">
       <Column Name="bag_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -8,15 +8,6 @@
       <Column Name="amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="product_size_bag" Member="product_size" ThisKey="product_size_id" OtherKey="product_size_id" Type="product_size" IsForeignKey="true" />
       <Association Name="user_account_bag" Member="user_account" ThisKey="user_id" OtherKey="user_id" Type="user_account" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.user_order_products" Member="user_order_products">
-    <Type Name="user_order_product">
-      <Column Name="user_order_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="product_size_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="product_size_user_order_product" Member="product_size" ThisKey="product_size_id" OtherKey="product_size_id" Type="product_size" IsForeignKey="true" />
-      <Association Name="user_order_user_order_product" Member="user_order" ThisKey="user_order_id" OtherKey="user_order_id" Type="user_order" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.category_discount_event" Member="category_discount_events">
@@ -109,10 +100,10 @@
       <Column Name="product_review_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="product_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="product_review_Title" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="product_review_content" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="product_review_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="product_review_rate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="product_review_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="product_review_Title" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Association Name="product_product_review" Member="product" ThisKey="product_id" OtherKey="product_id" Type="product" IsForeignKey="true" />
       <Association Name="user_account_product_review" Member="user_account" ThisKey="user_id" OtherKey="user_id" Type="user_account" IsForeignKey="true" />
     </Type>
@@ -156,15 +147,6 @@
       <Association Name="user_account_user_favorite_product" Member="user_favorite_products" ThisKey="user_id" OtherKey="user_id" Type="user_favorite_product" />
     </Type>
   </Table>
-  <Table Name="dbo.user_favorite_products" Member="user_favorite_products">
-    <Type Name="user_favorite_product">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="product_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="product_user_favorite_product" Member="product" ThisKey="product_id" OtherKey="product_id" Type="product" IsForeignKey="true" />
-      <Association Name="user_account_user_favorite_product" Member="user_account" ThisKey="user_id" OtherKey="user_id" Type="user_account" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.user_order" Member="user_orders">
     <Type Name="user_order">
       <Column Name="user_order_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -180,6 +162,24 @@
       <Column Name="createdAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="updatedAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="user_order_user_order_product" Member="user_order_products" ThisKey="user_order_id" OtherKey="user_order_id" Type="user_order_product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_order_products" Member="user_order_products">
+    <Type Name="user_order_product">
+      <Column Name="user_order_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="product_size_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="product_size_user_order_product" Member="product_size" ThisKey="product_size_id" OtherKey="product_size_id" Type="product_size" IsForeignKey="true" />
+      <Association Name="user_order_user_order_product" Member="user_order" ThisKey="user_order_id" OtherKey="user_order_id" Type="user_order" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.user_favorite_products" Member="user_favorite_products">
+    <Type Name="user_favorite_product">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="product_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="product_user_favorite_product" Member="product" ThisKey="product_id" OtherKey="product_id" Type="product" IsForeignKey="true" />
+      <Association Name="user_account_user_favorite_product" Member="user_account" ThisKey="user_id" OtherKey="user_id" Type="user_account" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

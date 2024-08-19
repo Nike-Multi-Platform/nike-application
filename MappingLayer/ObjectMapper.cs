@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Nike_Shop_Management.MappingLayer
 {
+    // auto mapper
     class ObjectMapper
     {
         private readonly DbContext _db;
@@ -15,7 +16,6 @@ namespace Nike_Shop_Management.MappingLayer
         {
             if (dto == null)
                 throw new ArgumentNullException(nameof(dto));
-
             return new user_account
             {
                 user_username = dto.Username,
@@ -52,6 +52,8 @@ namespace Nike_Shop_Management.MappingLayer
                 Id = user.user_id
             };
         }
+        
+        
 
     }
 }

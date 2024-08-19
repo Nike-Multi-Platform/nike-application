@@ -19,8 +19,6 @@ namespace Nike_Shop_Management.DAL
         }
         public void Save(UserAccountDTO user)
         {
-            // logic ở đây
-            // if(user)
             _db.user_accounts.InsertOnSubmit(objectMapper.AccountMapperToLINQ(user));
         }
 
@@ -94,7 +92,7 @@ namespace Nike_Shop_Management.DAL
                                             user.user_last_name.Contains(inputSearch) ||
                                             (isNumericSearch && user.user_member_tier == numericSearch) ||
                                             (isNumericSearch && user.user_point == numericSearch)
-                                            ).ToList().Select(o=>objectMapper.AccountMapperToEnity(o)).ToList();
+                                            ).ToList().Select(o => objectMapper.AccountMapperToEnity(o)).ToList();
 
                 if (result != null)
                 {
@@ -105,7 +103,7 @@ namespace Nike_Shop_Management.DAL
             }
             catch (Exception)
             {
-                return null; 
+                return null;
             }
         }
 

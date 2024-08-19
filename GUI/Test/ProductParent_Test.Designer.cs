@@ -51,6 +51,7 @@ namespace Nike_Shop_Management.GUI.Test
             this.Controls.Add(this.kryptonDataGridView1);
             this.Name = "ProductParent_Test";
             this.Text = "ProductParent";
+            this.Load += new System.EventHandler(this.ProductParent_Test_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).EndInit();
             this.ResumeLayout(false);
 

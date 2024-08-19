@@ -42,23 +42,28 @@ namespace Nike_Shop_Management.DAL
 
         public int EditUser(UserAccountDTO user)
         {
-            // Retrieve the existing user from the database
-            var existingUser = _db.user_accounts.FirstOrDefault(u => u.user_id == user.Id);
-
-            if (existingUser != null)
+            try
             {
-                existingUser.user_first_name = user.Username;
-                existingUser.user_last_name = user.Email;
-                existingUser.user_password = user.Password;
-                existingUser.user_point = user.Point;     
-                existingUser.user_member_tier = user.Member_tier;
-                existingUser.user_gender = user.Gender;
-                existingUser.user_address = user.Address;
-                //existingUser.user_phone_number = user.Phone_number;
-                existingUser.user_url = user.Url;
-                //return _db.SubmitChanges();
+                var existingUser = _db.user_accounts.FirstOrDefault(u => u.user_id == user.Id);
+                if (existingUser != null)
+                {
+                    existingUser.user_first_name = user.Username;
+                    existingUser.user_last_name = user.Email;
+                    existingUser.user_password = user.Password;
+                    existingUser.user_point = user.Point;
+                    existingUser.user_member_tier = user.Member_tier;
+                    existingUser.user_gender = user.Gender;
+                    existingUser.user_address = user.Address;
+                    existingUser.user_url = user.Url;
+                    _db.SubmitChanges();
+                    return 1;
+                }
+                return 0;
             }
-            return 0;
+            catch (Exception)
+            {
+                return -1;
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nike_Shop_Management.GUI;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace Nike_Shop_Management.GUI
 {
@@ -18,29 +19,6 @@ namespace Nike_Shop_Management.GUI
         {
             InitializeComponent();
         }
-        bool menuExpand = false;
-        private void menuTransition_Tick(object sender, EventArgs e)
-        {
-            if (menuExpand == false)
-            {
-                menuContainer.Height += 5;
-                if (menuContainer.Height >= 185)
-                {
-                    menuTransition.Stop();
-                    menuExpand = true;
-                }
-            }
-            else
-            {
-                menuContainer.Height -= 5;
-                if (menuContainer.Height <= 58)
-                {
-                    menuTransition.Stop();
-                    menuExpand = false;
-                }
-            }
-        }
-
         private void btn_Home_Click(object sender, EventArgs e)
         {
             menuTransition.Start();
@@ -78,5 +56,8 @@ namespace Nike_Shop_Management.GUI
         {
             util.OpenChildForm(new GUI.ProductForm(), panelBody);
         }
+
+
+
     }
 }

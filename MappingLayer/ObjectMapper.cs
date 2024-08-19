@@ -28,7 +28,8 @@ namespace Nike_Shop_Management.MappingLayer
                 user_last_name = dto.Last_name,
                 user_member_tier = dto.Member_tier,
                 user_point = dto.Point,
-                user_url = dto.Url
+                user_url = dto.Url,
+                user_id = dto.Id
             };
         }
         public UserAccountDTO AccountMapperToEnity(user_account user)
@@ -47,7 +48,8 @@ namespace Nike_Shop_Management.MappingLayer
                 Last_name = user.user_last_name,
                 Member_tier = user.user_member_tier != null ? Int32.Parse(user.user_member_tier.ToString()) : 0,
                 Point = user.user_point != null ? Int32.Parse(user.user_member_tier.ToString()) : 0,
-                Url = user.user_url
+                Url = user.user_url,
+                Id = user.user_id
             };
         }
 

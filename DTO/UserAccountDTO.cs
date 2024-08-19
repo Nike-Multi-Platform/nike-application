@@ -10,7 +10,7 @@ namespace Nike_Shop_Management.DTO
     class UserAccountDTO
     {
 
-        private string id;
+        private int id;
         private string username;
         private string password;
         private string gender;
@@ -29,6 +29,6 @@ namespace Nike_Shop_Management.DTO
         public int? Member_tier { get => member_tier; set => member_tier = value; }
         public int? Point { get => point; set => point = value; }
         public string Url { get => url; set => url = value; }
-        public string Id { get => id; set => id = value; }
+        public int Id { get => id; set => id = value; }
     }
 }

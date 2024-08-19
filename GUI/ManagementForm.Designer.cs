@@ -34,39 +34,22 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.FormLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.btn_Menu = new System.Windows.Forms.PictureBox();
-            this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.menuContainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.btn_Home = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_product = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_Order = new System.Windows.Forms.Button();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.btn_product = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.menuTransition = new System.Windows.Forms.Timer(this.components);
             this.sidebarTransition = new System.Windows.Forms.Timer(this.components);
-            this.panelBody = new System.Windows.Forms.Panel();
+            this.panelBody = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kryptonButton2 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.headerPanel)).BeginInit();
             this.headerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Menu)).BeginInit();
             this.sidebar.SuspendLayout();
-            this.menuContainer.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelBody)).BeginInit();
             this.SuspendLayout();
             // 
             // headerPanel
@@ -116,24 +99,13 @@
             this.btn_Menu.TabStop = false;
             this.btn_Menu.Click += new System.EventHandler(this.btn_Menu_Click);
             // 
-            // kryptonPalette1
-            // 
-            this.kryptonPalette1.FormStyles.FormCommon.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.kryptonPalette1.FormStyles.FormCommon.StateCommon.Border.Rounding = 16;
-            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.Rounding = 15;
-            // 
             // sidebar
             // 
             this.sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
-            this.sidebar.Controls.Add(this.panel7);
-            this.sidebar.Controls.Add(this.menuContainer);
-            this.sidebar.Controls.Add(this.panel1);
-            this.sidebar.Controls.Add(this.panel2);
+            this.sidebar.Controls.Add(this.kryptonPanel1);
+            this.sidebar.Controls.Add(this.btn_product);
+            this.sidebar.Controls.Add(this.kryptonButton1);
+            this.sidebar.Controls.Add(this.kryptonButton2);
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidebar.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.sidebar.Location = new System.Drawing.Point(0, 47);
@@ -142,187 +114,54 @@
             this.sidebar.Size = new System.Drawing.Size(200, 603);
             this.sidebar.TabIndex = 1;
             // 
-            // panel7
+            // kryptonPanel1
             // 
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Margin = new System.Windows.Forms.Padding(0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(200, 51);
-            this.panel7.TabIndex = 5;
-            // 
-            // menuContainer
-            // 
-            this.menuContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
-            this.menuContainer.Controls.Add(this.panel5);
-            this.menuContainer.Controls.Add(this.panel3);
-            this.menuContainer.Controls.Add(this.flowLayoutPanel2);
-            this.menuContainer.Location = new System.Drawing.Point(0, 51);
-            this.menuContainer.Margin = new System.Windows.Forms.Padding(0);
-            this.menuContainer.Name = "menuContainer";
-            this.menuContainer.Size = new System.Drawing.Size(200, 58);
-            this.menuContainer.TabIndex = 5;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.btn_Home);
-            this.panel5.Location = new System.Drawing.Point(3, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(182, 58);
-            this.panel5.TabIndex = 4;
-            // 
-            // btn_Home
-            // 
-            this.btn_Home.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
-            this.btn_Home.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Home.ForeColor = System.Drawing.Color.White;
-            this.btn_Home.Image = ((System.Drawing.Image)(resources.GetObject("btn_Home.Image")));
-            this.btn_Home.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Home.Location = new System.Drawing.Point(-19, -14);
-            this.btn_Home.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_Home.Name = "btn_Home";
-            this.btn_Home.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btn_Home.Size = new System.Drawing.Size(225, 85);
-            this.btn_Home.TabIndex = 2;
-            this.btn_Home.Text = "Home";
-            this.btn_Home.UseVisualStyleBackColor = false;
-            this.btn_Home.Click += new System.EventHandler(this.btn_Home_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Location = new System.Drawing.Point(3, 67);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(182, 58);
-            this.panel3.TabIndex = 4;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(-19, -12);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(225, 85);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "submenu";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
-            this.flowLayoutPanel2.Controls.Add(this.panel4);
-            this.flowLayoutPanel2.Controls.Add(this.panel6);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 128);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(207, 58);
-            this.flowLayoutPanel2.TabIndex = 6;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.button2);
-            this.panel4.Location = new System.Drawing.Point(3, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(182, 58);
-            this.panel4.TabIndex = 4;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(-19, -17);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(225, 85);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Home";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.button3);
-            this.panel6.Location = new System.Drawing.Point(3, 67);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(182, 58);
-            this.panel6.TabIndex = 4;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(-19, -12);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(225, 85);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "submenu";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btn_product);
-            this.panel1.Location = new System.Drawing.Point(3, 112);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 58);
-            this.panel1.TabIndex = 3;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(200, 58);
+            this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.Transparent;
+            this.kryptonPanel1.TabIndex = 6;
             // 
             // btn_product
             // 
-            this.btn_product.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
-            this.btn_product.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_product.ForeColor = System.Drawing.Color.White;
-            this.btn_product.Image = ((System.Drawing.Image)(resources.GetObject("btn_product.Image")));
-            this.btn_product.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_product.Location = new System.Drawing.Point(-19, -17);
+            this.btn_product.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ListItem;
+            this.btn_product.Location = new System.Drawing.Point(0, 58);
             this.btn_product.Margin = new System.Windows.Forms.Padding(0);
             this.btn_product.Name = "btn_product";
-            this.btn_product.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btn_product.Size = new System.Drawing.Size(225, 85);
-            this.btn_product.TabIndex = 2;
-            this.btn_product.Text = "Product";
-            this.btn_product.UseVisualStyleBackColor = false;
+            this.btn_product.Palette = this.kryptonPalette1;
+            this.btn_product.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.btn_product.Size = new System.Drawing.Size(200, 58);
+            this.btn_product.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
+            this.btn_product.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
+            this.btn_product.StateCommon.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.CenterLeft;
+            this.btn_product.StateCommon.Border.Color1 = System.Drawing.Color.Cyan;
+            this.btn_product.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btn_product.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btn_product.StateCommon.Content.LongText.Color1 = System.Drawing.Color.White;
+            this.btn_product.StateCommon.Content.LongText.Color2 = System.Drawing.Color.White;
+            this.btn_product.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
+            this.btn_product.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btn_product.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btn_product.StatePressed.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.SolidRightLine;
+            this.btn_product.StatePressed.Back.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
+            this.btn_product.TabIndex = 5;
+            this.btn_product.Values.Image = ((System.Drawing.Image)(resources.GetObject("btn_product.Values.Image")));
+            this.btn_product.Values.Text = "         Product";
             this.btn_product.Click += new System.EventHandler(this.btn_product_Click);
             // 
-            // panel2
+            // kryptonPalette1
             // 
-            this.panel2.Controls.Add(this.btn_Order);
-            this.panel2.Location = new System.Drawing.Point(3, 176);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 58);
-            this.panel2.TabIndex = 4;
-            // 
-            // btn_Order
-            // 
-            this.btn_Order.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
-            this.btn_Order.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Order.ForeColor = System.Drawing.Color.White;
-            this.btn_Order.Image = ((System.Drawing.Image)(resources.GetObject("btn_Order.Image")));
-            this.btn_Order.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Order.Location = new System.Drawing.Point(-19, -17);
-            this.btn_Order.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_Order.Name = "btn_Order";
-            this.btn_Order.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btn_Order.Size = new System.Drawing.Size(225, 85);
-            this.btn_Order.TabIndex = 2;
-            this.btn_Order.Text = "Order";
-            this.btn_Order.UseVisualStyleBackColor = false;
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.Rounding = 15;
             // 
             // menuTransition
             // 
             this.menuTransition.Interval = 10;
-            this.menuTransition.Tick += new System.EventHandler(this.menuTransition_Tick);
             // 
             // sidebarTransition
             // 
@@ -331,12 +170,67 @@
             // 
             // panelBody
             // 
-            this.panelBody.BackColor = System.Drawing.Color.Transparent;
             this.panelBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBody.Location = new System.Drawing.Point(200, 47);
             this.panelBody.Name = "panelBody";
             this.panelBody.Size = new System.Drawing.Size(900, 603);
-            this.panelBody.TabIndex = 3;
+            this.panelBody.TabIndex = 5;
+            // 
+            // kryptonButton1
+            // 
+            this.kryptonButton1.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ListItem;
+            this.kryptonButton1.Location = new System.Drawing.Point(0, 116);
+            this.kryptonButton1.Margin = new System.Windows.Forms.Padding(0);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.Palette = this.kryptonPalette1;
+            this.kryptonButton1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.kryptonButton1.Size = new System.Drawing.Size(200, 58);
+            this.kryptonButton1.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
+            this.kryptonButton1.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
+            this.kryptonButton1.StateCommon.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.CenterLeft;
+            this.kryptonButton1.StateCommon.Border.Color1 = System.Drawing.Color.Cyan;
+            this.kryptonButton1.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.kryptonButton1.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonButton1.StateCommon.Content.LongText.Color1 = System.Drawing.Color.White;
+            this.kryptonButton1.StateCommon.Content.LongText.Color2 = System.Drawing.Color.White;
+            this.kryptonButton1.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
+            this.kryptonButton1.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.kryptonButton1.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.kryptonButton1.StatePressed.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.SolidRightLine;
+            this.kryptonButton1.StatePressed.Back.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
+            this.kryptonButton1.TabIndex = 7;
+            this.kryptonButton1.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonButton1.Values.Image")));
+            this.kryptonButton1.Values.Text = "         Product";
+            // 
+            // kryptonButton2
+            // 
+            this.kryptonButton2.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.ListItem;
+            this.kryptonButton2.Location = new System.Drawing.Point(0, 174);
+            this.kryptonButton2.Margin = new System.Windows.Forms.Padding(0);
+            this.kryptonButton2.Name = "kryptonButton2";
+            this.kryptonButton2.Palette = this.kryptonPalette1;
+            this.kryptonButton2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.kryptonButton2.Size = new System.Drawing.Size(200, 58);
+            this.kryptonButton2.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
+            this.kryptonButton2.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
+            this.kryptonButton2.StateCommon.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.CenterLeft;
+            this.kryptonButton2.StateCommon.Border.Color1 = System.Drawing.Color.Cyan;
+            this.kryptonButton2.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.kryptonButton2.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonButton2.StateCommon.Content.LongText.Color1 = System.Drawing.Color.White;
+            this.kryptonButton2.StateCommon.Content.LongText.Color2 = System.Drawing.Color.White;
+            this.kryptonButton2.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
+            this.kryptonButton2.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.kryptonButton2.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.kryptonButton2.StatePressed.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.SolidRightLine;
+            this.kryptonButton2.StatePressed.Back.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
+            this.kryptonButton2.TabIndex = 8;
+            this.kryptonButton2.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonButton2.Values.Image")));
+            this.kryptonButton2.Values.Text = "         Product";
             // 
             // ManagementForm
             // 
@@ -356,14 +250,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Menu)).EndInit();
             this.sidebar.ResumeLayout(false);
-            this.menuContainer.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelBody)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -371,28 +259,17 @@
         #endregion
 
         private ComponentFactory.Krypton.Toolkit.KryptonPanel headerPanel;
-        private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
         private System.Windows.Forms.PictureBox btn_Menu;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel FormLabel;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.FlowLayoutPanel sidebar;
-        private System.Windows.Forms.Button btn_product;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btn_Order;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button btn_Home;
-        private System.Windows.Forms.FlowLayoutPanel menuContainer;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer menuTransition;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Timer sidebarTransition;
-        private System.Windows.Forms.Panel panelBody;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btn_product;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel panelBody;
+        private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton2;
     }
 }

@@ -31,9 +31,14 @@ namespace Nike_Shop_Management.BLL
         {
             return _accountRepository.GetAccounts();
         }
-        //public int EditUserAccounts()
-        //{
-        //    return _accountRepository.;
-        //}
+        
+        public UserAccountDTO GetUserByID(int id)
+        {
+            return _accountRepository.GetUserByID(id);
+        }
+        public int EditUser(UserAccountDTO user)
+        {
+            return _accountRepository.EditUser(user);
+        }
     }
 }

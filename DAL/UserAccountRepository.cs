@@ -13,34 +13,53 @@ namespace Nike_Shop_Management.DAL
         private readonly DbContext _db;
         private String heelo;
 
+        ObjectMapper objectMapper = new ObjectMapper();
+
         public UserAccountRepository(DbContext db)
         {
             _db = db;
         }
         public void Save(UserAccountDTO user)
         {
-
             // logic ở đây
             // if(user)
-            ObjectMapper objectMapper = new ObjectMapper();
             _db.user_accounts.InsertOnSubmit(objectMapper.AccountMapperToLINQ(user));
         }
         public UserAccountDTO GetAccount(string email, string password)
         {
-            ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper.AccountMapperToEnity(_db.user_accounts.Where(o => o.user_email==email && o.user_password == password).FirstOrDefault());
+            return objectMapper.AccountMapperToEnity(_db.user_accounts.Where(o => o.user_email == email && o.user_password == password).FirstOrDefault());
         }
         public List<UserAccountDTO> GetAccounts()
         {
-            ObjectMapper objectMapper = new ObjectMapper();
             return _db.user_accounts
                .Select(user => objectMapper.AccountMapperToEnity(user))
                .ToList();
         }
+        public UserAccountDTO GetUserByID(int id)
+        {
+            return objectMapper.AccountMapperToEnity(_db.user_accounts.Where(user => user.user_id == id).FirstOrDefault());
+        }
 
-        //public int EditAccount(int id)
-        //{
+        public int EditUser(UserAccountDTO user)
+        {
+            // Retrieve the existing user from the database
+            var existingUser = _db.user_accounts.FirstOrDefault(u => u.user_id == user.Id);
 
-        //}
+            if (existingUser != null)
+            {
+                existingUser.user_first_name = user.Username;
+                existingUser.user_last_name = user.Email;
+                existingUser.user_password = user.Password;
+                existingUser.user_point = user.Point;
+                existingUser.user_url = user.Url;
+                existingUser.user_member_tier = user.Member_tier;
+                existingUser.user_gender = user.Gender;
+                existingUser.user_address = user.Address;
+                //existingUser.user_phone_number = user.Phone_number;
+
+                //return _db.SubmitChanges();
+            }
+            return 0;
+        }
     }
 }

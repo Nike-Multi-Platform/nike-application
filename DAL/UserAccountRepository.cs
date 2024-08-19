@@ -55,7 +55,7 @@ namespace Nike_Shop_Management.DAL
                 existingUser.user_address = user.Address;
                 //existingUser.user_phone_number = user.Phone_number;
 
-                return _db.SubmitChanges();
+                //return _db.SubmitChanges();
             }
             return 0;
         }

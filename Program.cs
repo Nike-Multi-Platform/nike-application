@@ -16,7 +16,8 @@ namespace Nike_Shop_Management
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI.ManagementForm());
+            Application.Run(new GUI.CRUD_Account_Test());
         }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using Nike_Shop_Management.DTO;
+﻿using AutoMapper;
+using Nike_Shop_Management.DTO;
 using Nike_Shop_Management.MappingLayer;
 using System;
 using System.Collections.Generic;
@@ -11,47 +12,48 @@ namespace Nike_Shop_Management.DAL
     class UserAccountRepository
     {
         private readonly DbContext _db;
-        ObjectMapper objectMapper = new ObjectMapper();
-
         public UserAccountRepository(DbContext db)
         {
             _db = db;
+
         }
         public void Save(UserAccountDTO user)
         {
-            _db.user_accounts.InsertOnSubmit(objectMapper.AccountMapperToLINQ(user));
+            _db.user_accounts.InsertOnSubmit(AutoMapperConfig.Mapper.Map<UserAccountDTO, user_account>(user));
         }
 
         public UserAccountDTO GetAccount(string email, string password)
         {
-            return objectMapper.AccountMapperToEnity(_db.user_accounts.Where(o => o.user_email == email && o.user_password == password).FirstOrDefault());
+            //return objectMapper.AccountMapperToEnity(_db.user_accounts.Where(o => o.user_email == email && o.user_password == password).FirstOrDefault());
+            user_account u = _db.user_accounts.Where(o => o.user_email == email && o.user_password == password).FirstOrDefault();
+            return AutoMapperConfig.Mapper.Map<user_account, UserAccountDTO>(u);
         }
         public List<UserAccountDTO> GetListAccounts()
         {
-            return _db.user_accounts
-               .Select(user => objectMapper.AccountMapperToEnity(user))
-               .ToList();
+            List<UserAccountDTO> l = _db.user_accounts.Select(emp => AutoMapperConfig.Mapper.Map<user_account, UserAccountDTO>(emp)).ToList();
+            return l;
         }
         public UserAccountDTO GetUser(int id)
         {
-            return objectMapper.AccountMapperToEnity(_db.user_accounts.Where(user => user.user_id == id).FirstOrDefault());
+            user_account u = _db.user_accounts.Where(user => user.user_id == id).FirstOrDefault();
+            return AutoMapperConfig.Mapper.Map<user_account, UserAccountDTO>(u);
         }
 
         public int Edit(UserAccountDTO user)
         {
             try
             {
-                var existingUser = _db.user_accounts.FirstOrDefault(u => u.user_id == user.Id);
+                var existingUser = _db.user_accounts.FirstOrDefault(u => u.user_id == user.user_id);
                 if (existingUser != null)
                 {
-                    existingUser.user_first_name = user.Username;
-                    existingUser.user_last_name = user.Email;
-                    existingUser.user_password = user.Password;
-                    existingUser.user_point = user.Point;
-                    existingUser.user_member_tier = user.Member_tier;
-                    existingUser.user_gender = user.Gender;
-                    existingUser.user_address = user.Address;
-                    existingUser.user_url = user.Url;
+                    existingUser.user_first_name = user.user_username;
+                    existingUser.user_last_name = user.user_email;
+                    existingUser.user_password = user.user_password;
+                    existingUser.user_point = user.user_point;
+                    existingUser.user_member_tier = user.user_member_tier;
+                    existingUser.user_gender = user.user_gender;
+                    existingUser.user_address = user.user_address;
+                    existingUser.user_url = user.user_url;
                     _db.SubmitChanges();
                     return 1;
                 }
@@ -92,7 +94,7 @@ namespace Nike_Shop_Management.DAL
                                             user.user_last_name.Contains(inputSearch) ||
                                             (isNumericSearch && user.user_member_tier == numericSearch) ||
                                             (isNumericSearch && user.user_point == numericSearch)
-                                            ).ToList().Select(o => objectMapper.AccountMapperToEnity(o)).ToList();
+                                            ).ToList().Select(o => AutoMapperConfig.Mapper.Map<user_account, UserAccountDTO>(o)).ToList();
 
                 if (result != null)
                 {

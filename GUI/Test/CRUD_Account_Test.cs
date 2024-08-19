@@ -38,18 +38,7 @@ namespace Nike_Shop_Management.GUI
            
         }
         
-        private void kryptonButton1_Click(object sender, EventArgs e)
-        {
-            UserAccountDTO user = accountManager.GetAccount("111@gmail.com", "123");
-            if(user!=null)
-            {
-                MessageBox.Show( user.First_name+ user.Last_name);
-            }
-            else
-            {
-                MessageBox.Show("Khong tim thay du lieu ");
-            }
-        }
+       
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -65,7 +54,7 @@ namespace Nike_Shop_Management.GUI
             if(txID.Text!=String.Empty)
             {
                 UserAccountDTO ucc = accountManager.GetUserByID(Int32.Parse(txID.Text.ToString()));
-                ucc.Address = address.Text;
+                ucc.user_address = address.Text;
                 // các thuộc tính khác
                 int fl = accountManager.EditUser(ucc);
                 if(fl==1)

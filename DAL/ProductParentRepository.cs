@@ -9,7 +9,6 @@ namespace Nike_Shop_Management.DAL
     class ProductParentRepository
     {
         private readonly DbContext _db;
-        ObjectMapper objectMapper = new ObjectMapper();
         
     }
 }

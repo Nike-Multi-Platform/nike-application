@@ -104,7 +104,8 @@
     <Compile Include="GUI\Util.Designer.cs">
       <DependentUpon>Util.cs</DependentUpon>
     </Compile>
-    <Compile Include="MappingLayer\ObjectMapper.cs" />
+    <Compile Include="MappingLayer\AutoMapperConfig.cs" />
+    <Compile Include="MappingLayer\MappingProfile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\Test\CRUD_Account_Test.resx">

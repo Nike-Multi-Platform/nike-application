@@ -1,7 +1,7 @@
 ﻿
 namespace Nike_Shop_Management.GUI
 {
-    partial class Form1
+    partial class CRUD_Account_Test
     {
         /// <summary>
         /// Required designer variable.
@@ -60,7 +60,7 @@ namespace Nike_Shop_Management.GUI
             // 
             // address
             // 
-            this.address.Location = new System.Drawing.Point(27, 135);
+            this.address.Location = new System.Drawing.Point(566, 261);
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(100, 27);
             this.address.TabIndex = 3;
@@ -90,7 +90,7 @@ namespace Nike_Shop_Management.GUI
             // btnSearch
             // 
             this.btnSearch.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Gallery;
-            this.btnSearch.Location = new System.Drawing.Point(867, 252);
+            this.btnSearch.Location = new System.Drawing.Point(845, 252);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
             this.btnSearch.Size = new System.Drawing.Size(103, 56);
@@ -104,7 +104,7 @@ namespace Nike_Shop_Management.GUI
             // btnSave
             // 
             this.btnSave.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Cluster;
-            this.btnSave.Location = new System.Drawing.Point(1006, 252);
+            this.btnSave.Location = new System.Drawing.Point(987, 252);
             this.btnSave.Name = "btnSave";
             this.btnSave.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Blue;
             this.btnSave.Size = new System.Drawing.Size(102, 56);

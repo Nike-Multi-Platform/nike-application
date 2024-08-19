@@ -61,12 +61,6 @@
     <Compile Include="DAL\UserAccountRepository.cs" />
     <Compile Include="DTO\UserAccountDTO.cs" />
     <Compile Include="GUI\Design.cs" />
-    <Compile Include="GUI\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\ManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,9 +88,6 @@
     <Compile Include="MappingLayer\ObjectMapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GUI\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ManagementForm.resx">
       <DependentUpon>ManagementForm.cs</DependentUpon>
     </EmbeddedResource>

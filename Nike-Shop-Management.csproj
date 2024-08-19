@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="ComponentFactory.Krypton.Toolkit">
       <HintPath>..\..\ui_framework\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
     </Reference>
@@ -58,9 +61,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbContext.dbml</DependentUpon>
     </Compile>
+    <Compile Include="DAL\ProductParentRepository.cs" />
     <Compile Include="DAL\UserAccountRepository.cs" />
+    <Compile Include="DTO\ProductDTO.cs" />
+    <Compile Include="DTO\ProductImgDTO.cs" />
+    <Compile Include="DTO\ProductParentDTO.cs" />
     <Compile Include="DTO\UserAccountDTO.cs" />
     <Compile Include="GUI\Design.cs" />
+    <Compile Include="GUI\Test\CRUD_Account_Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Test\CRUD_Account_Test.Designer.cs">
+      <DependentUpon>CRUD_Account_Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +92,12 @@
     <Compile Include="GUI\ProductForm.Designer.cs">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Test\ProductParent_Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Test\ProductParent_Test.Designer.cs">
+      <DependentUpon>ProductParent_Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Util.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +107,9 @@
     <Compile Include="MappingLayer\ObjectMapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\Test\CRUD_Account_Test.resx">
+      <DependentUpon>CRUD_Account_Test.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ManagementForm.resx">
       <DependentUpon>ManagementForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Test\ProductParent_Test.resx">
+      <DependentUpon>ProductParent_Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

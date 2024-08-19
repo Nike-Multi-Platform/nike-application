@@ -50,13 +50,12 @@ namespace Nike_Shop_Management.DAL
                 existingUser.user_first_name = user.Username;
                 existingUser.user_last_name = user.Email;
                 existingUser.user_password = user.Password;
-                existingUser.user_point = user.Point;
-                existingUser.user_url = user.Url;
+                existingUser.user_point = user.Point;     
                 existingUser.user_member_tier = user.Member_tier;
                 existingUser.user_gender = user.Gender;
                 existingUser.user_address = user.Address;
                 //existingUser.user_phone_number = user.Phone_number;
-
+                existingUser.user_url = user.Url;
                 //return _db.SubmitChanges();
             }
             return 0;

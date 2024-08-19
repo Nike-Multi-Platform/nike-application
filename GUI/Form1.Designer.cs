@@ -30,10 +30,12 @@ namespace Nike_Shop_Management.GUI
         private void InitializeComponent()
         {
             this.dataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.btnSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.address = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txID = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.btnSearch = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnDelete = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,27 +58,12 @@ namespace Nike_Shop_Management.GUI
             this.dataGridView.TabIndex = 1;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
-            // btnSave
-            // 
-            this.btnSave.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.InputControl;
-            this.btnSave.Location = new System.Drawing.Point(1018, 265);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Blue;
-            this.btnSave.Size = new System.Drawing.Size(90, 25);
-            this.btnSave.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnSave.StateCommon.Content.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
-            this.btnSave.StateCommon.Content.DrawFocus = ComponentFactory.Krypton.Toolkit.InheritBool.True;
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Values.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // address
             // 
             this.address.Location = new System.Drawing.Point(27, 135);
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(100, 27);
             this.address.TabIndex = 3;
-            this.address.Text = "kryptonTextBox1";
             // 
             // tableLayoutPanel1
             // 
@@ -98,13 +85,54 @@ namespace Nike_Shop_Management.GUI
             this.txID.ReadOnly = true;
             this.txID.Size = new System.Drawing.Size(100, 27);
             this.txID.TabIndex = 5;
-            this.txID.Text = "kryptonTextBox1";
+            this.txID.Visible = false;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Gallery;
+            this.btnSearch.Location = new System.Drawing.Point(867, 252);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
+            this.btnSearch.Size = new System.Drawing.Size(103, 56);
+            this.btnSearch.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.MediumBlue;
+            this.btnSearch.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSearch.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.TabIndex = 6;
+            this.btnSearch.Values.Text = "Search";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Cluster;
+            this.btnSave.Location = new System.Drawing.Point(1006, 252);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Blue;
+            this.btnSave.Size = new System.Drawing.Size(102, 56);
+            this.btnSave.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnSave.StateCommon.Content.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
+            this.btnSave.StateCommon.Content.DrawFocus = ComponentFactory.Krypton.Toolkit.InheritBool.True;
+            this.btnSave.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft YaHei", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Values.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(718, 252);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(91, 56);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Values.Text = "Delete";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1134, 560);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txID);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.address);
@@ -121,9 +149,11 @@ namespace Nike_Shop_Management.GUI
 
         #endregion
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dataGridView;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnSave;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox address;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txID;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnSearch;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnSave;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnDelete;
     }
 }

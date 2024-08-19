@@ -57,7 +57,9 @@ namespace Nike_Shop_Management.GUI
             util.OpenChildForm(new GUI.ProductForm(), panelBody);
         }
 
+        private void kryptonButton3_Click(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

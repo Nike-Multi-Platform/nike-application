@@ -75,5 +75,42 @@ namespace Nike_Shop_Management.GUI
                 }
             }
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if(address.Text!=String.Empty)
+            {
+                var result = accountManager.SearchUser(address.Text);
+                if(result!=null)
+                {
+                    dataGridView.DataSource = result;
+                }
+                else
+                {
+                    load_data();
+                }
+            }
+            else
+            {
+                load_data();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if(txID.Text!=String.Empty)
+            {
+                int flag = accountManager.DeleleUser(Int32.Parse(txID.Text));
+                if(flag==1)
+                {
+                    MessageBox.Show("Xóa thành công");
+                    load_data();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa thất bại");
+                }
+            }
+        }
     }
 }

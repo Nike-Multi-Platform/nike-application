@@ -11,8 +11,6 @@ namespace Nike_Shop_Management.DAL
     class UserAccountRepository
     {
         private readonly DbContext _db;
-        private String heelo;
-
         ObjectMapper objectMapper = new ObjectMapper();
 
         public UserAccountRepository(DbContext db)
@@ -25,22 +23,23 @@ namespace Nike_Shop_Management.DAL
             // if(user)
             _db.user_accounts.InsertOnSubmit(objectMapper.AccountMapperToLINQ(user));
         }
+
         public UserAccountDTO GetAccount(string email, string password)
         {
             return objectMapper.AccountMapperToEnity(_db.user_accounts.Where(o => o.user_email == email && o.user_password == password).FirstOrDefault());
         }
-        public List<UserAccountDTO> GetAccounts()
+        public List<UserAccountDTO> GetListAccounts()
         {
             return _db.user_accounts
                .Select(user => objectMapper.AccountMapperToEnity(user))
                .ToList();
         }
-        public UserAccountDTO GetUserByID(int id)
+        public UserAccountDTO GetUser(int id)
         {
             return objectMapper.AccountMapperToEnity(_db.user_accounts.Where(user => user.user_id == id).FirstOrDefault());
         }
 
-        public int EditUser(UserAccountDTO user)
+        public int Edit(UserAccountDTO user)
         {
             try
             {
@@ -65,5 +64,51 @@ namespace Nike_Shop_Management.DAL
                 return -1;
             }
         }
+
+        public int Delete(int id)
+        {
+            try
+            {
+                var userTemp = _db.user_accounts.Where(o => o.user_id == id).FirstOrDefault();
+                _db.user_accounts.DeleteOnSubmit(userTemp);
+                _db.SubmitChanges();
+                return 1;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
+        public List<UserAccountDTO> Search(string inputSearch)
+        {
+            try
+            {
+                bool isNumericSearch = int.TryParse(inputSearch, out int numericSearch);
+                List<UserAccountDTO> result = _db.user_accounts
+                    .Where(user => user.user_username.Contains(inputSearch) ||
+                                            user.user_email.Contains(inputSearch) ||
+                                            user.user_phone_number.Contains(inputSearch) ||
+                                            user.user_address.Contains(inputSearch) ||
+                                            user.user_first_name.Contains(inputSearch) ||
+                                            user.user_last_name.Contains(inputSearch) ||
+                                            (isNumericSearch && user.user_member_tier == numericSearch) ||
+                                            (isNumericSearch && user.user_point == numericSearch)
+                                            ).ToList().Select(o=>objectMapper.AccountMapperToEnity(o)).ToList();
+
+                if (result != null)
+                {
+                    return result;
+                }
+
+                return null;
+            }
+            catch (Exception)
+            {
+                return null; 
+            }
+        }
+
+
     }
 }

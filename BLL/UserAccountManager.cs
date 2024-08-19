@@ -17,28 +17,49 @@ namespace Nike_Shop_Management.BLL
             _accountRepository = accountRepository;
         }
 
-        public void SaveAccount(UserAccountDTO user)
+        public void InsertUser(UserAccountDTO user)
         {
-            // logic here! nha
+            // logic here!
             _accountRepository.Save(user);
         }
 
+        // get account for auth
         public UserAccountDTO GetAccount(string mail, string password)
         {
+            // hash here! update sau
             return _accountRepository.GetAccount(mail,password);
         }
+        // get list users
         public List<UserAccountDTO> GetUserAccounts()
         {
-            return _accountRepository.GetAccounts();
+            return _accountRepository.GetListAccounts();
         }
-        
+
+        // get user by id
         public UserAccountDTO GetUserByID(int id)
         {
-            return _accountRepository.GetUserByID(id);
+            return _accountRepository.GetUser(id);
         }
+        // edit user
+        // result: 1 - successfull
+        // result: 0 - failed
+        // result: -1 - error logic
         public int EditUser(UserAccountDTO user)
         {
-            return _accountRepository.EditUser(user);
+            return _accountRepository.Edit(user);
         }
+        // delete user
+        // result: 1 - successfull
+        // result: 0 - failed
+        public int DeleleUser(int id)
+        {
+            return _accountRepository.Delete(id);
+        }
+        // search - input
+        public List<UserAccountDTO> SearchUser(string inputSearch)
+        {       
+            return _accountRepository.Search(inputSearch);
+        }
+
     }
 }

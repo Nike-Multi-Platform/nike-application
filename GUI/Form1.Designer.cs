@@ -36,7 +36,7 @@ namespace Nike_Shop_Management.GUI
             // 
             // kryptonButton1
             // 
-            this.kryptonButton1.Location = new System.Drawing.Point(675, 38);
+            this.kryptonButton1.Location = new System.Drawing.Point(945, 147);
             this.kryptonButton1.Name = "kryptonButton1";
             this.kryptonButton1.Size = new System.Drawing.Size(90, 25);
             this.kryptonButton1.TabIndex = 0;
@@ -46,18 +46,18 @@ namespace Nike_Shop_Management.GUI
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(51, 190);
+            this.dataGridView.Location = new System.Drawing.Point(27, 314);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(664, 214);
+            this.dataGridView.Size = new System.Drawing.Size(1081, 214);
             this.dataGridView.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1134, 560);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.kryptonButton1);
             this.Name = "Form1";

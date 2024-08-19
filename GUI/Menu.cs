@@ -83,12 +83,10 @@ namespace Nike_Shop_Management.GUI
             this.panelDesktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-            lblTittle.Text = childForm.Text;
         }
         private void Reset()
         {
             DisableButton();
-            lblTittle.Text = "HOME";
             panelNavBar.BackColor = Color.Teal;
             panelLogo.BackColor = Color.FromArgb(39, 39, 58);
             currentButton = null;

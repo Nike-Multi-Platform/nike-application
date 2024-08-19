@@ -31,5 +31,9 @@ namespace Nike_Shop_Management.BLL
         {
             return _accountRepository.GetAccounts();
         }
+        //public int EditUserAccounts()
+        //{
+        //    return _accountRepository.;
+        //}
     }
 }

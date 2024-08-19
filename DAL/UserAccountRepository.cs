@@ -36,5 +36,10 @@ namespace Nike_Shop_Management.DAL
                .Select(user => objectMapper.AccountMapperToEnity(user))
                .ToList();
         }
+
+        //public int EditAccount(int id)
+        //{
+
+        //}
     }
 }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_BanQuanAo" Class="DbContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_BanQuanAo" Class="DbContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=MSI\SQLEXPRESS;Initial Catalog=db_BanQuanAo;Integrated Security=True" SettingsObjectName="Nike_Shop_Management.Properties.Settings" SettingsPropertyName="db_BanQuanAoConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.bag" Member="bags">
     <Type Name="bag">

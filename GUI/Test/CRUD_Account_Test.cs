@@ -13,10 +13,10 @@ using System.Windows.Forms;
 
 namespace Nike_Shop_Management.GUI
 {
-    public partial class Form1 : Form
+    public partial class CRUD_Account_Test : Form
     {
         private readonly UserAccountManager accountManager;
-        public Form1()
+        public CRUD_Account_Test()
         {
             InitializeComponent();
             DbContext db = new DbContext();

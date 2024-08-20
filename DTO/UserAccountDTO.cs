@@ -30,6 +30,8 @@ namespace Nike_Shop_Management.DTO
         public int? user_member_tier { get => member_tier; set => member_tier = value; }
         public int? user_point { get => point; set => point = value; }
         public string user_url { get => url; set => url = value; }
-        public int user_id { get => id; set => id = value; }          
+        public int user_id { get => id; set => id = value; }
+        
+
     }
 }

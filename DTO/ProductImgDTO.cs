@@ -8,11 +8,11 @@ namespace Nike_Shop_Management.DTO
 {
     class ProductImgDTO
     {
-        int id, product_id;
-        string img;
+        public int product_img_id { get; set; }
+        public int product_id { get; set; }
+        public string product_img_file_name { get; set; }
 
-        public int Id { get => id; set => id = value; }
-        public int Product_id { get => product_id; set => product_id = value; }
-        public string Img { get => img; set => img = value; }
+           
+
     }
 }

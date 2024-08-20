@@ -56,6 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\UserAccountManager.cs" />
+    <Compile Include="DAL\DbContext.cs">
+      <DependentUpon>DbContext.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DAL\DbContext.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -64,8 +67,11 @@
     <Compile Include="DAL\ProductParentRepository.cs" />
     <Compile Include="DAL\UserAccountRepository.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
+    <Compile Include="DTO\ProductIconsDTO.cs" />
     <Compile Include="DTO\ProductImgDTO.cs" />
+    <Compile Include="DTO\ProductObject.cs" />
     <Compile Include="DTO\ProductParentDTO.cs" />
+    <Compile Include="DTO\ProductSizeDTO.cs" />
     <Compile Include="DTO\UserAccountDTO.cs" />
     <Compile Include="GUI\Design.cs" />
     <Compile Include="GUI\Test\CRUD_Account_Test.cs">

@@ -14,7 +14,7 @@ namespace Nike_Shop_Management.MappingLayer
         static AutoMapperConfig()
         {
             var config = new MapperConfiguration(cfg => {
-                cfg.AddProfile<MappingProfile>(); // Cấu hình ánh xạ
+                cfg.AddProfile<MappingProfile>();
             });
 
             Mapper = config.CreateMapper();

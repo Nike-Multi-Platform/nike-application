@@ -29,36 +29,36 @@ namespace Nike_Shop_Management.GUI.Test
         /// </summary>
         private void InitializeComponent()
         {
-            this.kryptonDataGridView1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).BeginInit();
+            this.datagrid = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.datagrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // kryptonDataGridView1
+            // datagrid
             // 
-            this.kryptonDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.kryptonDataGridView1.Location = new System.Drawing.Point(21, 343);
-            this.kryptonDataGridView1.Name = "kryptonDataGridView1";
-            this.kryptonDataGridView1.RowHeadersWidth = 51;
-            this.kryptonDataGridView1.RowTemplate.Height = 24;
-            this.kryptonDataGridView1.Size = new System.Drawing.Size(1044, 343);
-            this.kryptonDataGridView1.TabIndex = 0;
+            this.datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagrid.Location = new System.Drawing.Point(21, 343);
+            this.datagrid.Name = "datagrid";
+            this.datagrid.RowHeadersWidth = 51;
+            this.datagrid.RowTemplate.Height = 24;
+            this.datagrid.Size = new System.Drawing.Size(1044, 343);
+            this.datagrid.TabIndex = 0;
             // 
             // ProductParent_Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1077, 710);
-            this.Controls.Add(this.kryptonDataGridView1);
+            this.Controls.Add(this.datagrid);
             this.Name = "ProductParent_Test";
             this.Text = "ProductParent";
             this.Load += new System.EventHandler(this.ProductParent_Test_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kryptonDataGridView1;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView datagrid;
     }
 }

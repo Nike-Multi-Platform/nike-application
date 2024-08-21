@@ -10,6 +10,10 @@ namespace Nike_Shop_Management.MappingLayer
         {
             CreateMap<user_account, UserAccountDTO>();
             CreateMap<UserAccountDTO, user_account>();
+
+            CreateMap<ProductParentDTO, product_parent>();
+            CreateMap<product_parent, ProductParentDTO>();
+
         }
     }
 }

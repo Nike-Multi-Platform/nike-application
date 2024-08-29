@@ -18,7 +18,7 @@ namespace Nike_Shop_Management.DTO
         private string phone_number, address, first_name, last_name, url;
         private int? point;
         private int? member_tier;
-    
+
         public string user_username { get => username; set => username = value; }
         public string user_password { get => password; set => password = value; }
         public string user_gender { get => gender; set => gender = value; }

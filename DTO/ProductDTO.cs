@@ -21,6 +21,6 @@ namespace Nike_Shop_Management.DTO
         public ProductImgDTO product_color_img { get; set; }
         public ProductSizeDTO productSize { get; set; }
 
-
+       
     }
 }

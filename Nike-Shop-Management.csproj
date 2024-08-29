@@ -67,10 +67,11 @@
     </Compile>
     <Compile Include="DAL\ProductParentRepository.cs" />
     <Compile Include="DAL\UserAccountRepository.cs" />
+    <Compile Include="DTO\ProductCategoryDTO.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
     <Compile Include="DTO\ProductIconsDTO.cs" />
     <Compile Include="DTO\ProductImgDTO.cs" />
-    <Compile Include="DTO\ProductObject.cs" />
+    <Compile Include="DTO\ProductObjectDTO.cs" />
     <Compile Include="DTO\ProductParentDTO.cs" />
     <Compile Include="DTO\ProductSizeDTO.cs" />
     <Compile Include="DTO\UserAccountDTO.cs" />

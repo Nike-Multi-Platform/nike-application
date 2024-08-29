@@ -26,7 +26,7 @@ namespace Nike_Shop_Management.GUI.Test
 
         private void ProductParent_Test_Load(object sender, EventArgs e)
         {
-
+            //List<ProductCategoryDTO> = ppM.
         }
         public void Load_Data()
         {

@@ -18,7 +18,9 @@ namespace Nike_Shop_Management.DTO
         public int product_icons_id { get; set; }
 
         public ProductIconsDTO productIcons { get; set; }
-        public ProductDTO productChild { get; set; }
+        public ProductDTO product { get; set; }
+        public ProductObjectDTO productObject { get; set; }
+        public ProductCategoryDTO productCategory { get; set; }
 
     }
 }

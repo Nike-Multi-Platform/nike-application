@@ -57,6 +57,7 @@ namespace Nike_Shop_Management.GUI
             this.dataGridView.StateCommon.HeaderRow.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.dataGridView.TabIndex = 1;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
             // address
             // 
@@ -125,7 +126,7 @@ namespace Nike_Shop_Management.GUI
             this.btnDelete.Values.Text = "Delete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // Form1
+            // CRUD_Account_Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -138,7 +139,7 @@ namespace Nike_Shop_Management.GUI
             this.Controls.Add(this.address);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dataGridView);
-            this.Name = "Form1";
+            this.Name = "CRUD_Account_Test";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

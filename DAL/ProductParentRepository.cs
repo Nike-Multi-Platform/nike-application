@@ -15,12 +15,23 @@ namespace Nike_Shop_Management.DAL
         {
             _db = db;
         }
-        public List<ProductParentDTO> getDatasProductParent()
+        public List<ProductParentDTO> getProductParents()
         {
             List<ProductParentDTO> l = _db.product_parents.Select(emp => AutoMapperConfig.Mapper.Map<product_parent, ProductParentDTO>(emp)).ToList();
             return l;
         }
 
+        public List<ProductDTO> getProductColor(int product_parent_id)
+        {
+            List<product> products = _db.products.Where(emp => (int)emp.product_parent_id == product_parent_id).ToList();
+            List<ProductDTO> l = new List<ProductDTO>();
+            foreach(product p in products)
+            {
+                l.Add(AutoMapperConfig.Mapper.Map<product, ProductDTO>(p));
+            }
+           
+            return l;
+        }
         
 
     }

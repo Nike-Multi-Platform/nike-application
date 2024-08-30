@@ -22,5 +22,6 @@ namespace Nike_Shop_Management.DTO
         public ProductObjectDTO productObject { get; set; }
         public ProductCategoryDTO productCategory { get; set; }
 
+
     }
 }

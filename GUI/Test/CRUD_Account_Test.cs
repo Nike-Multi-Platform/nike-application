@@ -101,5 +101,10 @@ namespace Nike_Shop_Management.GUI
                 }
             }
         }
+
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

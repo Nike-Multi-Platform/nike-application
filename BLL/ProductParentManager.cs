@@ -16,9 +16,14 @@ namespace Nike_Shop_Management.BLL
             _productParentRepository = productParentRepository;
         }
 
-        public List<ProductParentDTO> GetDatasProductParent()
+        public List<ProductParentDTO> GetProductParents()
         {
-            return _productParentRepository.getDatasProductParent();
+            return _productParentRepository.getProductParents();
+        }
+
+        public List<ProductDTO> GetProductColors(int product_parent_id)
+        {
+            return _productParentRepository.getProductColor(product_parent_id);
         }
     }
 }

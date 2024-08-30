@@ -36,8 +36,9 @@
     <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="ComponentFactory.Krypton.Toolkit">
-      <HintPath>..\..\ui_framework\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+    <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.6.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\ComponentFactory.Krypton.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -55,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\ProductObjectManager.cs" />
     <Compile Include="BLL\ProductParentManager.cs" />
     <Compile Include="BLL\UserAccountManager.cs" />
     <Compile Include="DAL\DbContext.cs">
@@ -65,6 +67,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbContext.dbml</DependentUpon>
     </Compile>
+    <Compile Include="DAL\ProductObjectRepository.cs" />
     <Compile Include="DAL\ProductParentRepository.cs" />
     <Compile Include="DAL\UserAccountRepository.cs" />
     <Compile Include="DTO\ProductCategoryDTO.cs" />

@@ -119,6 +119,12 @@
     <Compile Include="MappingLayer\MappingProfile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="u_DataGridView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="u_DataGridView.Designer.cs">
+      <DependentUpon>u_DataGridView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="GUI\Test\CRUD_Account_Test.resx">
       <DependentUpon>CRUD_Account_Test.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,6 +150,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="u_DataGridView.resx">
+      <DependentUpon>u_DataGridView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="DAL\DbContext.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DbContext.designer.cs</LastGenOutput>

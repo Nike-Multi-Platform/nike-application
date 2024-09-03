@@ -32,7 +32,7 @@ namespace Nike_Shop_Management.GUI.Test
         public void Load_Data()
         {
             List<ProductParentDTO> list = ppM.GetProductParents();
-            datagrid.DataSource = list;
+            u_DataGridView1.LoadData(list);
         }
 
         private void datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -40,26 +40,26 @@ namespace Nike_Shop_Management.GUI.Test
             
         }
 
-        private void datagrid_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                if (dg_productColor.RowCount > 0)
-                {
-                    dg_productColor.DataSource = null;
-                    dg_productColor.Rows.Clear();
-                }
-                List<ProductDTO> list = new List<ProductDTO>();
-                list = ppM.GetProductColors((int)datagrid.Rows[e.RowIndex].Cells[0].Value);
-                if (list != null)
-                {
-                    dg_productColor.DataSource = list;
-                }
-                else
-                {
-                    MessageBox.Show("haha");
-                }
-            }
-        }
+        //private void datagrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.RowIndex >= 0)
+        //    {
+        //        if (dg_productColor.RowCount > 0)
+        //        {
+        //            dg_productColor.DataSource = null;
+        //            dg_productColor.Rows.Clear();
+        //        }
+        //        List<ProductDTO> list = new List<ProductDTO>();
+        //        list = ppM.GetProductColors((int)datagrid.Rows[e.RowIndex].Cells[0].Value);
+        //        if (list != null)
+        //        {
+        //            dg_productColor.DataSource = list;
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("haha");
+        //        }
+        //    }
+        //}
     }
 }

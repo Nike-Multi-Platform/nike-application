@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Nike_Shop_Management.DTO
 {
-    class UserAccountDTO
+    public class UserAccountDTO
     {
 
         private int id;

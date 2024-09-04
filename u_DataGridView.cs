@@ -15,8 +15,11 @@ namespace Nike_Shop_Management
         // đối tượng được chọn ở trong data gridview
         public object DataSelected { get; set; }
 
-        // vị trí được chọn ở contextmenusript
-        // -1 là là không chọn gì , 0 là xóa, 1 là sửa
+        /// <summary>
+        /// <para>-1: không chọn gì</para>
+        /// <para>0: chọn sự kiện sửa</para>
+        /// <para>1: chọn sự kiện xóa</para>
+        /// </summary>
         public int GetIndexSelected { get; set; }
 
         //bắt sự kiện gửi ra ngoài

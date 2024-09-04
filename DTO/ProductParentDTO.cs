@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nike_Shop_Management.DTO
 {
-    class ProductParentDTO
+    public  class ProductParentDTO
     {
         public int product_parent_id { get; set; }
         public string product_parent_name { get; set; }

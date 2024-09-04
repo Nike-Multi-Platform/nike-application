@@ -25,14 +25,13 @@ namespace Nike_Shop_Management.DAL
         {
             List<product> products = _db.products.Where(emp => (int)emp.product_parent_id == product_parent_id).ToList();
             List<ProductDTO> l = new List<ProductDTO>();
-            foreach(product p in products)
+            foreach (product p in products)
             {
                 l.Add(AutoMapperConfig.Mapper.Map<product, ProductDTO>(p));
             }
-           
+
             return l;
         }
-        
 
     }
 }

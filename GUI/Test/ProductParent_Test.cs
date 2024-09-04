@@ -16,14 +16,37 @@ namespace Nike_Shop_Management.GUI.Test
     public partial class ProductParent_Test : Form
     {
         ProductParentManager ppM;
+
         public ProductParent_Test()
         {
             InitializeComponent();
             DbContext db = new DbContext();
             ppM = new ProductParentManager(new DAL.ProductParentRepository(db));
             Load_Data();
+            u_ProductParent.ClickChanged += U_DataGridView1_ClickChanged;
         }
 
+        private void U_DataGridView1_ClickChanged(object sender, EventArgs e)
+        {
+            ProductParentDTO product = (ProductParentDTO)u_ProductParent.DataSelected;
+            if (product != null)
+            {
+                if (u_ProductParent.GetIndexSelected == 1)
+                {
+                    MessageBox.Show("Xóa");
+                }
+                if (u_ProductParent.GetIndexSelected == 0)
+                {
+                    MessageBox.Show("sửa");
+                }
+                if (u_ProductParent.GetIndexSelected == -1)
+                {
+                    //MessageBox.Show("hehe");
+                    List<ProductDTO> list = ppM.GetProductColors(product.product_parent_id);
+                    u_ProductColors.LoadData(list);
+                }
+            }
+        }
 
         private void ProductParent_Test_Load(object sender, EventArgs e)
         {
@@ -32,12 +55,17 @@ namespace Nike_Shop_Management.GUI.Test
         public void Load_Data()
         {
             List<ProductParentDTO> list = ppM.GetProductParents();
-            u_DataGridView1.LoadData(list);
+            u_ProductParent.LoadData(list);
         }
 
         private void datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
         }
 
         //private void datagrid_CellClick(object sender, DataGridViewCellEventArgs e)

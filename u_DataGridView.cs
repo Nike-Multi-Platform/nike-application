@@ -12,8 +12,14 @@ namespace Nike_Shop_Management
 {
     public partial class u_DataGridView : UserControl
     {
+        // đối tượng được chọn ở trong data gridview
         public object DataSelected { get; set; }
+
+        // vị trí được chọn ở contextmenusript
+        // -1 là là không chọn gì , 0 là xóa, 1 là sửa
         public int GetIndexSelected { get; set; }
+
+        //bắt sự kiện gửi ra ngoài
         public event EventHandler ClickChanged;
         public u_DataGridView()
         {
@@ -21,6 +27,7 @@ namespace Nike_Shop_Management
             dataGridView.MouseDown += DataGridView_MouseDown;
             dataGridView.CellClick += GetDataGridSelected;
         }
+        // hàm xử lý mở context scipt
         private void DataGridView_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -39,6 +46,7 @@ namespace Nike_Shop_Management
                 }
             }
         }
+        // hàm sự kiện click của datagridview nơi để gán dataselected và truyền ra bên ngoài thông qua invoke  clickchanged
         public void GetDataGridSelected(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -48,16 +56,20 @@ namespace Nike_Shop_Management
                 ClickChanged?.Invoke(this, EventArgs.Empty);
             }
         }
+        // phương thức <T> chấp nhận mọi kiểu đối tượng 
+        // mục đích có thể truyền nhiều loại dữ liệu vào mà không cần định nghĩa lại đối tượng trong list
         public void LoadData<T>(IList<T> list)
         {
+          // khi data thay đổi liên tục thì sẽ xóa data cũ để update data mới
             if (this.dataGridView.RowCount > 0)
             {
                 this.dataGridView.DataSource = null;
             }
-
             this.dataGridView.DataSource = list;
         }
 
+        // trả ra indexselected là 0 để container bắt sự kiện mở form SỬA 
+        // và trả ra 1 object để form container xử lý
         private void suaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (DataSelected != null)
@@ -68,7 +80,7 @@ namespace Nike_Shop_Management
         }
 
 
-
+        // như trên nhưng indexselected 1 là xóa
         private void xoaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (DataSelected != null)

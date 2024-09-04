@@ -61,7 +61,7 @@ namespace Nike_Shop_Management.DAL
             }
             catch (Exception)
             {
-                return -1;
+                return 0;
             }
         }
 

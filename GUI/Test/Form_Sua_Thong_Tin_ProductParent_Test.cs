@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nike_Shop_Management.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace Nike_Shop_Management.GUI.Test
         public Form_Sua_Thong_Tin_ProductParent_Test()
         {
             InitializeComponent();
+        }
+
+        public void ReviceData(ProductParentDTO productParentDTOs)
+        {
+
         }
     }
 }

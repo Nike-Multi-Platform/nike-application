@@ -33,11 +33,13 @@ namespace Nike_Shop_Management.GUI.Test
             {
                 if (u_ProductParent.GetIndexSelected == 1)
                 {
-                    MessageBox.Show("Xóa");
                 }
                 if (u_ProductParent.GetIndexSelected == 0)
                 {
-                    MessageBox.Show("sửa");
+
+                    Form_Sua_Thong_Tin_ProductParent_Test form_Sua_Thong_Tin_ProductParent_Test = new Form_Sua_Thong_Tin_ProductParent_Test();
+
+                    form_Sua_Thong_Tin_ProductParent_Test.ShowDialog();
                 }
                 if (u_ProductParent.GetIndexSelected == -1)
                 {

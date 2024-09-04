@@ -38,6 +38,7 @@ namespace Nike_Shop_Management.GUI.Test
                 {
 
                     Form_Sua_Thong_Tin_ProductParent_Test form_Sua_Thong_Tin_ProductParent_Test = new Form_Sua_Thong_Tin_ProductParent_Test();
+                    form_Sua_Thong_Tin_ProductParent_Test.PaintData(product);
                     form_Sua_Thong_Tin_ProductParent_Test.productParentDTO = product;
                     form_Sua_Thong_Tin_ProductParent_Test.ShowDialog();
                 }

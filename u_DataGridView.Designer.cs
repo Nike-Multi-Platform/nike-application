@@ -61,20 +61,20 @@ namespace Nike_Shop_Management
             this.DeleteToolStripMenuItem,
             this.EditToolStripMenuItem});
             this.cmsData.Name = "cmsData";
-            this.cmsData.Size = new System.Drawing.Size(123, 52);
+            this.cmsData.Size = new System.Drawing.Size(159, 52);
             // 
             // DeleteToolStripMenuItem
             // 
             this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(158, 24);
             this.DeleteToolStripMenuItem.Text = "Delete";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.xoaToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
             // 
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
-            this.EditToolStripMenuItem.Text = "Edit";
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(158, 24);
+            this.EditToolStripMenuItem.Text = "View details";
             this.EditToolStripMenuItem.Click += new System.EventHandler(this.suaToolStripMenuItem_Click);
             // 
             // u_DataGridView

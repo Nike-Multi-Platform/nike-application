@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nike_Shop_Management.DTO
 {
-    class ProductCategoryDTO
+    public class ProductCategoryDTO
     {
     }
 }

@@ -143,6 +143,9 @@
     <EmbeddedResource Include="GUI\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Test\Form_Sua_Thong_Tin_ProductParent_Test.resx">
+      <DependentUpon>Form_Sua_Thong_Tin_ProductParent_Test.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Test\ProductParent_Test.resx">
       <DependentUpon>ProductParent_Test.cs</DependentUpon>
     </EmbeddedResource>

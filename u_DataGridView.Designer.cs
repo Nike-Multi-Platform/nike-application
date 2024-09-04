@@ -32,8 +32,8 @@ namespace Nike_Shop_Management
             this.components = new System.ComponentModel.Container();
             this.dataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.cmsData = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.xoaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.suaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.cmsData.SuspendLayout();
             this.SuspendLayout();
@@ -58,24 +58,24 @@ namespace Nike_Shop_Management
             this.cmsData.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsData.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsData.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xoaToolStripMenuItem,
-            this.suaToolStripMenuItem});
+            this.DeleteToolStripMenuItem,
+            this.EditToolStripMenuItem});
             this.cmsData.Name = "cmsData";
-            this.cmsData.Size = new System.Drawing.Size(105, 52);
+            this.cmsData.Size = new System.Drawing.Size(123, 52);
             // 
-            // xoaToolStripMenuItem
+            // DeleteToolStripMenuItem
             // 
-            this.xoaToolStripMenuItem.Name = "xoaToolStripMenuItem";
-            this.xoaToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.xoaToolStripMenuItem.Text = "Xóa";
-            this.xoaToolStripMenuItem.Click += new System.EventHandler(this.xoaToolStripMenuItem_Click);
+            this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
+            this.DeleteToolStripMenuItem.Text = "Delete";
+            this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.xoaToolStripMenuItem_Click);
             // 
-            // suaToolStripMenuItem
+            // EditToolStripMenuItem
             // 
-            this.suaToolStripMenuItem.Name = "suaToolStripMenuItem";
-            this.suaToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.suaToolStripMenuItem.Text = "Sửa";
-            this.suaToolStripMenuItem.Click += new System.EventHandler(this.suaToolStripMenuItem_Click);
+            this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
+            this.EditToolStripMenuItem.Text = "Edit";
+            this.EditToolStripMenuItem.Click += new System.EventHandler(this.suaToolStripMenuItem_Click);
             // 
             // u_DataGridView
             // 
@@ -95,7 +95,7 @@ namespace Nike_Shop_Management
 
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dataGridView;
         private System.Windows.Forms.ContextMenuStrip cmsData;
-        private System.Windows.Forms.ToolStripMenuItem xoaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem suaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DeleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
     }
 }

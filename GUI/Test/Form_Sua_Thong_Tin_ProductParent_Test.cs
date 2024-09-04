@@ -13,14 +13,10 @@ namespace Nike_Shop_Management.GUI.Test
 {
     public partial class Form_Sua_Thong_Tin_ProductParent_Test : Form
     {
+        public ProductParentDTO productParentDTO { get; set; }
         public Form_Sua_Thong_Tin_ProductParent_Test()
         {
             InitializeComponent();
-        }
-
-        public void ReviceData(ProductParentDTO productParentDTOs)
-        {
-
         }
     }
 }

@@ -103,6 +103,12 @@
     <Compile Include="GUI\ProductForm.Designer.cs">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Test\Form_Sua_Thong_Tin_ProductParent_Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Test\Form_Sua_Thong_Tin_ProductParent_Test.Designer.cs">
+      <DependentUpon>Form_Sua_Thong_Tin_ProductParent_Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Test\ProductParent_Test.cs">
       <SubType>Form</SubType>
     </Compile>

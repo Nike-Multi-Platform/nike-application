@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nike_Shop_Management.GUI;
+using Nike_Shop_Management.GUI.Test;
+
 namespace Nike_Shop_Management
 {
     static class Program
@@ -16,7 +18,7 @@ namespace Nike_Shop_Management
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI.Test.ProductParent_Test());
+            Application.Run(new ProductParent_Test());
         }
 
     }

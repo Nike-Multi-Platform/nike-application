@@ -42,7 +42,7 @@ namespace Nike_Shop_Management.GUI.Test
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(151, 53);
             this.btnAdd.TabIndex = 2;
-            this.btnAdd.Values.Text = "Thêm";
+            this.btnAdd.Values.Text = "Add";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnCancel
@@ -52,7 +52,7 @@ namespace Nike_Shop_Management.GUI.Test
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(140, 53);
             this.btnCancel.TabIndex = 3;
-            this.btnCancel.Values.Text = "Hủy thao tác";
+            this.btnCancel.Values.Text = "Cancel";
             // 
             // u_ProductColors
             // 

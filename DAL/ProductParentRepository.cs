@@ -22,6 +22,7 @@ namespace Nike_Shop_Management.DAL
             {
                 return l;
             }
+            
             return null;
         }
 
@@ -53,18 +54,33 @@ namespace Nike_Shop_Management.DAL
                 var existingProductParent = _db.product_parents.FirstOrDefault(p => p.product_parent_id == productParent.product_parent_id);
                 if (existingProductParent != null)
                 {
-                    var productLinq = AutoMapperConfig.Mapper.Map<ProductParentDTO, product_parent>(productParent);
-                    existingProductParent = productLinq;
+                    existingProductParent.product_parent_name = productParent.product_parent_name;
+                    existingProductParent.product_object_id = productParent.product_object_id;
+                    existingProductParent.product_category_id = productParent.product_category_id;
+                    existingProductParent.thumbnail = productParent.thumbnail;
+                    if (decimal.TryParse(productParent.product_price, out decimal price))
+                    {
+                        existingProductParent.product_price = price;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+
+                    existingProductParent.is_new_release = productParent.is_new_release;
+                    existingProductParent.product_icons_id = productParent.product_icons_id;
                     _db.SubmitChanges();
                     return 1;
                 }
                 return 0;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return 0;
             }
         }
+
+
 
         public List<ProductParentDTO> Search(string inputSearch)
         {

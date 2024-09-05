@@ -16,14 +16,17 @@ namespace Nike_Shop_Management.GUI.Test
     public partial class ProductParent_Test : Form
     {
         ProductParentManager ppM;
-
+        Form_Sua_Thong_Tin_ProductParent_Test form_Sua_Thong_Tin_ProductParent_Test;
         public ProductParent_Test()
         {
             InitializeComponent();
-            DbContext db = new DbContext();
-            ppM = new ProductParentManager(new DAL.ProductParentRepository(db));
             Load_Data();
             u_ProductParent.ClickChanged += U_DataGridView1_ClickChanged;
+        }
+
+        private void Form_Sua_Thong_Tin_ProductParent_Test_FormClosedSuccessfully(object sender, EventArgs e)
+        {
+            Load_Data();
         }
 
         private void U_DataGridView1_ClickChanged(object sender, EventArgs e)
@@ -36,9 +39,9 @@ namespace Nike_Shop_Management.GUI.Test
                 }
                 if (u_ProductParent.GetIndexSelected == 0)
                 {
-
-                    Form_Sua_Thong_Tin_ProductParent_Test form_Sua_Thong_Tin_ProductParent_Test = new Form_Sua_Thong_Tin_ProductParent_Test();
+                    form_Sua_Thong_Tin_ProductParent_Test = new Form_Sua_Thong_Tin_ProductParent_Test();
                     form_Sua_Thong_Tin_ProductParent_Test.PaintData(product);
+                    form_Sua_Thong_Tin_ProductParent_Test.FormClosedSuccessfully += Form_Sua_Thong_Tin_ProductParent_Test_FormClosedSuccessfully;
                     form_Sua_Thong_Tin_ProductParent_Test.productParentDTO = product;
                     form_Sua_Thong_Tin_ProductParent_Test.ShowDialog();
                 }
@@ -53,10 +56,11 @@ namespace Nike_Shop_Management.GUI.Test
 
         private void ProductParent_Test_Load(object sender, EventArgs e)
         {
-            //List<ProductCategoryDTO> = ppM.
+            Load_Data();
         }
         public void Load_Data()
         {
+            ppM = new ProductParentManager(new DAL.ProductParentRepository(new DbContext()));
             List<ProductParentDTO> list = ppM.GetProductParents();
             u_ProductParent.LoadData(list);
         }

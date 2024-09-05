@@ -36,6 +36,23 @@ namespace Nike_Shop_Management.GUI.Test
             {
                 if (u_ProductParent.GetIndexSelected == 1)
                 {
+                    var result = MessageBox.Show("Are you sure you want to delete this item?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    // Kiểm tra kết quả từ hộp thoại
+                    if (result == DialogResult.Yes)
+                    {
+                        int deleteResult = ppM.DeleteProductParents(product.product_parent_id);
+
+                        if (deleteResult == 1)
+                        {
+                            MessageBox.Show("Item deleted successfully.");
+                            Load_Data();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete item.");
+                        }
+                    }             
                 }
                 if (u_ProductParent.GetIndexSelected == 0)
                 {
@@ -47,7 +64,6 @@ namespace Nike_Shop_Management.GUI.Test
                 }
                 if (u_ProductParent.GetIndexSelected == -1)
                 {
-                    //MessageBox.Show("hehe");
                     List<ProductDTO> list = ppM.GetProductColors(product.product_parent_id);
                     u_ProductColors.LoadData(list);
                 }

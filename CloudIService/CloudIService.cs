@@ -1,12 +1,12 @@
-﻿using System;
+﻿using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CloudinaryDotNet;
-using CloudinaryDotNet.Actions;
 
-namespace Nike_Shop_Management.Config
+namespace Nike_Shop_Management.CloudIService
 {
     class CloudIService
     {

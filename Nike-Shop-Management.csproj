@@ -114,8 +114,8 @@
     <Compile Include="BLL\ProductObjectManager.cs" />
     <Compile Include="BLL\ProductParentManager.cs" />
     <Compile Include="BLL\UserAccountManager.cs" />
-    <Compile Include="CloudDinary\CloudIService.cs" />
-    <Compile Include="CloudDinary\ServiceConfig.cs" />
+    <Compile Include="CloudIService\CloudIService.cs" />
+    <Compile Include="CloudIService\ServiceConfig.cs" />
     <Compile Include="DAL\DbContext.cs">
       <DependentUpon>DbContext.dbml</DependentUpon>
     </Compile>
@@ -166,12 +166,6 @@
     <Compile Include="GUI\Test\Form_Sua_Thong_Tin_ProductParent_Test.Designer.cs">
       <DependentUpon>Form_Sua_Thong_Tin_ProductParent_Test.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Test\Form_Them_Thong_Tin_ProductParent_Test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Test\Form_Them_Thong_Tin_ProductParent_Test.Designer.cs">
-      <DependentUpon>Form_Them_Thong_Tin_ProductParent_Test.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\Test\ProductParent_Test.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,9 +209,6 @@
     <EmbeddedResource Include="GUI\Test\Form_Sua_Thong_Tin_ProductParent_Test.resx">
       <DependentUpon>Form_Sua_Thong_Tin_ProductParent_Test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Test\Form_Them_Thong_Tin_ProductParent_Test.resx">
-      <DependentUpon>Form_Them_Thong_Tin_ProductParent_Test.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Test\ProductParent_Test.resx">
       <DependentUpon>ProductParent_Test.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,7 +228,7 @@
     <EmbeddedResource Include="u_PictureBox.resx">
       <DependentUpon>u_PictureBox.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="CloudDinary.config" />
+    <None Include="CloudIService.config" />
     <None Include="DAL\DbContext.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DbContext.designer.cs</LastGenOutput>
@@ -267,6 +258,7 @@
     <Content Include=".gitignore" />
     <None Include="Resources\default.png" />
     <None Include="Resources\air_jordan_1_mid_white_black_thumbnail.png" />
+    <None Include="Resources\10665766_294557997397068_7196575879637707830_n.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

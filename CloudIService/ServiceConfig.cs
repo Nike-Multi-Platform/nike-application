@@ -1,6 +1,11 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Nike_Shop_Management.Config
+namespace Nike_Shop_Management.CloudIService
 {
     class ServiceConfig
     {

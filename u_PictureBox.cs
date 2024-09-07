@@ -8,18 +8,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Nike_Shop_Management.CloudService;
 
 namespace Nike_Shop_Management
 {
     public partial class u_PictureBox : UserControl
     {
+        CloudIService CloudIService;
+        ServiceConfig ServiceConfig;
         public u_PictureBox()
         {
             InitializeComponent();
             btnEdit.Click += BtnEdit_Click;
+
+
         }
         public event EventHandler ClickChanged;
-        public string Thumbnail { get; set; }
+        /// <summary>
+        /// path file ảnh
+        /// </summary>
         public string PathThumbail { get; set; }
         private void BtnEdit_Click(object sender, EventArgs e)
         {
@@ -31,27 +38,38 @@ namespace Nike_Shop_Management
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                Thumbnail = Path.GetFileName(openFileDialog.FileName);
+             
                 Picture.Image = Image.FromFile(openFileDialog.FileName);
                 PathThumbail = Path.GetFullPath(openFileDialog.FileName);
+               //CloudIService.UploadImage()
                 ClickChanged?.Invoke(sender, EventArgs.Empty);
             }
         }
 
         /// <summary>
-        /// hàm được dùng để load hình ảnh lên picture, đơn giản là truyền vào cái tên ảnh thôi
+        /// hàm được dùng để load hình ảnh lên picture, đơn giản là truyền đường dẫn ảnh vào rồi cho nó hiển thị né
         /// </summary>
         /// <param name="path"></param>
-        public void LoadImgFromResources(string path)
-        {
-            Thumbnail = path;
-            Picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(path);
-            if (Picture.Image == null)
+        public void LoadImgFromUrl(string path)
+        {          
+            ServiceConfig = new ServiceConfig();
+            CloudIService = new CloudIService(ServiceConfig.CloudinaryCloudName, ServiceConfig.CloudinaryApiKey, ServiceConfig.CloudinaryApiSecret);
+            Picture.ImageLocation = CloudIService.GetImageUrlByPublicId(path);
+            if (Picture.ImageLocation == null)
             {
-                // keeu vinh
                 Picture.Image = (Image)Properties.Resources._default;
             }
         }
-
+        /// <summary>
+        ///  hàm up ảnh lên cloudinary
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public string UploadImage(string path)
+        {
+            ServiceConfig = new ServiceConfig();
+            CloudIService = new CloudIService(ServiceConfig.CloudinaryCloudName, ServiceConfig.CloudinaryApiKey, ServiceConfig.CloudinaryApiSecret);
+            return CloudIService.UploadImage(path);
+        }
     }
 }

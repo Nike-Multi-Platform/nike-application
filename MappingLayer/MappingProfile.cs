@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Nike_Shop_Management.DAL;
 using Nike_Shop_Management.DTO;
+using Nike_Shop_Management.DAL;
 
 namespace Nike_Shop_Management.MappingLayer
 {
@@ -22,6 +22,12 @@ namespace Nike_Shop_Management.MappingLayer
             CreateMap<product, ProductDTO>();
             CreateMap<ProductDTO, product>();
 
+            CreateMap<product_icon, ProductIconsDTO>();
+            CreateMap<ProductIconsDTO, product_icon>();
+
+
+            CreateMap<ProductCategoryDTO, category_product>();
+            CreateMap<category_product, ProductCategoryDTO>();
         }
     }
 }

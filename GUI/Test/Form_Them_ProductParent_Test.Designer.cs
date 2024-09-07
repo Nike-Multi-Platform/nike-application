@@ -32,7 +32,6 @@ namespace Nike_Shop_Management.GUI.Test
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.comboBox_product_category = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel7 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.u_PictureBox = new Nike_Shop_Management.u_PictureBox();
             this.cb_new_release = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
             this.txt_product_icons_id = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txt_product_price = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -45,6 +44,7 @@ namespace Nike_Shop_Management.GUI.Test
             this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.btnSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.u_PictureBox = new Nike_Shop_Management.u_PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.comboBox_product_category)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBox_product_object)).BeginInit();
             this.SuspendLayout();
@@ -66,15 +66,6 @@ namespace Nike_Shop_Management.GUI.Test
             this.kryptonLabel7.Size = new System.Drawing.Size(128, 24);
             this.kryptonLabel7.TabIndex = 33;
             this.kryptonLabel7.Values.Text = "Product category";
-            // 
-            // u_PictureBox
-            // 
-            this.u_PictureBox.Location = new System.Drawing.Point(31, 46);
-            this.u_PictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.u_PictureBox.Name = "u_PictureBox";
-            this.u_PictureBox.PathThumbail = null;
-            this.u_PictureBox.Size = new System.Drawing.Size(392, 316);
-            this.u_PictureBox.TabIndex = 32;
             // 
             // cb_new_release
             // 
@@ -181,11 +172,20 @@ namespace Nike_Shop_Management.GUI.Test
             this.btnCancel.TabIndex = 18;
             this.btnCancel.Values.Text = "Cancel";
             // 
+            // u_PictureBox
+            // 
+            this.u_PictureBox.Location = new System.Drawing.Point(31, 46);
+            this.u_PictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.u_PictureBox.Name = "u_PictureBox";
+            this.u_PictureBox.PathThumbail = null;
+            this.u_PictureBox.Size = new System.Drawing.Size(392, 316);
+            this.u_PictureBox.TabIndex = 32;
+            // 
             // Form_Them_ProductParent_Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 553);
+            this.ClientSize = new System.Drawing.Size(1163, 553);
             this.Controls.Add(this.comboBox_product_category);
             this.Controls.Add(this.kryptonLabel7);
             this.Controls.Add(this.u_PictureBox);

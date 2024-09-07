@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nike_Shop_Management.CloudIService
+namespace Nike_Shop_Management.CloudService
 {
     class CloudIService
     {
@@ -25,9 +25,9 @@ namespace Nike_Shop_Management.CloudIService
         {
             var uploadParams = new ImageUploadParams()
             {
-                File = new FileDescription(filePath)
+                File = new FileDescription(filePath),Folder = "Nike-application"
             };
-
+           
             var uploadResult = _cloudinary.Upload(uploadParams);
             return uploadResult.SecureUrl.AbsoluteUri; // Trả về URL bảo mật của hình ảnh
         }
@@ -50,6 +50,11 @@ namespace Nike_Shop_Management.CloudIService
             return _cloudinary.Api.UrlImgUp.Transform(new Transformation()
                 .Width(width).Height(height).Crop("fill"))
                 .BuildUrl(publicId);
+        }
+
+        public string GetImageUrlByPublicId(string publicId)
+        {
+            return _cloudinary.Api.UrlImgUp.BuildUrl(publicId);
         }
     }
 }

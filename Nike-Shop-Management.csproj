@@ -114,8 +114,8 @@
     <Compile Include="BLL\ProductObjectManager.cs" />
     <Compile Include="BLL\ProductParentManager.cs" />
     <Compile Include="BLL\UserAccountManager.cs" />
-    <Compile Include="CloudIService\CloudIService.cs" />
-    <Compile Include="CloudIService\ServiceConfig.cs" />
+    <Compile Include="CloudService\CloudIService.cs" />
+    <Compile Include="CloudService\ServiceConfig.cs" />
     <Compile Include="DAL\DbContext.cs">
       <DependentUpon>DbContext.dbml</DependentUpon>
     </Compile>
@@ -228,7 +228,7 @@
     <EmbeddedResource Include="u_PictureBox.resx">
       <DependentUpon>u_PictureBox.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="CloudIService.config" />
+    <None Include="CloudService\CloudIServiceConfig.config" />
     <None Include="DAL\DbContext.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DbContext.designer.cs</LastGenOutput>

@@ -36,30 +36,33 @@ namespace Nike_Shop_Management
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(6, 266);
+            this.btnEdit.Location = new System.Drawing.Point(4, 216);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(346, 47);
+            this.btnEdit.Size = new System.Drawing.Size(260, 38);
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Values.Text = "Edit";
             // 
             // Picture
             // 
             this.Picture.Image = global::Nike_Shop_Management.Properties.Resources._default;
-            this.Picture.Location = new System.Drawing.Point(3, 3);
+            this.Picture.Location = new System.Drawing.Point(2, 2);
+            this.Picture.Margin = new System.Windows.Forms.Padding(2);
             this.Picture.Name = "Picture";
-            this.Picture.Size = new System.Drawing.Size(346, 229);
+            this.Picture.Size = new System.Drawing.Size(260, 186);
             this.Picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Picture.TabIndex = 0;
             this.Picture.TabStop = false;
             // 
             // u_PictureBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.Picture);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "u_PictureBox";
-            this.Size = new System.Drawing.Size(352, 337);
+            this.Size = new System.Drawing.Size(264, 274);
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).EndInit();
             this.ResumeLayout(false);
 

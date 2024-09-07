@@ -38,10 +38,10 @@ namespace Nike_Shop_Management
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-             
+
                 Picture.Image = Image.FromFile(openFileDialog.FileName);
                 PathThumbail = Path.GetFullPath(openFileDialog.FileName);
-               //CloudIService.UploadImage()
+                //CloudIService.UploadImage()
                 ClickChanged?.Invoke(sender, EventArgs.Empty);
             }
         }
@@ -51,14 +51,13 @@ namespace Nike_Shop_Management
         /// </summary>
         /// <param name="path"></param>
         public void LoadImgFromUrl(string path)
-        {          
+        {
             ServiceConfig = new ServiceConfig();
             CloudIService = new CloudIService(ServiceConfig.CloudinaryCloudName, ServiceConfig.CloudinaryApiKey, ServiceConfig.CloudinaryApiSecret);
             Picture.ImageLocation = CloudIService.GetImageUrlByPublicId(path);
-            if (Picture.ImageLocation == null)
-            {
-                Picture.Image = (Image)Properties.Resources._default;
-            }
+
+         Picture.ErrorImage =(Image)Properties.Resources._default;
+         
         }
         /// <summary>
         ///  hàm up ảnh lên cloudinary

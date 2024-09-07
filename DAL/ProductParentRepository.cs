@@ -22,7 +22,7 @@ namespace Nike_Shop_Management.DAL
             {
                 return l;
             }
-            
+
             return null;
         }
 
@@ -34,7 +34,7 @@ namespace Nike_Shop_Management.DAL
             {
                 l.Add(AutoMapperConfig.Mapper.Map<product, ProductDTO>(p));
             }
-            if(l!=null)
+            if (l != null)
             {
                 return l;
             }
@@ -115,6 +115,35 @@ namespace Nike_Shop_Management.DAL
             {
                 return 0;
             }
+        }
+
+        public List<ProductObjectDTO> GetProductObjects()
+        {
+            List<ProductObjectDTO> l = _db.product_objects.Select(temp => AutoMapperConfig.Mapper.Map<product_object, ProductObjectDTO>(temp)).ToList();
+            if (l != null)
+            {
+                return l;
+            }
+            return null;
+        }
+
+        public List<ProductIconsDTO> GetProductIcons()
+        {
+            List<ProductIconsDTO> l = _db.product_icons.Select(temp => AutoMapperConfig.Mapper.Map<product_icon, ProductIconsDTO>(temp)).ToList();
+            if (l != null)
+            {
+                return l;
+            }
+            return null;
+        }
+        public List<ProductCategoryDTO> GetProductCategories()
+        {
+            List<ProductCategoryDTO> l = _db.category_products.Select(temp => AutoMapperConfig.Mapper.Map<category_product, ProductCategoryDTO>(temp)).ToList();
+            if (l != null)
+            {
+                return l;
+            }
+            return null;
         }
     }
 }

@@ -61,5 +61,10 @@ namespace Nike_Shop_Management.GUI
         {
 
         }
+
+        private void btn_ParentProduct_Click(object sender, EventArgs e)
+        {
+            util.OpenChildForm(new GUI.Test.ProductParent_Test(), panelBody);
+        }
     }
 }

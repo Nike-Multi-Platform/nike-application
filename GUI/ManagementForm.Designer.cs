@@ -40,11 +40,11 @@
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.btn_ParentProduct = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btn_order = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btn_customer = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btn_RevenueStatistics = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.menuTransition = new System.Windows.Forms.Timer(this.components);
             this.sidebarTransition = new System.Windows.Forms.Timer(this.components);
             this.panelBody = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.btn_customer = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btn_RevenueStatistics = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.headerPanel)).BeginInit();
             this.headerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -192,8 +192,9 @@
             this.btn_ParentProduct.StatePressed.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.SolidRightLine;
             this.btn_ParentProduct.StatePressed.Back.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
             this.btn_ParentProduct.TabIndex = 7;
-            this.btn_ParentProduct.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonButton1.Values.Image")));
+            this.btn_ParentProduct.Values.Image = ((System.Drawing.Image)(resources.GetObject("btn_ParentProduct.Values.Image")));
             this.btn_ParentProduct.Values.Text = "      Parent Product";
+            this.btn_ParentProduct.Click += new System.EventHandler(this.btn_ParentProduct_Click);
             // 
             // btn_order
             // 
@@ -220,26 +221,8 @@
             this.btn_order.StatePressed.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.SolidRightLine;
             this.btn_order.StatePressed.Back.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
             this.btn_order.TabIndex = 8;
-            this.btn_order.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonButton2.Values.Image")));
+            this.btn_order.Values.Image = ((System.Drawing.Image)(resources.GetObject("btn_order.Values.Image")));
             this.btn_order.Values.Text = "         Order";
-            // 
-            // menuTransition
-            // 
-            this.menuTransition.Interval = 10;
-            // 
-            // sidebarTransition
-            // 
-            this.sidebarTransition.Interval = 10;
-            this.sidebarTransition.Tick += new System.EventHandler(this.sidebarTransition_Tick);
-            // 
-            // panelBody
-            // 
-            this.panelBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelBody.Location = new System.Drawing.Point(200, 47);
-            this.panelBody.Margin = new System.Windows.Forms.Padding(0);
-            this.panelBody.Name = "panelBody";
-            this.panelBody.Size = new System.Drawing.Size(900, 603);
-            this.panelBody.TabIndex = 5;
             // 
             // btn_customer
             // 
@@ -266,7 +249,7 @@
             this.btn_customer.StatePressed.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.SolidRightLine;
             this.btn_customer.StatePressed.Back.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
             this.btn_customer.TabIndex = 9;
-            this.btn_customer.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonButton1.Values.Image1")));
+            this.btn_customer.Values.Image = ((System.Drawing.Image)(resources.GetObject("btn_customer.Values.Image")));
             this.btn_customer.Values.Text = "         Customer";
             // 
             // btn_RevenueStatistics
@@ -294,8 +277,28 @@
             this.btn_RevenueStatistics.StatePressed.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.SolidRightLine;
             this.btn_RevenueStatistics.StatePressed.Back.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
             this.btn_RevenueStatistics.TabIndex = 10;
-            this.btn_RevenueStatistics.Values.Image = ((System.Drawing.Image)(resources.GetObject("kryptonButton2.Values.Image1")));
+            this.btn_RevenueStatistics.Values.Image = ((System.Drawing.Image)(resources.GetObject("btn_RevenueStatistics.Values.Image")));
             this.btn_RevenueStatistics.Values.Text = "       Revenue Statistics";
+            // 
+            // menuTransition
+            // 
+            this.menuTransition.Interval = 10;
+            // 
+            // sidebarTransition
+            // 
+            this.sidebarTransition.Interval = 10;
+            this.sidebarTransition.Tick += new System.EventHandler(this.sidebarTransition_Tick);
+            // 
+            // panelBody
+            // 
+            this.panelBody.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelBody.Location = new System.Drawing.Point(200, 47);
+            this.panelBody.Margin = new System.Windows.Forms.Padding(0);
+            this.panelBody.Name = "panelBody";
+            this.panelBody.Size = new System.Drawing.Size(900, 603);
+            this.panelBody.TabIndex = 5;
             // 
             // ManagementForm
             // 

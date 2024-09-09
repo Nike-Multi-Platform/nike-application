@@ -54,6 +54,9 @@
     <Reference Include="CloudinaryDotNet, Version=1.26.2.0, Culture=neutral, PublicKeyToken=c8234dc617ae7841, processorArchitecture=MSIL">
       <HintPath>packages\CloudinaryDotNet.1.26.2\lib\net452\CloudinaryDotNet.dll</HintPath>
     </Reference>
+    <Reference Include="ComponentFactory.Krypton.Docking">
+      <HintPath>..\ui_framework\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
+    </Reference>
     <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.6.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\ComponentFactory.Krypton.Toolkit.dll</HintPath>
@@ -190,6 +193,18 @@
     <Compile Include="GUI\Test\ProductParent_Test.Designer.cs">
       <DependentUpon>ProductParent_Test.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Test\Templates_CRUD_Co_Ban.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Test\Templates_CRUD_Co_Ban.Designer.cs">
+      <DependentUpon>Templates_CRUD_Co_Ban.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Test\test_templates_crud_co_ban.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Test\test_templates_crud_co_ban.Designer.cs">
+      <DependentUpon>test_templates_crud_co_ban.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Util.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +254,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Test\ProductParent_Test.resx">
       <DependentUpon>ProductParent_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Test\Templates_CRUD_Co_Ban.resx">
+      <DependentUpon>Templates_CRUD_Co_Ban.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Test\test_templates_crud_co_ban.resx">
+      <DependentUpon>test_templates_crud_co_ban.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

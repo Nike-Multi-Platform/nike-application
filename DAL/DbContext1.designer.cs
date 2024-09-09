@@ -42,6 +42,18 @@ namespace Nike_Shop_Management.DAL
     partial void Insertcategory_product(category_product instance);
     partial void Updatecategory_product(category_product instance);
     partial void Deletecategory_product(category_product instance);
+    partial void Insertdiscount_voucher(discount_voucher instance);
+    partial void Updatediscount_voucher(discount_voucher instance);
+    partial void Deletediscount_voucher(discount_voucher instance);
+    partial void Insertflash_sale(flash_sale instance);
+    partial void Updateflash_sale(flash_sale instance);
+    partial void Deleteflash_sale(flash_sale instance);
+    partial void Insertgoods_receipt(goods_receipt instance);
+    partial void Updategoods_receipt(goods_receipt instance);
+    partial void Deletegoods_receipt(goods_receipt instance);
+    partial void Insertgoods_receipt_detail(goods_receipt_detail instance);
+    partial void Updategoods_receipt_detail(goods_receipt_detail instance);
+    partial void Deletegoods_receipt_detail(goods_receipt_detail instance);
     partial void Inserthistory_search(history_search instance);
     partial void Updatehistory_search(history_search instance);
     partial void Deletehistory_search(history_search instance);
@@ -69,9 +81,15 @@ namespace Nike_Shop_Management.DAL
     partial void Insertsize(size instance);
     partial void Updatesize(size instance);
     partial void Deletesize(size instance);
+    partial void Insertsupplier(supplier instance);
+    partial void Updatesupplier(supplier instance);
+    partial void Deletesupplier(supplier instance);
     partial void Insertuser_account(user_account instance);
     partial void Updateuser_account(user_account instance);
     partial void Deleteuser_account(user_account instance);
+    partial void Insertuser_discount_voucher(user_discount_voucher instance);
+    partial void Updateuser_discount_voucher(user_discount_voucher instance);
+    partial void Deleteuser_discount_voucher(user_discount_voucher instance);
     partial void Insertuser_favorite_product(user_favorite_product instance);
     partial void Updateuser_favorite_product(user_favorite_product instance);
     partial void Deleteuser_favorite_product(user_favorite_product instance);
@@ -139,6 +157,38 @@ namespace Nike_Shop_Management.DAL
 			get
 			{
 				return this.GetTable<category_product>();
+			}
+		}
+		
+		public System.Data.Linq.Table<discount_voucher> discount_vouchers
+		{
+			get
+			{
+				return this.GetTable<discount_voucher>();
+			}
+		}
+		
+		public System.Data.Linq.Table<flash_sale> flash_sales
+		{
+			get
+			{
+				return this.GetTable<flash_sale>();
+			}
+		}
+		
+		public System.Data.Linq.Table<goods_receipt> goods_receipts
+		{
+			get
+			{
+				return this.GetTable<goods_receipt>();
+			}
+		}
+		
+		public System.Data.Linq.Table<goods_receipt_detail> goods_receipt_details
+		{
+			get
+			{
+				return this.GetTable<goods_receipt_detail>();
 			}
 		}
 		
@@ -214,11 +264,27 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
+		public System.Data.Linq.Table<supplier> suppliers
+		{
+			get
+			{
+				return this.GetTable<supplier>();
+			}
+		}
+		
 		public System.Data.Linq.Table<user_account> user_accounts
 		{
 			get
 			{
 				return this.GetTable<user_account>();
+			}
+		}
+		
+		public System.Data.Linq.Table<user_discount_voucher> user_discount_vouchers
+		{
+			get
+			{
+				return this.GetTable<user_discount_voucher>();
 			}
 		}
 		
@@ -255,7 +321,11 @@ namespace Nike_Shop_Management.DAL
 		
 		private EntityRef<product_size> _product_size;
 		
+		private EntityRef<product_size> _product_size1;
+		
 		private EntityRef<user_account> _user_account;
+		
+		private EntityRef<user_account> _user_account1;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -274,7 +344,9 @@ namespace Nike_Shop_Management.DAL
 		public bag()
 		{
 			this._product_size = default(EntityRef<product_size>);
+			this._product_size1 = default(EntityRef<product_size>);
 			this._user_account = default(EntityRef<user_account>);
+			this._user_account1 = default(EntityRef<user_account>);
 			OnCreated();
 		}
 		
@@ -309,7 +381,7 @@ namespace Nike_Shop_Management.DAL
 			{
 				if ((this._user_id != value))
 				{
-					if (this._user_account.HasLoadedOrAssignedValue)
+					if ((this._user_account.HasLoadedOrAssignedValue || this._user_account1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -333,7 +405,7 @@ namespace Nike_Shop_Management.DAL
 			{
 				if ((this._product_size_id != value))
 				{
-					if (this._product_size.HasLoadedOrAssignedValue)
+					if ((this._product_size.HasLoadedOrAssignedValue || this._product_size1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -400,6 +472,40 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_size_bag1", Storage="_product_size1", ThisKey="product_size_id", OtherKey="product_size_id", IsForeignKey=true)]
+		public product_size product_size1
+		{
+			get
+			{
+				return this._product_size1.Entity;
+			}
+			set
+			{
+				product_size previousValue = this._product_size1.Entity;
+				if (((previousValue != value) 
+							|| (this._product_size1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._product_size1.Entity = null;
+						previousValue.bags1.Remove(this);
+					}
+					this._product_size1.Entity = value;
+					if ((value != null))
+					{
+						value.bags1.Add(this);
+						this._product_size_id = value.product_size_id;
+					}
+					else
+					{
+						this._product_size_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("product_size1");
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_account_bag", Storage="_user_account", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
 		public user_account user_account
 		{
@@ -430,6 +536,40 @@ namespace Nike_Shop_Management.DAL
 						this._user_id = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("user_account");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_account_bag1", Storage="_user_account1", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
+		public user_account user_account1
+		{
+			get
+			{
+				return this._user_account1.Entity;
+			}
+			set
+			{
+				user_account previousValue = this._user_account1.Entity;
+				if (((previousValue != value) 
+							|| (this._user_account1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user_account1.Entity = null;
+						previousValue.bags1.Remove(this);
+					}
+					this._user_account1.Entity = value;
+					if ((value != null))
+					{
+						value.bags1.Add(this);
+						this._user_id = value.user_id;
+					}
+					else
+					{
+						this._user_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("user_account1");
 				}
 			}
 		}
@@ -1036,6 +1176,875 @@ namespace Nike_Shop_Management.DAL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.discount_voucher")]
+	public partial class discount_voucher : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _discount_voucher_id;
+		
+		private string _voucher_name;
+		
+		private System.Nullable<int> _quantity;
+		
+		private EntitySet<user_discount_voucher> _user_discount_vouchers;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Ondiscount_voucher_idChanging(int value);
+    partial void Ondiscount_voucher_idChanged();
+    partial void Onvoucher_nameChanging(string value);
+    partial void Onvoucher_nameChanged();
+    partial void OnquantityChanging(System.Nullable<int> value);
+    partial void OnquantityChanged();
+    #endregion
+		
+		public discount_voucher()
+		{
+			this._user_discount_vouchers = new EntitySet<user_discount_voucher>(new Action<user_discount_voucher>(this.attach_user_discount_vouchers), new Action<user_discount_voucher>(this.detach_user_discount_vouchers));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_discount_voucher_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int discount_voucher_id
+		{
+			get
+			{
+				return this._discount_voucher_id;
+			}
+			set
+			{
+				if ((this._discount_voucher_id != value))
+				{
+					this.Ondiscount_voucher_idChanging(value);
+					this.SendPropertyChanging();
+					this._discount_voucher_id = value;
+					this.SendPropertyChanged("discount_voucher_id");
+					this.Ondiscount_voucher_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_voucher_name", DbType="NVarChar(255)")]
+		public string voucher_name
+		{
+			get
+			{
+				return this._voucher_name;
+			}
+			set
+			{
+				if ((this._voucher_name != value))
+				{
+					this.Onvoucher_nameChanging(value);
+					this.SendPropertyChanging();
+					this._voucher_name = value;
+					this.SendPropertyChanged("voucher_name");
+					this.Onvoucher_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_quantity", DbType="Int")]
+		public System.Nullable<int> quantity
+		{
+			get
+			{
+				return this._quantity;
+			}
+			set
+			{
+				if ((this._quantity != value))
+				{
+					this.OnquantityChanging(value);
+					this.SendPropertyChanging();
+					this._quantity = value;
+					this.SendPropertyChanged("quantity");
+					this.OnquantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="discount_voucher_user_discount_voucher", Storage="_user_discount_vouchers", ThisKey="discount_voucher_id", OtherKey="discount_voucher_id")]
+		public EntitySet<user_discount_voucher> user_discount_vouchers
+		{
+			get
+			{
+				return this._user_discount_vouchers;
+			}
+			set
+			{
+				this._user_discount_vouchers.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_user_discount_vouchers(user_discount_voucher entity)
+		{
+			this.SendPropertyChanging();
+			entity.discount_voucher = this;
+		}
+		
+		private void detach_user_discount_vouchers(user_discount_voucher entity)
+		{
+			this.SendPropertyChanging();
+			entity.discount_voucher = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.flash_sale")]
+	public partial class flash_sale : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _flash_sale_id;
+		
+		private System.Nullable<int> _product_id;
+		
+		private System.Nullable<decimal> _discount_percent;
+		
+		private System.Nullable<System.DateTime> _started_at;
+		
+		private System.Nullable<System.DateTime> _ended_at;
+		
+		private EntityRef<product> _product;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onflash_sale_idChanging(int value);
+    partial void Onflash_sale_idChanged();
+    partial void Onproduct_idChanging(System.Nullable<int> value);
+    partial void Onproduct_idChanged();
+    partial void Ondiscount_percentChanging(System.Nullable<decimal> value);
+    partial void Ondiscount_percentChanged();
+    partial void Onstarted_atChanging(System.Nullable<System.DateTime> value);
+    partial void Onstarted_atChanged();
+    partial void Onended_atChanging(System.Nullable<System.DateTime> value);
+    partial void Onended_atChanged();
+    #endregion
+		
+		public flash_sale()
+		{
+			this._product = default(EntityRef<product>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_flash_sale_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int flash_sale_id
+		{
+			get
+			{
+				return this._flash_sale_id;
+			}
+			set
+			{
+				if ((this._flash_sale_id != value))
+				{
+					this.Onflash_sale_idChanging(value);
+					this.SendPropertyChanging();
+					this._flash_sale_id = value;
+					this.SendPropertyChanged("flash_sale_id");
+					this.Onflash_sale_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_id", DbType="Int")]
+		public System.Nullable<int> product_id
+		{
+			get
+			{
+				return this._product_id;
+			}
+			set
+			{
+				if ((this._product_id != value))
+				{
+					if (this._product.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onproduct_idChanging(value);
+					this.SendPropertyChanging();
+					this._product_id = value;
+					this.SendPropertyChanged("product_id");
+					this.Onproduct_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_discount_percent", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> discount_percent
+		{
+			get
+			{
+				return this._discount_percent;
+			}
+			set
+			{
+				if ((this._discount_percent != value))
+				{
+					this.Ondiscount_percentChanging(value);
+					this.SendPropertyChanging();
+					this._discount_percent = value;
+					this.SendPropertyChanged("discount_percent");
+					this.Ondiscount_percentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_started_at", DbType="DateTime")]
+		public System.Nullable<System.DateTime> started_at
+		{
+			get
+			{
+				return this._started_at;
+			}
+			set
+			{
+				if ((this._started_at != value))
+				{
+					this.Onstarted_atChanging(value);
+					this.SendPropertyChanging();
+					this._started_at = value;
+					this.SendPropertyChanged("started_at");
+					this.Onstarted_atChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ended_at", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ended_at
+		{
+			get
+			{
+				return this._ended_at;
+			}
+			set
+			{
+				if ((this._ended_at != value))
+				{
+					this.Onended_atChanging(value);
+					this.SendPropertyChanging();
+					this._ended_at = value;
+					this.SendPropertyChanged("ended_at");
+					this.Onended_atChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_flash_sale", Storage="_product", ThisKey="product_id", OtherKey="product_id", IsForeignKey=true)]
+		public product product
+		{
+			get
+			{
+				return this._product.Entity;
+			}
+			set
+			{
+				product previousValue = this._product.Entity;
+				if (((previousValue != value) 
+							|| (this._product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._product.Entity = null;
+						previousValue.flash_sales.Remove(this);
+					}
+					this._product.Entity = value;
+					if ((value != null))
+					{
+						value.flash_sales.Add(this);
+						this._product_id = value.product_id;
+					}
+					else
+					{
+						this._product_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("product");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.goods_receipt")]
+	public partial class goods_receipt : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _goods_receipt_id;
+		
+		private System.Nullable<int> _supplier_id;
+		
+		private System.Nullable<int> _user_id;
+		
+		private System.Nullable<decimal> _total_price;
+		
+		private System.Nullable<System.DateTime> _created_at;
+		
+		private System.Nullable<bool> _is_handle;
+		
+		private EntitySet<goods_receipt_detail> _goods_receipt_details;
+		
+		private EntityRef<supplier> _supplier;
+		
+		private EntityRef<user_account> _user_account;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Ongoods_receipt_idChanging(int value);
+    partial void Ongoods_receipt_idChanged();
+    partial void Onsupplier_idChanging(System.Nullable<int> value);
+    partial void Onsupplier_idChanged();
+    partial void Onuser_idChanging(System.Nullable<int> value);
+    partial void Onuser_idChanged();
+    partial void Ontotal_priceChanging(System.Nullable<decimal> value);
+    partial void Ontotal_priceChanged();
+    partial void Oncreated_atChanging(System.Nullable<System.DateTime> value);
+    partial void Oncreated_atChanged();
+    partial void Onis_handleChanging(System.Nullable<bool> value);
+    partial void Onis_handleChanged();
+    #endregion
+		
+		public goods_receipt()
+		{
+			this._goods_receipt_details = new EntitySet<goods_receipt_detail>(new Action<goods_receipt_detail>(this.attach_goods_receipt_details), new Action<goods_receipt_detail>(this.detach_goods_receipt_details));
+			this._supplier = default(EntityRef<supplier>);
+			this._user_account = default(EntityRef<user_account>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_goods_receipt_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int goods_receipt_id
+		{
+			get
+			{
+				return this._goods_receipt_id;
+			}
+			set
+			{
+				if ((this._goods_receipt_id != value))
+				{
+					this.Ongoods_receipt_idChanging(value);
+					this.SendPropertyChanging();
+					this._goods_receipt_id = value;
+					this.SendPropertyChanged("goods_receipt_id");
+					this.Ongoods_receipt_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_supplier_id", DbType="Int")]
+		public System.Nullable<int> supplier_id
+		{
+			get
+			{
+				return this._supplier_id;
+			}
+			set
+			{
+				if ((this._supplier_id != value))
+				{
+					if (this._supplier.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onsupplier_idChanging(value);
+					this.SendPropertyChanging();
+					this._supplier_id = value;
+					this.SendPropertyChanged("supplier_id");
+					this.Onsupplier_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int")]
+		public System.Nullable<int> user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					if (this._user_account.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total_price", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> total_price
+		{
+			get
+			{
+				return this._total_price;
+			}
+			set
+			{
+				if ((this._total_price != value))
+				{
+					this.Ontotal_priceChanging(value);
+					this.SendPropertyChanging();
+					this._total_price = value;
+					this.SendPropertyChanged("total_price");
+					this.Ontotal_priceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_created_at", DbType="DateTime")]
+		public System.Nullable<System.DateTime> created_at
+		{
+			get
+			{
+				return this._created_at;
+			}
+			set
+			{
+				if ((this._created_at != value))
+				{
+					this.Oncreated_atChanging(value);
+					this.SendPropertyChanging();
+					this._created_at = value;
+					this.SendPropertyChanged("created_at");
+					this.Oncreated_atChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_is_handle", DbType="Bit")]
+		public System.Nullable<bool> is_handle
+		{
+			get
+			{
+				return this._is_handle;
+			}
+			set
+			{
+				if ((this._is_handle != value))
+				{
+					this.Onis_handleChanging(value);
+					this.SendPropertyChanging();
+					this._is_handle = value;
+					this.SendPropertyChanged("is_handle");
+					this.Onis_handleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="goods_receipt_goods_receipt_detail", Storage="_goods_receipt_details", ThisKey="goods_receipt_id", OtherKey="good_receipt_id")]
+		public EntitySet<goods_receipt_detail> goods_receipt_details
+		{
+			get
+			{
+				return this._goods_receipt_details;
+			}
+			set
+			{
+				this._goods_receipt_details.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="supplier_goods_receipt", Storage="_supplier", ThisKey="supplier_id", OtherKey="supplier_id", IsForeignKey=true)]
+		public supplier supplier
+		{
+			get
+			{
+				return this._supplier.Entity;
+			}
+			set
+			{
+				supplier previousValue = this._supplier.Entity;
+				if (((previousValue != value) 
+							|| (this._supplier.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._supplier.Entity = null;
+						previousValue.goods_receipts.Remove(this);
+					}
+					this._supplier.Entity = value;
+					if ((value != null))
+					{
+						value.goods_receipts.Add(this);
+						this._supplier_id = value.supplier_id;
+					}
+					else
+					{
+						this._supplier_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("supplier");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_account_goods_receipt", Storage="_user_account", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
+		public user_account user_account
+		{
+			get
+			{
+				return this._user_account.Entity;
+			}
+			set
+			{
+				user_account previousValue = this._user_account.Entity;
+				if (((previousValue != value) 
+							|| (this._user_account.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user_account.Entity = null;
+						previousValue.goods_receipts.Remove(this);
+					}
+					this._user_account.Entity = value;
+					if ((value != null))
+					{
+						value.goods_receipts.Add(this);
+						this._user_id = value.user_id;
+					}
+					else
+					{
+						this._user_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("user_account");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_goods_receipt_details(goods_receipt_detail entity)
+		{
+			this.SendPropertyChanging();
+			entity.goods_receipt = this;
+		}
+		
+		private void detach_goods_receipt_details(goods_receipt_detail entity)
+		{
+			this.SendPropertyChanging();
+			entity.goods_receipt = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.goods_receipt_details")]
+	public partial class goods_receipt_detail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _good_receipt_id;
+		
+		private int _product_id;
+		
+		private System.Nullable<int> _quantity;
+		
+		private System.Nullable<decimal> _import_price;
+		
+		private System.Nullable<decimal> _total_price;
+		
+		private EntityRef<goods_receipt> _goods_receipt;
+		
+		private EntityRef<product> _product;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Ongood_receipt_idChanging(int value);
+    partial void Ongood_receipt_idChanged();
+    partial void Onproduct_idChanging(int value);
+    partial void Onproduct_idChanged();
+    partial void OnquantityChanging(System.Nullable<int> value);
+    partial void OnquantityChanged();
+    partial void Onimport_priceChanging(System.Nullable<decimal> value);
+    partial void Onimport_priceChanged();
+    partial void Ontotal_priceChanging(System.Nullable<decimal> value);
+    partial void Ontotal_priceChanged();
+    #endregion
+		
+		public goods_receipt_detail()
+		{
+			this._goods_receipt = default(EntityRef<goods_receipt>);
+			this._product = default(EntityRef<product>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_good_receipt_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int good_receipt_id
+		{
+			get
+			{
+				return this._good_receipt_id;
+			}
+			set
+			{
+				if ((this._good_receipt_id != value))
+				{
+					if (this._goods_receipt.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Ongood_receipt_idChanging(value);
+					this.SendPropertyChanging();
+					this._good_receipt_id = value;
+					this.SendPropertyChanged("good_receipt_id");
+					this.Ongood_receipt_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int product_id
+		{
+			get
+			{
+				return this._product_id;
+			}
+			set
+			{
+				if ((this._product_id != value))
+				{
+					if (this._product.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onproduct_idChanging(value);
+					this.SendPropertyChanging();
+					this._product_id = value;
+					this.SendPropertyChanged("product_id");
+					this.Onproduct_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_quantity", DbType="Int")]
+		public System.Nullable<int> quantity
+		{
+			get
+			{
+				return this._quantity;
+			}
+			set
+			{
+				if ((this._quantity != value))
+				{
+					this.OnquantityChanging(value);
+					this.SendPropertyChanging();
+					this._quantity = value;
+					this.SendPropertyChanged("quantity");
+					this.OnquantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_import_price", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> import_price
+		{
+			get
+			{
+				return this._import_price;
+			}
+			set
+			{
+				if ((this._import_price != value))
+				{
+					this.Onimport_priceChanging(value);
+					this.SendPropertyChanging();
+					this._import_price = value;
+					this.SendPropertyChanged("import_price");
+					this.Onimport_priceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total_price", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> total_price
+		{
+			get
+			{
+				return this._total_price;
+			}
+			set
+			{
+				if ((this._total_price != value))
+				{
+					this.Ontotal_priceChanging(value);
+					this.SendPropertyChanging();
+					this._total_price = value;
+					this.SendPropertyChanged("total_price");
+					this.Ontotal_priceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="goods_receipt_goods_receipt_detail", Storage="_goods_receipt", ThisKey="good_receipt_id", OtherKey="goods_receipt_id", IsForeignKey=true)]
+		public goods_receipt goods_receipt
+		{
+			get
+			{
+				return this._goods_receipt.Entity;
+			}
+			set
+			{
+				goods_receipt previousValue = this._goods_receipt.Entity;
+				if (((previousValue != value) 
+							|| (this._goods_receipt.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._goods_receipt.Entity = null;
+						previousValue.goods_receipt_details.Remove(this);
+					}
+					this._goods_receipt.Entity = value;
+					if ((value != null))
+					{
+						value.goods_receipt_details.Add(this);
+						this._good_receipt_id = value.goods_receipt_id;
+					}
+					else
+					{
+						this._good_receipt_id = default(int);
+					}
+					this.SendPropertyChanged("goods_receipt");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_goods_receipt_detail", Storage="_product", ThisKey="product_id", OtherKey="product_id", IsForeignKey=true)]
+		public product product
+		{
+			get
+			{
+				return this._product.Entity;
+			}
+			set
+			{
+				product previousValue = this._product.Entity;
+				if (((previousValue != value) 
+							|| (this._product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._product.Entity = null;
+						previousValue.goods_receipt_details.Remove(this);
+					}
+					this._product.Entity = value;
+					if ((value != null))
+					{
+						value.goods_receipt_details.Add(this);
+						this._product_id = value.product_id;
+					}
+					else
+					{
+						this._product_id = default(int);
+					}
+					this.SendPropertyChanged("product");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.history_search")]
 	public partial class history_search : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1049,6 +2058,8 @@ namespace Nike_Shop_Management.DAL
 		private string _text_search;
 		
 		private EntityRef<user_account> _user_account;
+		
+		private EntityRef<user_account> _user_account1;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1065,6 +2076,7 @@ namespace Nike_Shop_Management.DAL
 		public history_search()
 		{
 			this._user_account = default(EntityRef<user_account>);
+			this._user_account1 = default(EntityRef<user_account>);
 			OnCreated();
 		}
 		
@@ -1099,7 +2111,7 @@ namespace Nike_Shop_Management.DAL
 			{
 				if ((this._user_id != value))
 				{
-					if (this._user_account.HasLoadedOrAssignedValue)
+					if ((this._user_account.HasLoadedOrAssignedValue || this._user_account1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -1166,6 +2178,40 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_account_history_search1", Storage="_user_account1", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
+		public user_account user_account1
+		{
+			get
+			{
+				return this._user_account1.Entity;
+			}
+			set
+			{
+				user_account previousValue = this._user_account1.Entity;
+				if (((previousValue != value) 
+							|| (this._user_account1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user_account1.Entity = null;
+						previousValue.history_searches1.Remove(this);
+					}
+					this._user_account1.Entity = value;
+					if ((value != null))
+					{
+						value.history_searches1.Add(this);
+						this._user_id = value.user_id;
+					}
+					else
+					{
+						this._user_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("user_account1");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1211,6 +2257,10 @@ namespace Nike_Shop_Management.DAL
 		
 		private string _product_description2;
 		
+		private EntitySet<flash_sale> _flash_sales;
+		
+		private EntitySet<goods_receipt_detail> _goods_receipt_details;
+		
 		private EntitySet<product_img> _product_imgs;
 		
 		private EntitySet<product_review> _product_reviews;
@@ -1247,6 +2297,8 @@ namespace Nike_Shop_Management.DAL
 		
 		public product()
 		{
+			this._flash_sales = new EntitySet<flash_sale>(new Action<flash_sale>(this.attach_flash_sales), new Action<flash_sale>(this.detach_flash_sales));
+			this._goods_receipt_details = new EntitySet<goods_receipt_detail>(new Action<goods_receipt_detail>(this.attach_goods_receipt_details), new Action<goods_receipt_detail>(this.detach_goods_receipt_details));
 			this._product_imgs = new EntitySet<product_img>(new Action<product_img>(this.attach_product_imgs), new Action<product_img>(this.detach_product_imgs));
 			this._product_reviews = new EntitySet<product_review>(new Action<product_review>(this.attach_product_reviews), new Action<product_review>(this.detach_product_reviews));
 			this._product_sizes = new EntitySet<product_size>(new Action<product_size>(this.attach_product_sizes), new Action<product_size>(this.detach_product_sizes));
@@ -1439,6 +2491,32 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_flash_sale", Storage="_flash_sales", ThisKey="product_id", OtherKey="product_id")]
+		public EntitySet<flash_sale> flash_sales
+		{
+			get
+			{
+				return this._flash_sales;
+			}
+			set
+			{
+				this._flash_sales.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_goods_receipt_detail", Storage="_goods_receipt_details", ThisKey="product_id", OtherKey="product_id")]
+		public EntitySet<goods_receipt_detail> goods_receipt_details
+		{
+			get
+			{
+				return this._goods_receipt_details;
+			}
+			set
+			{
+				this._goods_receipt_details.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_product_img", Storage="_product_imgs", ThisKey="product_id", OtherKey="product_id")]
 		public EntitySet<product_img> product_imgs
 		{
@@ -1543,6 +2621,30 @@ namespace Nike_Shop_Management.DAL
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_flash_sales(flash_sale entity)
+		{
+			this.SendPropertyChanging();
+			entity.product = this;
+		}
+		
+		private void detach_flash_sales(flash_sale entity)
+		{
+			this.SendPropertyChanging();
+			entity.product = null;
+		}
+		
+		private void attach_goods_receipt_details(goods_receipt_detail entity)
+		{
+			this.SendPropertyChanging();
+			entity.product = this;
+		}
+		
+		private void detach_goods_receipt_details(goods_receipt_detail entity)
+		{
+			this.SendPropertyChanging();
+			entity.product = null;
 		}
 		
 		private void attach_product_imgs(product_img entity)
@@ -2682,6 +3784,8 @@ namespace Nike_Shop_Management.DAL
 		
 		private EntitySet<bag> _bags;
 		
+		private EntitySet<bag> _bags1;
+		
 		private EntitySet<user_order_product> _user_order_products;
 		
 		private EntityRef<product> _product;
@@ -2705,6 +3809,7 @@ namespace Nike_Shop_Management.DAL
 		public product_size()
 		{
 			this._bags = new EntitySet<bag>(new Action<bag>(this.attach_bags), new Action<bag>(this.detach_bags));
+			this._bags1 = new EntitySet<bag>(new Action<bag>(this.attach_bags1), new Action<bag>(this.detach_bags1));
 			this._user_order_products = new EntitySet<user_order_product>(new Action<user_order_product>(this.attach_user_order_products), new Action<user_order_product>(this.detach_user_order_products));
 			this._product = default(EntityRef<product>);
 			this._size = default(EntityRef<size>);
@@ -2809,6 +3914,19 @@ namespace Nike_Shop_Management.DAL
 			set
 			{
 				this._bags.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_size_bag1", Storage="_bags1", ThisKey="product_size_id", OtherKey="product_size_id")]
+		public EntitySet<bag> bags1
+		{
+			get
+			{
+				return this._bags1;
+			}
+			set
+			{
+				this._bags1.Assign(value);
 			}
 		}
 		
@@ -2923,6 +4041,18 @@ namespace Nike_Shop_Management.DAL
 		{
 			this.SendPropertyChanging();
 			entity.product_size = null;
+		}
+		
+		private void attach_bags1(bag entity)
+		{
+			this.SendPropertyChanging();
+			entity.product_size1 = this;
+		}
+		
+		private void detach_bags1(bag entity)
+		{
+			this.SendPropertyChanging();
+			entity.product_size1 = null;
 		}
 		
 		private void attach_user_order_products(user_order_product entity)
@@ -3052,6 +4182,120 @@ namespace Nike_Shop_Management.DAL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.supplier")]
+	public partial class supplier : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _supplier_id;
+		
+		private string _supplier_name;
+		
+		private EntitySet<goods_receipt> _goods_receipts;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onsupplier_idChanging(int value);
+    partial void Onsupplier_idChanged();
+    partial void Onsupplier_nameChanging(string value);
+    partial void Onsupplier_nameChanged();
+    #endregion
+		
+		public supplier()
+		{
+			this._goods_receipts = new EntitySet<goods_receipt>(new Action<goods_receipt>(this.attach_goods_receipts), new Action<goods_receipt>(this.detach_goods_receipts));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_supplier_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int supplier_id
+		{
+			get
+			{
+				return this._supplier_id;
+			}
+			set
+			{
+				if ((this._supplier_id != value))
+				{
+					this.Onsupplier_idChanging(value);
+					this.SendPropertyChanging();
+					this._supplier_id = value;
+					this.SendPropertyChanged("supplier_id");
+					this.Onsupplier_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_supplier_name", DbType="NVarChar(255)")]
+		public string supplier_name
+		{
+			get
+			{
+				return this._supplier_name;
+			}
+			set
+			{
+				if ((this._supplier_name != value))
+				{
+					this.Onsupplier_nameChanging(value);
+					this.SendPropertyChanging();
+					this._supplier_name = value;
+					this.SendPropertyChanged("supplier_name");
+					this.Onsupplier_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="supplier_goods_receipt", Storage="_goods_receipts", ThisKey="supplier_id", OtherKey="supplier_id")]
+		public EntitySet<goods_receipt> goods_receipts
+		{
+			get
+			{
+				return this._goods_receipts;
+			}
+			set
+			{
+				this._goods_receipts.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_goods_receipts(goods_receipt entity)
+		{
+			this.SendPropertyChanging();
+			entity.supplier = this;
+		}
+		
+		private void detach_goods_receipts(goods_receipt entity)
+		{
+			this.SendPropertyChanging();
+			entity.supplier = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_account")]
 	public partial class user_account : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3084,9 +4328,17 @@ namespace Nike_Shop_Management.DAL
 		
 		private EntitySet<bag> _bags;
 		
+		private EntitySet<bag> _bags1;
+		
+		private EntitySet<goods_receipt> _goods_receipts;
+		
 		private EntitySet<history_search> _history_searches;
 		
+		private EntitySet<history_search> _history_searches1;
+		
 		private EntitySet<product_review> _product_reviews;
+		
+		private EntitySet<user_discount_voucher> _user_discount_vouchers;
 		
 		private EntitySet<user_favorite_product> _user_favorite_products;
 		
@@ -3123,8 +4375,12 @@ namespace Nike_Shop_Management.DAL
 		public user_account()
 		{
 			this._bags = new EntitySet<bag>(new Action<bag>(this.attach_bags), new Action<bag>(this.detach_bags));
+			this._bags1 = new EntitySet<bag>(new Action<bag>(this.attach_bags1), new Action<bag>(this.detach_bags1));
+			this._goods_receipts = new EntitySet<goods_receipt>(new Action<goods_receipt>(this.attach_goods_receipts), new Action<goods_receipt>(this.detach_goods_receipts));
 			this._history_searches = new EntitySet<history_search>(new Action<history_search>(this.attach_history_searches), new Action<history_search>(this.detach_history_searches));
+			this._history_searches1 = new EntitySet<history_search>(new Action<history_search>(this.attach_history_searches1), new Action<history_search>(this.detach_history_searches1));
 			this._product_reviews = new EntitySet<product_review>(new Action<product_review>(this.attach_product_reviews), new Action<product_review>(this.detach_product_reviews));
+			this._user_discount_vouchers = new EntitySet<user_discount_voucher>(new Action<user_discount_voucher>(this.attach_user_discount_vouchers), new Action<user_discount_voucher>(this.detach_user_discount_vouchers));
 			this._user_favorite_products = new EntitySet<user_favorite_product>(new Action<user_favorite_product>(this.attach_user_favorite_products), new Action<user_favorite_product>(this.detach_user_favorite_products));
 			OnCreated();
 		}
@@ -3382,6 +4638,32 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_account_bag1", Storage="_bags1", ThisKey="user_id", OtherKey="user_id")]
+		public EntitySet<bag> bags1
+		{
+			get
+			{
+				return this._bags1;
+			}
+			set
+			{
+				this._bags1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_account_goods_receipt", Storage="_goods_receipts", ThisKey="user_id", OtherKey="user_id")]
+		public EntitySet<goods_receipt> goods_receipts
+		{
+			get
+			{
+				return this._goods_receipts;
+			}
+			set
+			{
+				this._goods_receipts.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_account_history_search", Storage="_history_searches", ThisKey="user_id", OtherKey="user_id")]
 		public EntitySet<history_search> history_searches
 		{
@@ -3395,6 +4677,19 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_account_history_search1", Storage="_history_searches1", ThisKey="user_id", OtherKey="user_id")]
+		public EntitySet<history_search> history_searches1
+		{
+			get
+			{
+				return this._history_searches1;
+			}
+			set
+			{
+				this._history_searches1.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_account_product_review", Storage="_product_reviews", ThisKey="user_id", OtherKey="user_id")]
 		public EntitySet<product_review> product_reviews
 		{
@@ -3405,6 +4700,19 @@ namespace Nike_Shop_Management.DAL
 			set
 			{
 				this._product_reviews.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_account_user_discount_voucher", Storage="_user_discount_vouchers", ThisKey="user_id", OtherKey="user_id")]
+		public EntitySet<user_discount_voucher> user_discount_vouchers
+		{
+			get
+			{
+				return this._user_discount_vouchers;
+			}
+			set
+			{
+				this._user_discount_vouchers.Assign(value);
 			}
 		}
 		
@@ -3453,6 +4761,30 @@ namespace Nike_Shop_Management.DAL
 			entity.user_account = null;
 		}
 		
+		private void attach_bags1(bag entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_account1 = this;
+		}
+		
+		private void detach_bags1(bag entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_account1 = null;
+		}
+		
+		private void attach_goods_receipts(goods_receipt entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_account = this;
+		}
+		
+		private void detach_goods_receipts(goods_receipt entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_account = null;
+		}
+		
 		private void attach_history_searches(history_search entity)
 		{
 			this.SendPropertyChanging();
@@ -3465,6 +4797,18 @@ namespace Nike_Shop_Management.DAL
 			entity.user_account = null;
 		}
 		
+		private void attach_history_searches1(history_search entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_account1 = this;
+		}
+		
+		private void detach_history_searches1(history_search entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_account1 = null;
+		}
+		
 		private void attach_product_reviews(product_review entity)
 		{
 			this.SendPropertyChanging();
@@ -3472,6 +4816,18 @@ namespace Nike_Shop_Management.DAL
 		}
 		
 		private void detach_product_reviews(product_review entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_account = null;
+		}
+		
+		private void attach_user_discount_vouchers(user_discount_voucher entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_account = this;
+		}
+		
+		private void detach_user_discount_vouchers(user_discount_voucher entity)
 		{
 			this.SendPropertyChanging();
 			entity.user_account = null;
@@ -3487,6 +4843,198 @@ namespace Nike_Shop_Management.DAL
 		{
 			this.SendPropertyChanging();
 			entity.user_account = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_discount_voucher")]
+	public partial class user_discount_voucher : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _discount_voucher_id;
+		
+		private int _user_id;
+		
+		private System.Nullable<int> _quantity;
+		
+		private EntityRef<discount_voucher> _discount_voucher;
+		
+		private EntityRef<user_account> _user_account;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Ondiscount_voucher_idChanging(int value);
+    partial void Ondiscount_voucher_idChanged();
+    partial void Onuser_idChanging(int value);
+    partial void Onuser_idChanged();
+    partial void OnquantityChanging(System.Nullable<int> value);
+    partial void OnquantityChanged();
+    #endregion
+		
+		public user_discount_voucher()
+		{
+			this._discount_voucher = default(EntityRef<discount_voucher>);
+			this._user_account = default(EntityRef<user_account>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_discount_voucher_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int discount_voucher_id
+		{
+			get
+			{
+				return this._discount_voucher_id;
+			}
+			set
+			{
+				if ((this._discount_voucher_id != value))
+				{
+					if (this._discount_voucher.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Ondiscount_voucher_idChanging(value);
+					this.SendPropertyChanging();
+					this._discount_voucher_id = value;
+					this.SendPropertyChanged("discount_voucher_id");
+					this.Ondiscount_voucher_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					if (this._user_account.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_quantity", DbType="Int")]
+		public System.Nullable<int> quantity
+		{
+			get
+			{
+				return this._quantity;
+			}
+			set
+			{
+				if ((this._quantity != value))
+				{
+					this.OnquantityChanging(value);
+					this.SendPropertyChanging();
+					this._quantity = value;
+					this.SendPropertyChanged("quantity");
+					this.OnquantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="discount_voucher_user_discount_voucher", Storage="_discount_voucher", ThisKey="discount_voucher_id", OtherKey="discount_voucher_id", IsForeignKey=true)]
+		public discount_voucher discount_voucher
+		{
+			get
+			{
+				return this._discount_voucher.Entity;
+			}
+			set
+			{
+				discount_voucher previousValue = this._discount_voucher.Entity;
+				if (((previousValue != value) 
+							|| (this._discount_voucher.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._discount_voucher.Entity = null;
+						previousValue.user_discount_vouchers.Remove(this);
+					}
+					this._discount_voucher.Entity = value;
+					if ((value != null))
+					{
+						value.user_discount_vouchers.Add(this);
+						this._discount_voucher_id = value.discount_voucher_id;
+					}
+					else
+					{
+						this._discount_voucher_id = default(int);
+					}
+					this.SendPropertyChanged("discount_voucher");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_account_user_discount_voucher", Storage="_user_account", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
+		public user_account user_account
+		{
+			get
+			{
+				return this._user_account.Entity;
+			}
+			set
+			{
+				user_account previousValue = this._user_account.Entity;
+				if (((previousValue != value) 
+							|| (this._user_account.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user_account.Entity = null;
+						previousValue.user_discount_vouchers.Remove(this);
+					}
+					this._user_account.Entity = value;
+					if ((value != null))
+					{
+						value.user_discount_vouchers.Add(this);
+						this._user_id = value.user_id;
+					}
+					else
+					{
+						this._user_id = default(int);
+					}
+					this.SendPropertyChanged("user_account");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	

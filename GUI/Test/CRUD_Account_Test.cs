@@ -21,7 +21,7 @@ namespace Nike_Shop_Management.GUI
             InitializeComponent();
             accountManager = new UserAccountManager(new UserAccountRepository(new DbContext()));
             load_data();
-
+            
         }
         public void load_data()
         {

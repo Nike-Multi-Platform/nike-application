@@ -70,5 +70,7 @@ namespace Nike_Shop_Management
             CloudIService = new CloudIService(ServiceConfig.CloudinaryCloudName, ServiceConfig.CloudinaryApiKey, ServiceConfig.CloudinaryApiSecret);
             return CloudIService.UploadImage(path);
         }
+
+
     }
 }

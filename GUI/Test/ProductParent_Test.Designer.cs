@@ -33,11 +33,12 @@ namespace Nike_Shop_Management.GUI.Test
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.u_ProductColors = new Nike_Shop_Management.u_DataGridView();
             this.u_ProductParent = new Nike_Shop_Management.u_DataGridView();
+            this.txt_Search1 = new Nike_Shop_Management.u_Search();
             this.SuspendLayout();
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(718, 829);
+            this.btnAdd.Location = new System.Drawing.Point(613, 855);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(151, 53);
@@ -47,7 +48,7 @@ namespace Nike_Shop_Management.GUI.Test
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(893, 829);
+            this.btnCancel.Location = new System.Drawing.Point(853, 855);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(140, 53);
@@ -78,11 +79,19 @@ namespace Nike_Shop_Management.GUI.Test
             this.u_ProductParent.Size = new System.Drawing.Size(959, 397);
             this.u_ProductParent.TabIndex = 0;
             // 
+            // txt_Search1
+            // 
+            this.txt_Search1.Location = new System.Drawing.Point(34, 819);
+            this.txt_Search1.Name = "txt_Search1";
+            this.txt_Search1.Size = new System.Drawing.Size(546, 89);
+            this.txt_Search1.TabIndex = 5;
+            // 
             // ProductParent_Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1045, 893);
+            this.ClientSize = new System.Drawing.Size(1045, 929);
+            this.Controls.Add(this.txt_Search1);
             this.Controls.Add(this.u_ProductColors);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
@@ -91,6 +100,7 @@ namespace Nike_Shop_Management.GUI.Test
             this.Name = "ProductParent_Test";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProductParent";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ProductParent_Test_Load);
             this.ResumeLayout(false);
 
@@ -102,5 +112,6 @@ namespace Nike_Shop_Management.GUI.Test
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnAdd;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
         private u_DataGridView u_ProductColors;
+        private u_Search txt_Search1;
     }
 }

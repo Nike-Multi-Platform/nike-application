@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -116,10 +131,7 @@
     <Compile Include="BLL\UserAccountManager.cs" />
     <Compile Include="CloudService\CloudIService.cs" />
     <Compile Include="CloudService\ServiceConfig.cs" />
-    <Compile Include="DAL\DbContext.cs">
-      <DependentUpon>DbContext.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\DbContext.designer.cs">
+    <Compile Include="DAL\DbContext1.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DbContext.dbml</DependentUpon>
@@ -188,6 +200,13 @@
     <Compile Include="MappingLayer\MappingProfile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="u_Search.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="u_Search.Designer.cs">
+      <DependentUpon>u_Search.cs</DependentUpon>
+    </Compile>
     <Compile Include="u_DataGridView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -231,6 +250,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="u_Search.resx">
+      <DependentUpon>u_Search.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="u_DataGridView.resx">
       <DependentUpon>u_DataGridView.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,7 +262,7 @@
     <None Include="CloudService\CloudIServiceConfig.config" />
     <None Include="DAL\DbContext.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DbContext.designer.cs</LastGenOutput>
+      <LastGenOutput>DbContext1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="DAL\DbContext.dbml.layout">
@@ -268,6 +290,18 @@
     <None Include="Resources\default.png" />
     <None Include="Resources\air_jordan_1_mid_white_black_thumbnail.png" />
     <None Include="Resources\10665766_294557997397068_7196575879637707830_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

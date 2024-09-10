@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Nike_Shop_Management.BLL
 {
-    class UserAccountManager
+    class UserAccountManager : IRepository<UserAccountDTO>
     {
         private readonly UserAccountRepository _accountRepository;
 
@@ -98,6 +98,43 @@ namespace Nike_Shop_Management.BLL
         {
             return _accountRepository.Search(inputSearch);
         }
+        // ==============================================================================
+        //============================== bên dưới đây là code riêng. phần mở rộng mới
+        // code mới hoàn toàn
+        // !!!
+        public int Add(UserAccountDTO entity)
+        {
+            return _accountRepository.Save(entity);
+        }
 
+        public int Delete(int id)
+        {
+            return _accountRepository.Delete(id);
+        }
+
+        public int Update(UserAccountDTO enity)
+        {
+            return _accountRepository.Edit(enity);
+        }
+
+        public IEnumerable<UserAccountDTO> Search(string search)
+        {
+            return _accountRepository.Search(search);
+        }
+
+        public IEnumerable<UserAccountDTO> GetAll()
+        {
+            return _accountRepository.GetListAccounts();
+        }
+
+        public UserAccountDTO GetByID(int id)
+        {
+            return _accountRepository.GetUser(id);
+        }
+
+        public string Name()
+        {
+            return "User account";
+        }
     }
 }

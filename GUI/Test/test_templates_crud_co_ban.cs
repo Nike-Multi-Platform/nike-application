@@ -12,29 +12,31 @@ using System.Windows.Forms;
 
 namespace Nike_Shop_Management.GUI.Test
 {
-    public partial class test_templates_crud_co_ban : Form
+    public partial class test_templates_crud_co_ban<T> : Form where T : class
     {
-        private readonly UserAccountManager accountManager;
-        ProductParentManager ppM;
+        GenericService<T> _service;
         public test_templates_crud_co_ban()
         {
+
+        }
+        public test_templates_crud_co_ban(GenericService<T> service)
+        {
             InitializeComponent();
-            //  accountManager = new UserAccountManager(new DAL.UserAccountRepository(new DAL.DbContext()));
-            ppM = new ProductParentManager(new DAL.ProductParentRepository(new DAL.DbContext()));
+            _service = service;
             LoadData();
         }
+
         public void LoadData()
         {
-            List<ProductParentDTO> list = ppM.GetProductParents();
-            templates_CRUD_Co_Ban1.SetList(list);
-            templates_CRUD_Co_Ban1.SetTitle(ppM.GetType().Name);
-            TextBox textBox = new TextBox();
-            TextBox textBox1 = new TextBox(); 
-            TextBox textBox2 = new TextBox(); 
-            TextBox textBox3 = new TextBox();
-            TextBox textBox4 = new TextBox();
-
-            templates_CRUD_Co_Ban1.PaintTheInputText(textBox, textBox1, textBox2, textBox3, textBox4);
+            var data = _service.GetAll();
+            if(data!=null)
+            {
+                Templates_CRUD_Co_Ban templates = new Templates_CRUD_Co_Ban();
+                templates.SetTitle(_service.Name());
+                templates.SetForm(data.ToList());
+                templates.Size = new System.Drawing.Size(847, 864);
+                this.Controls.Add(templates);
+            }
         }
     }
 }

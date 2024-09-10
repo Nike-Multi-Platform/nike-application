@@ -21,6 +21,7 @@ namespace Nike_Shop_Management
         /// <para>1: chọn sự kiện xóa</para>
         /// </summary>
         public int GetIndexSelected { get; set; }
+        public IEnumerable<DataGridViewColumn> Columns { get; internal set; }
 
         //bắt sự kiện gửi ra ngoài
         public event EventHandler ClickChanged;
@@ -63,12 +64,23 @@ namespace Nike_Shop_Management
         // mục đích có thể truyền nhiều loại dữ liệu vào mà không cần định nghĩa lại đối tượng trong list
         public void LoadData<T>(IList<T> list)
         {
-          // khi data thay đổi liên tục thì sẽ xóa data cũ để update data mới
+            // khi data thay đổi liên tục thì sẽ xóa data cũ để update data mới
             if (this.dataGridView.RowCount > 0)
             {
                 this.dataGridView.DataSource = null;
             }
             this.dataGridView.DataSource = list;
+            Columns = dataGridView.Columns.Cast<DataGridViewColumn>().ToList();
+        }
+
+
+        public IList<T> GetSource<T>()
+        {
+            if (dataGridView.DataSource is List<T> list)
+            {
+                return list; // Nếu DataSource là List<T>, trả về ngay
+            }
+            return new List<T>(); // Trả về danh sách trống nếu không phải loại mong muốn
         }
 
         // trả ra indexselected là 0 để container bắt sự kiện mở form SỬA 

@@ -151,9 +151,6 @@
         hjyOAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="kryptonPalette1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>517, 17</value>
-  </metadata>
   <data name="btn_ParentProduct.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
@@ -203,6 +200,20 @@
 </value>
   </data>
   <data name="btn_RevenueStatistics.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EgAACxIB0t1+/AAAAexJREFUSEvtlz1LHFEUhjcINlFXUljYCCtEiV8QNSvWBnsrq+2ERKxEMIiIS36F
+        aYI/wMpC0vqBiF+FYJlgZ6EmgTSx8Pq8d84s7q4u6zjXyhce9s451/PMLLPObiZpnHNTwg6ThQFLsPJI
+        zoz7erVYiqVZUH7CQWDkULISt0ZrN+nPJGDkiFSu9UX8pDDjNczAfAV56wcT98M/P60829YP/1Yzbxh+
+        +8nO7VotrJhZ7+ESdmANniZmTy+MQ6OVqkLvA+hKt6EZvkNyMf1luPE7nTuGNmuVQi0Pf8BLrZZcTO9r
+        tMUtwCicwwmU5Kxj6RZ4qcL6IxRsXb+YejFquzkrqfYOSnIYAUk3ocm2VYVefWJqr+AUZq1UCrVY/heu
+        oaZUoZ/s5qoMf9MOi/AZHrzh4sgByv1i1l+gaIepRQ6JSLWY10J06Kb97hTDzJritzDhd6YcOSQiXtwI
+        /+GT9YMFh+4FuaL7gcUP+AVjkAuEZsux4aUKBx1wBKFzCB2mjUKhAXpAZxYCfe4bTJc8DOmCTjt8niAc
+        hCtjyMphc0caJ7wcQfwE2gM9hcQ+XMCAbUs3DI6vVF/M38C6oR8EOpH0r5yB3aAr1VeZFqt5sa313y++
+        8pxqqYRhffAN7j7gy360sZZ8FXqsVCOZzC0LvDRP6QNU4AAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnProductObject.Values.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EgAACxIB0t1+/AAAAexJREFUSEvtlz1LHFEUhjcINlFXUljYCCtEiV8QNSvWBnsrq+2ERKxEMIiIS36F

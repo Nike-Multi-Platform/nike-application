@@ -17,10 +17,20 @@ namespace Nike_Shop_Management.DAL
             _db = db;
 
         }
-        public void Save(UserAccountDTO user)
+        public int Save(UserAccountDTO user)
         {
-            _db.user_accounts.InsertOnSubmit(AutoMapperConfig.Mapper.Map<UserAccountDTO, user_account>(user));
-            _db.SubmitChanges();
+            try
+            {
+                _db.user_accounts.InsertOnSubmit(AutoMapperConfig.Mapper.Map<UserAccountDTO, user_account>(user));
+                _db.SubmitChanges();
+                return 1;
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+           
         }
 
         public UserAccountDTO GetAccount(string email, string password)

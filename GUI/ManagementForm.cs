@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nike_Shop_Management.GUI;
 using ComponentFactory.Krypton.Toolkit;
+using Nike_Shop_Management.BLL;
+using Nike_Shop_Management.DTO;
 
 namespace Nike_Shop_Management.GUI
 {
@@ -65,6 +67,21 @@ namespace Nike_Shop_Management.GUI
         private void btn_ParentProduct_Click(object sender, EventArgs e)
         {
             util.OpenChildForm(new GUI.Test.ProductParent_Test(), panelBody);
+        }
+
+        private void btnProductObject_Click(object sender, EventArgs e)
+        {
+            ProductObjectManager p = new ProductObjectManager(new DAL.ProductObjectRepository(new DAL.DbContext()));
+            GenericService<ProductObjectDTO> o = new GenericService<ProductObjectDTO>(p);
+            util.OpenChildForm(new GUI.Test.test_templates_crud_co_ban<ProductObjectDTO>(o),panelBody);
+        }
+
+        private void btn_customer_Click(object sender, EventArgs e)
+        {
+            UserAccountManager p = new UserAccountManager(new DAL.UserAccountRepository(new DAL.DbContext()));
+            GenericService<UserAccountDTO> o = new GenericService<UserAccountDTO>(p);
+
+            util.OpenChildForm(new GUI.Test.test_templates_crud_co_ban<UserAccountDTO>(o), panelBody);
         }
     }
 }

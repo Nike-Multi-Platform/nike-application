@@ -57,9 +57,17 @@
     <Reference Include="ComponentFactory.Krypton.Docking">
       <HintPath>..\ui_framework\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
     </Reference>
-    <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.6.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+    <Reference Include="ComponentFactory.Krypton.Navigator">
+      <HintPath>..\ui_framework\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Navigator.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Ribbon">
+      <HintPath>..\ui_framework\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Ribbon.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Toolkit">
+      <HintPath>..\ui_framework\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Workspace">
+      <HintPath>..\ui_framework\Krypton-master\Krypton-master\Bin\ComponentFactory.Krypton.Workspace.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -129,6 +137,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\GenericService.cs" />
     <Compile Include="BLL\ProductObjectManager.cs" />
     <Compile Include="BLL\ProductParentManager.cs" />
     <Compile Include="BLL\UserAccountManager.cs" />
@@ -139,6 +148,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbContext.dbml</DependentUpon>
     </Compile>
+    <Compile Include="DAL\IRepository.cs" />
     <Compile Include="DAL\ProductObjectRepository.cs" />
     <Compile Include="DAL\ProductParentRepository.cs" />
     <Compile Include="DAL\UserAccountRepository.cs" />

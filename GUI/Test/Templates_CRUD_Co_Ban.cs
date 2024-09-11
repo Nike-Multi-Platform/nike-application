@@ -19,14 +19,19 @@ namespace Nike_Shop_Management.GUI.Test
             InitializeComponent();
             _service = service;
             btnAdd.Click += BtnAdd_Click;
+            btnEdit.Click += BtnEdit_Click;
         }
 
-        private void BtnAdd_Click(object sender, EventArgs e)
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private T GetType()
         {
             var list = u_DataGridView1.GetSource<T>();
+            T newItem = Activator.CreateInstance<T>();
             if (list != null)
             {
-                T newItem = Activator.CreateInstance<T>();
                 foreach (var item in tableLayoutPanel_Show.Controls)
                 {
                     if (item.GetType() != typeof(Label))
@@ -41,16 +46,22 @@ namespace Nike_Shop_Management.GUI.Test
 
                     }
                 }
-                int flag = _service.Add(newItem);
-                if (flag == 1)
-                {
-                    MessageBox.Show("SUCCSECFULL");
-                }
-                else
-                {
-                    MessageBox.Show("FAILED");
-                }
             }
+            return newItem;
+        }
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            T newItem = GetType();
+            int flag = _service.Add(newItem);
+            if (flag == 1)
+            {
+                MessageBox.Show("SUCCSECFULL");
+            }
+            else
+            {
+                MessageBox.Show("FAILED");
+            }
+
             u_DataGridView1.LoadData(_service.GetAll().ToList());
         }
 

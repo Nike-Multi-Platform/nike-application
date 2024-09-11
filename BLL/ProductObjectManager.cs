@@ -44,7 +44,7 @@ namespace Nike_Shop_Management.BLL
 
         public IEnumerable<ProductObjectDTO> Search(string search)
         {
-            throw new NotImplementedException();
+            return objectRepository.Search(search);
         }
 
         public int Update(ProductObjectDTO enity)

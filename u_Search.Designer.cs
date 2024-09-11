@@ -45,7 +45,7 @@ namespace Nike_Shop_Management
             // btnSearch
             // 
             this.btnSearch.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
-            this.btnSearch.Location = new System.Drawing.Point(383, 46);
+            this.btnSearch.Location = new System.Drawing.Point(374, 40);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(121, 33);
             this.btnSearch.TabIndex = 1;
@@ -59,14 +59,14 @@ namespace Nike_Shop_Management
             this.kryptonLabel1.TabIndex = 6;
             this.kryptonLabel1.Values.Text = "Search";
             // 
-            // txt_Search
+            // u_Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.kryptonLabel1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.input_search);
-            this.Name = "txt_Search";
+            this.Name = "u_Search";
             this.Size = new System.Drawing.Size(546, 89);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -30,19 +30,19 @@ namespace Nike_Shop_Management.BLL
             return _repository.GetByID(id);
         }
 
-        public void Add(T entity)
+        public int Add(T entity)
         {
-            _repository.Add(entity);
+           return _repository.Add(entity);
         }
 
-        public void Update(T entity)
+        public int Update(T entity)
         {
-            _repository.Update(entity);
+            return _repository.Update(entity);
         }
 
-        public void Delete(int id)
+        public int Delete(int id)
         {
-            _repository.Delete(id);
+            return _repository.Delete(id);
         }
         
     }

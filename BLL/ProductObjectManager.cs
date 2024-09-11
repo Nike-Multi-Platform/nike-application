@@ -19,7 +19,7 @@ namespace Nike_Shop_Management.BLL
 
         public int Add(ProductObjectDTO entity)
         {
-            throw new NotImplementedException();
+            return objectRepository.Add(entity);
         }
 
         public int Delete(int id)

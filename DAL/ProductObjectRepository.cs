@@ -33,5 +33,25 @@ namespace Nike_Shop_Management.DAL
                 return 0;
             }
         }
+
+        public int Update(ProductObjectDTO enity)
+        {
+            try
+            {
+                var existEntity = _db.product_objects.Where(temp => temp.product_object_id == enity.product_object_id).FirstOrDefault();
+                if (existEntity != null)
+                {
+                    existEntity.product_object_name = enity.product_object_name;
+                    _db.SubmitChanges();
+                    return 1;
+                }
+
+                return 0;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
     }
 }

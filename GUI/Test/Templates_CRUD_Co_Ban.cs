@@ -20,8 +20,34 @@ namespace Nike_Shop_Management.GUI.Test
             _service = service;
             btnAdd.Click += BtnAdd_Click;
             btnEdit.Click += BtnEdit_Click;
+            btnDelete.Click += BtnDelete_Click;
             u_DataGridView1.ClickChanged += U_DataGridView1_ClickChanged;
         }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            T DataSelected = (T)u_DataGridView1.DataSelected;
+            if(DataSelected!=null)
+            {
+                var id = typeof(T).GetProperties().ElementAt(0).GetValue(DataSelected).ToString();
+                if(id!=null)
+                {
+                    int flag = _service.Delete((Int32.Parse(id)));
+                    if(flag==1)
+                    {
+
+                        MessageBox.Show("DELETE SUCCESSFULLY");
+                    }
+                    else
+                    {
+                        MessageBox.Show("FAILD TO DELETE");
+                    }
+                }
+            }
+            u_DataGridView1.LoadData(_service.GetAll().ToList());
+
+        }
+
         // 
         private void U_DataGridView1_ClickChanged(object sender, EventArgs e)
         {
@@ -31,7 +57,12 @@ namespace Nike_Shop_Management.GUI.Test
             Dictionary<string, string> dic = new Dictionary<string, string>();
             for (int i = 0; i < Properties.Length; i++)
             {           
+                if(Properties.ElementAt(i).GetValue(DataSelected)==null)
+                {
+                    Properties.ElementAt(i).SetValue(DataSelected, " ");
+                }
                 dic.Add(Properties.ElementAt(i).Name, Properties.ElementAt(i).GetValue(DataSelected).ToString());
+
             }
 
             if (dic != null)
@@ -90,7 +121,7 @@ namespace Nike_Shop_Management.GUI.Test
             }
             return newItem;
         }
-        public new T GetTypeForUpdate()
+        public  T GetTypeForUpdate()
         {
             var list = u_DataGridView1.GetSource<T>();
             T newItem = Activator.CreateInstance<T>();

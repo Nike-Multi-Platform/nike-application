@@ -21,6 +21,10 @@ namespace Nike_Shop_Management.BLL
             return _repository.GetAll();
         }
 
+        public IEnumerable<T> Search(string search)
+        {
+            return _repository.Search(search);
+        }
         public string Name()
         {
             return _repository.Name();

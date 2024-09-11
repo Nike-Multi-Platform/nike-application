@@ -54,6 +54,17 @@ namespace Nike_Shop_Management.DAL
             }
         }
 
+        internal IEnumerable<ProductObjectDTO> Search(string search)
+        {
+            List<ProductObjectDTO> list = _db.product_objects.Where(temp => temp.product_object_name.Contains(search)).ToList().Select(temp => AutoMapperConfig.Mapper.Map<product_object, ProductObjectDTO>(temp)).ToList();
+
+            if (list != null)
+            {
+                return list;
+            }
+            return list;
+        }
+
         public int Update(ProductObjectDTO enity)
         {
             try

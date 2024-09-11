@@ -49,7 +49,7 @@ namespace Nike_Shop_Management.BLL
 
         public int Update(ProductObjectDTO enity)
         {
-            throw new NotImplementedException();
+            return objectRepository.Update(enity);
         }
     }
 }

@@ -20,13 +20,51 @@ namespace Nike_Shop_Management.GUI.Test
             _service = service;
             btnAdd.Click += BtnAdd_Click;
             btnEdit.Click += BtnEdit_Click;
+            u_DataGridView1.ClickChanged += U_DataGridView1_ClickChanged;
+        }
+        // 
+        private void U_DataGridView1_ClickChanged(object sender, EventArgs e)
+        {
+            T DataSelected = (T)u_DataGridView1.DataSelected;
+            var Properties = typeof(T).GetProperties();
+
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            for (int i = 0; i < Properties.Length; i++)
+            {           
+                dic.Add(Properties.ElementAt(i).Name, Properties.ElementAt(i).GetValue(DataSelected).ToString());
+            }
+
+            if (dic != null)
+            {
+                foreach (var item in tableLayoutPanel_Show.Controls)
+                {
+                    if (item is TextBox textbox)
+                    {
+                        string values = dic[textbox.Name];
+                        textbox.Text = values;
+                    }
+                }
+            }
+
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            T newItem = GetTypeForUpdate();
+            int flag = _service.Update(newItem);
+            if (flag == 1)
+            {
+                MessageBox.Show("UPDATE SUCCESSFULLY");
+            }
+            else
+            {
+                MessageBox.Show("UPDATE FAIELD");
+            }
+            u_DataGridView1.LoadData(_service.GetAll().ToList());
+
         }
-        private T GetType()
+
+        private new T GetType()
         {
             var list = u_DataGridView1.GetSource<T>();
             T newItem = Activator.CreateInstance<T>();
@@ -37,13 +75,39 @@ namespace Nike_Shop_Management.GUI.Test
                     if (item.GetType() != typeof(Label))
                     {
                         TextBox textBox = (TextBox)item;
-                        var property = typeof(T).GetProperty(textBox.Name.Replace("txt_", ""));
+                        if (textBox.Enabled != false)
+                        {
+                            var property = typeof(T).GetProperty(textBox.Name);
+                            if (property != null)
+                            {
+                                object value = Convert.ChangeType(textBox.Text, property.PropertyType);
+                                property.SetValue(newItem, value);
+                            }
+                        }
+
+                    }
+                }
+            }
+            return newItem;
+        }
+        public new T GetTypeForUpdate()
+        {
+            var list = u_DataGridView1.GetSource<T>();
+            T newItem = Activator.CreateInstance<T>();
+            if (list != null)
+            {
+                foreach (var item in tableLayoutPanel_Show.Controls)
+                {
+                    if (item.GetType() != typeof(Label))
+                    {
+                        TextBox textBox = (TextBox)item;
+
+                        var property = typeof(T).GetProperty(textBox.Name);
                         if (property != null)
                         {
                             object value = Convert.ChangeType(textBox.Text, property.PropertyType);
                             property.SetValue(newItem, value);
                         }
-
                     }
                 }
             }
@@ -122,11 +186,17 @@ namespace Nike_Shop_Management.GUI.Test
                 {
                     if (column == u_DataGridView1.Columns.ElementAt(0))
                     {
+                        TextBox txReadonly = new TextBox
+                        {
+                            Name = column.HeaderText
+                        };
+                        txReadonly.Enabled = false;
+                        controls.Add(txReadonly);
                         continue;
                     }
                     TextBox tx = new TextBox
                     {
-                        Name = "txt_" + column.HeaderText
+                        Name = column.HeaderText
                     };
                     controls.Add(tx);
                 }

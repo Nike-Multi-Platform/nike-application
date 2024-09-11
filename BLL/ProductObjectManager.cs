@@ -24,7 +24,7 @@ namespace Nike_Shop_Management.BLL
 
         public int Delete(int id)
         {
-            throw new NotImplementedException();
+            return objectRepository.Delete(id);
         }
 
         public IEnumerable<ProductObjectDTO> GetAll()

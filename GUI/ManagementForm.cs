@@ -78,10 +78,10 @@ namespace Nike_Shop_Management.GUI
 
         private void btn_customer_Click(object sender, EventArgs e)
         {
-            UserAccountManager p = new UserAccountManager(new DAL.UserAccountRepository(new DAL.DbContext()));
-            GenericService<UserAccountDTO> o = new GenericService<UserAccountDTO>(p);
+            //UserAccountManager p = new UserAccountManager(new DAL.UserAccountRepository(new DAL.DbContext()));
+            //GenericService<UserAccountDTO> o = new GenericService<UserAccountDTO>(p);
 
-            util.OpenChildForm(new GUI.Test.test_templates_crud_co_ban<UserAccountDTO>(o), panelBody);
+            //util.OpenChildForm(new GUI.Test.test_templates_crud_co_ban<UserAccountDTO>(o), panelBody);
         }
     }
 }

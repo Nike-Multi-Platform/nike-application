@@ -1,7 +1,7 @@
 ﻿
 namespace Nike_Shop_Management.GUI.Test
 {
-    partial class Templates_CRUD_Co_Ban
+    partial class Templates_CRUD_Co_Ban<T>
     {
         /// <summary> 
         /// Required designer variable.

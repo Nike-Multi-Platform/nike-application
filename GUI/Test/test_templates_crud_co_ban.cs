@@ -31,7 +31,7 @@ namespace Nike_Shop_Management.GUI.Test
             var data = _service.GetAll();
             if(data!=null)
             {
-                Templates_CRUD_Co_Ban templates = new Templates_CRUD_Co_Ban();
+                Templates_CRUD_Co_Ban<T> templates = new Templates_CRUD_Co_Ban<T>(_service);
                 templates.SetTitle(_service.Name());
                 templates.SetForm(data.ToList());
                 templates.Size = new System.Drawing.Size(847, 864);

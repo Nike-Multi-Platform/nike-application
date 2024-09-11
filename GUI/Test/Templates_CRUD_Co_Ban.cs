@@ -11,14 +11,49 @@ using System.Windows.Forms;
 
 namespace Nike_Shop_Management.GUI.Test
 {
-    public partial class Templates_CRUD_Co_Ban : UserControl
+    public partial class Templates_CRUD_Co_Ban<T> : UserControl where T : class
     {
-        
-        public Templates_CRUD_Co_Ban()
+        private GenericService<T> _service;
+        public Templates_CRUD_Co_Ban(GenericService<T> service)
         {
             InitializeComponent();
-     
+            _service = service;
+            btnAdd.Click += BtnAdd_Click;
         }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            var list = u_DataGridView1.GetSource<T>();
+            if (list != null)
+            {
+                T newItem = Activator.CreateInstance<T>();
+                foreach (var item in tableLayoutPanel_Show.Controls)
+                {
+                    if (item.GetType() != typeof(Label))
+                    {
+                        TextBox textBox = (TextBox)item;
+                        var property = typeof(T).GetProperty(textBox.Name.Replace("txt_", ""));
+                        if (property != null)
+                        {
+                            object value = Convert.ChangeType(textBox.Text, property.PropertyType);
+                            property.SetValue(newItem, value);
+                        }
+
+                    }
+                }
+                int flag = _service.Add(newItem);
+                if (flag == 1)
+                {
+                    MessageBox.Show("SUCCSECFULL");
+                }
+                else
+                {
+                    MessageBox.Show("FAILED");
+                }
+            }
+            u_DataGridView1.LoadData(_service.GetAll().ToList());
+        }
+
         /// <summary>
         /// đây là hàm được sử dụng với mục đích truyền vào các control để khởi tạo ra các component tự động ở trong panel
         /// bên trong chứa các đối tượng textbox,... để cho việc thêm, xóa, sửa,...
@@ -49,8 +84,8 @@ namespace Nike_Shop_Management.GUI.Test
                 Label label = new Label
                 {
                     Margin = new Padding(10, 8, 0, 0),
-                    Text = "lbl_" + control.Name, 
-                    AutoSize = true  
+                    Text = control.Name,
+                    AutoSize = true
                 };
 
                 tableLayoutPanel_Show.Controls.Add(label, 0, row);
@@ -64,7 +99,7 @@ namespace Nike_Shop_Management.GUI.Test
         /// cũng như cho việc setup component
         /// </summary>
         /// <param name="list"></param>
-        public void SetForm<T>(IList<T> list)
+        public void SetForm(IList<T> list)
         {
             u_DataGridView1.LoadData(list);
             List<Control> controls = new List<Control>();
@@ -74,6 +109,10 @@ namespace Nike_Shop_Management.GUI.Test
                 Type columnType = column.ValueType;
                 if (columnType == typeof(string) || columnType == typeof(int))
                 {
+                    if (column == u_DataGridView1.Columns.ElementAt(0))
+                    {
+                        continue;
+                    }
                     TextBox tx = new TextBox
                     {
                         Name = "txt_" + column.HeaderText

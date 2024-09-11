@@ -19,5 +19,19 @@ namespace Nike_Shop_Management.DAL
             List<ProductObjectDTO> list = _db.product_objects.Select(temp => AutoMapperConfig.Mapper.Map<product_object, ProductObjectDTO>(temp)).ToList();
             return list;
         }
+        public int Add(ProductObjectDTO enity)
+        {
+            try
+            {
+                _db.product_objects.InsertOnSubmit(AutoMapperConfig.Mapper.Map<ProductObjectDTO, product_object>(enity));
+                _db.SubmitChanges();
+                return 1;
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+        }
     }
 }

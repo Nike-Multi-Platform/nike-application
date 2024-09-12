@@ -25,6 +25,12 @@ namespace Nike_Shop_Management.MappingLayer
             CreateMap<product_icon, ProductIconsDTO>();
             CreateMap<ProductIconsDTO, product_icon>();
 
+            CreateMap<product_size, ProductSizeDTO>();
+            CreateMap<ProductSizeDTO, product_size>();
+
+            CreateMap<ProductImgDTO, product_img>();
+            CreateMap<product_img, ProductImgDTO>();
+
 
             CreateMap<ProductCategoryDTO, category_product>();
             CreateMap<category_product, ProductCategoryDTO>();

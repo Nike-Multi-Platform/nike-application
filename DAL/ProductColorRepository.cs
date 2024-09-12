@@ -90,5 +90,21 @@ namespace Nike_Shop_Management.DAL
             }
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<ProductSizeDTO> GetProductSize(int product_id)
+        {
+            var list = _db.product_sizes.Where(t => t.product_id == product_id).ToList().Select(temp => AutoMapperConfig.Mapper.Map<product_size, ProductSizeDTO>(temp)).ToList();
+            return list;
+        }
+
+        public List<ProductImgDTO> GetImages(int product_id)
+        {
+            var list = _db.product_imgs.Where(t => t.product_id == product_id).ToList().Select(temp => AutoMapperConfig.Mapper.Map<product_img, ProductImgDTO>(temp)).ToList();
+            return list;
+        }
     }
 }

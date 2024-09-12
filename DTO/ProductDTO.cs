@@ -8,6 +8,7 @@ namespace Nike_Shop_Management.DTO
 {
     public class ProductDTO
     {
+        public int product_id { get; set; }
         public int product_parent_id { get ; set; }
         public string product_more_info { get; set; }
         public string product_img { get ; set ; }

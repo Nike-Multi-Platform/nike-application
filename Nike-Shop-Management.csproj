@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\GenericService.cs" />
+    <Compile Include="BLL\ProductColorManager.cs" />
     <Compile Include="BLL\ProductObjectManager.cs" />
     <Compile Include="BLL\ProductParentManager.cs" />
     <Compile Include="BLL\UserAccountManager.cs" />
@@ -149,6 +150,7 @@
       <DependentUpon>DbContext.dbml</DependentUpon>
     </Compile>
     <Compile Include="DAL\IRepository.cs" />
+    <Compile Include="DAL\ProductColorRepository.cs" />
     <Compile Include="DAL\ProductObjectRepository.cs" />
     <Compile Include="DAL\ProductParentRepository.cs" />
     <Compile Include="DAL\UserAccountRepository.cs" />

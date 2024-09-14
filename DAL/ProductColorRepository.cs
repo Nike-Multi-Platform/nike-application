@@ -64,6 +64,11 @@ namespace Nike_Shop_Management.DAL
             return null;
         }
 
+        internal ProductParentDTO BelongsTo()
+        {
+            throw new NotImplementedException();
+        }
+
         internal int Update(ProductDTO entity)
         {
             try

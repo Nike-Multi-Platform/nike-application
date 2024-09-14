@@ -22,6 +22,22 @@ namespace Nike_Shop_Management.GUI.Test
             InitializeComponent();
             Load_Data();
             u_ProductParent.ClickChanged += U_DataGridView1_ClickChanged;
+            u_ProductColors.ClickChanged += U_ProductColors_ClickChanged;
+        }
+
+        private void U_ProductColors_ClickChanged(object sender, EventArgs e)
+        {
+            ProductDTO productDTO = (ProductDTO)u_ProductColors.DataSelected;
+            ProductParentDTO productParent = (ProductParentDTO)u_ProductParent.DataSelected;
+            if(productDTO!=null && productParent!=null)
+            {
+                if(u_ProductColors.GetIndexSelected == 0 )
+                {
+                    Form_View_Product_Color p = new Form_View_Product_Color();
+                    p.ShowDialog();
+
+                }
+            }
         }
 
         private void Form_Sua_Thong_Tin_ProductParent_Test_FormClosedSuccessfully(object sender, EventArgs e)

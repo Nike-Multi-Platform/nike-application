@@ -50,5 +50,10 @@ namespace Nike_Shop_Management.BLL
         {
             return _productColorRepository.Update(enity);
         }
+
+       public ProductParentDTO BelongsTo()
+        {
+            return _productColorRepository.BelongsTo();
+        }
     }
 }

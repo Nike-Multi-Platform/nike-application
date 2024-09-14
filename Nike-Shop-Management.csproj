@@ -199,6 +199,12 @@
     <Compile Include="GUI\Test\Form_Them_ProductParent_Test.Designer.cs">
       <DependentUpon>Form_Them_ProductParent_Test.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Test\Form_View_Product_Color.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Test\Form_View_Product_Color.Designer.cs">
+      <DependentUpon>Form_View_Product_Color.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Test\ProductParent_Test.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Test\Form_Them_ProductParent_Test.resx">
       <DependentUpon>Form_Them_ProductParent_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Test\Form_View_Product_Color.resx">
+      <DependentUpon>Form_View_Product_Color.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Test\ProductParent_Test.resx">
       <DependentUpon>ProductParent_Test.cs</DependentUpon>

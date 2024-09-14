@@ -16,5 +16,10 @@ namespace Nike_Shop_Management.GUI.Test
         {
             InitializeComponent();
         }
+
+        public void PanitData()
+        {
+
+        }
     }
 }

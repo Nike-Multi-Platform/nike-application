@@ -55,5 +55,10 @@ namespace Nike_Shop_Management.BLL
         {
             return _productColorRepository.BelongsTo();
         }
+
+        internal object GetProductSizesByID(int product_id)
+        {
+            return _productColorRepository.GetProductSizesByID(product_id);
+        }
     }
 }

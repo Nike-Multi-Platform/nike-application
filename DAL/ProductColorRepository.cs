@@ -111,5 +111,16 @@ namespace Nike_Shop_Management.DAL
             var list = _db.product_imgs.Where(t => t.product_id == product_id).ToList().Select(temp => AutoMapperConfig.Mapper.Map<product_img, ProductImgDTO>(temp)).ToList();
             return list;
         }
+
+
+        public List<ProductSizeDTO> GetProductSizesByID(int id)
+        {
+            var list = _db.product_sizes.Where(t => t.product_id == id).ToList().Select(t => AutoMapperConfig.Mapper.Map<product_size,ProductSizeDTO>(t)).ToList();
+            if(list!=null)
+            {
+                return list;
+            }
+            return null;
+        }
     }
 }

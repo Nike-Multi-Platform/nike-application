@@ -31,14 +31,14 @@ namespace Nike_Shop_Management.GUI.Test
         {
             this.btnAdd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.txt_Search1 = new Nike_Shop_Management.u_Search();
             this.u_ProductColors = new Nike_Shop_Management.u_DataGridView();
             this.u_ProductParent = new Nike_Shop_Management.u_DataGridView();
-            this.txt_Search1 = new Nike_Shop_Management.u_Search();
             this.SuspendLayout();
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(613, 855);
+            this.btnAdd.Location = new System.Drawing.Point(569, 354);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(151, 53);
@@ -48,12 +48,20 @@ namespace Nike_Shop_Management.GUI.Test
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(853, 855);
+            this.btnCancel.Location = new System.Drawing.Point(853, 354);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(140, 53);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Values.Text = "Cancel";
+            // 
+            // txt_Search1
+            // 
+            this.txt_Search1.Location = new System.Drawing.Point(34, 343);
+            this.txt_Search1.Name = "txt_Search1";
+            this.txt_Search1.Size = new System.Drawing.Size(503, 89);
+            this.txt_Search1.TabIndex = 5;
+            this.txt_Search1.UserSearched = null;
             // 
             // u_ProductColors
             // 
@@ -61,10 +69,10 @@ namespace Nike_Shop_Management.GUI.Test
             | System.Windows.Forms.AnchorStyles.Right)));
             this.u_ProductColors.DataSelected = null;
             this.u_ProductColors.GetIndexSelected = 0;
-            this.u_ProductColors.Location = new System.Drawing.Point(34, 430);
+            this.u_ProductColors.Location = new System.Drawing.Point(34, 437);
             this.u_ProductColors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.u_ProductColors.Name = "u_ProductColors";
-            this.u_ProductColors.Size = new System.Drawing.Size(959, 374);
+            this.u_ProductColors.Size = new System.Drawing.Size(959, 193);
             this.u_ProductColors.TabIndex = 4;
             // 
             // u_ProductParent
@@ -73,24 +81,17 @@ namespace Nike_Shop_Management.GUI.Test
             | System.Windows.Forms.AnchorStyles.Right)));
             this.u_ProductParent.DataSelected = null;
             this.u_ProductParent.GetIndexSelected = 0;
-            this.u_ProductParent.Location = new System.Drawing.Point(34, 29);
+            this.u_ProductParent.Location = new System.Drawing.Point(34, 22);
             this.u_ProductParent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.u_ProductParent.Name = "u_ProductParent";
-            this.u_ProductParent.Size = new System.Drawing.Size(959, 397);
+            this.u_ProductParent.Size = new System.Drawing.Size(959, 284);
             this.u_ProductParent.TabIndex = 0;
-            // 
-            // txt_Search1
-            // 
-            this.txt_Search1.Location = new System.Drawing.Point(34, 819);
-            this.txt_Search1.Name = "txt_Search1";
-            this.txt_Search1.Size = new System.Drawing.Size(546, 89);
-            this.txt_Search1.TabIndex = 5;
             // 
             // ProductParent_Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1045, 929);
+            this.ClientSize = new System.Drawing.Size(1045, 754);
             this.Controls.Add(this.txt_Search1);
             this.Controls.Add(this.u_ProductColors);
             this.Controls.Add(this.btnCancel);

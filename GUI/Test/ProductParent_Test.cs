@@ -34,6 +34,7 @@ namespace Nike_Shop_Management.GUI.Test
                 if(u_ProductColors.GetIndexSelected == 0 )
                 {
                     Form_View_Product_Color p = new Form_View_Product_Color();
+                    p.PaintData(productDTO, productParent);
                     p.ShowDialog();
 
                 }

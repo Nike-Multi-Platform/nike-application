@@ -38,7 +38,13 @@ namespace Nike_Shop_Management.GUI.Test
                     p.FormClosedSuccessfully += P_FormClosedSuccessfully;
                     p.ShowDialog();
                 }
+                if(u_ProductColors.GetIndexSelected == 2)
+                {
+                    Form_Them_Size_ProductColor form_Them_Size_ProductColor = new Form_Them_Size_ProductColor();
+                    form_Them_Size_ProductColor.ShowDialog();
+                }
             }
+        
         }
 
         private void P_FormClosedSuccessfully(object sender, EventArgs e)
@@ -88,6 +94,11 @@ namespace Nike_Shop_Management.GUI.Test
                 {
                     List<ProductDTO> list = ppM.GetProductColors(product.product_parent_id);
                     u_ProductColors.LoadData(list);
+                }
+                if(u_ProductParent.GetIndexSelected == 2)
+                {
+                    Form_Them_ProductParent_Test form_Them_ProductParent_Test = new Form_Them_ProductParent_Test();
+                    form_Them_ProductParent_Test.ShowDialog();
                 }
             }
         }

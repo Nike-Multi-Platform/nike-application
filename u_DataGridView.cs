@@ -104,5 +104,14 @@ namespace Nike_Shop_Management
                 ClickChanged?.Invoke(this, EventArgs.Empty);
             }
         }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DataSelected != null)
+            {
+                GetIndexSelected = 2;
+                ClickChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
     }
 }

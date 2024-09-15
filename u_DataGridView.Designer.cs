@@ -34,6 +34,7 @@ namespace Nike_Shop_Management
             this.cmsData = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.cmsData.SuspendLayout();
             this.SuspendLayout();
@@ -62,24 +63,32 @@ namespace Nike_Shop_Management
             this.cmsData.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsData.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsData.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditToolStripMenuItem,
             this.DeleteToolStripMenuItem,
-            this.EditToolStripMenuItem});
+            this.addToolStripMenuItem});
             this.cmsData.Name = "cmsData";
-            this.cmsData.Size = new System.Drawing.Size(123, 52);
+            this.cmsData.Size = new System.Drawing.Size(211, 104);
             // 
             // DeleteToolStripMenuItem
             // 
             this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.DeleteToolStripMenuItem.Text = "Delete";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.xoaToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
             // 
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.EditToolStripMenuItem.Text = "View";
             this.EditToolStripMenuItem.Click += new System.EventHandler(this.suaToolStripMenuItem_Click);
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // u_DataGridView
             // 
@@ -101,5 +110,6 @@ namespace Nike_Shop_Management
         private System.Windows.Forms.ContextMenuStrip cmsData;
         private System.Windows.Forms.ToolStripMenuItem DeleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
     }
 }

@@ -26,5 +26,29 @@ namespace Nike_Shop_Management.DAL
             return null;
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productSize"></param>
+        /// <returns>1 nếu thành công, 0 nếu thất bại</returns>
+        internal int Update(ProductSizeDTO productSize)
+        {
+            try
+            {
+                var existPz = _db.product_sizes.Where(p => p.product_size_id == productSize.product_size_id).FirstOrDefault();
+                if(existPz!=null)
+                {
+                    existPz.soluong = productSize.soluong;
+                    _db.SubmitChanges();
+                return 1;
+                }
+                return 0;
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+        }
     }
 }

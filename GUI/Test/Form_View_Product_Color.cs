@@ -19,6 +19,7 @@ namespace Nike_Shop_Management.GUI.Test
         public ProductDTO _ProductDTO { get; set; }
         public string linkHolder { get; set; }
         public event EventHandler FormClosedSuccessfully;
+        public ProductSizeDTO _productSize { get; set; }
 
         public Form_View_Product_Color()
         {
@@ -26,26 +27,59 @@ namespace Nike_Shop_Management.GUI.Test
             pcM = new ProductColorManager(new DAL.ProductColorRepository(new DbContext()));
             btnAddSize.Click += BtnAddSize_Click;
             btnEdit.Click += BtnEdit_Click;
+            btnDeleteSize.Click += BtnDeleteSize_Click;
+            data_size.CellClick += Data_size_CellClick;
         }
+
+        private void Data_size_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                _productSize = (ProductSizeDTO)data_size.Rows[e.RowIndex].DataBoundItem;
+
+            }
+        }
+
+        private void BtnDeleteSize_Click(object sender, EventArgs e)
+        {
+            if (_productSize != null)
+            {
+                int flag = pcM.DeleteProductSize(_productSize.product_size_id);
+                if(flag==1)
+                {
+                    MessageBox.Show("Delete successful");
+                }
+                else
+                {
+                    MessageBox.Show("Delete failed");
+                }
+            }
+            else
+            {
+                MessageBox.Show("You have not chosen a size yet");
+            }
+            LoadDataGridView();
+        }
+
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-             if(txt_product_id.Text.Length ==0)
+            if (txt_product_id.Text.Length == 0)
             {
-                MessageBox.Show("Some error! Try later, please");return;
+                MessageBox.Show("Some error! Try later, please"); return;
             }
-           
+
             backgroundWorker1.RunWorkerAsync();
         }
 
         private void BtnAddSize_Click(object sender, EventArgs e)
         {
-        /// viết form thêm size vào đây =)) !! rồi tính gì tính    
+            /// viết form thêm size vào đây =)) !! rồi tính gì tính    
         }
 
         public void PaintData(ProductDTO productDTO, ProductParentDTO productParentDTO)
         {
-            if(productDTO!=null && productParentDTO!=null)
+            if (productDTO != null && productParentDTO != null)
             {
                 _ProductDTO = productDTO;
                 txt_product_id.Text = productDTO.product_id.ToString();
@@ -59,10 +93,15 @@ namespace Nike_Shop_Management.GUI.Test
                 txt_product_style_code.Text = productDTO.product_style_code;
                 data_size.DataSource = pcM.GetProductSizesByID(productDTO.product_id);
             }
-
-
         }
-
+        public void LoadDataGridView()
+        {
+            if (this.data_size.RowCount > 0)
+            {
+                this.data_size.DataSource = null;
+            }
+            data_size.DataSource = pcM.GetProductSizesByID(_ProductDTO.product_id);
+        }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             linkHolder = u_PictureBox1.UploadImage(u_PictureBox1.PathThumbail);

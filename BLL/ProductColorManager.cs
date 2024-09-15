@@ -60,5 +60,9 @@ namespace Nike_Shop_Management.BLL
         {
             return _productColorRepository.GetProductSizesByID(product_id);
         }
+        public int DeleteProductSize(int product_size_id)
+        {
+            return _productColorRepository.DeleteProductSize(product_size_id);
+        }
     }
 }

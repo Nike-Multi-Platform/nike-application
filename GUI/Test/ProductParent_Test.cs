@@ -35,10 +35,15 @@ namespace Nike_Shop_Management.GUI.Test
                 {
                     Form_View_Product_Color p = new Form_View_Product_Color();
                     p.PaintData(productDTO, productParent);
+                    p.FormClosedSuccessfully += P_FormClosedSuccessfully;
                     p.ShowDialog();
-
                 }
             }
+        }
+
+        private void P_FormClosedSuccessfully(object sender, EventArgs e)
+        {
+            Load_Data();
         }
 
         private void Form_Sua_Thong_Tin_ProductParent_Test_FormClosedSuccessfully(object sender, EventArgs e)

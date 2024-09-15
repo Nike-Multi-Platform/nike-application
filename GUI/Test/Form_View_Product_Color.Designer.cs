@@ -49,8 +49,8 @@ namespace Nike_Shop_Management.GUI.Test
             this.btnDeleteSize = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonLabel6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txt_product_id = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.u_PictureBox1 = new Nike_Shop_Management.u_PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.u_PictureBox1 = new Nike_Shop_Management.u_PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.data_size)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,8 +59,10 @@ namespace Nike_Shop_Management.GUI.Test
             this.data_size.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_size.Location = new System.Drawing.Point(12, 530);
             this.data_size.Name = "data_size";
+            this.data_size.ReadOnly = true;
             this.data_size.RowHeadersWidth = 51;
             this.data_size.RowTemplate.Height = 24;
+            this.data_size.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.data_size.Size = new System.Drawing.Size(1058, 196);
             this.data_size.TabIndex = 1;
             // 
@@ -179,7 +181,7 @@ namespace Nike_Shop_Management.GUI.Test
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(525, 446);
+            this.btnEdit.Location = new System.Drawing.Point(539, 446);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(129, 55);
             this.btnEdit.TabIndex = 19;
@@ -217,6 +219,11 @@ namespace Nike_Shop_Management.GUI.Test
             this.txt_product_id.Size = new System.Drawing.Size(308, 27);
             this.txt_product_id.TabIndex = 23;
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // u_PictureBox1
             // 
             this.u_PictureBox1.Location = new System.Drawing.Point(12, 70);
@@ -225,11 +232,6 @@ namespace Nike_Shop_Management.GUI.Test
             this.u_PictureBox1.PathThumbail = null;
             this.u_PictureBox1.Size = new System.Drawing.Size(357, 333);
             this.u_PictureBox1.TabIndex = 7;
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // Form_View_Product_Color
             // 

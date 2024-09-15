@@ -25,6 +25,9 @@ namespace Nike_Shop_Management.BLL
             return _productSizeRepository.GetProductSizesByID(id);
         }
         
-        
+        public int Update (ProductSizeDTO productSizeDTO)
+        {
+            return _productSizeRepository.Update(productSizeDTO);
+        }
     }
 }

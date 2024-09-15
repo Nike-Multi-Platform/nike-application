@@ -23,13 +23,21 @@ namespace Nike_Shop_Management.CloudService
         // Hàm để upload hình ảnh
         public string UploadImage(string filePath)
         {
-            var uploadParams = new ImageUploadParams()
+            try
             {
-                File = new FileDescription(filePath),Folder = "Nike-application"
-            };
+                var uploadParams = new ImageUploadParams()
+                {
+                    File = new FileDescription(filePath),
+                    Folder = "Nike-application"
+                };
+                var uploadResult = _cloudinary.Upload(uploadParams);
+                return uploadResult.SecureUrl.AbsoluteUri; // Trả về URL bảo mật của hình ảnh
+            }
+            catch (Exception)
+            {
+                return "dedault";
+            }
            
-            var uploadResult = _cloudinary.Upload(uploadParams);
-            return uploadResult.SecureUrl.AbsoluteUri; // Trả về URL bảo mật của hình ảnh
         }
 
         // Hàm để upload video

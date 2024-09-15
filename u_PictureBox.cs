@@ -56,8 +56,8 @@ namespace Nike_Shop_Management
             CloudIService = new CloudIService(ServiceConfig.CloudinaryCloudName, ServiceConfig.CloudinaryApiKey, ServiceConfig.CloudinaryApiSecret);
             Picture.ImageLocation = CloudIService.GetImageUrlByPublicId(path);
 
-         Picture.ErrorImage =(Image)Properties.Resources._default;
-         
+            Picture.ErrorImage = (Image)Properties.Resources._default;
+
         }
         /// <summary>
         ///  hàm up ảnh lên cloudinary

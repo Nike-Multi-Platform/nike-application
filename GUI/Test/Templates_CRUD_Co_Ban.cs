@@ -69,6 +69,7 @@ namespace Nike_Shop_Management.GUI.Test
             var Properties = typeof(T).GetProperties();
 
             Dictionary<string, string> dic = new Dictionary<string, string>();
+
             for (int i = 0; i < Properties.Length; i++)
             {           
                 if(Properties.ElementAt(i).GetValue(DataSelected)==null)

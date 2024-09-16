@@ -29,31 +29,10 @@ namespace Nike_Shop_Management.GUI.Test
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAdd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.txt_Search1 = new Nike_Shop_Management.u_Search();
             this.u_ProductColors = new Nike_Shop_Management.u_DataGridView();
             this.u_ProductParent = new Nike_Shop_Management.u_DataGridView();
             this.SuspendLayout();
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(569, 354);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(151, 53);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Values.Text = "Add";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(853, 354);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(140, 53);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Values.Text = "Cancel";
             // 
             // txt_Search1
             // 
@@ -94,8 +73,6 @@ namespace Nike_Shop_Management.GUI.Test
             this.ClientSize = new System.Drawing.Size(1045, 754);
             this.Controls.Add(this.txt_Search1);
             this.Controls.Add(this.u_ProductColors);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.u_ProductParent);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ProductParent_Test";
@@ -110,8 +87,6 @@ namespace Nike_Shop_Management.GUI.Test
         #endregion
 
         private u_DataGridView u_ProductParent;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnAdd;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
         private u_DataGridView u_ProductColors;
         private u_Search txt_Search1;
     }

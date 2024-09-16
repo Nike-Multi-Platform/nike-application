@@ -41,11 +41,20 @@ namespace Nike_Shop_Management.DAL
             return null;
         }
 
-        public void Save(ProductParentDTO productParent)
+        public int Save(ProductParentDTO productParent)
         {
-            //throw new NotImplementedException();
-
-            _db.product_parents.InsertOnSubmit(AutoMapperConfig.Mapper.Map<ProductParentDTO, product_parent>(productParent));
+            try
+            {
+                var item = AutoMapperConfig.Mapper.Map<ProductParentDTO, product_parent>(productParent);
+                _db.product_parents.InsertOnSubmit(item);
+                _db.SubmitChanges();
+                return 1;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+       
         }
         public int Edit(ProductParentDTO productParent)
         {

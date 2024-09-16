@@ -49,6 +49,10 @@ namespace Nike_Shop_Management.GUI.Test
             ((System.ComponentModel.ISupportInitialize)(this.comboBox_product_object)).BeginInit();
             this.SuspendLayout();
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
             // comboBox_product_category
             // 
             this.comboBox_product_category.DropDownWidth = 175;
@@ -185,7 +189,7 @@ namespace Nike_Shop_Management.GUI.Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1163, 553);
+            this.ClientSize = new System.Drawing.Size(835, 553);
             this.Controls.Add(this.comboBox_product_category);
             this.Controls.Add(this.kryptonLabel7);
             this.Controls.Add(this.u_PictureBox);

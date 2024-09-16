@@ -46,7 +46,7 @@ namespace Nike_Shop_Management.BLL
             }
             catch (Exception)
             {
-                return 0;
+                throw;
             }
         }
 

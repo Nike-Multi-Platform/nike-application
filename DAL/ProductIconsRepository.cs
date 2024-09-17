@@ -10,7 +10,7 @@ namespace Nike_Shop_Management.DAL
     class ProductIconsRepository
     {
         DbContext _db;
-        public ProductIconsRepository( DbContext db)
+        public ProductIconsRepository(DbContext db)
         {
             _db = db;
         }
@@ -34,7 +34,7 @@ namespace Nike_Shop_Management.DAL
         internal IEnumerable<ProductIconsDTO> GetAll()
         {
             var list = _db.product_icons.Select(t => AutoMapperConfig.Mapper.Map<product_icon, ProductIconsDTO>(t)).ToList();
-            if(list!=null)
+            if (list != null)
             {
                 return list;
             }

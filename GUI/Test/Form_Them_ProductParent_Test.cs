@@ -29,11 +29,22 @@ namespace Nike_Shop_Management.GUI.Test
         public void initComboBox()
         {
             ProductObjectManager poM = new ProductObjectManager(new DAL.ProductObjectRepository(new DAL.DbContext()));
-            List<ProductObjectDTO> ListProductObjectDTOs = (List<ProductObjectDTO>)poM.GetAll();
-            comboBox_product_category.DataSource = ListProductObjectDTOs;
-            comboBox_product_category.DisplayMember = "product_object_name";
-            comboBox_product_category.ValueMember = "product_object_id";
+            List<ProductObjectDTO> ListProductObjectDTO = (List<ProductObjectDTO>)poM.GetAll();
+            comboBox_product_object.DataSource = ListProductObjectDTO;
+            comboBox_product_object.DisplayMember = "product_object_name";
+            comboBox_product_object.ValueMember = "product_object_id";
 
+            ProductIconsManager piM = new ProductIconsManager(new DAL.ProductIconsRepository(new DAL.DbContext()));
+            List<ProductIconsDTO> ListProductIconsDTO = (List<ProductIconsDTO>)piM.GetAll();
+            combox_productIcons.DataSource = ListProductIconsDTO;
+            combox_productIcons.ValueMember = "product_icons_id";
+            combox_productIcons.DisplayMember = "icon_name";
+
+            ProductCategoryManager pcM = new ProductCategoryManager(new DAL.ProductCategoryRepository(new DAL.DbContext()));
+            List<ProductCategoryDTO> ListProductCategoryDTO = (List<ProductCategoryDTO>)pcM.GetAll();
+            comboBox_product_category.DataSource = ListProductCategoryDTO;
+            comboBox_product_category.ValueMember = "category_product_id";
+            comboBox_product_category.DisplayMember = "category_product_name";
 
         }
         private void BtnSave_Click(object sender, EventArgs e)
@@ -51,25 +62,29 @@ namespace Nike_Shop_Management.GUI.Test
         {
             PathHolder = u_PictureBox.PathThumbail;
         }
-
+        
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-           if(PathHolder!=null)
+            this.u_PictureBox.UploadImage(PathHolder);
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (PathHolder != null)
             {
                 string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(PathHolder);
                 PathHolder = "Nike-application/" + fileNameWithoutExtension;
-                ProductParentDTO pro = new ProductParentDTO
+                int flag = ppM.InsertProductParents(new ProductParentDTO()
                 {
                     is_new_release = true,
-                    product_category_id = 2,
-                    product_object_id = 1,
-                    product_icons_id = 1,
                     product_parent_name = txt_product_name.Text,
                     product_price = txt_product_price.Text.ToString(),
-                    thumbnail = PathHolder
-                };
-                int flag =  ppM.InsertProductParents(pro);
-                if(flag==1)
+                    thumbnail = PathHolder,
+                    product_category_id = int.Parse(comboBox_product_category.SelectedValue.ToString()),
+                    product_object_id = int.Parse(comboBox_product_object.SelectedValue.ToString()),
+                    product_icons_id = int.Parse(combox_productIcons.SelectedValue.ToString())
+                });
+                if (flag == 1)
                 {
                     MessageBox.Show("Thêm thành công");
                 }

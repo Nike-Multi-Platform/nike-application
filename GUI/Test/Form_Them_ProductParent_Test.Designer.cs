@@ -33,7 +33,6 @@ namespace Nike_Shop_Management.GUI.Test
             this.comboBox_product_category = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel7 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.cb_new_release = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
-            this.txt_product_icons_id = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txt_product_price = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txt_product_name = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.comboBox_product_object = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
@@ -45,13 +44,16 @@ namespace Nike_Shop_Management.GUI.Test
             this.btnSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.u_PictureBox = new Nike_Shop_Management.u_PictureBox();
+            this.combox_productIcons = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.comboBox_product_category)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBox_product_object)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.combox_productIcons)).BeginInit();
             this.SuspendLayout();
             // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // comboBox_product_category
             // 
@@ -79,14 +81,6 @@ namespace Nike_Shop_Management.GUI.Test
             this.cb_new_release.Size = new System.Drawing.Size(19, 13);
             this.cb_new_release.TabIndex = 31;
             this.cb_new_release.Values.Text = "";
-            // 
-            // txt_product_icons_id
-            // 
-            this.txt_product_icons_id.Location = new System.Drawing.Point(612, 246);
-            this.txt_product_icons_id.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txt_product_icons_id.Name = "txt_product_icons_id";
-            this.txt_product_icons_id.Size = new System.Drawing.Size(175, 27);
-            this.txt_product_icons_id.TabIndex = 30;
             // 
             // txt_product_price
             // 
@@ -185,16 +179,24 @@ namespace Nike_Shop_Management.GUI.Test
             this.u_PictureBox.Size = new System.Drawing.Size(392, 316);
             this.u_PictureBox.TabIndex = 32;
             // 
+            // combox_productIcons
+            // 
+            this.combox_productIcons.DropDownWidth = 170;
+            this.combox_productIcons.Location = new System.Drawing.Point(616, 249);
+            this.combox_productIcons.Name = "combox_productIcons";
+            this.combox_productIcons.Size = new System.Drawing.Size(170, 25);
+            this.combox_productIcons.TabIndex = 35;
+            // 
             // Form_Them_ProductParent_Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(835, 553);
+            this.Controls.Add(this.combox_productIcons);
             this.Controls.Add(this.comboBox_product_category);
             this.Controls.Add(this.kryptonLabel7);
             this.Controls.Add(this.u_PictureBox);
             this.Controls.Add(this.cb_new_release);
-            this.Controls.Add(this.txt_product_icons_id);
             this.Controls.Add(this.txt_product_price);
             this.Controls.Add(this.txt_product_name);
             this.Controls.Add(this.comboBox_product_object);
@@ -209,6 +211,7 @@ namespace Nike_Shop_Management.GUI.Test
             this.Text = "Form_Them_ProductParent_Test";
             ((System.ComponentModel.ISupportInitialize)(this.comboBox_product_category)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBox_product_object)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.combox_productIcons)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,7 +224,6 @@ namespace Nike_Shop_Management.GUI.Test
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel7;
         private u_PictureBox u_PictureBox;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox cb_new_release;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txt_product_icons_id;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txt_product_price;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txt_product_name;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox comboBox_product_object;
@@ -232,5 +234,6 @@ namespace Nike_Shop_Management.GUI.Test
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel2;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSave;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox combox_productIcons;
     }
 }

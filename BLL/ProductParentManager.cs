@@ -87,9 +87,6 @@ namespace Nike_Shop_Management.BLL
             return _productParentRepository.GetProductIcons();
         }
 
-        public List<ProductCategoryDTO> GetProductCategories()
-        {
-            return _productParentRepository.GetProductCategories();
-        }
+       
     }
 }

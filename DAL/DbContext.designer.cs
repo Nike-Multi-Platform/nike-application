@@ -81,9 +81,6 @@ namespace Nike_Shop_Management.DAL
     partial void Insertsub_category(sub_category instance);
     partial void Updatesub_category(sub_category instance);
     partial void Deletesub_category(sub_category instance);
-    partial void Insertsub_categories_object(sub_categories_object instance);
-    partial void Updatesub_categories_object(sub_categories_object instance);
-    partial void Deletesub_categories_object(sub_categories_object instance);
     partial void Insertsupplier(supplier instance);
     partial void Updatesupplier(supplier instance);
     partial void Deletesupplier(supplier instance);
@@ -264,14 +261,6 @@ namespace Nike_Shop_Management.DAL
 			get
 			{
 				return this.GetTable<sub_category>();
-			}
-		}
-		
-		public System.Data.Linq.Table<sub_categories_object> sub_categories_objects
-		{
-			get
-			{
-				return this.GetTable<sub_categories_object>();
 			}
 		}
 		
@@ -1884,6 +1873,8 @@ namespace Nike_Shop_Management.DAL
 		
 		private System.Nullable<int> _supplier_id;
 		
+		private System.Nullable<decimal> _sale_prices;
+		
 		private System.Nullable<int> _sold;
 		
 		private System.Nullable<int> _total_stock;
@@ -1928,6 +1919,8 @@ namespace Nike_Shop_Management.DAL
     partial void Onproduct_description2Changed();
     partial void Onsupplier_idChanging(System.Nullable<int> value);
     partial void Onsupplier_idChanged();
+    partial void Onsale_pricesChanging(System.Nullable<decimal> value);
+    partial void Onsale_pricesChanged();
     partial void OnsoldChanging(System.Nullable<int> value);
     partial void OnsoldChanged();
     partial void Ontotal_stockChanging(System.Nullable<int> value);
@@ -2151,6 +2144,26 @@ namespace Nike_Shop_Management.DAL
 					this._supplier_id = value;
 					this.SendPropertyChanged("supplier_id");
 					this.Onsupplier_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sale_prices", DbType="Money")]
+		public System.Nullable<decimal> sale_prices
+		{
+			get
+			{
+				return this._sale_prices;
+			}
+			set
+			{
+				if ((this._sale_prices != value))
+				{
+					this.Onsale_pricesChanging(value);
+					this.SendPropertyChanging();
+					this._sale_prices = value;
+					this.SendPropertyChanged("sale_prices");
+					this.Onsale_pricesChanged();
 				}
 			}
 		}
@@ -2733,7 +2746,7 @@ namespace Nike_Shop_Management.DAL
 		
 		private string _product_object_name;
 		
-		private EntitySet<sub_categories_object> _sub_categories_objects;
+		private EntitySet<sub_category> _sub_categories;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2747,7 +2760,7 @@ namespace Nike_Shop_Management.DAL
 		
 		public product_object()
 		{
-			this._sub_categories_objects = new EntitySet<sub_categories_object>(new Action<sub_categories_object>(this.attach_sub_categories_objects), new Action<sub_categories_object>(this.detach_sub_categories_objects));
+			this._sub_categories = new EntitySet<sub_category>(new Action<sub_category>(this.attach_sub_categories), new Action<sub_category>(this.detach_sub_categories));
 			OnCreated();
 		}
 		
@@ -2791,16 +2804,16 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_object_sub_categories_object", Storage="_sub_categories_objects", ThisKey="product_object_id", OtherKey="product_object_id")]
-		public EntitySet<sub_categories_object> sub_categories_objects
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_object_sub_category", Storage="_sub_categories", ThisKey="product_object_id", OtherKey="product_object_id")]
+		public EntitySet<sub_category> sub_categories
 		{
 			get
 			{
-				return this._sub_categories_objects;
+				return this._sub_categories;
 			}
 			set
 			{
-				this._sub_categories_objects.Assign(value);
+				this._sub_categories.Assign(value);
 			}
 		}
 		
@@ -2824,13 +2837,13 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
-		private void attach_sub_categories_objects(sub_categories_object entity)
+		private void attach_sub_categories(sub_category entity)
 		{
 			this.SendPropertyChanging();
 			entity.product_object = this;
 		}
 		
-		private void detach_sub_categories_objects(sub_categories_object entity)
+		private void detach_sub_categories(sub_category entity)
 		{
 			this.SendPropertyChanging();
 			entity.product_object = null;
@@ -2847,8 +2860,6 @@ namespace Nike_Shop_Management.DAL
 		
 		private string _product_parent_name;
 		
-		private System.Nullable<int> _sub_categories_objects_id;
-		
 		private System.Nullable<int> _product_icons_id;
 		
 		private string _thumbnail;
@@ -2857,11 +2868,13 @@ namespace Nike_Shop_Management.DAL
 		
 		private System.Nullable<bool> _is_new_release;
 		
+		private System.Nullable<int> _sub_categories_id;
+		
 		private EntitySet<product> _products;
 		
 		private EntityRef<product_icon> _product_icon;
 		
-		private EntityRef<sub_categories_object> _sub_categories_object;
+		private EntityRef<sub_category> _sub_category;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2871,8 +2884,6 @@ namespace Nike_Shop_Management.DAL
     partial void Onproduct_parent_idChanged();
     partial void Onproduct_parent_nameChanging(string value);
     partial void Onproduct_parent_nameChanged();
-    partial void Onsub_categories_objects_idChanging(System.Nullable<int> value);
-    partial void Onsub_categories_objects_idChanged();
     partial void Onproduct_icons_idChanging(System.Nullable<int> value);
     partial void Onproduct_icons_idChanged();
     partial void OnthumbnailChanging(string value);
@@ -2881,13 +2892,15 @@ namespace Nike_Shop_Management.DAL
     partial void Onproduct_priceChanged();
     partial void Onis_new_releaseChanging(System.Nullable<bool> value);
     partial void Onis_new_releaseChanged();
+    partial void Onsub_categories_idChanging(System.Nullable<int> value);
+    partial void Onsub_categories_idChanged();
     #endregion
 		
 		public product_parent()
 		{
 			this._products = new EntitySet<product>(new Action<product>(this.attach_products), new Action<product>(this.detach_products));
 			this._product_icon = default(EntityRef<product_icon>);
-			this._sub_categories_object = default(EntityRef<sub_categories_object>);
+			this._sub_category = default(EntityRef<sub_category>);
 			OnCreated();
 		}
 		
@@ -2927,30 +2940,6 @@ namespace Nike_Shop_Management.DAL
 					this._product_parent_name = value;
 					this.SendPropertyChanged("product_parent_name");
 					this.Onproduct_parent_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sub_categories_objects_id", DbType="Int")]
-		public System.Nullable<int> sub_categories_objects_id
-		{
-			get
-			{
-				return this._sub_categories_objects_id;
-			}
-			set
-			{
-				if ((this._sub_categories_objects_id != value))
-				{
-					if (this._sub_categories_object.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onsub_categories_objects_idChanging(value);
-					this.SendPropertyChanging();
-					this._sub_categories_objects_id = value;
-					this.SendPropertyChanged("sub_categories_objects_id");
-					this.Onsub_categories_objects_idChanged();
 				}
 			}
 		}
@@ -3039,6 +3028,30 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sub_categories_id", DbType="Int")]
+		public System.Nullable<int> sub_categories_id
+		{
+			get
+			{
+				return this._sub_categories_id;
+			}
+			set
+			{
+				if ((this._sub_categories_id != value))
+				{
+					if (this._sub_category.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onsub_categories_idChanging(value);
+					this.SendPropertyChanging();
+					this._sub_categories_id = value;
+					this.SendPropertyChanged("sub_categories_id");
+					this.Onsub_categories_idChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_parent_product", Storage="_products", ThisKey="product_parent_id", OtherKey="product_parent_id")]
 		public EntitySet<product> products
 		{
@@ -3086,36 +3099,36 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="sub_categories_object_product_parent", Storage="_sub_categories_object", ThisKey="sub_categories_objects_id", OtherKey="sub_categories_objects_id", IsForeignKey=true)]
-		public sub_categories_object sub_categories_object
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="sub_category_product_parent", Storage="_sub_category", ThisKey="sub_categories_id", OtherKey="sub_categories_id", IsForeignKey=true)]
+		public sub_category sub_category
 		{
 			get
 			{
-				return this._sub_categories_object.Entity;
+				return this._sub_category.Entity;
 			}
 			set
 			{
-				sub_categories_object previousValue = this._sub_categories_object.Entity;
+				sub_category previousValue = this._sub_category.Entity;
 				if (((previousValue != value) 
-							|| (this._sub_categories_object.HasLoadedOrAssignedValue == false)))
+							|| (this._sub_category.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._sub_categories_object.Entity = null;
+						this._sub_category.Entity = null;
 						previousValue.product_parents.Remove(this);
 					}
-					this._sub_categories_object.Entity = value;
+					this._sub_category.Entity = value;
 					if ((value != null))
 					{
 						value.product_parents.Add(this);
-						this._sub_categories_objects_id = value.sub_categories_objects_id;
+						this._sub_categories_id = value.sub_categories_id;
 					}
 					else
 					{
-						this._sub_categories_objects_id = default(Nullable<int>);
+						this._sub_categories_id = default(Nullable<int>);
 					}
-					this.SendPropertyChanged("sub_categories_object");
+					this.SendPropertyChanged("sub_category");
 				}
 			}
 		}
@@ -3839,9 +3852,13 @@ namespace Nike_Shop_Management.DAL
 		
 		private System.Nullable<int> _categories_id;
 		
-		private EntitySet<sub_categories_object> _sub_categories_objects;
+		private System.Nullable<int> _product_object_id;
+		
+		private EntitySet<product_parent> _product_parents;
 		
 		private EntityRef<category> _category;
+		
+		private EntityRef<product_object> _product_object;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3853,12 +3870,15 @@ namespace Nike_Shop_Management.DAL
     partial void Onsub_categories_nameChanged();
     partial void Oncategories_idChanging(System.Nullable<int> value);
     partial void Oncategories_idChanged();
+    partial void Onproduct_object_idChanging(System.Nullable<int> value);
+    partial void Onproduct_object_idChanged();
     #endregion
 		
 		public sub_category()
 		{
-			this._sub_categories_objects = new EntitySet<sub_categories_object>(new Action<sub_categories_object>(this.attach_sub_categories_objects), new Action<sub_categories_object>(this.detach_sub_categories_objects));
+			this._product_parents = new EntitySet<product_parent>(new Action<product_parent>(this.attach_product_parents), new Action<product_parent>(this.detach_product_parents));
 			this._category = default(EntityRef<category>);
+			this._product_object = default(EntityRef<product_object>);
 			OnCreated();
 		}
 		
@@ -3926,16 +3946,40 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="sub_category_sub_categories_object", Storage="_sub_categories_objects", ThisKey="sub_categories_id", OtherKey="sub_categories_id")]
-		public EntitySet<sub_categories_object> sub_categories_objects
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_object_id", DbType="Int")]
+		public System.Nullable<int> product_object_id
 		{
 			get
 			{
-				return this._sub_categories_objects;
+				return this._product_object_id;
 			}
 			set
 			{
-				this._sub_categories_objects.Assign(value);
+				if ((this._product_object_id != value))
+				{
+					if (this._product_object.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onproduct_object_idChanging(value);
+					this.SendPropertyChanging();
+					this._product_object_id = value;
+					this.SendPropertyChanged("product_object_id");
+					this.Onproduct_object_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="sub_category_product_parent", Storage="_product_parents", ThisKey="sub_categories_id", OtherKey="sub_categories_id")]
+		public EntitySet<product_parent> product_parents
+		{
+			get
+			{
+				return this._product_parents;
+			}
+			set
+			{
+				this._product_parents.Assign(value);
 			}
 		}
 		
@@ -3973,159 +4017,7 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_sub_categories_objects(sub_categories_object entity)
-		{
-			this.SendPropertyChanging();
-			entity.sub_category = this;
-		}
-		
-		private void detach_sub_categories_objects(sub_categories_object entity)
-		{
-			this.SendPropertyChanging();
-			entity.sub_category = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.sub_categories_objects")]
-	public partial class sub_categories_object : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _sub_categories_objects_id;
-		
-		private System.Nullable<int> _sub_categories_id;
-		
-		private System.Nullable<int> _product_object_id;
-		
-		private EntitySet<product_parent> _product_parents;
-		
-		private EntityRef<product_object> _product_object;
-		
-		private EntityRef<sub_category> _sub_category;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onsub_categories_objects_idChanging(int value);
-    partial void Onsub_categories_objects_idChanged();
-    partial void Onsub_categories_idChanging(System.Nullable<int> value);
-    partial void Onsub_categories_idChanged();
-    partial void Onproduct_object_idChanging(System.Nullable<int> value);
-    partial void Onproduct_object_idChanged();
-    #endregion
-		
-		public sub_categories_object()
-		{
-			this._product_parents = new EntitySet<product_parent>(new Action<product_parent>(this.attach_product_parents), new Action<product_parent>(this.detach_product_parents));
-			this._product_object = default(EntityRef<product_object>);
-			this._sub_category = default(EntityRef<sub_category>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sub_categories_objects_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int sub_categories_objects_id
-		{
-			get
-			{
-				return this._sub_categories_objects_id;
-			}
-			set
-			{
-				if ((this._sub_categories_objects_id != value))
-				{
-					this.Onsub_categories_objects_idChanging(value);
-					this.SendPropertyChanging();
-					this._sub_categories_objects_id = value;
-					this.SendPropertyChanged("sub_categories_objects_id");
-					this.Onsub_categories_objects_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sub_categories_id", DbType="Int")]
-		public System.Nullable<int> sub_categories_id
-		{
-			get
-			{
-				return this._sub_categories_id;
-			}
-			set
-			{
-				if ((this._sub_categories_id != value))
-				{
-					if (this._sub_category.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onsub_categories_idChanging(value);
-					this.SendPropertyChanging();
-					this._sub_categories_id = value;
-					this.SendPropertyChanged("sub_categories_id");
-					this.Onsub_categories_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_object_id", DbType="Int")]
-		public System.Nullable<int> product_object_id
-		{
-			get
-			{
-				return this._product_object_id;
-			}
-			set
-			{
-				if ((this._product_object_id != value))
-				{
-					if (this._product_object.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onproduct_object_idChanging(value);
-					this.SendPropertyChanging();
-					this._product_object_id = value;
-					this.SendPropertyChanged("product_object_id");
-					this.Onproduct_object_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="sub_categories_object_product_parent", Storage="_product_parents", ThisKey="sub_categories_objects_id", OtherKey="sub_categories_objects_id")]
-		public EntitySet<product_parent> product_parents
-		{
-			get
-			{
-				return this._product_parents;
-			}
-			set
-			{
-				this._product_parents.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_object_sub_categories_object", Storage="_product_object", ThisKey="product_object_id", OtherKey="product_object_id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_object_sub_category", Storage="_product_object", ThisKey="product_object_id", OtherKey="product_object_id", IsForeignKey=true)]
 		public product_object product_object
 		{
 			get
@@ -4142,12 +4034,12 @@ namespace Nike_Shop_Management.DAL
 					if ((previousValue != null))
 					{
 						this._product_object.Entity = null;
-						previousValue.sub_categories_objects.Remove(this);
+						previousValue.sub_categories.Remove(this);
 					}
 					this._product_object.Entity = value;
 					if ((value != null))
 					{
-						value.sub_categories_objects.Add(this);
+						value.sub_categories.Add(this);
 						this._product_object_id = value.product_object_id;
 					}
 					else
@@ -4155,40 +4047,6 @@ namespace Nike_Shop_Management.DAL
 						this._product_object_id = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("product_object");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="sub_category_sub_categories_object", Storage="_sub_category", ThisKey="sub_categories_id", OtherKey="sub_categories_id", IsForeignKey=true)]
-		public sub_category sub_category
-		{
-			get
-			{
-				return this._sub_category.Entity;
-			}
-			set
-			{
-				sub_category previousValue = this._sub_category.Entity;
-				if (((previousValue != value) 
-							|| (this._sub_category.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._sub_category.Entity = null;
-						previousValue.sub_categories_objects.Remove(this);
-					}
-					this._sub_category.Entity = value;
-					if ((value != null))
-					{
-						value.sub_categories_objects.Add(this);
-						this._sub_categories_id = value.sub_categories_id;
-					}
-					else
-					{
-						this._sub_categories_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("sub_category");
 				}
 			}
 		}
@@ -4216,13 +4074,13 @@ namespace Nike_Shop_Management.DAL
 		private void attach_product_parents(product_parent entity)
 		{
 			this.SendPropertyChanging();
-			entity.sub_categories_object = this;
+			entity.sub_category = this;
 		}
 		
 		private void detach_product_parents(product_parent entity)
 		{
 			this.SendPropertyChanging();
-			entity.sub_categories_object = null;
+			entity.sub_category = null;
 		}
 	}
 	

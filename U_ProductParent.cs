@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Nike_Shop_Management.GUI.Test
+namespace Nike_Shop_Management.DAL
 {
-    public partial class Form_Them_Size_ProductColor : Form
+    public partial class U_ProductParent : UserControl
     {
-        public Form_Them_Size_ProductColor()
+        public U_ProductParent()
         {
             InitializeComponent();
         }

@@ -64,8 +64,8 @@ namespace Nike_Shop_Management.DAL
                 if (existingProductParent != null)
                 {
                     existingProductParent.product_parent_name = productParent.product_parent_name;
-                    existingProductParent.product_object_id = productParent.product_object_id;
-                    existingProductParent.product_category_id = productParent.product_category_id;
+                 //   existingProductParent.product_object_id = productParent.product_object_id;
+                //    existingProductParent.product_category_id = productParent.product_category_id;
                     existingProductParent.thumbnail = productParent.thumbnail;
                     if (decimal.TryParse(productParent.product_price, out decimal price))
                     {
@@ -145,14 +145,6 @@ namespace Nike_Shop_Management.DAL
             }
             return null;
         }
-        public List<ProductCategoryDTO> GetProductCategories()
-        {
-            List<ProductCategoryDTO> l = _db.category_products.Select(temp => AutoMapperConfig.Mapper.Map<category_product, ProductCategoryDTO>(temp)).ToList();
-            if (l != null)
-            {
-                return l;
-            }
-            return null;
-        }
+   
     }
 }

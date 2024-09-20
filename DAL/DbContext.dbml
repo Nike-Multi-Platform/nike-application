@@ -88,6 +88,7 @@
       <Column Name="product_description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="product_description2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="supplier_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sale_prices" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="sold" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="total_stock" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="product_flash_sale" Member="flash_sales" ThisKey="product_id" OtherKey="product_id" Type="flash_sale" />
@@ -120,21 +121,21 @@
     <Type Name="product_object">
       <Column Name="product_object_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="product_object_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Association Name="product_object_sub_categories_object" Member="sub_categories_objects" ThisKey="product_object_id" OtherKey="product_object_id" Type="sub_categories_object" />
+      <Association Name="product_object_sub_category" Member="sub_categories" ThisKey="product_object_id" OtherKey="product_object_id" Type="sub_category" />
     </Type>
   </Table>
   <Table Name="dbo.product_parent" Member="product_parents">
     <Type Name="product_parent">
       <Column Name="product_parent_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="product_parent_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="sub_categories_objects_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="product_icons_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="thumbnail" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="product_price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="is_new_release" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="sub_categories_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="product_parent_product" Member="products" ThisKey="product_parent_id" OtherKey="product_parent_id" Type="product" />
       <Association Name="product_icon_product_parent" Member="product_icon" ThisKey="product_icons_id" OtherKey="product_icons_id" Type="product_icon" IsForeignKey="true" />
-      <Association Name="sub_categories_object_product_parent" Member="sub_categories_object" ThisKey="sub_categories_objects_id" OtherKey="sub_categories_objects_id" Type="sub_categories_object" IsForeignKey="true" />
+      <Association Name="sub_category_product_parent" Member="sub_category" ThisKey="sub_categories_id" OtherKey="sub_categories_id" Type="sub_category" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.product_review" Member="product_reviews">
@@ -174,18 +175,10 @@
       <Column Name="sub_categories_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="sub_categories_name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="categories_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="sub_category_sub_categories_object" Member="sub_categories_objects" ThisKey="sub_categories_id" OtherKey="sub_categories_id" Type="sub_categories_object" />
-      <Association Name="category_sub_category" Member="category" ThisKey="categories_id" OtherKey="categories_id" Type="category" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.sub_categories_objects" Member="sub_categories_objects">
-    <Type Name="sub_categories_object">
-      <Column Name="sub_categories_objects_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="sub_categories_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="product_object_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="sub_categories_object_product_parent" Member="product_parents" ThisKey="sub_categories_objects_id" OtherKey="sub_categories_objects_id" Type="product_parent" />
-      <Association Name="product_object_sub_categories_object" Member="product_object" ThisKey="product_object_id" OtherKey="product_object_id" Type="product_object" IsForeignKey="true" />
-      <Association Name="sub_category_sub_categories_object" Member="sub_category" ThisKey="sub_categories_id" OtherKey="sub_categories_id" Type="sub_category" IsForeignKey="true" />
+      <Association Name="sub_category_product_parent" Member="product_parents" ThisKey="sub_categories_id" OtherKey="sub_categories_id" Type="product_parent" />
+      <Association Name="category_sub_category" Member="category" ThisKey="categories_id" OtherKey="categories_id" Type="category" IsForeignKey="true" />
+      <Association Name="product_object_sub_category" Member="product_object" ThisKey="product_object_id" OtherKey="product_object_id" Type="product_object" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.supplier" Member="suppliers">

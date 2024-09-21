@@ -19,6 +19,12 @@ namespace Nike_Shop_Management.GUI
             InitializeComponent();
             InitData();
             comboProductObjectFilter.SelectedIndexChanged += ComboProductObjectFilter_SelectedIndexChanged;
+            comboProductObjectFilter.SelectedIndexChanged += ComboProductObjectFilter_SelectedIndexChanged1;
+        }
+
+        private void ComboProductObjectFilter_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+          // y chang object filter mai lam` =))
         }
 
         private void ComboProductObjectFilter_SelectedIndexChanged(object sender, EventArgs e)

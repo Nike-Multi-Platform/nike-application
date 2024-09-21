@@ -75,15 +75,13 @@ namespace Nike_Shop_Management.DAL
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.ErrorImage = global::Nike_Shop_Management.Properties.Resources._default;
             this.pictureBox1.Image = global::Nike_Shop_Management.Properties.Resources._default;
             this.pictureBox1.InitialImage = global::Nike_Shop_Management.Properties.Resources._default;
             this.pictureBox1.Location = new System.Drawing.Point(25, 49);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(172, 127);
+            this.pictureBox1.Size = new System.Drawing.Size(168, 127);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -92,13 +90,14 @@ namespace Nike_Shop_Management.DAL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lbl_price);
             this.Controls.Add(this.lbl);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbl_product_name);
             this.Name = "U_ProductParent";
-            this.Size = new System.Drawing.Size(226, 238);
+            this.Size = new System.Drawing.Size(224, 236);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

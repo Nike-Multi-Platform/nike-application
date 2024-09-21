@@ -23,7 +23,9 @@
     <Type Name="category">
       <Column Name="categories_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="categories_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="product_object_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="category_sub_category" Member="sub_categories" ThisKey="categories_id" OtherKey="categories_id" Type="sub_category" />
+      <Association Name="product_object_category" Member="product_object" ThisKey="product_object_id" OtherKey="product_object_id" Type="product_object" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.discount_voucher" Member="discount_vouchers">
@@ -121,7 +123,7 @@
     <Type Name="product_object">
       <Column Name="product_object_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="product_object_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Association Name="product_object_sub_category" Member="sub_categories" ThisKey="product_object_id" OtherKey="product_object_id" Type="sub_category" />
+      <Association Name="product_object_category" Member="categories" ThisKey="product_object_id" OtherKey="product_object_id" Type="category" />
     </Type>
   </Table>
   <Table Name="dbo.product_parent" Member="product_parents">
@@ -175,10 +177,8 @@
       <Column Name="sub_categories_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="sub_categories_name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="categories_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="product_object_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="sub_category_product_parent" Member="product_parents" ThisKey="sub_categories_id" OtherKey="sub_categories_id" Type="product_parent" />
       <Association Name="category_sub_category" Member="category" ThisKey="categories_id" OtherKey="categories_id" Type="category" IsForeignKey="true" />
-      <Association Name="product_object_sub_category" Member="product_object" ThisKey="product_object_id" OtherKey="product_object_id" Type="product_object" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.supplier" Member="suppliers">

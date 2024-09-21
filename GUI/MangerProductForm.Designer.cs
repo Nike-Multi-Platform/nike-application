@@ -143,9 +143,9 @@ namespace Nike_Shop_Management.GUI
             this.kryptonPanel1.Controls.Add(this.kryptonLabel8);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel7);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.kryptonPanel1.Location = new System.Drawing.Point(947, 0);
+            this.kryptonPanel1.Location = new System.Drawing.Point(953, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(385, 814);
+            this.kryptonPanel1.Size = new System.Drawing.Size(379, 814);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // btnAdd
@@ -391,49 +391,55 @@ namespace Nike_Shop_Management.GUI
             // u_ProductParent6
             // 
             this.u_ProductParent6.AutoSize = true;
-            this.u_ProductParent6.Location = new System.Drawing.Point(473, 225);
+            this.u_ProductParent6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.u_ProductParent6.Location = new System.Drawing.Point(477, 227);
             this.u_ProductParent6.Name = "u_ProductParent6";
-            this.u_ProductParent6.Size = new System.Drawing.Size(229, 216);
+            this.u_ProductParent6.Size = new System.Drawing.Size(231, 218);
             this.u_ProductParent6.TabIndex = 5;
             // 
             // u_ProductParent5
             // 
             this.u_ProductParent5.AutoSize = true;
-            this.u_ProductParent5.Location = new System.Drawing.Point(3, 225);
+            this.u_ProductParent5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.u_ProductParent5.Location = new System.Drawing.Point(3, 227);
             this.u_ProductParent5.Name = "u_ProductParent5";
-            this.u_ProductParent5.Size = new System.Drawing.Size(229, 216);
+            this.u_ProductParent5.Size = new System.Drawing.Size(231, 218);
             this.u_ProductParent5.TabIndex = 4;
             // 
             // u_ProductParent4
             // 
             this.u_ProductParent4.AutoSize = true;
-            this.u_ProductParent4.Location = new System.Drawing.Point(238, 225);
+            this.u_ProductParent4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.u_ProductParent4.Location = new System.Drawing.Point(240, 227);
             this.u_ProductParent4.Name = "u_ProductParent4";
-            this.u_ProductParent4.Size = new System.Drawing.Size(229, 216);
+            this.u_ProductParent4.Size = new System.Drawing.Size(231, 218);
             this.u_ProductParent4.TabIndex = 3;
             // 
             // u_ProductParent3
             // 
             this.u_ProductParent3.AutoSize = true;
+            this.u_ProductParent3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.u_ProductParent3.Location = new System.Drawing.Point(3, 3);
             this.u_ProductParent3.Name = "u_ProductParent3";
-            this.u_ProductParent3.Size = new System.Drawing.Size(229, 216);
+            this.u_ProductParent3.Size = new System.Drawing.Size(231, 218);
             this.u_ProductParent3.TabIndex = 2;
             // 
             // u_ProductParent2
             // 
             this.u_ProductParent2.AutoSize = true;
-            this.u_ProductParent2.Location = new System.Drawing.Point(473, 3);
+            this.u_ProductParent2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.u_ProductParent2.Location = new System.Drawing.Point(477, 3);
             this.u_ProductParent2.Name = "u_ProductParent2";
-            this.u_ProductParent2.Size = new System.Drawing.Size(229, 216);
+            this.u_ProductParent2.Size = new System.Drawing.Size(231, 218);
             this.u_ProductParent2.TabIndex = 1;
             // 
             // u_ProductParent1
             // 
             this.u_ProductParent1.AutoSize = true;
-            this.u_ProductParent1.Location = new System.Drawing.Point(238, 3);
+            this.u_ProductParent1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.u_ProductParent1.Location = new System.Drawing.Point(240, 3);
             this.u_ProductParent1.Name = "u_ProductParent1";
-            this.u_ProductParent1.Size = new System.Drawing.Size(229, 216);
+            this.u_ProductParent1.Size = new System.Drawing.Size(231, 218);
             this.u_ProductParent1.TabIndex = 0;
             // 
             // kryptonGroupBox1
@@ -455,21 +461,20 @@ namespace Nike_Shop_Management.GUI
             this.kryptonGroupBox1.Panel.Controls.Add(this.TxSearchFilter);
             this.kryptonGroupBox1.Panel.Controls.Add(this.comboProductObjectFilter);
             this.kryptonGroupBox1.Panel.Controls.Add(this.ComboSubCategoriesFilter);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(947, 170);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(953, 170);
             this.kryptonGroupBox1.TabIndex = 7;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(767, 91);
+            this.btnSearch.Location = new System.Drawing.Point(811, 91);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(105, 34);
             this.btnSearch.TabIndex = 15;
             this.btnSearch.Values.Text = "Search";
-            this.btnSearch.Click += new System.EventHandler(this.kryptonButton3_Click);
             // 
             // kryptonLabel6
             // 
-            this.kryptonLabel6.Location = new System.Drawing.Point(575, 14);
+            this.kryptonLabel6.Location = new System.Drawing.Point(619, 14);
             this.kryptonLabel6.Name = "kryptonLabel6";
             this.kryptonLabel6.Size = new System.Drawing.Size(112, 24);
             this.kryptonLabel6.TabIndex = 14;
@@ -477,7 +482,7 @@ namespace Nike_Shop_Management.GUI
             // 
             // kryptonLabel5
             // 
-            this.kryptonLabel5.Location = new System.Drawing.Point(352, 14);
+            this.kryptonLabel5.Location = new System.Drawing.Point(396, 14);
             this.kryptonLabel5.Name = "kryptonLabel5";
             this.kryptonLabel5.Size = new System.Drawing.Size(139, 24);
             this.kryptonLabel5.TabIndex = 13;
@@ -485,7 +490,7 @@ namespace Nike_Shop_Management.GUI
             // 
             // kryptonLabel4
             // 
-            this.kryptonLabel4.Location = new System.Drawing.Point(118, 14);
+            this.kryptonLabel4.Location = new System.Drawing.Point(162, 14);
             this.kryptonLabel4.Name = "kryptonLabel4";
             this.kryptonLabel4.Size = new System.Drawing.Size(111, 24);
             this.kryptonLabel4.TabIndex = 12;
@@ -494,14 +499,15 @@ namespace Nike_Shop_Management.GUI
             // comboProductCategoriesFileter
             // 
             this.comboProductCategoriesFileter.DropDownWidth = 184;
-            this.comboProductCategoriesFileter.Location = new System.Drawing.Point(352, 44);
+            this.comboProductCategoriesFileter.Enabled = false;
+            this.comboProductCategoriesFileter.Location = new System.Drawing.Point(396, 44);
             this.comboProductCategoriesFileter.Name = "comboProductCategoriesFileter";
             this.comboProductCategoriesFileter.Size = new System.Drawing.Size(184, 25);
             this.comboProductCategoriesFileter.TabIndex = 9;
             // 
             // kryptonLabel1
             // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(55, 101);
+            this.kryptonLabel1.Location = new System.Drawing.Point(99, 101);
             this.kryptonLabel1.Name = "kryptonLabel1";
             this.kryptonLabel1.Size = new System.Drawing.Size(57, 24);
             this.kryptonLabel1.TabIndex = 10;
@@ -509,7 +515,7 @@ namespace Nike_Shop_Management.GUI
             // 
             // TxSearchFilter
             // 
-            this.TxSearchFilter.Location = new System.Drawing.Point(118, 98);
+            this.TxSearchFilter.Location = new System.Drawing.Point(162, 98);
             this.TxSearchFilter.Name = "TxSearchFilter";
             this.TxSearchFilter.Size = new System.Drawing.Size(620, 27);
             this.TxSearchFilter.TabIndex = 11;
@@ -517,7 +523,7 @@ namespace Nike_Shop_Management.GUI
             // comboProductObjectFilter
             // 
             this.comboProductObjectFilter.DropDownWidth = 203;
-            this.comboProductObjectFilter.Location = new System.Drawing.Point(118, 44);
+            this.comboProductObjectFilter.Location = new System.Drawing.Point(162, 44);
             this.comboProductObjectFilter.Name = "comboProductObjectFilter";
             this.comboProductObjectFilter.Size = new System.Drawing.Size(203, 25);
             this.comboProductObjectFilter.TabIndex = 8;
@@ -525,7 +531,8 @@ namespace Nike_Shop_Management.GUI
             // ComboSubCategoriesFilter
             // 
             this.ComboSubCategoriesFilter.DropDownWidth = 163;
-            this.ComboSubCategoriesFilter.Location = new System.Drawing.Point(575, 44);
+            this.ComboSubCategoriesFilter.Enabled = false;
+            this.ComboSubCategoriesFilter.Location = new System.Drawing.Point(619, 44);
             this.ComboSubCategoriesFilter.Name = "ComboSubCategoriesFilter";
             this.ComboSubCategoriesFilter.Size = new System.Drawing.Size(163, 25);
             this.ComboSubCategoriesFilter.TabIndex = 7;
@@ -549,7 +556,7 @@ namespace Nike_Shop_Management.GUI
             // comboPriceFilter
             // 
             this.comboPriceFilter.DropDownWidth = 151;
-            this.comboPriceFilter.Location = new System.Drawing.Point(3, 56);
+            this.comboPriceFilter.Location = new System.Drawing.Point(20, 56);
             this.comboPriceFilter.Name = "comboPriceFilter";
             this.comboPriceFilter.Size = new System.Drawing.Size(151, 25);
             this.comboPriceFilter.TabIndex = 2;
@@ -558,7 +565,7 @@ namespace Nike_Shop_Management.GUI
             // ComboDateFilter
             // 
             this.ComboDateFilter.DropDownWidth = 151;
-            this.ComboDateFilter.Location = new System.Drawing.Point(5, 126);
+            this.ComboDateFilter.Location = new System.Drawing.Point(20, 126);
             this.ComboDateFilter.Name = "ComboDateFilter";
             this.ComboDateFilter.Size = new System.Drawing.Size(151, 25);
             this.ComboDateFilter.TabIndex = 3;
@@ -576,7 +583,7 @@ namespace Nike_Shop_Management.GUI
             this.kryptonGroupBox2.Panel.Controls.Add(this.comboPriceFilter);
             this.kryptonGroupBox2.Panel.Controls.Add(this.kryptonLabel3);
             this.kryptonGroupBox2.Panel.Controls.Add(this.kryptonLabel2);
-            this.kryptonGroupBox2.Size = new System.Drawing.Size(163, 644);
+            this.kryptonGroupBox2.Size = new System.Drawing.Size(199, 644);
             this.kryptonGroupBox2.TabIndex = 12;
             // 
             // kryptonPanel2
@@ -586,16 +593,16 @@ namespace Nike_Shop_Management.GUI
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 170);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(947, 644);
+            this.kryptonPanel2.Size = new System.Drawing.Size(953, 644);
             this.kryptonPanel2.TabIndex = 8;
             // 
             // kryptonPanel3
             // 
             this.kryptonPanel3.Controls.Add(this.flowLayoutPanel1);
             this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel3.Location = new System.Drawing.Point(163, 0);
+            this.kryptonPanel3.Location = new System.Drawing.Point(199, 0);
             this.kryptonPanel3.Name = "kryptonPanel3";
-            this.kryptonPanel3.Size = new System.Drawing.Size(784, 644);
+            this.kryptonPanel3.Size = new System.Drawing.Size(754, 644);
             this.kryptonPanel3.TabIndex = 13;
             // 
             // flowLayoutPanel1
@@ -609,7 +616,7 @@ namespace Nike_Shop_Management.GUI
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(784, 644);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(754, 644);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // MangerProductForm

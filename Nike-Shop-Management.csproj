@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\GenericService.cs" />
+    <Compile Include="BLL\ProductCategoriesManager.cs" />
     <Compile Include="BLL\ProductColorManager.cs" />
     <Compile Include="BLL\ProductIconsManager.cs" />
     <Compile Include="BLL\ProductObjectManager.cs" />
@@ -152,6 +153,7 @@
       <DependentUpon>DbContext.dbml</DependentUpon>
     </Compile>
     <Compile Include="DAL\IRepository.cs" />
+    <Compile Include="DAL\ProductCategoriesRepository.cs" />
     <Compile Include="DAL\ProductColorRepository.cs" />
     <Compile Include="DAL\ProductIconsRepository.cs" />
     <Compile Include="DAL\ProductObjectRepository.cs" />
@@ -164,7 +166,7 @@
     <Compile Include="U_ProductParent.Designer.cs">
       <DependentUpon>U_ProductParent.cs</DependentUpon>
     </Compile>
-    <Compile Include="DTO\ProductCategoryDTO.cs" />
+    <Compile Include="DTO\ProductCategoriesDTO.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
     <Compile Include="DTO\ProductIconsDTO.cs" />
     <Compile Include="DTO\ProductImgDTO.cs" />

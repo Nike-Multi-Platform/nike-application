@@ -19,7 +19,7 @@ namespace Nike_Shop_Management.GUI
         public CRUD_Account_Test()
         {
             InitializeComponent();
-            accountManager = new UserAccountManager(new UserAccountRepository(new DbContext()));
+            accountManager = new UserAccountManager(new UserAccountRepository(new DbContextDataContext()));
             load_data();
             
         }

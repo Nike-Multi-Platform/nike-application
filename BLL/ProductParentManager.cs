@@ -91,6 +91,9 @@ namespace Nike_Shop_Management.BLL
             return _productParentRepository.GetProductIcons();
         }
 
-       
+        public List<ProductSizeDTO> GetProductSizeDTOs(int id)
+        {
+            return _productParentRepository.GetProductSizeDTOs(id);
+        }
     }
 }

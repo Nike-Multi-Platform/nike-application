@@ -10,9 +10,9 @@ namespace Nike_Shop_Management.DAL
 {
     class ProductColorRepository
     {
-        private readonly DbContext _db;
+        private readonly DbContextDataContext _db;
 
-        public ProductColorRepository(DbContext db)
+        public ProductColorRepository(DbContextDataContext db)
         {
             _db = db;
         }

@@ -10,8 +10,6 @@ namespace Nike_Shop_Management.DTO
     {
         public int product_parent_id { get; set; }
         public string product_parent_name { get; set; }
-        public int product_object_id { get; set; }
-        public int product_category_id { get; set; }
         public string thumbnail { get; set; }
         public string product_price { get; set; }
         public Boolean is_new_release { get; set; }

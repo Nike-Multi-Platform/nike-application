@@ -14,8 +14,9 @@ namespace Nike_Shop_Management.GUI
 {
     public partial class MangerProductForm : Form
     {
-        ProductParentManager ppM = new ProductParentManager(new DAL.ProductParentRepository(new DAL.DbContext()));
+        ProductParentManager ppM = new ProductParentManager(new DAL.ProductParentRepository(new DAL.DbContextDataContext()));
         List<ProductParentDTO> listProductParent;
+        public string linkHolder { get; set; }
 
         public ProductParentDTO productParentClicked { get; set; }
         public MangerProductForm()
@@ -30,7 +31,13 @@ namespace Nike_Shop_Management.GUI
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
+            if (txProductName.Text.Length == 0 || txProductPrice.Text.Length == 0)
+            {
+                MessageBox.Show("Don't leave it blank");
+                return;
+            }
 
+            backgroundWorker1.RunWorkerAsync();
         }
 
         private void ComboSubCategoriesFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -72,7 +79,7 @@ namespace Nike_Shop_Management.GUI
                 panel_product_parent.Controls.Clear();
             }
             ProductCategoriesDTO selectedValue = (ProductCategoriesDTO)comboProductCategoriesFileter.SelectedItem;
-            SubCategoryManager sbM = new SubCategoryManager(new DAL.SubcategoryRepository(new DAL.DbContext()));
+            SubCategoryManager sbM = new SubCategoryManager(new DAL.SubcategoryRepository(new DAL.DbContextDataContext()));
             List<SubCategoryDTO> list = (List<SubCategoryDTO>)sbM.GetAllByID(selectedValue.categories_id);
             ComboSubCategoriesFilter.DataSource = list;
             ComboSubCategoriesFilter.DisplayMember = "sub_categories_name";
@@ -88,7 +95,7 @@ namespace Nike_Shop_Management.GUI
                 panel_product_parent.Controls.Clear();
             }
             var selectedValue = comboProductObjectFilter.SelectedValue?.ToString();
-            ProductCategoriesManager pcM = new ProductCategoriesManager(new DAL.ProductCategoriesRepository(new DAL.DbContext()));
+            ProductCategoriesManager pcM = new ProductCategoriesManager(new DAL.ProductCategoriesRepository(new DAL.DbContextDataContext()));
             List<ProductCategoriesDTO> list = new List<ProductCategoriesDTO>();
 
             if (selectedValue != "0")
@@ -112,7 +119,7 @@ namespace Nike_Shop_Management.GUI
 
         public void InitData()
         {
-            ProductObjectManager poM = new ProductObjectManager(new DAL.ProductObjectRepository(new DAL.DbContext()));
+            ProductObjectManager poM = new ProductObjectManager(new DAL.ProductObjectRepository(new DAL.DbContextDataContext()));
             List<ProductObjectDTO> list = (List<ProductObjectDTO>)poM.GetAll();
             list.Add(new ProductObjectDTO { product_object_name = "ALL", product_object_id = 0 });
             comboProductObjectFilter.DataSource = list;
@@ -122,11 +129,44 @@ namespace Nike_Shop_Management.GUI
 
         public void PaintDataDetails(ProductParentDTO productParent)
         {
+            List<ProductDTO> productDTOs = ppM.GetProductColors(productParent.product_parent_id);          
             u_PictureBox.LoadImgFromUrl(productParent.thumbnail);
-            txProductID.Text = productParent.product_parent_id.ToString();
             txProductPrice.Text = productParent.product_price.ToString();
             txProductName.Text = productParent.product_parent_name.ToString();
+            lbl_count_types.Text = productDTOs.Count.ToString();
 
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            linkHolder = u_PictureBox.UploadImage(u_PictureBox.PathThumbail);
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+           if(linkHolder!=null)
+            {
+                string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(linkHolder);
+                linkHolder = "Nike-application/" + fileNameWithoutExtension;
+                int flag = ppM.EditProductParents(new ProductParentDTO()
+                {
+                    thumbnail = linkHolder,
+                    product_price = txProductPrice.Text,
+                    product_parent_id = productParentClicked.product_parent_id,
+                    is_new_release = true,
+                    product_icons_id = 1,
+                    product_parent_name = txProductName.Text,
+                    sub_categories_id = productParentClicked.sub_categories_id
+                });
+                if (flag == 1)
+                {
+                    MessageBox.Show("Edit successful");            
+                }
+                else
+                {
+                    MessageBox.Show("Edit failed");
+                }
+            }
         }
     }
 }

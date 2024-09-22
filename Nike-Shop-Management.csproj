@@ -137,6 +137,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MappingLayer\AutoMapperConfig.cs" />
     <Compile Include="BLL\GenericService.cs" />
     <Compile Include="BLL\ProductCategoriesManager.cs" />
     <Compile Include="BLL\ProductColorManager.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="BLL\ProductObjectManager.cs" />
     <Compile Include="BLL\ProductParentManager.cs" />
     <Compile Include="BLL\ProductSizeManager.cs" />
+    <Compile Include="BLL\SubCategoryManager.cs" />
     <Compile Include="BLL\UserAccountManager.cs" />
     <Compile Include="CloudService\CloudIService.cs" />
     <Compile Include="CloudService\ServiceConfig.cs" />
@@ -159,7 +161,10 @@
     <Compile Include="DAL\ProductObjectRepository.cs" />
     <Compile Include="DAL\ProductParentRepository.cs" />
     <Compile Include="DAL\ProductSizeRepository.cs" />
+    <Compile Include="DAL\SubcategoryRepository.cs" />
     <Compile Include="DAL\UserAccountRepository.cs" />
+    <Compile Include="DTO\SubCategoryDTO.cs" />
+    <Compile Include="MappingLayer\MappingProfile.cs" />
     <Compile Include="U_ProductParent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -223,8 +228,6 @@
     <Compile Include="GUI\Util.Designer.cs">
       <DependentUpon>Util.cs</DependentUpon>
     </Compile>
-    <Compile Include="MappingLayer\AutoMapperConfig.cs" />
-    <Compile Include="MappingLayer\MappingProfile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />

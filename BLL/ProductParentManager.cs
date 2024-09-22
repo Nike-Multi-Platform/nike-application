@@ -23,6 +23,10 @@ namespace Nike_Shop_Management.BLL
         {
             return _productParentRepository.getProductParents();
         }
+        public List<ProductParentDTO> GetProductParentsBySubCategory(int id)
+        {
+            return _productParentRepository.getProductParentsBySubCategory(id);
+        }
         /// <summary>
         /// lấy ra các sản phẩm là đối tượng con của product Parent, /t tham số truyền vào là 1 khóa chỉnh của productParent kiểu int
         /// </summary>

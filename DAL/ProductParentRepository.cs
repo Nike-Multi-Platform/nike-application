@@ -41,6 +41,17 @@ namespace Nike_Shop_Management.DAL
             return null;
         }
 
+        internal List<ProductParentDTO> getProductParentsBySubCategory(int id)
+        {
+            var list = _db.product_parents.Where(emp => emp.sub_categories_id == id).Select(t => AutoMapperConfig.Mapper.Map<product_parent, ProductParentDTO>(t)).ToList();
+
+            if (list != null)
+            {
+                return list;
+            }
+            return null;
+        }
+
         public int Save(ProductParentDTO productParent)
         {
             try
@@ -54,7 +65,7 @@ namespace Nike_Shop_Management.DAL
             {
                 throw;
             }
-       
+
         }
         public int Edit(ProductParentDTO productParent)
         {
@@ -64,8 +75,8 @@ namespace Nike_Shop_Management.DAL
                 if (existingProductParent != null)
                 {
                     existingProductParent.product_parent_name = productParent.product_parent_name;
-                 //   existingProductParent.product_object_id = productParent.product_object_id;
-                //    existingProductParent.product_category_id = productParent.product_category_id;
+                    //   existingProductParent.product_object_id = productParent.product_object_id;
+                    //    existingProductParent.product_category_id = productParent.product_category_id;
                     existingProductParent.thumbnail = productParent.thumbnail;
                     if (decimal.TryParse(productParent.product_price, out decimal price))
                     {
@@ -145,6 +156,6 @@ namespace Nike_Shop_Management.DAL
             }
             return null;
         }
-   
+
     }
 }

@@ -51,7 +51,6 @@ namespace Nike_Shop_Management.GUI
             this.txProductPrice = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txProductName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txProductID = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.u_PictureBox = new Nike_Shop_Management.u_PictureBox();
             this.kryptonLabel13 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel12 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel11 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -60,12 +59,6 @@ namespace Nike_Shop_Management.GUI
             this.kryptonLabel9 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel8 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel7 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.u_ProductParent6 = new Nike_Shop_Management.DAL.U_ProductParent();
-            this.u_ProductParent5 = new Nike_Shop_Management.DAL.U_ProductParent();
-            this.u_ProductParent4 = new Nike_Shop_Management.DAL.U_ProductParent();
-            this.u_ProductParent3 = new Nike_Shop_Management.DAL.U_ProductParent();
-            this.u_ProductParent2 = new Nike_Shop_Management.DAL.U_ProductParent();
-            this.u_ProductParent1 = new Nike_Shop_Management.DAL.U_ProductParent();
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.btnSearch = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonLabel6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -83,7 +76,8 @@ namespace Nike_Shop_Management.GUI
             this.kryptonGroupBox2 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel_product_parent = new System.Windows.Forms.FlowLayoutPanel();
+            this.u_PictureBox = new Nike_Shop_Management.u_PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboProductObject)).BeginInit();
@@ -107,7 +101,6 @@ namespace Nike_Shop_Management.GUI
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
             this.kryptonPanel3.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -315,15 +308,6 @@ namespace Nike_Shop_Management.GUI
             this.txProductID.TabIndex = 13;
             this.txProductID.Text = "kryptonTextBox2";
             // 
-            // u_PictureBox
-            // 
-            this.u_PictureBox.Location = new System.Drawing.Point(178, 20);
-            this.u_PictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.u_PictureBox.Name = "u_PictureBox";
-            this.u_PictureBox.PathThumbail = null;
-            this.u_PictureBox.Size = new System.Drawing.Size(181, 208);
-            this.u_PictureBox.TabIndex = 12;
-            // 
             // kryptonLabel13
             // 
             this.kryptonLabel13.Location = new System.Drawing.Point(14, 544);
@@ -387,60 +371,6 @@ namespace Nike_Shop_Management.GUI
             this.kryptonLabel7.Size = new System.Drawing.Size(84, 24);
             this.kryptonLabel7.TabIndex = 0;
             this.kryptonLabel7.Values.Text = "Product ID";
-            // 
-            // u_ProductParent6
-            // 
-            this.u_ProductParent6.AutoSize = true;
-            this.u_ProductParent6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.u_ProductParent6.Location = new System.Drawing.Point(477, 227);
-            this.u_ProductParent6.Name = "u_ProductParent6";
-            this.u_ProductParent6.Size = new System.Drawing.Size(231, 218);
-            this.u_ProductParent6.TabIndex = 5;
-            // 
-            // u_ProductParent5
-            // 
-            this.u_ProductParent5.AutoSize = true;
-            this.u_ProductParent5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.u_ProductParent5.Location = new System.Drawing.Point(3, 227);
-            this.u_ProductParent5.Name = "u_ProductParent5";
-            this.u_ProductParent5.Size = new System.Drawing.Size(231, 218);
-            this.u_ProductParent5.TabIndex = 4;
-            // 
-            // u_ProductParent4
-            // 
-            this.u_ProductParent4.AutoSize = true;
-            this.u_ProductParent4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.u_ProductParent4.Location = new System.Drawing.Point(240, 227);
-            this.u_ProductParent4.Name = "u_ProductParent4";
-            this.u_ProductParent4.Size = new System.Drawing.Size(231, 218);
-            this.u_ProductParent4.TabIndex = 3;
-            // 
-            // u_ProductParent3
-            // 
-            this.u_ProductParent3.AutoSize = true;
-            this.u_ProductParent3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.u_ProductParent3.Location = new System.Drawing.Point(3, 3);
-            this.u_ProductParent3.Name = "u_ProductParent3";
-            this.u_ProductParent3.Size = new System.Drawing.Size(231, 218);
-            this.u_ProductParent3.TabIndex = 2;
-            // 
-            // u_ProductParent2
-            // 
-            this.u_ProductParent2.AutoSize = true;
-            this.u_ProductParent2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.u_ProductParent2.Location = new System.Drawing.Point(477, 3);
-            this.u_ProductParent2.Name = "u_ProductParent2";
-            this.u_ProductParent2.Size = new System.Drawing.Size(231, 218);
-            this.u_ProductParent2.TabIndex = 1;
-            // 
-            // u_ProductParent1
-            // 
-            this.u_ProductParent1.AutoSize = true;
-            this.u_ProductParent1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.u_ProductParent1.Location = new System.Drawing.Point(240, 3);
-            this.u_ProductParent1.Name = "u_ProductParent1";
-            this.u_ProductParent1.Size = new System.Drawing.Size(231, 218);
-            this.u_ProductParent1.TabIndex = 0;
             // 
             // kryptonGroupBox1
             // 
@@ -598,26 +528,29 @@ namespace Nike_Shop_Management.GUI
             // 
             // kryptonPanel3
             // 
-            this.kryptonPanel3.Controls.Add(this.flowLayoutPanel1);
+            this.kryptonPanel3.Controls.Add(this.panel_product_parent);
             this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel3.Location = new System.Drawing.Point(199, 0);
             this.kryptonPanel3.Name = "kryptonPanel3";
             this.kryptonPanel3.Size = new System.Drawing.Size(754, 644);
             this.kryptonPanel3.TabIndex = 13;
             // 
-            // flowLayoutPanel1
+            // panel_product_parent
             // 
-            this.flowLayoutPanel1.Controls.Add(this.u_ProductParent3);
-            this.flowLayoutPanel1.Controls.Add(this.u_ProductParent1);
-            this.flowLayoutPanel1.Controls.Add(this.u_ProductParent2);
-            this.flowLayoutPanel1.Controls.Add(this.u_ProductParent5);
-            this.flowLayoutPanel1.Controls.Add(this.u_ProductParent4);
-            this.flowLayoutPanel1.Controls.Add(this.u_ProductParent6);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(754, 644);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.panel_product_parent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_product_parent.Location = new System.Drawing.Point(0, 0);
+            this.panel_product_parent.Name = "panel_product_parent";
+            this.panel_product_parent.Size = new System.Drawing.Size(754, 644);
+            this.panel_product_parent.TabIndex = 0;
+            // 
+            // u_PictureBox
+            // 
+            this.u_PictureBox.Location = new System.Drawing.Point(178, 20);
+            this.u_PictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.u_PictureBox.Name = "u_PictureBox";
+            this.u_PictureBox.PathThumbail = null;
+            this.u_PictureBox.Size = new System.Drawing.Size(181, 208);
+            this.u_PictureBox.TabIndex = 12;
             // 
             // MangerProductForm
             // 
@@ -656,8 +589,6 @@ namespace Nike_Shop_Management.GUI
             this.kryptonPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
             this.kryptonPanel3.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -678,12 +609,6 @@ namespace Nike_Shop_Management.GUI
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel5;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnAdd;
-        private DAL.U_ProductParent u_ProductParent1;
-        private DAL.U_ProductParent u_ProductParent6;
-        private DAL.U_ProductParent u_ProductParent5;
-        private DAL.U_ProductParent u_ProductParent4;
-        private DAL.U_ProductParent u_ProductParent3;
-        private DAL.U_ProductParent u_ProductParent2;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel10;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel9;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel8;
@@ -718,6 +643,6 @@ namespace Nike_Shop_Management.GUI
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox2;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel panel_product_parent;
     }
 }

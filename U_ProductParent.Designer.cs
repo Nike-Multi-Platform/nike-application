@@ -32,15 +32,15 @@ namespace Nike_Shop_Management.DAL
             this.lbl_product_name = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.lbl = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.lbl_price = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.btnDelete = new System.Windows.Forms.PictureBox();
+            this.img_product = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_product)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_product_name
             // 
-            this.lbl_product_name.Location = new System.Drawing.Point(65, 19);
+            this.lbl_product_name.Location = new System.Drawing.Point(25, 19);
             this.lbl_product_name.Name = "lbl_product_name";
             this.lbl_product_name.Size = new System.Drawing.Size(76, 24);
             this.lbl_product_name.TabIndex = 0;
@@ -48,7 +48,7 @@ namespace Nike_Shop_Management.DAL
             // 
             // lbl
             // 
-            this.lbl.Location = new System.Drawing.Point(3, 189);
+            this.lbl.Location = new System.Drawing.Point(12, 190);
             this.lbl.Name = "lbl";
             this.lbl.Size = new System.Drawing.Size(34, 24);
             this.lbl.TabIndex = 3;
@@ -56,50 +56,50 @@ namespace Nike_Shop_Management.DAL
             // 
             // lbl_price
             // 
-            this.lbl_price.Location = new System.Drawing.Point(43, 188);
+            this.lbl_price.Location = new System.Drawing.Point(71, 189);
             this.lbl_price.Name = "lbl_price";
             this.lbl_price.Size = new System.Drawing.Size(134, 25);
             this.lbl_price.StateCommon.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.lbl_price.TabIndex = 4;
             this.lbl_price.Values.Text = "kryptonLabel1";
             // 
-            // pictureBox2
+            // btnDelete
             // 
-            this.pictureBox2.Image = global::Nike_Shop_Management.Properties.Resources.delete;
-            this.pictureBox2.Location = new System.Drawing.Point(192, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(34, 25);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
+            this.btnDelete.Image = global::Nike_Shop_Management.Properties.Resources.delete;
+            this.btnDelete.Location = new System.Drawing.Point(192, 3);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(34, 25);
+            this.btnDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.TabStop = false;
             // 
-            // pictureBox1
+            // img_product
             // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.ErrorImage = global::Nike_Shop_Management.Properties.Resources._default;
-            this.pictureBox1.Image = global::Nike_Shop_Management.Properties.Resources._default;
-            this.pictureBox1.InitialImage = global::Nike_Shop_Management.Properties.Resources._default;
-            this.pictureBox1.Location = new System.Drawing.Point(25, 49);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(168, 127);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.img_product.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.img_product.ErrorImage = global::Nike_Shop_Management.Properties.Resources._default;
+            this.img_product.Image = global::Nike_Shop_Management.Properties.Resources._default;
+            this.img_product.InitialImage = global::Nike_Shop_Management.Properties.Resources._default;
+            this.img_product.Location = new System.Drawing.Point(25, 49);
+            this.img_product.Name = "img_product";
+            this.img_product.Size = new System.Drawing.Size(168, 127);
+            this.img_product.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_product.TabIndex = 1;
+            this.img_product.TabStop = false;
             // 
             // U_ProductParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lbl_price);
             this.Controls.Add(this.lbl);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.img_product);
             this.Controls.Add(this.lbl_product_name);
             this.Name = "U_ProductParent";
             this.Size = new System.Drawing.Size(224, 236);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDelete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_product)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,9 +108,9 @@ namespace Nike_Shop_Management.DAL
         #endregion
 
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lbl_product_name;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lbl;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lbl_price;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox btnDelete;
+        private System.Windows.Forms.PictureBox img_product;
     }
 }

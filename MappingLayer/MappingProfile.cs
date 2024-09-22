@@ -34,6 +34,8 @@ namespace Nike_Shop_Management.MappingLayer
             CreateMap<category, ProductCategoriesDTO>();
             CreateMap<ProductCategoriesDTO, category>();
 
+            CreateMap<SubCategoryDTO, sub_category>();
+            CreateMap<sub_category, SubCategoryDTO>();
 
         }
     }

@@ -16,6 +16,10 @@ namespace Nike_Shop_Management.DAL
         CloudIService CloudIService;
         ServiceConfig ServiceConfig;
         public ProductParentDTO productParentDTO { get; set; }
+
+        public event EventHandler Clicked;
+
+        public event EventHandler DeleteClicked;
         public U_ProductParent()
         {
             InitializeComponent();
@@ -25,11 +29,28 @@ namespace Nike_Shop_Management.DAL
             img_product.MouseEnter += U_ProductParent_MouseEnter;
             img_product.MouseLeave += U_ProductParent_MouseLeave;
             img_product.Click += U_ProductParent_Click1;
+            btnDelete.Click += BtnDelete_Click;
         }
-        public event EventHandler Clicked;
-        private void U_ProductParent_Click1(object sender, EventArgs e)
+
+        private void BtnDelete_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this item?",
+                                                  "Confirm Delete",
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                DeleteClicked?.Invoke(this, EventArgs.Empty);
             
+            }
+            else
+            {
+            }
+        }
+
+
+        private void U_ProductParent_Click1(object sender, EventArgs e)
+        {         
             Clicked?.Invoke(this, EventArgs.Empty);
         }
 

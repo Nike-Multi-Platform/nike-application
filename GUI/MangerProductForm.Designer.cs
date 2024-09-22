@@ -65,8 +65,8 @@ namespace Nike_Shop_Management.GUI
             this.comboSubCategories = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel7 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.lbl_count_types = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.u_PictureBox = new Nike_Shop_Management.u_PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.u_PictureBox = new Nike_Shop_Management.u_PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboProductObject)).BeginInit();
@@ -340,7 +340,6 @@ namespace Nike_Shop_Management.GUI
             this.comboPriceFilter.Name = "comboPriceFilter";
             this.comboPriceFilter.Size = new System.Drawing.Size(151, 25);
             this.comboPriceFilter.TabIndex = 2;
-            this.comboPriceFilter.Text = "kryptonComboBox4";
             // 
             // ComboDateFilter
             // 
@@ -349,7 +348,6 @@ namespace Nike_Shop_Management.GUI
             this.ComboDateFilter.Name = "ComboDateFilter";
             this.ComboDateFilter.Size = new System.Drawing.Size(151, 25);
             this.ComboDateFilter.TabIndex = 3;
-            this.ComboDateFilter.Text = "kryptonComboBox5";
             // 
             // kryptonGroupBox2
             // 
@@ -425,6 +423,11 @@ namespace Nike_Shop_Management.GUI
             this.lbl_count_types.TabIndex = 28;
             this.lbl_count_types.Values.Text = "kryptonLabel11";
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // u_PictureBox
             // 
             this.u_PictureBox.Location = new System.Drawing.Point(178, 20);
@@ -433,11 +436,6 @@ namespace Nike_Shop_Management.GUI
             this.u_PictureBox.PathThumbail = null;
             this.u_PictureBox.Size = new System.Drawing.Size(181, 208);
             this.u_PictureBox.TabIndex = 12;
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // MangerProductForm
             // 

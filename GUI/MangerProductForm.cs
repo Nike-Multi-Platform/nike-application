@@ -26,7 +26,20 @@ namespace Nike_Shop_Management.GUI
             comboProductObjectFilter.SelectedIndexChanged += ComboProductObjectFilter_SelectedIndexChanged;
             comboProductCategoriesFileter.SelectedIndexChanged += ComboProductCategoriesFileter_SelectedValueChanged;
             ComboSubCategoriesFilter.SelectedIndexChanged += ComboSubCategoriesFilter_SelectedIndexChanged;
+
             btnEdit.Click += BtnEdit_Click;
+            btnShowMore.Click += BtnShowMore_Click;
+            comboPriceFilter.Click += ComboPriceFilter_Click;
+        }
+
+        private void ComboPriceFilter_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnShowMore_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -42,7 +55,10 @@ namespace Nike_Shop_Management.GUI
 
         private void ComboSubCategoriesFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            LoadDataPanel();
+        }
+        private void LoadDataPanel()
+        {
             SubCategoryDTO valueSelected = (SubCategoryDTO)ComboSubCategoriesFilter.SelectedItem;
             listProductParent = ppM.GetProductParentsBySubCategory(valueSelected.sub_categories_id);
             if (panel_product_parent.Controls.Count > 0)
@@ -57,9 +73,28 @@ namespace Nike_Shop_Management.GUI
                     u.PaintData(item);
                     panel_product_parent.Controls.Add(u);
                     u.Clicked += U_Clicked;
+                    u.DeleteClicked += U_DeleteClicked;
                 }
             }
+        }
 
+        private void U_DeleteClicked(object sender, EventArgs e)
+        {
+            U_ProductParent clickedProduct = sender as U_ProductParent;
+            if(clickedProduct!=null)
+            {
+                int flag = ppM.DeleteProductParents(clickedProduct.productParentDTO.product_parent_id);
+                if(flag==1)
+                {
+                    MessageBox.Show("Item deleted successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Delete failed");
+                }
+                LoadDataPanel();
+                PaintDataDetails(null);
+            }
         }
 
         private void U_Clicked(object sender, EventArgs e)
@@ -119,6 +154,10 @@ namespace Nike_Shop_Management.GUI
 
         public void InitData()
         {
+            comboPriceFilter.Items.Add("Desc");
+            comboPriceFilter.Items.Add("Asce");
+            ComboDateFilter.Items.Add("The Newest");
+            ComboDateFilter.Items.Add("The Lastest");
             ProductObjectManager poM = new ProductObjectManager(new DAL.ProductObjectRepository(new DAL.DbContextDataContext()));
             List<ProductObjectDTO> list = (List<ProductObjectDTO>)poM.GetAll();
             list.Add(new ProductObjectDTO { product_object_name = "ALL", product_object_id = 0 });
@@ -129,11 +168,21 @@ namespace Nike_Shop_Management.GUI
 
         public void PaintDataDetails(ProductParentDTO productParent)
         {
-            List<ProductDTO> productDTOs = ppM.GetProductColors(productParent.product_parent_id);          
-            u_PictureBox.LoadImgFromUrl(productParent.thumbnail);
-            txProductPrice.Text = productParent.product_price.ToString();
-            txProductName.Text = productParent.product_parent_name.ToString();
-            lbl_count_types.Text = productDTOs.Count.ToString();
+            if(productParent!=null)
+            {
+                List<ProductDTO> productDTOs = ppM.GetProductColors(productParent.product_parent_id);
+                u_PictureBox.LoadImgFromUrl(productParent.thumbnail);
+                txProductPrice.Text = productParent.product_price.ToString();
+                txProductName.Text = productParent.product_parent_name.ToString();
+                lbl_count_types.Text = productDTOs.Count.ToString();
+            }
+            else
+            {
+                u_PictureBox.LoadImgFromUrl("");
+                txProductName.Text = "";
+                txProductPrice.Text = "";
+                lbl_count_types.Text = "0";
+            }
 
         }
 
@@ -144,7 +193,7 @@ namespace Nike_Shop_Management.GUI
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-           if(linkHolder!=null)
+           if(productParentClicked!=null)
             {
                 string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(linkHolder);
                 linkHolder = "Nike-application/" + fileNameWithoutExtension;
@@ -167,6 +216,8 @@ namespace Nike_Shop_Management.GUI
                     MessageBox.Show("Edit failed");
                 }
             }
+            LoadDataPanel();
+            PaintDataDetails(null);
         }
     }
 }

@@ -16,7 +16,8 @@ namespace Nike_Shop_Management.GUI
     {
         ProductParentManager ppM = new ProductParentManager(new DAL.ProductParentRepository(new DAL.DbContext()));
         List<ProductParentDTO> listProductParent;
-        bool flag = false;
+
+        public ProductParentDTO productParentClicked { get; set; }
         public MangerProductForm()
         {
             InitializeComponent();
@@ -24,36 +25,52 @@ namespace Nike_Shop_Management.GUI
             comboProductObjectFilter.SelectedIndexChanged += ComboProductObjectFilter_SelectedIndexChanged;
             comboProductCategoriesFileter.SelectedIndexChanged += ComboProductCategoriesFileter_SelectedValueChanged;
             ComboSubCategoriesFilter.SelectedIndexChanged += ComboSubCategoriesFilter_SelectedIndexChanged;
+            btnEdit.Click += BtnEdit_Click;
+        }
+
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
 
         }
 
         private void ComboSubCategoriesFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(flag)
-            {
-                SubCategoryDTO valueSelected = (SubCategoryDTO)ComboSubCategoriesFilter.SelectedItem;
-                listProductParent = ppM.GetProductParentsBySubCategory(valueSelected.sub_categories_id);
-                if (panel_product_parent.Controls.Count > 0)
-                {
-                    panel_product_parent.Controls.Clear();
-                }
-                if (listProductParent != null)
-                {
-                    foreach (var item in listProductParent)
-                    {
-                        U_ProductParent u = new U_ProductParent();
-                        u.PaintData(item);
-                        panel_product_parent.Controls.Add(u);
-                        Console.WriteLine(item.sub_categories_id);
-                    }
-                }
-            }    
-         
 
+            SubCategoryDTO valueSelected = (SubCategoryDTO)ComboSubCategoriesFilter.SelectedItem;
+            listProductParent = ppM.GetProductParentsBySubCategory(valueSelected.sub_categories_id);
+            if (panel_product_parent.Controls.Count > 0)
+            {
+                panel_product_parent.Controls.Clear();
+            }
+            if (listProductParent != null)
+            {
+                foreach (var item in listProductParent)
+                {
+                    U_ProductParent u = new U_ProductParent();
+                    u.PaintData(item);
+                    panel_product_parent.Controls.Add(u);
+                    u.Clicked += U_Clicked;
+                }
+            }
+
+        }
+
+        private void U_Clicked(object sender, EventArgs e)
+        {
+            U_ProductParent clickedProduct = sender as U_ProductParent;
+            if (clickedProduct != null)
+            {
+                productParentClicked = clickedProduct.productParentDTO;
+                PaintDataDetails(productParentClicked);
+            }
         }
 
         private void ComboProductCategoriesFileter_SelectedValueChanged(object sender, EventArgs e)
         {
+            if (panel_product_parent.Controls.Count > 0)
+            {
+                panel_product_parent.Controls.Clear();
+            }
             ProductCategoriesDTO selectedValue = (ProductCategoriesDTO)comboProductCategoriesFileter.SelectedItem;
             SubCategoryManager sbM = new SubCategoryManager(new DAL.SubcategoryRepository(new DAL.DbContext()));
             List<SubCategoryDTO> list = (List<SubCategoryDTO>)sbM.GetAllByID(selectedValue.categories_id);
@@ -61,11 +78,15 @@ namespace Nike_Shop_Management.GUI
             ComboSubCategoriesFilter.DisplayMember = "sub_categories_name";
             ComboSubCategoriesFilter.ValueMember = "sub_categories_id";
             ComboSubCategoriesFilter.Enabled = true;
-            flag = true;
+
         }
 
         private void ComboProductObjectFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (panel_product_parent.Controls.Count > 0)
+            {
+                panel_product_parent.Controls.Clear();
+            }
             var selectedValue = comboProductObjectFilter.SelectedValue?.ToString();
             ProductCategoriesManager pcM = new ProductCategoriesManager(new DAL.ProductCategoriesRepository(new DAL.DbContext()));
             List<ProductCategoriesDTO> list = new List<ProductCategoriesDTO>();
@@ -86,7 +107,7 @@ namespace Nike_Shop_Management.GUI
             comboProductCategoriesFileter.DataSource = list;
             comboProductCategoriesFileter.DisplayMember = "categories_name";
             comboProductCategoriesFileter.ValueMember = "categories_id";
-            flag = false;
+
         }
 
         public void InitData()
@@ -99,5 +120,13 @@ namespace Nike_Shop_Management.GUI
             comboProductObjectFilter.ValueMember = "product_object_id";
         }
 
+        public void PaintDataDetails(ProductParentDTO productParent)
+        {
+            u_PictureBox.LoadImgFromUrl(productParent.thumbnail);
+            txProductID.Text = productParent.product_parent_id.ToString();
+            txProductPrice.Text = productParent.product_price.ToString();
+            txProductName.Text = productParent.product_parent_name.ToString();
+
+        }
     }
 }

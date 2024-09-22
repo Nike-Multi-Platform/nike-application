@@ -10,8 +10,8 @@ namespace Nike_Shop_Management.DAL
 {
     class ProductCategoriesRepository
     {
-        private readonly DbContext _db;
-        public ProductCategoriesRepository(DbContext db)
+        private readonly DbContextDataContext _db;
+        public ProductCategoriesRepository(DbContextDataContext db)
         {
             _db = db;
         }

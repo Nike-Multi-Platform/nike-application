@@ -23,7 +23,7 @@ namespace Nike_Shop_Management.DAL
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Nike_DB")]
-	public partial class DbContext : System.Data.Linq.DataContext
+	public partial class DbContextDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -98,31 +98,31 @@ namespace Nike_Shop_Management.DAL
     partial void Deleteuser_order(user_order instance);
     #endregion
 		
-		public DbContext() : 
+		public DbContextDataContext() : 
 				base(global::Nike_Shop_Management.Properties.Settings.Default.Nike_DBConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DbContext(string connection) : 
+		public DbContextDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DbContext(System.Data.IDbConnection connection) : 
+		public DbContextDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DbContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public DbContextDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DbContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public DbContextDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();

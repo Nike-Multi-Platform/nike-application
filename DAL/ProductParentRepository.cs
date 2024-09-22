@@ -9,9 +9,9 @@ namespace Nike_Shop_Management.DAL
 {
     class ProductParentRepository
     {
-        private readonly DbContext _db;
+        private readonly DbContextDataContext _db;
 
-        public ProductParentRepository(DbContext db)
+        public ProductParentRepository(DbContextDataContext db)
         {
             _db = db;
         }
@@ -120,6 +120,16 @@ namespace Nike_Shop_Management.DAL
             {
                 return null;
             }
+        }
+
+        internal List<ProductSizeDTO> GetProductSizeDTOs(int id)
+        {
+            var list = _db.product_sizes.Where(t => t.product_id == id).Select(t => AutoMapperConfig.Mapper.Map<product_size, ProductSizeDTO>(t)).ToList();
+            if(list!=null)
+            {
+                return list;
+            }
+            return list;
         }
 
         public int Delete(int product_parent_id)

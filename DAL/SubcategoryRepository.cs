@@ -9,8 +9,8 @@ namespace Nike_Shop_Management.DAL
 {
     class SubcategoryRepository
     {
-        DbContext _db;
-        public SubcategoryRepository(DbContext db)
+        DbContextDataContext _db;
+        public SubcategoryRepository(DbContextDataContext db)
         {
             _db = db;
         }

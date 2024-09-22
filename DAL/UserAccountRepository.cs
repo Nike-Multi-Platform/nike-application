@@ -11,8 +11,8 @@ namespace Nike_Shop_Management.DAL
 {
     class UserAccountRepository
     {
-        private readonly DbContext _db;
-        public UserAccountRepository(DbContext db)
+        private readonly DbContextDataContext _db;
+        public UserAccountRepository(DbContextDataContext db)
         {
             _db = db;
 

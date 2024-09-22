@@ -17,6 +17,7 @@ namespace Nike_Shop_Management.GUI
         ProductParentManager ppM = new ProductParentManager(new DAL.ProductParentRepository(new DAL.DbContext()));
         List<ProductParentDTO> listProductParent;
         bool flag = false;
+        public ProductParentDTO productParentClicked { get; set; }
         public MangerProductForm()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace Nike_Shop_Management.GUI
 
         private void ComboSubCategoriesFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(flag)
+            if (flag)
             {
                 SubCategoryDTO valueSelected = (SubCategoryDTO)ComboSubCategoriesFilter.SelectedItem;
                 listProductParent = ppM.GetProductParentsBySubCategory(valueSelected.sub_categories_id);
@@ -44,16 +45,28 @@ namespace Nike_Shop_Management.GUI
                         U_ProductParent u = new U_ProductParent();
                         u.PaintData(item);
                         panel_product_parent.Controls.Add(u);
-                        Console.WriteLine(item.sub_categories_id);
+                        u.Clicked += U_Clicked;
                     }
                 }
-            }    
-         
+            }
+        }
 
+        private void U_Clicked(object sender, EventArgs e)
+        {
+            U_ProductParent clickedProduct = sender as U_ProductParent;
+            if (clickedProduct != null)
+            {
+                productParentClicked = clickedProduct.productParentDTO;
+                PaintDataDetails(productParentClicked);
+            }
         }
 
         private void ComboProductCategoriesFileter_SelectedValueChanged(object sender, EventArgs e)
         {
+            if (panel_product_parent.Controls.Count > 0)
+            {
+                panel_product_parent.Controls.Clear();
+            }
             ProductCategoriesDTO selectedValue = (ProductCategoriesDTO)comboProductCategoriesFileter.SelectedItem;
             SubCategoryManager sbM = new SubCategoryManager(new DAL.SubcategoryRepository(new DAL.DbContext()));
             List<SubCategoryDTO> list = (List<SubCategoryDTO>)sbM.GetAllByID(selectedValue.categories_id);
@@ -66,6 +79,10 @@ namespace Nike_Shop_Management.GUI
 
         private void ComboProductObjectFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (panel_product_parent.Controls.Count > 0)
+            {
+                panel_product_parent.Controls.Clear();
+            }
             var selectedValue = comboProductObjectFilter.SelectedValue?.ToString();
             ProductCategoriesManager pcM = new ProductCategoriesManager(new DAL.ProductCategoriesRepository(new DAL.DbContext()));
             List<ProductCategoriesDTO> list = new List<ProductCategoriesDTO>();
@@ -99,5 +116,10 @@ namespace Nike_Shop_Management.GUI
             comboProductObjectFilter.ValueMember = "product_object_id";
         }
 
+        public void PaintDataDetails(ProductParentDTO productParent)
+        {
+
+
+        }
     }
 }

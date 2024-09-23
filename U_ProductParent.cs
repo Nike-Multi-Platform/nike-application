@@ -18,7 +18,7 @@ namespace Nike_Shop_Management.DAL
         public ProductParentDTO productParentDTO { get; set; }
 
         public event EventHandler Clicked;
-
+        public event EventHandler DoubleClicked;
         public event EventHandler DeleteClicked;
         public U_ProductParent()
         {
@@ -30,6 +30,18 @@ namespace Nike_Shop_Management.DAL
             img_product.MouseLeave += U_ProductParent_MouseLeave;
             img_product.Click += U_ProductParent_Click1;
             btnDelete.Click += BtnDelete_Click;
+            this.MouseDoubleClick += U_ProductParent_MouseDoubleClick; ;
+            img_product.MouseDoubleClick += Img_product_MouseDoubleClick;
+        }
+
+        private void U_ProductParent_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            DoubleClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void Img_product_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            DoubleClicked?.Invoke(this, EventArgs.Empty);
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)

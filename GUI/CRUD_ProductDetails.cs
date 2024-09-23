@@ -30,9 +30,26 @@ namespace Nike_Shop_Management.GUI
                 ListViewItem selectedItem = listView1.SelectedItems[0];
                 Console.WriteLine(selectedItem.SubItems[1].Text);
                 u_PictureBox.LoadImgFromUrl(selectedItem.SubItems[1].Text);
+                BindingData(int.Parse(listView1.SelectedItems[0].Text),int.Parse(selectedItem.SubItems[2].Text));
             }
         }
+        public void BindingData(int product_id,int supplier_id)
+        {
+            ProductColorManager productColorManager = new ProductColorManager(new DAL.ProductColorRepository(new DAL.DbContextDataContext()));
+            List<ProductSizeDTO> listSize = productColorManager.GetProductSizesByID(product_id);
+            List<SupplierDTO> listSupplier = productColorManager.GetSuppliers(supplier_id);
+            if (listSize.Count>0 && listSupplier.Count>0)
+            {
+                
+                comboSize.DataSource = listSize;
+                comboSize.DisplayMember = "size_id";
+                comboSize.ValueMember = "product_size_id";
 
+                comboSupplier.DataSource = listSupplier;
+                comboSupplier.DisplayMember = "supplier_name";
+                comboSupplier.ValueMember = "supplier_id";
+            }
+        }
         public void PaintData(int product_parent_id)
         {
             listView1.Items.Clear();
@@ -50,10 +67,11 @@ namespace Nike_Shop_Management.GUI
                 CloudIService = new CloudIService(ServiceConfig.CloudinaryCloudName, ServiceConfig.CloudinaryApiKey, ServiceConfig.CloudinaryApiSecret);
                 foreach (var product in list)
                 {
-          
+
                     PictureBox img_product = new PictureBox();
-                    ListViewItem item = new ListViewItem(product.product_id.ToString(),i++);
+                    ListViewItem item = new ListViewItem(product.product_id.ToString(), i++);
                     item.SubItems.Add(product.product_img);
+                    item.SubItems.Add(product.supplier_id.ToString());
                     img_product.ImageLocation = CloudIService.GetImageUrlByPublicId(product.product_img);
                     img_product.Load();
                     imageListSmall.Images.Add(img_product.Image);
@@ -70,6 +88,6 @@ namespace Nike_Shop_Management.GUI
             listView1.LargeImageList = imageListLarge;
             listView1.SmallImageList = imageListSmall;
         }
-       
+
     }
 }

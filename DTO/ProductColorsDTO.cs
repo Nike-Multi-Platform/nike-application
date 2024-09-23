@@ -17,9 +17,9 @@ namespace Nike_Shop_Management.DTO
         public string product_color_shown { get; set; }
         public string product_description { get; set; }
         public string product_description2 { get; set; }
+        public int supplier_id { get; set; }
+        //    public ProductImgDTO product_imgs { get; set; }
+        //   public ProductSizeDTO product_sizes { get; set; }
 
-    //    public ProductImgDTO product_imgs { get; set; }
-     //   public ProductSizeDTO product_sizes { get; set; }
-        
     }
 }

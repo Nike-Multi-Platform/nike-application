@@ -137,6 +137,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI\CRUD_ProductDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CRUD_ProductDetails.Designer.cs">
+      <DependentUpon>CRUD_ProductDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="MappingLayer\AutoMapperConfig.cs" />
     <Compile Include="BLL\GenericService.cs" />
     <Compile Include="BLL\ProductCategoriesManager.cs" />
@@ -172,7 +178,7 @@
       <DependentUpon>U_ProductParent.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO\ProductCategoriesDTO.cs" />
-    <Compile Include="DTO\ProductDTO.cs" />
+    <Compile Include="DTO\ProductColorsDTO.cs" />
     <Compile Include="DTO\ProductIconsDTO.cs" />
     <Compile Include="DTO\ProductImgDTO.cs" />
     <Compile Include="DTO\ProductObjectDTO.cs" />
@@ -249,6 +255,9 @@
     <Compile Include="u_PictureBox.Designer.cs">
       <DependentUpon>u_PictureBox.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI\CRUD_ProductDetails.resx">
+      <DependentUpon>CRUD_ProductDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="U_ProductParent.resx">
       <DependentUpon>U_ProductParent.cs</DependentUpon>
     </EmbeddedResource>

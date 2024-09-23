@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Nike_Shop_Management.BLL
 {
-    class ProductColorManager : IRepository<ProductDTO>
+    class ProductColorManager : IRepository<ProductColorsDTO>
     {
         private readonly ProductColorRepository _productColorRepository;
         public ProductColorManager(ProductColorRepository productColorRepository)
@@ -16,7 +16,7 @@ namespace Nike_Shop_Management.BLL
             _productColorRepository = productColorRepository;
         }
 
-        public int Add(ProductDTO entity)
+        public int Add(ProductColorsDTO entity)
         {
             return _productColorRepository.Add(entity);
         }
@@ -26,12 +26,12 @@ namespace Nike_Shop_Management.BLL
             return _productColorRepository.Delete(id);
         }
 
-        public IEnumerable<ProductDTO> GetAll()
+        public IEnumerable<ProductColorsDTO> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public ProductDTO GetByID(int id)
+        public ProductColorsDTO GetByID(int id)
         {
             return _productColorRepository.GetByID(id);
         }
@@ -41,12 +41,12 @@ namespace Nike_Shop_Management.BLL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ProductDTO> Search(string search)
+        public IEnumerable<ProductColorsDTO> Search(string search)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(ProductDTO enity)
+        public int Update(ProductColorsDTO enity)
         {
             return _productColorRepository.Update(enity);
         }
@@ -58,7 +58,7 @@ namespace Nike_Shop_Management.BLL
 
         internal object GetProductSizesByID(int product_id)
         {
-            return _productColorRepository.GetProductSizesByID(product_id);
+            return _productColorRepository.GetProductSize(product_id);
         }
         public int DeleteProductSize(int product_size_id)
         {

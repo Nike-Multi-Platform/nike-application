@@ -26,13 +26,13 @@ namespace Nike_Shop_Management.DAL
             return null;
         }
 
-        public List<ProductDTO> getProductColor(int product_parent_id)
+        public List<ProductColorsDTO> getProductColor(int product_parent_id)
         {
             List<product> products = _db.products.Where(emp => (int)emp.product_parent_id == product_parent_id).ToList();
-            List<ProductDTO> l = new List<ProductDTO>();
+            List<ProductColorsDTO> l = new List<ProductColorsDTO>();
             foreach (product p in products)
             {
-                l.Add(AutoMapperConfig.Mapper.Map<product, ProductDTO>(p));
+                l.Add(AutoMapperConfig.Mapper.Map<product, ProductColorsDTO>(p));
             }
             if (l != null)
             {
@@ -120,17 +120,7 @@ namespace Nike_Shop_Management.DAL
             {
                 return null;
             }
-        }
-
-        internal List<ProductSizeDTO> GetProductSizeDTOs(int id)
-        {
-            var list = _db.product_sizes.Where(t => t.product_id == id).Select(t => AutoMapperConfig.Mapper.Map<product_size, ProductSizeDTO>(t)).ToList();
-            if(list!=null)
-            {
-                return list;
-            }
-            return list;
-        }
+        }    
 
         public int Delete(int product_parent_id)
         {

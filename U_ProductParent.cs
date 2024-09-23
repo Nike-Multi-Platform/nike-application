@@ -14,7 +14,7 @@ namespace Nike_Shop_Management.DAL
     public partial class U_ProductParent : UserControl
     {
         CloudIService CloudIService;
-        ServiceConfig ServiceConfig;
+
         public ProductParentDTO productParentDTO { get; set; }
 
         public event EventHandler Clicked;
@@ -73,7 +73,7 @@ namespace Nike_Shop_Management.DAL
         }
         public void LoadImgFromUrl(string path)
         {
-            ServiceConfig = new ServiceConfig();
+            ServiceConfig ServiceConfig = new ServiceConfig();
             CloudIService = new CloudIService(ServiceConfig.CloudinaryCloudName, ServiceConfig.CloudinaryApiKey, ServiceConfig.CloudinaryApiSecret);
             img_product.ImageLocation = CloudIService.GetImageUrlByPublicId(path);
             img_product.ErrorImage = (Image)Properties.Resources._default;

@@ -39,7 +39,14 @@ namespace Nike_Shop_Management.GUI
 
         private void BtnShowMore_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (productParentClicked != null)
+            {
+
+                CRUD_ProductDetails crud = new CRUD_ProductDetails();
+                crud.PaintData(productParentClicked.product_parent_id);
+                crud.ShowDialog();
+            }
+
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -81,10 +88,10 @@ namespace Nike_Shop_Management.GUI
         private void U_DeleteClicked(object sender, EventArgs e)
         {
             U_ProductParent clickedProduct = sender as U_ProductParent;
-            if(clickedProduct!=null)
+            if (clickedProduct != null)
             {
                 int flag = ppM.DeleteProductParents(clickedProduct.productParentDTO.product_parent_id);
-                if(flag==1)
+                if (flag == 1)
                 {
                     MessageBox.Show("Item deleted successfully.");
                 }
@@ -168,9 +175,9 @@ namespace Nike_Shop_Management.GUI
 
         public void PaintDataDetails(ProductParentDTO productParent)
         {
-            if(productParent!=null)
+            if (productParent != null)
             {
-                List<ProductDTO> productDTOs = ppM.GetProductColors(productParent.product_parent_id);
+                List<ProductColorsDTO> productDTOs = ppM.GetProductColors(productParent.product_parent_id);
                 u_PictureBox.LoadImgFromUrl(productParent.thumbnail);
                 txProductPrice.Text = productParent.product_price.ToString();
                 txProductName.Text = productParent.product_parent_name.ToString();
@@ -193,7 +200,7 @@ namespace Nike_Shop_Management.GUI
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-           if(productParentClicked!=null)
+            if (productParentClicked != null)
             {
                 string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(linkHolder);
                 linkHolder = "Nike-application/" + fileNameWithoutExtension;
@@ -209,7 +216,7 @@ namespace Nike_Shop_Management.GUI
                 });
                 if (flag == 1)
                 {
-                    MessageBox.Show("Edit successful");            
+                    MessageBox.Show("Edit successful");
                 }
                 else
                 {

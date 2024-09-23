@@ -18,6 +18,9 @@ namespace Nike_Shop_Management.DTO
         public string product_description { get; set; }
         public string product_description2 { get; set; }
         public int supplier_id { get; set; }
+        public string sale_prices { get; set; }
+        public string sold { get; set; }
+        public string total_stock { get; set; }
         //    public ProductImgDTO product_imgs { get; set; }
         //   public ProductSizeDTO product_sizes { get; set; }
 

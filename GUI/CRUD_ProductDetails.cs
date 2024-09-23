@@ -44,10 +44,25 @@ namespace Nike_Shop_Management.GUI
                 comboSize.DataSource = listSize;
                 comboSize.DisplayMember = "size_id";
                 comboSize.ValueMember = "product_size_id";
+                
 
+                lbl_quantity.Text = productColorManager.GetQuantity((int)comboSize.SelectedValue).ToString();
                 comboSupplier.DataSource = listSupplier;
                 comboSupplier.DisplayMember = "supplier_name";
                 comboSupplier.ValueMember = "supplier_id";
+            }
+            ProductColorsDTO productColorsDTO = productColorManager.GetByID(product_id);
+            if(productColorsDTO!=null)
+            {
+                txColorShown.Text = productColorsDTO.product_color_shown;
+                txSalePrices.Text = productColorsDTO.sale_prices;
+                txSizeAndFit.Text = productColorsDTO.product_size_and_fit;
+                txSolds.Text = productColorsDTO.sold;
+                txStylecode.Text = productColorsDTO.product_style_code;
+                txTotalStock.Text = productColorsDTO.total_stock;
+                tx_description.Text = productColorsDTO.product_description;
+                tx_description2.Text = productColorsDTO.product_description2;
+                tx_more_info.Text = productColorsDTO.product_more_info;
             }
         }
         public void PaintData(int product_parent_id)
@@ -87,6 +102,8 @@ namespace Nike_Shop_Management.GUI
 
             listView1.LargeImageList = imageListLarge;
             listView1.SmallImageList = imageListSmall;
+
+            
         }
 
     }

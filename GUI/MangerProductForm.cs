@@ -81,7 +81,19 @@ namespace Nike_Shop_Management.GUI
                     panel_product_parent.Controls.Add(u);
                     u.Clicked += U_Clicked;
                     u.DeleteClicked += U_DeleteClicked;
+                    u.DoubleClicked += U_DoubleClicked;
                 }
+            }
+        }
+
+        private void U_DoubleClicked(object sender, EventArgs e)
+        {
+            if (productParentClicked != null)
+            {
+
+                CRUD_ProductDetails crud = new CRUD_ProductDetails();
+                crud.PaintData(productParentClicked.product_parent_id);
+                crud.ShowDialog();
             }
         }
 

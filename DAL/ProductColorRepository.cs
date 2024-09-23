@@ -89,6 +89,16 @@ namespace Nike_Shop_Management.DAL
             
         }
 
+        internal List<SupplierDTO> GetSuppliers(int suppler_id)
+        {
+            var list = _db.suppliers.Where(t => t.supplier_id == suppler_id).Select(t => AutoMapperConfig.Mapper.Map<supplier, SupplierDTO>(t)).ToList();
+            if(list!=null)
+            {
+                return list;
+            }
+            return null;
+        }
+
         internal int Update(ProductColorsDTO entity)
         {
             try

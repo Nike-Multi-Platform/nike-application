@@ -56,13 +56,17 @@ namespace Nike_Shop_Management.BLL
             return _productColorRepository.BelongsTo();
         }
 
-        internal object GetProductSizesByID(int product_id)
+        internal List<ProductSizeDTO> GetProductSizesByID(int product_id)
         {
             return _productColorRepository.GetProductSize(product_id);
         }
         public int DeleteProductSize(int product_size_id)
         {
             return _productColorRepository.DeleteProductSize(product_size_id);
+        }
+        public List<SupplierDTO> GetSuppliers(int suppler_id)
+        {
+            return _productColorRepository.GetSuppliers(suppler_id);
         }
     }
 }

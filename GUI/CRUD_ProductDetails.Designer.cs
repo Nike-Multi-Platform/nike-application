@@ -56,6 +56,8 @@ namespace Nike_Shop_Management.GUI
             this.comboSize = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.u_PictureBox = new Nike_Shop_Management.u_PictureBox();
+            this.kryptonLabel10 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.lbl_quantity = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.comboSupplier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboSize)).BeginInit();
             this.SuspendLayout();
@@ -63,7 +65,7 @@ namespace Nike_Shop_Management.GUI
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(286, 478);
+            this.listView1.Location = new System.Drawing.Point(271, 497);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(937, 123);
             this.listView1.TabIndex = 0;
@@ -183,7 +185,7 @@ namespace Nike_Shop_Management.GUI
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(373, 640);
+            this.btnAdd.Location = new System.Drawing.Point(336, 637);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(161, 42);
             this.btnAdd.TabIndex = 32;
@@ -191,7 +193,7 @@ namespace Nike_Shop_Management.GUI
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(689, 640);
+            this.btnEdit.Location = new System.Drawing.Point(652, 637);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(130, 42);
             this.btnEdit.TabIndex = 33;
@@ -199,7 +201,7 @@ namespace Nike_Shop_Management.GUI
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(924, 640);
+            this.btnCancel.Location = new System.Drawing.Point(887, 637);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(201, 42);
             this.btnCancel.TabIndex = 34;
@@ -280,11 +282,29 @@ namespace Nike_Shop_Management.GUI
             this.u_PictureBox.Size = new System.Drawing.Size(176, 207);
             this.u_PictureBox.TabIndex = 1;
             // 
+            // kryptonLabel10
+            // 
+            this.kryptonLabel10.Location = new System.Drawing.Point(900, 450);
+            this.kryptonLabel10.Name = "kryptonLabel10";
+            this.kryptonLabel10.Size = new System.Drawing.Size(68, 24);
+            this.kryptonLabel10.TabIndex = 43;
+            this.kryptonLabel10.Values.Text = "quantity";
+            // 
+            // lbl_quantity
+            // 
+            this.lbl_quantity.Location = new System.Drawing.Point(1015, 450);
+            this.lbl_quantity.Name = "lbl_quantity";
+            this.lbl_quantity.Size = new System.Drawing.Size(117, 24);
+            this.lbl_quantity.TabIndex = 44;
+            this.lbl_quantity.Values.Text = "kryptonLabel11";
+            // 
             // CRUD_ProductDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1291, 716);
+            this.Controls.Add(this.lbl_quantity);
+            this.Controls.Add(this.kryptonLabel10);
             this.Controls.Add(this.kryptonLabel1);
             this.Controls.Add(this.comboSize);
             this.Controls.Add(this.tx_description2);
@@ -350,5 +370,7 @@ namespace Nike_Shop_Management.GUI
         private System.Windows.Forms.RichTextBox tx_description2;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox comboSize;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel10;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lbl_quantity;
     }
 }

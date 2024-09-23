@@ -68,5 +68,9 @@ namespace Nike_Shop_Management.BLL
         {
             return _productColorRepository.GetSuppliers(suppler_id);
         }
+        public int GetQuantity(int product_size_id)
+        {
+            return _productColorRepository.GetQuantity(product_size_id);
+        }
     }
 }

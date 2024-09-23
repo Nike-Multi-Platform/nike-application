@@ -32,7 +32,7 @@ namespace Nike_Shop_Management.BLL
         /// </summary>
         /// <param name="product_parent_id"></param>
         /// <returns> null nếu danh sách rỗng</returns>
-        public List<ProductDTO> GetProductColors(int product_parent_id)
+        public List<ProductColorsDTO> GetProductColors(int product_parent_id)
         {
             return _productParentRepository.getProductColor(product_parent_id);
         }
@@ -91,9 +91,6 @@ namespace Nike_Shop_Management.BLL
             return _productParentRepository.GetProductIcons();
         }
 
-        public List<ProductSizeDTO> GetProductSizeDTOs(int id)
-        {
-            return _productParentRepository.GetProductSizeDTOs(id);
-        }
+      
     }
 }

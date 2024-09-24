@@ -40,6 +40,12 @@ namespace Nike_Shop_Management.MappingLayer
             CreateMap<supplier, SupplierDTO>();
             CreateMap<SupplierDTO, supplier>();
 
+
+            CreateMap<GoodsReceiptDTO, goods_receipt>();
+            CreateMap<goods_receipt, GoodsReceiptDTO>();
+
+            CreateMap<goods_receipt_detail, GoodReceiptDetailsDTO>();
+            CreateMap<GoodReceiptDetailsDTO, goods_receipt_detail>();
         }
     }
 }

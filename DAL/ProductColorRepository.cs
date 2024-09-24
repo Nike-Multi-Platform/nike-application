@@ -10,18 +10,18 @@ namespace Nike_Shop_Management.DAL
 {
     class ProductColorRepository
     {
-        private readonly DbContext _db;
+        private readonly DbContextDataContext _db;
 
-        public ProductColorRepository(DbContext db)
+        public ProductColorRepository(DbContextDataContext db)
         {
             _db = db;
         }
 
-        internal int Add(ProductDTO entity)
+        internal int Add(ProductColorsDTO entity)
         {
             try
             {
-                var tempEntity = AutoMapperConfig.Mapper.Map<ProductDTO, product>(entity);
+                var tempEntity = AutoMapperConfig.Mapper.Map<ProductColorsDTO, product>(entity);
                 _db.products.InsertOnSubmit(tempEntity);
                 _db.SubmitChanges();
                 return 1;
@@ -54,12 +54,12 @@ namespace Nike_Shop_Management.DAL
             }
         }
 
-        internal ProductDTO GetByID(int id)
+        internal ProductColorsDTO GetByID(int id)
         {
             var productDTO = _db.products.Where(t => t.product_id == id).FirstOrDefault();
             if (productDTO != null)
             {
-                return AutoMapperConfig.Mapper.Map<product, ProductDTO>(productDTO);
+                return AutoMapperConfig.Mapper.Map<product, ProductColorsDTO>(productDTO);
             }
             return null;
         }
@@ -89,7 +89,23 @@ namespace Nike_Shop_Management.DAL
             
         }
 
-        internal int Update(ProductDTO entity)
+        internal int GetQuantity(int product_size_id)
+        {
+            product_size temp = _db.product_sizes.Where(t => t.product_size_id == product_size_id).FirstOrDefault();
+            return (int)temp.soluong;
+        }
+
+        internal List<SupplierDTO> GetSuppliers(int suppler_id)
+        {
+            var list = _db.suppliers.Where(t => t.supplier_id == suppler_id).Select(t => AutoMapperConfig.Mapper.Map<supplier, SupplierDTO>(t)).ToList();
+            if(list!=null)
+            {
+                return list;
+            }
+            return null;
+        }
+
+        internal int Update(ProductColorsDTO entity)
         {
             try
             {
@@ -130,17 +146,6 @@ namespace Nike_Shop_Management.DAL
         {
             var list = _db.product_imgs.Where(t => t.product_id == product_id).ToList().Select(temp => AutoMapperConfig.Mapper.Map<product_img, ProductImgDTO>(temp)).ToList();
             return list;
-        }
-
-
-        public List<ProductSizeDTO> GetProductSizesByID(int id)
-        {
-            var list = _db.product_sizes.Where(t => t.product_id == id).ToList().Select(t => AutoMapperConfig.Mapper.Map<product_size,ProductSizeDTO>(t)).ToList();
-            if(list!=null)
-            {
-                return list;
-            }
-            return null;
         }
     }
 }

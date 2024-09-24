@@ -76,5 +76,15 @@ namespace Nike_Shop_Management.Properties {
                 return ((string)(this["Nike_DBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MSI\\SQLEXPRESS;Initial Catalog=Nike_DB;Integrated Security=True")]
+        public string Nike_DBConnectionString1 {
+            get {
+                return ((string)(this["Nike_DBConnectionString1"]));
+            }
+        }
     }
 }

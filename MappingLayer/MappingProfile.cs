@@ -19,8 +19,8 @@ namespace Nike_Shop_Management.MappingLayer
             CreateMap<ProductObjectDTO, product_object>();
             CreateMap<product_object, ProductObjectDTO>();
 
-            CreateMap<product, ProductDTO>();
-            CreateMap<ProductDTO, product>();
+            CreateMap<product, ProductColorsDTO>();
+            CreateMap<ProductColorsDTO, product>();
 
             CreateMap<product_icon, ProductIconsDTO>();
             CreateMap<ProductIconsDTO, product_icon>();
@@ -31,9 +31,21 @@ namespace Nike_Shop_Management.MappingLayer
             CreateMap<ProductImgDTO, product_img>();
             CreateMap<product_img, ProductImgDTO>();
 
+            CreateMap<category, ProductCategoriesDTO>();
+            CreateMap<ProductCategoriesDTO, category>();
 
-            CreateMap<ProductCategoryDTO, category_product>();
-            CreateMap<category_product, ProductCategoryDTO>();
+            CreateMap<SubCategoryDTO, sub_category>();
+            CreateMap<sub_category, SubCategoryDTO>();
+
+            CreateMap<supplier, SupplierDTO>();
+            CreateMap<SupplierDTO, supplier>();
+
+
+            CreateMap<GoodsReceiptDTO, goods_receipt>();
+            CreateMap<goods_receipt, GoodsReceiptDTO>();
+
+            CreateMap<goods_receipt_detail, GoodReceiptDetailsDTO>();
+            CreateMap<GoodReceiptDetailsDTO, goods_receipt_detail>();
         }
     }
 }

@@ -9,9 +9,9 @@ namespace Nike_Shop_Management.DAL
 {
     class ProductParentRepository
     {
-        private readonly DbContext _db;
+        private readonly DbContextDataContext _db;
 
-        public ProductParentRepository(DbContext db)
+        public ProductParentRepository(DbContextDataContext db)
         {
             _db = db;
         }
@@ -26,17 +26,28 @@ namespace Nike_Shop_Management.DAL
             return null;
         }
 
-        public List<ProductDTO> getProductColor(int product_parent_id)
+        public List<ProductColorsDTO> getProductColor(int product_parent_id)
         {
             List<product> products = _db.products.Where(emp => (int)emp.product_parent_id == product_parent_id).ToList();
-            List<ProductDTO> l = new List<ProductDTO>();
+            List<ProductColorsDTO> l = new List<ProductColorsDTO>();
             foreach (product p in products)
             {
-                l.Add(AutoMapperConfig.Mapper.Map<product, ProductDTO>(p));
+                l.Add(AutoMapperConfig.Mapper.Map<product, ProductColorsDTO>(p));
             }
             if (l != null)
             {
                 return l;
+            }
+            return null;
+        }
+
+        internal List<ProductParentDTO> getProductParentsBySubCategory(int id)
+        {
+            var list = _db.product_parents.Where(emp => emp.sub_categories_id == id).Select(t => AutoMapperConfig.Mapper.Map<product_parent, ProductParentDTO>(t)).ToList();
+
+            if (list != null)
+            {
+                return list;
             }
             return null;
         }
@@ -54,7 +65,7 @@ namespace Nike_Shop_Management.DAL
             {
                 throw;
             }
-       
+
         }
         public int Edit(ProductParentDTO productParent)
         {
@@ -64,8 +75,8 @@ namespace Nike_Shop_Management.DAL
                 if (existingProductParent != null)
                 {
                     existingProductParent.product_parent_name = productParent.product_parent_name;
-                    existingProductParent.product_object_id = productParent.product_object_id;
-                    existingProductParent.product_category_id = productParent.product_category_id;
+                    //   existingProductParent.product_object_id = productParent.product_object_id;
+                    //    existingProductParent.product_category_id = productParent.product_category_id;
                     existingProductParent.thumbnail = productParent.thumbnail;
                     if (decimal.TryParse(productParent.product_price, out decimal price))
                     {
@@ -109,7 +120,7 @@ namespace Nike_Shop_Management.DAL
             {
                 return null;
             }
-        }
+        }    
 
         public int Delete(int product_parent_id)
         {
@@ -145,14 +156,6 @@ namespace Nike_Shop_Management.DAL
             }
             return null;
         }
-        public List<ProductCategoryDTO> GetProductCategories()
-        {
-            List<ProductCategoryDTO> l = _db.category_products.Select(temp => AutoMapperConfig.Mapper.Map<category_product, ProductCategoryDTO>(temp)).ToList();
-            if (l != null)
-            {
-                return l;
-            }
-            return null;
-        }
+
     }
 }

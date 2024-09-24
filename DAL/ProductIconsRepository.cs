@@ -9,8 +9,8 @@ namespace Nike_Shop_Management.DAL
 {
     class ProductIconsRepository
     {
-        DbContext _db;
-        public ProductIconsRepository(DbContext db)
+        DbContextDataContext _db;
+        public ProductIconsRepository(DbContextDataContext db)
         {
             _db = db;
         }

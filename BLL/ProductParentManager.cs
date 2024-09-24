@@ -23,12 +23,16 @@ namespace Nike_Shop_Management.BLL
         {
             return _productParentRepository.getProductParents();
         }
+        public List<ProductParentDTO> GetProductParentsBySubCategory(int id)
+        {
+            return _productParentRepository.getProductParentsBySubCategory(id);
+        }
         /// <summary>
         /// lấy ra các sản phẩm là đối tượng con của product Parent, /t tham số truyền vào là 1 khóa chỉnh của productParent kiểu int
         /// </summary>
         /// <param name="product_parent_id"></param>
         /// <returns> null nếu danh sách rỗng</returns>
-        public List<ProductDTO> GetProductColors(int product_parent_id)
+        public List<ProductColorsDTO> GetProductColors(int product_parent_id)
         {
             return _productParentRepository.getProductColor(product_parent_id);
         }
@@ -87,9 +91,6 @@ namespace Nike_Shop_Management.BLL
             return _productParentRepository.GetProductIcons();
         }
 
-        public List<ProductCategoryDTO> GetProductCategories()
-        {
-            return _productParentRepository.GetProductCategories();
-        }
+      
     }
 }

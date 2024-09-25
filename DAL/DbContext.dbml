@@ -66,8 +66,10 @@
       <Column Name="quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="import_price" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="total_price" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="product_size_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="goods_receipt_goods_receipt_detail" Member="goods_receipt" ThisKey="good_receipt_id" OtherKey="goods_receipt_id" Type="goods_receipt" IsForeignKey="true" />
       <Association Name="product_goods_receipt_detail" Member="product" ThisKey="product_id" OtherKey="product_id" Type="product" IsForeignKey="true" />
+      <Association Name="product_size_goods_receipt_detail" Member="product_size" ThisKey="product_size_id" OtherKey="product_size_id" Type="product_size" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.history_search" Member="history_searches">
@@ -161,6 +163,7 @@
       <Column Name="soluong" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="product_size_bag" Member="bags" ThisKey="product_size_id" OtherKey="product_size_id" Type="bag" />
       <Association Name="product_size_user_order_product" Member="user_order_products" ThisKey="product_size_id" OtherKey="product_size_id" Type="user_order_product" />
+      <Association Name="product_size_goods_receipt_detail" Member="goods_receipt_details" ThisKey="product_size_id" OtherKey="product_size_id" Type="goods_receipt_detail" />
       <Association Name="product_product_size" Member="product" ThisKey="product_id" OtherKey="product_id" Type="product" IsForeignKey="true" />
       <Association Name="size_product_size" Member="size" ThisKey="size_id" OtherKey="size_id" Type="size" IsForeignKey="true" />
     </Type>

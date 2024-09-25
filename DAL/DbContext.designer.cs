@@ -1537,9 +1537,13 @@ namespace Nike_Shop_Management.DAL
 		
 		private System.Nullable<decimal> _total_price;
 		
+		private System.Nullable<int> _product_size_id;
+		
 		private EntityRef<goods_receipt> _goods_receipt;
 		
 		private EntityRef<product> _product;
+		
+		private EntityRef<product_size> _product_size;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1555,12 +1559,15 @@ namespace Nike_Shop_Management.DAL
     partial void Onimport_priceChanged();
     partial void Ontotal_priceChanging(System.Nullable<decimal> value);
     partial void Ontotal_priceChanged();
+    partial void Onproduct_size_idChanging(System.Nullable<int> value);
+    partial void Onproduct_size_idChanged();
     #endregion
 		
 		public goods_receipt_detail()
 		{
 			this._goods_receipt = default(EntityRef<goods_receipt>);
 			this._product = default(EntityRef<product>);
+			this._product_size = default(EntityRef<product_size>);
 			OnCreated();
 		}
 		
@@ -1672,6 +1679,30 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_size_id", DbType="Int")]
+		public System.Nullable<int> product_size_id
+		{
+			get
+			{
+				return this._product_size_id;
+			}
+			set
+			{
+				if ((this._product_size_id != value))
+				{
+					if (this._product_size.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onproduct_size_idChanging(value);
+					this.SendPropertyChanging();
+					this._product_size_id = value;
+					this.SendPropertyChanged("product_size_id");
+					this.Onproduct_size_idChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="goods_receipt_goods_receipt_detail", Storage="_goods_receipt", ThisKey="good_receipt_id", OtherKey="goods_receipt_id", IsForeignKey=true)]
 		public goods_receipt goods_receipt
 		{
@@ -1736,6 +1767,40 @@ namespace Nike_Shop_Management.DAL
 						this._product_id = default(int);
 					}
 					this.SendPropertyChanged("product");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_size_goods_receipt_detail", Storage="_product_size", ThisKey="product_size_id", OtherKey="product_size_id", IsForeignKey=true)]
+		public product_size product_size
+		{
+			get
+			{
+				return this._product_size.Entity;
+			}
+			set
+			{
+				product_size previousValue = this._product_size.Entity;
+				if (((previousValue != value) 
+							|| (this._product_size.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._product_size.Entity = null;
+						previousValue.goods_receipt_details.Remove(this);
+					}
+					this._product_size.Entity = value;
+					if ((value != null))
+					{
+						value.goods_receipt_details.Add(this);
+						this._product_size_id = value.product_size_id;
+					}
+					else
+					{
+						this._product_size_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("product_size");
 				}
 			}
 		}
@@ -3537,6 +3602,8 @@ namespace Nike_Shop_Management.DAL
 		
 		private EntitySet<user_order_product> _user_order_products;
 		
+		private EntitySet<goods_receipt_detail> _goods_receipt_details;
+		
 		private EntityRef<product> _product;
 		
 		private EntityRef<size> _size;
@@ -3559,6 +3626,7 @@ namespace Nike_Shop_Management.DAL
 		{
 			this._bags = new EntitySet<bag>(new Action<bag>(this.attach_bags), new Action<bag>(this.detach_bags));
 			this._user_order_products = new EntitySet<user_order_product>(new Action<user_order_product>(this.attach_user_order_products), new Action<user_order_product>(this.detach_user_order_products));
+			this._goods_receipt_details = new EntitySet<goods_receipt_detail>(new Action<goods_receipt_detail>(this.attach_goods_receipt_details), new Action<goods_receipt_detail>(this.detach_goods_receipt_details));
 			this._product = default(EntityRef<product>);
 			this._size = default(EntityRef<size>);
 			OnCreated();
@@ -3678,6 +3746,19 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_size_goods_receipt_detail", Storage="_goods_receipt_details", ThisKey="product_size_id", OtherKey="product_size_id")]
+		public EntitySet<goods_receipt_detail> goods_receipt_details
+		{
+			get
+			{
+				return this._goods_receipt_details;
+			}
+			set
+			{
+				this._goods_receipt_details.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_product_size", Storage="_product", ThisKey="product_id", OtherKey="product_id", IsForeignKey=true)]
 		public product product
 		{
@@ -3785,6 +3866,18 @@ namespace Nike_Shop_Management.DAL
 		}
 		
 		private void detach_user_order_products(user_order_product entity)
+		{
+			this.SendPropertyChanging();
+			entity.product_size = null;
+		}
+		
+		private void attach_goods_receipt_details(goods_receipt_detail entity)
+		{
+			this.SendPropertyChanging();
+			entity.product_size = this;
+		}
+		
+		private void detach_goods_receipt_details(goods_receipt_detail entity)
 		{
 			this.SendPropertyChanging();
 			entity.product_size = null;

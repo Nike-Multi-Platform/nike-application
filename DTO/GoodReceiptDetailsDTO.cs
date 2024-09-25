@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Nike_Shop_Management.DTO
 {
-    class GoodReceiptDetails
+    class GoodReceiptDetailsDTO
     {
         public int good_receipt_id { get; set; }
         public int product_id { get; set; }
         public int import_price { get; set; }
         public int total_price { get; set; }
+        public int product_size_id { get; set; }
     }
 }

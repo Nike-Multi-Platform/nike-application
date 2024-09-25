@@ -137,6 +137,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\GoodReceiptDetailsManager.cs" />
+    <Compile Include="BLL\GoodReceiptManager.cs" />
+    <Compile Include="DAL\GoodReceiptDetailsRepository.cs" />
+    <Compile Include="DAL\GoodReceiptRepository.cs" />
+    <Compile Include="DTO\GoodReceiptDetailsDTO.cs" />
+    <Compile Include="DTO\GoodsReceiptDTO.cs" />
     <Compile Include="DTO\SupplierDTO.cs" />
     <Compile Include="GUI\CRUD_ProductDetails.cs">
       <SubType>Form</SubType>

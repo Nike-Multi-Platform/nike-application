@@ -21,8 +21,14 @@ namespace Nike_Shop_Management.GUI
         public CRUD_ProductDetails()
         {
             InitializeComponent();
+            
             listView1.Click += ListView1_Click;
+            btnEdit.Click += BtnEdit_Click;
             comboSize.SelectedValueChanged += ComboSize_SelectedValueChanged;
+        }
+
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
         }
 
         private void ComboSize_SelectedValueChanged(object sender, EventArgs e)

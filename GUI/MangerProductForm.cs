@@ -30,6 +30,14 @@ namespace Nike_Shop_Management.GUI
             btnEdit.Click += BtnEdit_Click;
             btnShowMore.Click += BtnShowMore_Click;
             comboPriceFilter.Click += ComboPriceFilter_Click;
+            btnAdd.Click += BtnAdd_Click;
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            AddProductParentForm addProductParentForm = new AddProductParentForm();
+            addProductParentForm.ShowDialog();
+
         }
 
         private void ComboPriceFilter_Click(object sender, EventArgs e)
@@ -206,7 +214,8 @@ namespace Nike_Shop_Management.GUI
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            linkHolder = u_PictureBox.UploadImage(u_PictureBox.PathThumbail);
+            u_PictureBox.UploadImage(u_PictureBox.PathThumbail);
+            linkHolder =u_PictureBox.PathThumbail;
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

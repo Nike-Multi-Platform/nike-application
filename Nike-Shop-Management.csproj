@@ -144,6 +144,12 @@
     <Compile Include="DTO\GoodReceiptDetailsDTO.cs" />
     <Compile Include="DTO\GoodsReceiptDTO.cs" />
     <Compile Include="DTO\SupplierDTO.cs" />
+    <Compile Include="GUI\AddProductParentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\AddProductParentForm.Designer.cs">
+      <DependentUpon>AddProductParentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\CRUD_ProductDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +268,9 @@
     <Compile Include="u_PictureBox.Designer.cs">
       <DependentUpon>u_PictureBox.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI\AddProductParentForm.resx">
+      <DependentUpon>AddProductParentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\CRUD_ProductDetails.resx">
       <DependentUpon>CRUD_ProductDetails.cs</DependentUpon>
     </EmbeddedResource>

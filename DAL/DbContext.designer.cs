@@ -96,6 +96,9 @@ namespace Nike_Shop_Management.DAL
     partial void Insertuser_order(user_order instance);
     partial void Updateuser_order(user_order instance);
     partial void Deleteuser_order(user_order instance);
+    partial void Inserttemp_imports_product(temp_imports_product instance);
+    partial void Updatetemp_imports_product(temp_imports_product instance);
+    partial void Deletetemp_imports_product(temp_imports_product instance);
     #endregion
 		
 		public DbContextDataContext() : 
@@ -302,6 +305,28 @@ namespace Nike_Shop_Management.DAL
 			{
 				return this.GetTable<user_order>();
 			}
+		}
+		
+		public System.Data.Linq.Table<temp_imports_product> temp_imports_products
+		{
+			get
+			{
+				return this.GetTable<temp_imports_product>();
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ProcessImportProducts")]
+		public int ProcessImportProducts()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SaveTempImportProduct")]
+		public int SaveTempImportProduct([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> receipt_id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> product_id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> product_size_id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Money")] System.Nullable<decimal> import_price, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> quantity)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), receipt_id, product_id, product_size_id, import_price, quantity);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -1527,17 +1552,19 @@ namespace Nike_Shop_Management.DAL
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
+		private int _goods_receipt_details_id;
+		
 		private int _good_receipt_id;
 		
 		private int _product_id;
+		
+		private int _product_size_id;
 		
 		private System.Nullable<int> _quantity;
 		
 		private System.Nullable<decimal> _import_price;
 		
 		private System.Nullable<decimal> _total_price;
-		
-		private System.Nullable<int> _product_size_id;
 		
 		private EntityRef<goods_receipt> _goods_receipt;
 		
@@ -1549,18 +1576,20 @@ namespace Nike_Shop_Management.DAL
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void Ongoods_receipt_details_idChanging(int value);
+    partial void Ongoods_receipt_details_idChanged();
     partial void Ongood_receipt_idChanging(int value);
     partial void Ongood_receipt_idChanged();
     partial void Onproduct_idChanging(int value);
     partial void Onproduct_idChanged();
+    partial void Onproduct_size_idChanging(int value);
+    partial void Onproduct_size_idChanged();
     partial void OnquantityChanging(System.Nullable<int> value);
     partial void OnquantityChanged();
     partial void Onimport_priceChanging(System.Nullable<decimal> value);
     partial void Onimport_priceChanged();
     partial void Ontotal_priceChanging(System.Nullable<decimal> value);
     partial void Ontotal_priceChanged();
-    partial void Onproduct_size_idChanging(System.Nullable<int> value);
-    partial void Onproduct_size_idChanged();
     #endregion
 		
 		public goods_receipt_detail()
@@ -1571,7 +1600,27 @@ namespace Nike_Shop_Management.DAL
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_good_receipt_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_goods_receipt_details_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int goods_receipt_details_id
+		{
+			get
+			{
+				return this._goods_receipt_details_id;
+			}
+			set
+			{
+				if ((this._goods_receipt_details_id != value))
+				{
+					this.Ongoods_receipt_details_idChanging(value);
+					this.SendPropertyChanging();
+					this._goods_receipt_details_id = value;
+					this.SendPropertyChanged("goods_receipt_details_id");
+					this.Ongoods_receipt_details_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_good_receipt_id", DbType="Int NOT NULL")]
 		public int good_receipt_id
 		{
 			get
@@ -1595,7 +1644,7 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_id", DbType="Int NOT NULL")]
 		public int product_id
 		{
 			get
@@ -1615,6 +1664,30 @@ namespace Nike_Shop_Management.DAL
 					this._product_id = value;
 					this.SendPropertyChanged("product_id");
 					this.Onproduct_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_size_id", DbType="Int NOT NULL")]
+		public int product_size_id
+		{
+			get
+			{
+				return this._product_size_id;
+			}
+			set
+			{
+				if ((this._product_size_id != value))
+				{
+					if (this._product_size.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onproduct_size_idChanging(value);
+					this.SendPropertyChanging();
+					this._product_size_id = value;
+					this.SendPropertyChanged("product_size_id");
+					this.Onproduct_size_idChanged();
 				}
 			}
 		}
@@ -1639,7 +1712,7 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_import_price", DbType="Decimal(18,0)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_import_price", DbType="Money")]
 		public System.Nullable<decimal> import_price
 		{
 			get
@@ -1659,7 +1732,7 @@ namespace Nike_Shop_Management.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total_price", DbType="Decimal(18,0)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total_price", DbType="Money")]
 		public System.Nullable<decimal> total_price
 		{
 			get
@@ -1675,30 +1748,6 @@ namespace Nike_Shop_Management.DAL
 					this._total_price = value;
 					this.SendPropertyChanged("total_price");
 					this.Ontotal_priceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_size_id", DbType="Int")]
-		public System.Nullable<int> product_size_id
-		{
-			get
-			{
-				return this._product_size_id;
-			}
-			set
-			{
-				if ((this._product_size_id != value))
-				{
-					if (this._product_size.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onproduct_size_idChanging(value);
-					this.SendPropertyChanging();
-					this._product_size_id = value;
-					this.SendPropertyChanged("product_size_id");
-					this.Onproduct_size_idChanged();
 				}
 			}
 		}
@@ -1798,7 +1847,7 @@ namespace Nike_Shop_Management.DAL
 					}
 					else
 					{
-						this._product_size_id = default(Nullable<int>);
+						this._product_size_id = default(int);
 					}
 					this.SendPropertyChanged("product_size");
 				}
@@ -5548,6 +5597,212 @@ namespace Nike_Shop_Management.DAL
 		{
 			this.SendPropertyChanging();
 			entity.user_order = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.temp_imports_product")]
+	public partial class temp_imports_product : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _temp_id;
+		
+		private System.Nullable<int> _receipt_id;
+		
+		private System.Nullable<int> _product_id;
+		
+		private System.Nullable<int> _product_size_id;
+		
+		private System.Nullable<decimal> _import_price;
+		
+		private System.Nullable<int> _quantity;
+		
+		private System.Nullable<decimal> _total_price;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Ontemp_idChanging(int value);
+    partial void Ontemp_idChanged();
+    partial void Onreceipt_idChanging(System.Nullable<int> value);
+    partial void Onreceipt_idChanged();
+    partial void Onproduct_idChanging(System.Nullable<int> value);
+    partial void Onproduct_idChanged();
+    partial void Onproduct_size_idChanging(System.Nullable<int> value);
+    partial void Onproduct_size_idChanged();
+    partial void Onimport_priceChanging(System.Nullable<decimal> value);
+    partial void Onimport_priceChanged();
+    partial void OnquantityChanging(System.Nullable<int> value);
+    partial void OnquantityChanged();
+    partial void Ontotal_priceChanging(System.Nullable<decimal> value);
+    partial void Ontotal_priceChanged();
+    #endregion
+		
+		public temp_imports_product()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_temp_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int temp_id
+		{
+			get
+			{
+				return this._temp_id;
+			}
+			set
+			{
+				if ((this._temp_id != value))
+				{
+					this.Ontemp_idChanging(value);
+					this.SendPropertyChanging();
+					this._temp_id = value;
+					this.SendPropertyChanged("temp_id");
+					this.Ontemp_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_receipt_id", DbType="Int")]
+		public System.Nullable<int> receipt_id
+		{
+			get
+			{
+				return this._receipt_id;
+			}
+			set
+			{
+				if ((this._receipt_id != value))
+				{
+					this.Onreceipt_idChanging(value);
+					this.SendPropertyChanging();
+					this._receipt_id = value;
+					this.SendPropertyChanged("receipt_id");
+					this.Onreceipt_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_id", DbType="Int")]
+		public System.Nullable<int> product_id
+		{
+			get
+			{
+				return this._product_id;
+			}
+			set
+			{
+				if ((this._product_id != value))
+				{
+					this.Onproduct_idChanging(value);
+					this.SendPropertyChanging();
+					this._product_id = value;
+					this.SendPropertyChanged("product_id");
+					this.Onproduct_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_size_id", DbType="Int")]
+		public System.Nullable<int> product_size_id
+		{
+			get
+			{
+				return this._product_size_id;
+			}
+			set
+			{
+				if ((this._product_size_id != value))
+				{
+					this.Onproduct_size_idChanging(value);
+					this.SendPropertyChanging();
+					this._product_size_id = value;
+					this.SendPropertyChanged("product_size_id");
+					this.Onproduct_size_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_import_price", DbType="Money")]
+		public System.Nullable<decimal> import_price
+		{
+			get
+			{
+				return this._import_price;
+			}
+			set
+			{
+				if ((this._import_price != value))
+				{
+					this.Onimport_priceChanging(value);
+					this.SendPropertyChanging();
+					this._import_price = value;
+					this.SendPropertyChanged("import_price");
+					this.Onimport_priceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_quantity", DbType="Int")]
+		public System.Nullable<int> quantity
+		{
+			get
+			{
+				return this._quantity;
+			}
+			set
+			{
+				if ((this._quantity != value))
+				{
+					this.OnquantityChanging(value);
+					this.SendPropertyChanging();
+					this._quantity = value;
+					this.SendPropertyChanged("quantity");
+					this.OnquantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total_price", AutoSync=AutoSync.Always, DbType="Money", IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<decimal> total_price
+		{
+			get
+			{
+				return this._total_price;
+			}
+			set
+			{
+				if ((this._total_price != value))
+				{
+					this.Ontotal_priceChanging(value);
+					this.SendPropertyChanging();
+					this._total_price = value;
+					this.SendPropertyChanged("total_price");
+					this.Ontotal_priceChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

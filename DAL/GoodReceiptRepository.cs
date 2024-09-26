@@ -28,7 +28,9 @@ namespace Nike_Shop_Management.DAL
 
         internal int Update(GoodsReceiptDTO goodsReceiptDTO)
         {
+            
             return 1;
         }
+
     }
 }

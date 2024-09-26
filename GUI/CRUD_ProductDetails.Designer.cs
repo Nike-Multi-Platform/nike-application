@@ -186,7 +186,7 @@ namespace Nike_Shop_Management.GUI
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(336, 637);
+            this.btnAdd.Location = new System.Drawing.Point(352, 637);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(161, 42);
             this.btnAdd.TabIndex = 32;
@@ -194,7 +194,7 @@ namespace Nike_Shop_Management.GUI
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(652, 637);
+            this.btnEdit.Location = new System.Drawing.Point(620, 637);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(130, 42);
             this.btnEdit.TabIndex = 33;
@@ -202,9 +202,9 @@ namespace Nike_Shop_Management.GUI
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(887, 637);
+            this.btnCancel.Location = new System.Drawing.Point(847, 637);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(201, 42);
+            this.btnCancel.Size = new System.Drawing.Size(159, 42);
             this.btnCancel.TabIndex = 34;
             this.btnCancel.Values.Text = "Cancel";
             // 

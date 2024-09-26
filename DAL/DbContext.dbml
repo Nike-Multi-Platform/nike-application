@@ -61,12 +61,13 @@
   </Table>
   <Table Name="dbo.goods_receipt_details" Member="goods_receipt_details">
     <Type Name="goods_receipt_detail">
-      <Column Name="good_receipt_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="product_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="goods_receipt_details_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="good_receipt_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="product_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="product_size_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="import_price" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="total_price" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="product_size_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="import_price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="total_price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Association Name="goods_receipt_goods_receipt_detail" Member="goods_receipt" ThisKey="good_receipt_id" OtherKey="goods_receipt_id" Type="goods_receipt" IsForeignKey="true" />
       <Association Name="product_goods_receipt_detail" Member="product" ThisKey="product_id" OtherKey="product_id" Type="product" IsForeignKey="true" />
       <Association Name="product_size_goods_receipt_detail" Member="product_size" ThisKey="product_size_id" OtherKey="product_size_id" Type="product_size" IsForeignKey="true" />
@@ -249,4 +250,26 @@
       <Association Name="user_order_user_order_product" Member="user_order_products" ThisKey="user_order_id" OtherKey="user_order_id" Type="user_order_product" />
     </Type>
   </Table>
+  <Table Name="dbo.temp_imports_product" Member="temp_imports_products">
+    <Type Name="temp_imports_product">
+      <Column Name="temp_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="receipt_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="product_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="product_size_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="import_price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="total_price" Type="System.Decimal" DbType="Money" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Function Name="dbo.ProcessImportProducts" Method="ProcessImportProducts">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SaveTempImportProduct" Method="SaveTempImportProduct">
+    <Parameter Name="receipt_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="product_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="product_size_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="import_price" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="quantity" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

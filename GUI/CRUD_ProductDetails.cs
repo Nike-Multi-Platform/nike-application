@@ -18,11 +18,23 @@ namespace Nike_Shop_Management.GUI
         CloudIService CloudIService;
         ServiceConfig ServiceConfig;
         bool flag = false;
+        ProductColorsDTO productColorsDTO;
+        public int Product_id { get; set; }
         public CRUD_ProductDetails()
         {
             InitializeComponent();
+            
             listView1.Click += ListView1_Click;
+            btnEdit.Click += BtnEdit_Click;
             comboSize.SelectedValueChanged += ComboSize_SelectedValueChanged;
+        }
+
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+            if(productColorsDTO!=null)
+            {
+                backgroundWorker1.RunWorkerAsync();
+            }
         }
 
         private void ComboSize_SelectedValueChanged(object sender, EventArgs e)
@@ -39,11 +51,11 @@ namespace Nike_Shop_Management.GUI
             if (listView1.SelectedItems.Count > 0)
             {
                 ListViewItem selectedItem = listView1.SelectedItems[0];
-                Console.WriteLine(selectedItem.SubItems[1].Text);
                 u_PictureBox.LoadImgFromUrl(selectedItem.SubItems[1].Text);
                 BindingData(int.Parse(listView1.SelectedItems[0].Text), int.Parse(selectedItem.SubItems[2].Text));
             }
         }
+
         public void BindingData(int product_id, int supplier_id)
         {
             ProductColorManager productColorManager = new ProductColorManager(new DAL.ProductColorRepository(new DAL.DbContextDataContext()));
@@ -59,7 +71,7 @@ namespace Nike_Shop_Management.GUI
                 comboSupplier.DisplayMember = "supplier_name";
                 comboSupplier.ValueMember = "supplier_id";
             }
-            ProductColorsDTO productColorsDTO = productColorManager.GetByID(product_id);
+            productColorsDTO = productColorManager.GetByID(product_id);
             if (productColorsDTO != null)
             {
                 txColorShown.Text = productColorsDTO.product_color_shown;
@@ -112,5 +124,34 @@ namespace Nike_Shop_Management.GUI
             listView1.SmallImageList = imageListSmall;
         }
 
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            u_PictureBox.UploadImage(u_PictureBox.PathThumbail);
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            ProductColorManager pcM = new ProductColorManager(new DAL.ProductColorRepository(new DAL.DbContextDataContext()));
+            string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(u_PictureBox.PathThumbail);
+             string linkHolder = "Nike-application/" + fileNameWithoutExtension;
+            productColorsDTO.product_color_shown = txColorShown.Text;
+            productColorsDTO.product_description = tx_description.Text;
+            productColorsDTO.product_description2 = tx_description2.Text;
+            productColorsDTO.product_img = linkHolder;
+            productColorsDTO.product_more_info = tx_more_info.Text;
+            productColorsDTO.product_size_and_fit = txSizeAndFit.Text;
+            productColorsDTO.product_style_code = txStylecode.Text;
+            productColorsDTO.sale_prices = txSalePrices.Text;
+            productColorsDTO.supplier_id = 1;
+            int flag = pcM.Update(productColorsDTO);
+            if(flag==1)
+            {
+                MessageBox.Show("EDIT SUCCESSFULL");
+            }
+            else {
+                MessageBox.Show("failed");
+            }
+            
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace Nike_Shop_Management.GUI
         ProductParentManager ppM = new ProductParentManager(new DAL.ProductParentRepository(new DAL.DbContextDataContext()));
         List<ProductParentDTO> listProductParent;
         public string linkHolder { get; set; }
-
+        public string linkHolderTemp { get; set; }
         public ProductParentDTO productParentClicked { get; set; }
         public MangerProductForm()
         {
@@ -26,12 +26,32 @@ namespace Nike_Shop_Management.GUI
             comboProductObjectFilter.SelectedIndexChanged += ComboProductObjectFilter_SelectedIndexChanged;
             comboProductCategoriesFileter.SelectedIndexChanged += ComboProductCategoriesFileter_SelectedValueChanged;
             ComboSubCategoriesFilter.SelectedIndexChanged += ComboSubCategoriesFilter_SelectedIndexChanged;
-
+            ComboDateFilter.SelectedIndexChanged += ComboDateFilter_SelectedIndexChanged;
+            comboPriceFilter.SelectedIndexChanged += ComboPriceFilter_SelectedIndexChanged;
             btnEdit.Click += BtnEdit_Click;
             btnShowMore.Click += BtnShowMore_Click;
-            comboPriceFilter.Click += ComboPriceFilter_Click;
+        
             btnAdd.Click += BtnAdd_Click;
+            btnSearch.Click += BtnSearch_Click;
         }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+           // search thì cx dậy lun nha :< 
+            
+        }
+
+        private void ComboPriceFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // code phần sort ở đây nha. ý tưởng là duyệt vào cái panel lấy ra cái danh sách  hoặc là dùng cái list danh sách biến toàn cục để sort
+        }
+
+        private void ComboDateFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // code phần sort ở đây nha. ý tưởng là duyệt vào cái panel lấy ra cái danh sách  hoặc là dùng cái list danh sách biến toàn cục để sort
+
+        }
+
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
@@ -40,10 +60,6 @@ namespace Nike_Shop_Management.GUI
 
         }
 
-        private void ComboPriceFilter_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
         private void BtnShowMore_Click(object sender, EventArgs e)
         {
@@ -175,7 +191,6 @@ namespace Nike_Shop_Management.GUI
             comboProductCategoriesFileter.DataSource = list;
             comboProductCategoriesFileter.DisplayMember = "categories_name";
             comboProductCategoriesFileter.ValueMember = "categories_id";
-
         }
 
         public void InitData()
@@ -201,6 +216,7 @@ namespace Nike_Shop_Management.GUI
                 txProductPrice.Text = productParent.product_price.ToString();
                 txProductName.Text = productParent.product_parent_name.ToString();
                 lbl_count_types.Text = productDTOs.Count.ToString();
+                linkHolder = productParent.thumbnail;
             }
             else
             {
@@ -214,8 +230,17 @@ namespace Nike_Shop_Management.GUI
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            u_PictureBox.UploadImage(u_PictureBox.PathThumbail);
-            linkHolder =u_PictureBox.PathThumbail;
+            if(u_PictureBox.PathThumbail==null)
+            {
+                string str = productParentClicked.thumbnail.Replace("Nike-application/", "");
+                linkHolder = str;
+               
+            }
+            else
+            {
+                linkHolder = u_PictureBox.PathThumbail;
+            }
+          
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -243,6 +268,7 @@ namespace Nike_Shop_Management.GUI
                     MessageBox.Show("Edit failed");
                 }
             }
+            linkHolder = "";
             LoadDataPanel();
             PaintDataDetails(null);
         }

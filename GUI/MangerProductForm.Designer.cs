@@ -30,16 +30,21 @@ namespace Nike_Shop_Management.GUI
         private void InitializeComponent()
         {
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.lbl_count_types = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel7 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.btnAdd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonLabel19 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.comboProductObject = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonLabel18 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel17 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.btnEdit = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.comboProductCategories = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.btnShowMore = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.comboSubCategories = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.txProductPrice = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txProductName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.u_PictureBox = new Nike_Shop_Management.u_PictureBox();
             this.kryptonLabel10 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel9 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel8 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -61,16 +66,12 @@ namespace Nike_Shop_Management.GUI
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.panel_product_parent = new System.Windows.Forms.FlowLayoutPanel();
-            this.kryptonLabel17 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.comboSubCategories = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.kryptonLabel7 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.lbl_count_types = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.u_PictureBox = new Nike_Shop_Management.u_PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboProductObject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboProductCategories)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboSubCategories)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
@@ -88,7 +89,6 @@ namespace Nike_Shop_Management.GUI
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
             this.kryptonPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboSubCategories)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -116,6 +116,22 @@ namespace Nike_Shop_Management.GUI
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(379, 814);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // lbl_count_types
+            // 
+            this.lbl_count_types.Location = new System.Drawing.Point(171, 460);
+            this.lbl_count_types.Name = "lbl_count_types";
+            this.lbl_count_types.Size = new System.Drawing.Size(117, 24);
+            this.lbl_count_types.TabIndex = 28;
+            this.lbl_count_types.Values.Text = "kryptonLabel11";
+            // 
+            // kryptonLabel7
+            // 
+            this.kryptonLabel7.Location = new System.Drawing.Point(16, 460);
+            this.kryptonLabel7.Name = "kryptonLabel7";
+            this.kryptonLabel7.Size = new System.Drawing.Size(94, 24);
+            this.kryptonLabel7.TabIndex = 27;
+            this.kryptonLabel7.Values.Text = "Count types";
             // 
             // btnAdd
             // 
@@ -157,6 +173,14 @@ namespace Nike_Shop_Management.GUI
             this.kryptonLabel18.TabIndex = 17;
             this.kryptonLabel18.Values.Text = "Product categories";
             // 
+            // kryptonLabel17
+            // 
+            this.kryptonLabel17.Location = new System.Drawing.Point(14, 346);
+            this.kryptonLabel17.Name = "kryptonLabel17";
+            this.kryptonLabel17.Size = new System.Drawing.Size(112, 24);
+            this.kryptonLabel17.TabIndex = 17;
+            this.kryptonLabel17.Values.Text = "Sub categories";
+            // 
             // btnEdit
             // 
             this.btnEdit.Location = new System.Drawing.Point(133, 749);
@@ -182,6 +206,14 @@ namespace Nike_Shop_Management.GUI
             this.btnShowMore.TabIndex = 24;
             this.btnShowMore.Values.Text = "Show more";
             // 
+            // comboSubCategories
+            // 
+            this.comboSubCategories.DropDownWidth = 163;
+            this.comboSubCategories.Location = new System.Drawing.Point(172, 345);
+            this.comboSubCategories.Name = "comboSubCategories";
+            this.comboSubCategories.Size = new System.Drawing.Size(182, 25);
+            this.comboSubCategories.TabIndex = 16;
+            // 
             // txProductPrice
             // 
             this.txProductPrice.Location = new System.Drawing.Point(174, 417);
@@ -197,6 +229,15 @@ namespace Nike_Shop_Management.GUI
             this.txProductName.Size = new System.Drawing.Size(180, 27);
             this.txProductName.TabIndex = 14;
             this.txProductName.Text = "kryptonTextBox3";
+            // 
+            // u_PictureBox
+            // 
+            this.u_PictureBox.Location = new System.Drawing.Point(178, 20);
+            this.u_PictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.u_PictureBox.Name = "u_PictureBox";
+            this.u_PictureBox.PathThumbail = null;
+            this.u_PictureBox.Size = new System.Drawing.Size(181, 208);
+            this.u_PictureBox.TabIndex = 12;
             // 
             // kryptonLabel10
             // 
@@ -391,51 +432,10 @@ namespace Nike_Shop_Management.GUI
             this.panel_product_parent.Size = new System.Drawing.Size(828, 644);
             this.panel_product_parent.TabIndex = 0;
             // 
-            // kryptonLabel17
-            // 
-            this.kryptonLabel17.Location = new System.Drawing.Point(14, 346);
-            this.kryptonLabel17.Name = "kryptonLabel17";
-            this.kryptonLabel17.Size = new System.Drawing.Size(112, 24);
-            this.kryptonLabel17.TabIndex = 17;
-            this.kryptonLabel17.Values.Text = "Sub categories";
-            // 
-            // comboSubCategories
-            // 
-            this.comboSubCategories.DropDownWidth = 163;
-            this.comboSubCategories.Location = new System.Drawing.Point(172, 345);
-            this.comboSubCategories.Name = "comboSubCategories";
-            this.comboSubCategories.Size = new System.Drawing.Size(182, 25);
-            this.comboSubCategories.TabIndex = 16;
-            // 
-            // kryptonLabel7
-            // 
-            this.kryptonLabel7.Location = new System.Drawing.Point(16, 460);
-            this.kryptonLabel7.Name = "kryptonLabel7";
-            this.kryptonLabel7.Size = new System.Drawing.Size(94, 24);
-            this.kryptonLabel7.TabIndex = 27;
-            this.kryptonLabel7.Values.Text = "Count types";
-            // 
-            // lbl_count_types
-            // 
-            this.lbl_count_types.Location = new System.Drawing.Point(171, 460);
-            this.lbl_count_types.Name = "lbl_count_types";
-            this.lbl_count_types.Size = new System.Drawing.Size(117, 24);
-            this.lbl_count_types.TabIndex = 28;
-            this.lbl_count_types.Values.Text = "kryptonLabel11";
-            // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // u_PictureBox
-            // 
-            this.u_PictureBox.Location = new System.Drawing.Point(178, 20);
-            this.u_PictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.u_PictureBox.Name = "u_PictureBox";
-            this.u_PictureBox.PathThumbail = null;
-            this.u_PictureBox.Size = new System.Drawing.Size(181, 208);
-            this.u_PictureBox.TabIndex = 12;
             // 
             // MangerProductForm
             // 
@@ -453,6 +453,7 @@ namespace Nike_Shop_Management.GUI
             this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboProductObject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboProductCategories)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboSubCategories)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
             this.kryptonGroupBox1.Panel.ResumeLayout(false);
             this.kryptonGroupBox1.Panel.PerformLayout();
@@ -472,7 +473,6 @@ namespace Nike_Shop_Management.GUI
             this.kryptonPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
             this.kryptonPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.comboSubCategories)).EndInit();
             this.ResumeLayout(false);
 
         }

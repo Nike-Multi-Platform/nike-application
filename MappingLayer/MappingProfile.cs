@@ -46,6 +46,9 @@ namespace Nike_Shop_Management.MappingLayer
 
             CreateMap<goods_receipt_detail, GoodReceiptDetailsDTO>();
             CreateMap<GoodReceiptDetailsDTO, goods_receipt_detail>();
+
+            CreateMap<size, SizeDTO>();
+            CreateMap<SizeDTO, size>();
         }
     }
 }

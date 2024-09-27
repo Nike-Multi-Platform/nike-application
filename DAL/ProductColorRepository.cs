@@ -89,6 +89,20 @@ namespace Nike_Shop_Management.DAL
             
         }
 
+        internal TypeSize GetTypeSize(int id)
+        {
+            var subCategory = _db.sub_categories.Where(t => t.sub_categories_id == id).FirstOrDefault();
+            var Category = _db.categories.Where(t => t.categories_id == subCategory.categories_id).FirstOrDefault();
+            if(Category.categories_name =="Shoes")
+            {
+                return TypeSize.Shoes;
+            }
+            else
+            {
+                return TypeSize.Clothing;
+            }
+        }
+
         internal int GetQuantity(int product_size_id)
         {
             product_size temp = _db.product_sizes.Where(t => t.product_size_id == product_size_id).FirstOrDefault();

@@ -102,7 +102,6 @@ namespace Nike_Shop_Management.GUI
             this.txTotalStock.Name = "txTotalStock";
             this.txTotalStock.Size = new System.Drawing.Size(208, 27);
             this.txTotalStock.TabIndex = 13;
-            this.txTotalStock.Text = "kryptonTextBox4";
             // 
             // txSolds
             // 
@@ -110,7 +109,6 @@ namespace Nike_Shop_Management.GUI
             this.txSolds.Name = "txSolds";
             this.txSolds.Size = new System.Drawing.Size(208, 27);
             this.txSolds.TabIndex = 12;
-            this.txSolds.Text = "kryptonTextBox5";
             // 
             // kryptonLabel4
             // 
@@ -142,7 +140,6 @@ namespace Nike_Shop_Management.GUI
             this.txSalePrices.Name = "txSalePrices";
             this.txSalePrices.Size = new System.Drawing.Size(208, 27);
             this.txSalePrices.TabIndex = 8;
-            this.txSalePrices.Text = "kryptonTextBox6";
             // 
             // kryptonLabel7
             // 
@@ -174,7 +171,6 @@ namespace Nike_Shop_Management.GUI
             this.txColorShown.Name = "txColorShown";
             this.txColorShown.Size = new System.Drawing.Size(211, 27);
             this.txColorShown.TabIndex = 14;
-            this.txColorShown.Text = "kryptonTextBox9";
             // 
             // kryptonLabel12
             // 
@@ -223,7 +219,6 @@ namespace Nike_Shop_Management.GUI
             this.comboSupplier.Name = "comboSupplier";
             this.comboSupplier.Size = new System.Drawing.Size(208, 25);
             this.comboSupplier.TabIndex = 36;
-            this.comboSupplier.Text = "kryptonComboBox1";
             // 
             // txSizeAndFit
             // 
@@ -231,7 +226,6 @@ namespace Nike_Shop_Management.GUI
             this.txSizeAndFit.Name = "txSizeAndFit";
             this.txSizeAndFit.Size = new System.Drawing.Size(211, 27);
             this.txSizeAndFit.TabIndex = 37;
-            this.txSizeAndFit.Text = "kryptonTextBox1";
             // 
             // txStylecode
             // 
@@ -239,7 +233,6 @@ namespace Nike_Shop_Management.GUI
             this.txStylecode.Name = "txStylecode";
             this.txStylecode.Size = new System.Drawing.Size(211, 27);
             this.txStylecode.TabIndex = 38;
-            this.txStylecode.Text = "kryptonTextBox3";
             // 
             // tx_description
             // 
@@ -264,7 +257,6 @@ namespace Nike_Shop_Management.GUI
             this.comboSize.Name = "comboSize";
             this.comboSize.Size = new System.Drawing.Size(211, 25);
             this.comboSize.TabIndex = 41;
-            this.comboSize.Text = "kryptonComboBox2";
             // 
             // kryptonLabel1
             // 
@@ -276,7 +268,7 @@ namespace Nike_Shop_Management.GUI
             // 
             // u_PictureBox
             // 
-            this.u_PictureBox.Location = new System.Drawing.Point(50, 55);
+            this.u_PictureBox.Location = new System.Drawing.Point(49, 100);
             this.u_PictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.u_PictureBox.Name = "u_PictureBox";
             this.u_PictureBox.PathThumbail = null;
@@ -295,9 +287,9 @@ namespace Nike_Shop_Management.GUI
             // 
             this.lbl_quantity.Location = new System.Drawing.Point(1007, 398);
             this.lbl_quantity.Name = "lbl_quantity";
-            this.lbl_quantity.Size = new System.Drawing.Size(117, 24);
+            this.lbl_quantity.Size = new System.Drawing.Size(6, 2);
             this.lbl_quantity.TabIndex = 44;
-            this.lbl_quantity.Values.Text = "kryptonLabel11";
+            this.lbl_quantity.Values.Text = "";
             // 
             // backgroundWorker1
             // 

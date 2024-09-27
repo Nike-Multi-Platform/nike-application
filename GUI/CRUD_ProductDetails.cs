@@ -19,14 +19,24 @@ namespace Nike_Shop_Management.GUI
         ServiceConfig ServiceConfig;
         bool flag = false;
         ProductColorsDTO productColorsDTO;
+        ProductColorManager pcM = new ProductColorManager(new DAL.ProductColorRepository(new DAL.DbContextDataContext()));
         public int Product_id { get; set; }
+        public int ProductParentID { get; set; }
         public CRUD_ProductDetails()
         {
-            InitializeComponent();
-            
+            InitializeComponent();         
             listView1.Click += ListView1_Click;
+            btnAdd.Click += BtnAdd_Click;
             btnEdit.Click += BtnEdit_Click;
             comboSize.SelectedValueChanged += ComboSize_SelectedValueChanged;
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            AddProductColor ad = new AddProductColor();
+            TypeSize typeSize = pcM.GetTypeSize(ProductParentID);
+            ad.SetCondition(typeSize);
+            ad.ShowDialog();
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -36,13 +46,11 @@ namespace Nike_Shop_Management.GUI
                 backgroundWorker1.RunWorkerAsync();
             }
         }
-
         private void ComboSize_SelectedValueChanged(object sender, EventArgs e)
         {
             if (flag)
             {
-                ProductColorManager productColorManager = new ProductColorManager(new DAL.ProductColorRepository(new DAL.DbContextDataContext()));
-                lbl_quantity.Text = productColorManager.GetQuantity((int)comboSize.SelectedValue).ToString();
+                lbl_quantity.Text = pcM.GetQuantity((int)comboSize.SelectedValue).ToString();
             }
         }
 
@@ -58,9 +66,9 @@ namespace Nike_Shop_Management.GUI
 
         public void BindingData(int product_id, int supplier_id)
         {
-            ProductColorManager productColorManager = new ProductColorManager(new DAL.ProductColorRepository(new DAL.DbContextDataContext()));
-            List<ProductSizeDTO> listSize = productColorManager.GetProductSizesByID(product_id);
-            List<SupplierDTO> listSupplier = productColorManager.GetSuppliers(supplier_id);
+            Product_id = product_id;
+            List<ProductSizeDTO> listSize = pcM.GetProductSizesByID(product_id);
+            List<SupplierDTO> listSupplier = pcM.GetSuppliers(supplier_id);
             if (listSize.Count > 0 && listSupplier.Count > 0)
             {
 
@@ -71,7 +79,7 @@ namespace Nike_Shop_Management.GUI
                 comboSupplier.DisplayMember = "supplier_name";
                 comboSupplier.ValueMember = "supplier_id";
             }
-            productColorsDTO = productColorManager.GetByID(product_id);
+            productColorsDTO = pcM.GetByID(product_id);
             if (productColorsDTO != null)
             {
                 txColorShown.Text = productColorsDTO.product_color_shown;
@@ -92,6 +100,7 @@ namespace Nike_Shop_Management.GUI
             listView1.Columns.Clear();
             listView1.FullRowSelect = false;
             listView1.MultiSelect = false;
+            ProductParentID = product_parent_id;
             ProductParentManager ppM = new ProductParentManager(new DAL.ProductParentRepository(new DAL.DbContextDataContext()));
             List<ProductColorsDTO> list = ppM.GetProductColors(product_parent_id);
             ImageList imageListSmall = new ImageList();
@@ -131,7 +140,6 @@ namespace Nike_Shop_Management.GUI
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            ProductColorManager pcM = new ProductColorManager(new DAL.ProductColorRepository(new DAL.DbContextDataContext()));
             string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(u_PictureBox.PathThumbail);
              string linkHolder = "Nike-application/" + fileNameWithoutExtension;
             productColorsDTO.product_color_shown = txColorShown.Text;

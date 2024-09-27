@@ -72,5 +72,9 @@ namespace Nike_Shop_Management.BLL
         {
             return _productColorRepository.GetQuantity(product_size_id);
         }
+        public TypeSize GetTypeSize(int id)
+        {
+            return _productColorRepository.GetTypeSize(id);
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace Nike_Shop_Management.GUI
         public AddProductColor()
         {
             InitializeComponent();
-            
+            InitData();
         }
 
         private void AddProductColor_Load(object sender, EventArgs e)
@@ -26,7 +26,10 @@ namespace Nike_Shop_Management.GUI
         }
         public void InitData()
         {
-           
+            SupplierManager supplierManager = new SupplierManager();
+             comboSupplier.DataSource= supplierManager.GetAll();
+            comboSupplier.DisplayMember = "supplier_name";
+            comboSupplier.ValueMember = "supplier_id";
         }
         public void SetCondition(TypeSize type)
         {

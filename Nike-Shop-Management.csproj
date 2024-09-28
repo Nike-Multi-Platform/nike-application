@@ -140,9 +140,11 @@
     <Compile Include="BLL\GoodReceiptDetailsManager.cs" />
     <Compile Include="BLL\GoodReceiptManager.cs" />
     <Compile Include="BLL\SizeManager.cs" />
+    <Compile Include="BLL\SupplierManager.cs" />
     <Compile Include="DAL\GoodReceiptDetailsRepository.cs" />
     <Compile Include="DAL\GoodReceiptRepository.cs" />
     <Compile Include="DAL\SizeRepository.cs" />
+    <Compile Include="DAL\SupplierRepository.cs" />
     <Compile Include="DTO\GoodReceiptDetailsDTO.cs" />
     <Compile Include="DTO\GoodsReceiptDTO.cs" />
     <Compile Include="DTO\SizeDTO.cs" />

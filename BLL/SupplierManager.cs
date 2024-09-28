@@ -8,15 +8,14 @@ using System.Threading.Tasks;
 
 namespace Nike_Shop_Management.BLL
 {
-    class SizeManager : IRepository<SizeDTO>
+    class SupplierManager : IRepository<SupplierDTO>
     {
-        SizeRepository _sizeRepository = new SizeRepository(new DbContextDataContext());
-        public SizeManager()
+        SupplierRepository _supplierRepository = new SupplierRepository(new DbContextDataContext());
+        public SupplierManager()
         {
-            
-        }
 
-        public int Add(SizeDTO entity)
+        }
+        public int Add(SupplierDTO entity)
         {
             throw new NotImplementedException();
         }
@@ -26,12 +25,12 @@ namespace Nike_Shop_Management.BLL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<SizeDTO> GetAll()
+        public IEnumerable<SupplierDTO> GetAll()
         {
-            return _sizeRepository.GetAll();
+            return _supplierRepository.GetAll();
         }
 
-        public SizeDTO GetByID(int id)
+        public SupplierDTO GetByID(int id)
         {
             throw new NotImplementedException();
         }
@@ -41,12 +40,12 @@ namespace Nike_Shop_Management.BLL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<SizeDTO> Search(string search)
+        public IEnumerable<SupplierDTO> Search(string search)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(SizeDTO enity)
+        public int Update(SupplierDTO enity)
         {
             throw new NotImplementedException();
         }

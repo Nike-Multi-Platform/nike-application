@@ -24,6 +24,10 @@ namespace Nike_Shop_Management.GUI
         {
 
         }
+        public void InitData()
+        {
+           
+        }
         public void SetCondition(TypeSize type)
         {
             switch (type)
@@ -39,9 +43,10 @@ namespace Nike_Shop_Management.GUI
                     break;
             }
         }
+
         public void InitDataComboSizeClothing()
         {
-            SizeManager sizeManager = new SizeManager(new DAL.SizeRepository(new DAL.DbContextDataContext()));
+            SizeManager sizeManager = new SizeManager();
             List<SizeDTO> sizeDTOs = (List<SizeDTO>)sizeManager.GetAll();
             foreach (var item in sizeDTOs)
             {
@@ -53,7 +58,7 @@ namespace Nike_Shop_Management.GUI
         }
         public void InitDataComboSizeShoes()
         {
-            SizeManager sizeManager = new SizeManager(new DAL.SizeRepository(new DAL.DbContextDataContext()));
+            SizeManager sizeManager = new SizeManager();
             List<SizeDTO> sizeDTOs = (List<SizeDTO>)sizeManager.GetAll();
             foreach (var item in sizeDTOs)
             {

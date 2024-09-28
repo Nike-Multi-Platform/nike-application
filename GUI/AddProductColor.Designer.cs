@@ -93,7 +93,7 @@ namespace Nike_Shop_Management.GUI
             this.comboSupplier.DropDownWidth = 208;
             this.comboSupplier.Location = new System.Drawing.Point(889, 115);
             this.comboSupplier.Name = "comboSupplier";
-            this.comboSupplier.Size = new System.Drawing.Size(208, 25);
+            this.comboSupplier.Size = new System.Drawing.Size(212, 25);
             this.comboSupplier.TabIndex = 65;
             // 
             // tx_more_info
@@ -256,7 +256,7 @@ namespace Nike_Shop_Management.GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1168, 639);
+            this.ClientSize = new System.Drawing.Size(1168, 648);
             this.Controls.Add(this.checked_list_Size);
             this.Controls.Add(this.kryptonLabel1);
             this.Controls.Add(this.tx_description2);

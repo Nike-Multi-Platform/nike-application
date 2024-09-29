@@ -3,11 +3,6 @@ using Nike_Shop_Management.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Nike_Shop_Management.GUI
@@ -33,7 +28,7 @@ namespace Nike_Shop_Management.GUI
             }
 
             SubCategoryDTO selectedSubcategory = (SubCategoryDTO)ComboSubCategoriesFilter.SelectedItem;
-             if(selectedSubcategory!=null)
+            if (selectedSubcategory != null)
             {
                 backgroundWorker1.RunWorkerAsync();
             }

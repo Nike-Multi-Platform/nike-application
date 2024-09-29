@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Nike_Shop_Management.GUI;
+using System;
 using System.Windows.Forms;
-using Nike_Shop_Management.GUI;
-using Nike_Shop_Management.GUI.Test;
 
 namespace Nike_Shop_Management
 {

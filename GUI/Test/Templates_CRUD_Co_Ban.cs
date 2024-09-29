@@ -1,12 +1,7 @@
 ﻿using Nike_Shop_Management.BLL;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Nike_Shop_Management.GUI.Test
@@ -27,27 +22,27 @@ namespace Nike_Shop_Management.GUI.Test
 
         private void Btn_Search_Click(object sender, EventArgs e)
         {
-            txt_user_search.Text =  txt_user_search.Text.Trim();
-            if(txt_user_search.Text.Length==0)
+            txt_user_search.Text = txt_user_search.Text.Trim();
+            if (txt_user_search.Text.Length == 0)
             {
                 u_DataGridView1.LoadData(_service.GetAll().ToList());
                 return;
             }
             string user_search = txt_user_search.Text;
-            u_DataGridView1.LoadData(_service.Search(user_search).ToList());  
-           
+            u_DataGridView1.LoadData(_service.Search(user_search).ToList());
+
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             T DataSelected = (T)u_DataGridView1.DataSelected;
-            if(DataSelected!=null)
+            if (DataSelected != null)
             {
                 var id = typeof(T).GetProperties().ElementAt(0).GetValue(DataSelected).ToString();
-                if(id!=null)
+                if (id != null)
                 {
                     int flag = _service.Delete((Int32.Parse(id)));
-                    if(flag==1)
+                    if (flag == 1)
                     {
 
                         MessageBox.Show("DELETE SUCCESSFULLY");
@@ -71,8 +66,8 @@ namespace Nike_Shop_Management.GUI.Test
             Dictionary<string, string> dic = new Dictionary<string, string>();
 
             for (int i = 0; i < Properties.Length; i++)
-            {           
-                if(Properties.ElementAt(i).GetValue(DataSelected)==null)
+            {
+                if (Properties.ElementAt(i).GetValue(DataSelected) == null)
                 {
                     Properties.ElementAt(i).SetValue(DataSelected, " ");
                 }
@@ -135,7 +130,7 @@ namespace Nike_Shop_Management.GUI.Test
             }
             return newItem;
         }
-        public  T GetTypeForUpdate()
+        public T GetTypeForUpdate()
         {
             var list = u_DataGridView1.GetSource<T>();
             T newItem = Activator.CreateInstance<T>();

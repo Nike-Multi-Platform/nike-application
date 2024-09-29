@@ -3,8 +3,6 @@ using Nike_Shop_Management.MappingLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Nike_Shop_Management.DAL
 {
@@ -27,10 +25,10 @@ namespace Nike_Shop_Management.DAL
                 return 1;
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                return 0;
+                throw e;
+           //     return 0;
             }
         }
 
@@ -54,6 +52,21 @@ namespace Nike_Shop_Management.DAL
             }
         }
 
+        internal IEnumerable<ProductColorsDTO> GetAll()
+        {
+            var list = _db.products.Select(t => AutoMapperConfig.Mapper.Map<product, ProductColorsDTO>(t)).ToList();
+            return list;
+        }
+        public ProductColorsDTO GetLast()
+        {
+            var lastProduct = _db.products.ToList().LastOrDefault();
+            if (lastProduct == null)
+                return null;
+
+            var mappedProduct = AutoMapperConfig.Mapper.Map<product, ProductColorsDTO>(lastProduct);
+            return mappedProduct;
+        }
+
         internal ProductColorsDTO GetByID(int id)
         {
             var productDTO = _db.products.Where(t => t.product_id == id).FirstOrDefault();
@@ -74,7 +87,7 @@ namespace Nike_Shop_Management.DAL
             try
             {
                 var existEntity = _db.product_sizes.Where(t => t.product_size_id == product_size_id).FirstOrDefault();
-                if(existEntity!=null)
+                if (existEntity != null)
                 {
                     _db.product_sizes.DeleteOnSubmit(existEntity);
                     _db.SubmitChanges();
@@ -86,7 +99,7 @@ namespace Nike_Shop_Management.DAL
             {
                 return 0;
             }
-            
+
         }
 
         internal TypeSize GetTypeSize(int id)
@@ -94,7 +107,7 @@ namespace Nike_Shop_Management.DAL
             var product = _db.product_parents.Where(t => t.product_parent_id == id).FirstOrDefault();
             var subCategory = _db.sub_categories.Where(t => t.sub_categories_id == product.sub_categories_id).FirstOrDefault();
             var Category = _db.categories.Where(t => t.categories_id == subCategory.categories_id).FirstOrDefault();
-            if(Category.categories_name =="Shoes")
+            if (Category.categories_name == "Shoes")
             {
                 return TypeSize.Shoes;
             }
@@ -113,7 +126,7 @@ namespace Nike_Shop_Management.DAL
         internal List<SupplierDTO> GetSuppliers(int suppler_id)
         {
             var list = _db.suppliers.Where(t => t.supplier_id == suppler_id).Select(t => AutoMapperConfig.Mapper.Map<supplier, SupplierDTO>(t)).ToList();
-            if(list!=null)
+            if (list != null)
             {
                 return list;
             }
@@ -164,4 +177,3 @@ namespace Nike_Shop_Management.DAL
         }
     }
 }
-        

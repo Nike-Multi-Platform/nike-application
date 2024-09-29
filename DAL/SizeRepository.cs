@@ -1,10 +1,7 @@
 ﻿using Nike_Shop_Management.DTO;
-using System;
+using Nike_Shop_Management.MappingLayer;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Nike_Shop_Management.MappingLayer;
 namespace Nike_Shop_Management.DAL
 {
     class SizeRepository

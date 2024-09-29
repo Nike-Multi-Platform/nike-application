@@ -1,13 +1,5 @@
 ﻿using Nike_Shop_Management.BLL;
-using Nike_Shop_Management.DTO;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Nike_Shop_Management.GUI.Test
@@ -29,7 +21,7 @@ namespace Nike_Shop_Management.GUI.Test
         public void LoadData()
         {
             var data = _service.GetAll();
-            if(data!=null)
+            if (data != null)
             {
                 Templates_CRUD_Co_Ban<T> templates = new Templates_CRUD_Co_Ban<T>(_service);
                 templates.SetTitle(_service.Name());

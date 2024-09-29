@@ -1,10 +1,6 @@
 ﻿using Nike_Shop_Management.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Nike_Shop_Management.MappingLayer;
+using System.Linq;
 namespace Nike_Shop_Management.DAL
 {
     class GoodReceiptRepository
@@ -28,7 +24,7 @@ namespace Nike_Shop_Management.DAL
 
         internal int Update(GoodsReceiptDTO goodsReceiptDTO)
         {
-            
+
             return 1;
         }
 

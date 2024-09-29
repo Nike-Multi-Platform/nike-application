@@ -1,11 +1,6 @@
 ﻿using Nike_Shop_Management.DTO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Nike_Shop_Management.MappingLayer;
-using Nike_Shop_Management.DTO;
 namespace Nike_Shop_Management.DAL
 {
     class GoodReceiptDetailsRepository
@@ -14,9 +9,9 @@ namespace Nike_Shop_Management.DAL
         public GoodReceiptDetailsRepository(DbContextDataContext db)
         {
             _db = db;
-           
+
         }
-        
+
         internal int Add(List<GoodReceiptDetailsDTO> list)
         {
             try

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Nike_Shop_Management.BLL;
+﻿using Nike_Shop_Management.BLL;
 using Nike_Shop_Management.DAL;
 using Nike_Shop_Management.DTO;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
 namespace Nike_Shop_Management.GUI
 {
     public partial class MangerProductForm : Form
@@ -30,15 +25,15 @@ namespace Nike_Shop_Management.GUI
             comboPriceFilter.SelectedIndexChanged += ComboPriceFilter_SelectedIndexChanged;
             btnEdit.Click += BtnEdit_Click;
             btnShowMore.Click += BtnShowMore_Click;
-        
+
             btnAdd.Click += BtnAdd_Click;
             btnSearch.Click += BtnSearch_Click;
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-           // search thì cx dậy lun nha :< 
-            
+            // search thì cx dậy lun nha :< 
+
         }
 
         private void ComboPriceFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -230,17 +225,17 @@ namespace Nike_Shop_Management.GUI
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            if(u_PictureBox.PathThumbail==null)
+            if (u_PictureBox.PathThumbail == null)
             {
                 string str = productParentClicked.thumbnail.Replace("Nike-application/", "");
                 linkHolder = str;
-               
+
             }
             else
             {
                 linkHolder = u_PictureBox.PathThumbail;
             }
-          
+
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

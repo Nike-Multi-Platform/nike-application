@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Nike_Shop_Management.DTO;
 using Nike_Shop_Management.DAL;
+using Nike_Shop_Management.DTO;
 
 namespace Nike_Shop_Management.MappingLayer
 {

@@ -1,10 +1,6 @@
 ﻿using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Nike_Shop_Management.CloudService
 {
@@ -37,7 +33,7 @@ namespace Nike_Shop_Management.CloudService
             {
                 return "dedault";
             }
-           
+
         }
 
         // Hàm để upload video

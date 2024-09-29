@@ -2,9 +2,6 @@
 using Nike_Shop_Management.DTO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Nike_Shop_Management.BLL
 {
@@ -13,7 +10,7 @@ namespace Nike_Shop_Management.BLL
         SizeRepository _sizeRepository = new SizeRepository(new DbContextDataContext());
         public SizeManager()
         {
-            
+
         }
 
         public int Add(SizeDTO entity)

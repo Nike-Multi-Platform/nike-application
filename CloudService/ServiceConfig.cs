@@ -1,6 +1,4 @@
-﻿using System;
-using System.Configuration;
-using Nike_Shop_Management;
+﻿using System.Configuration;
 namespace Nike_Shop_Management.CloudService
 {
     class ServiceConfig
@@ -11,7 +9,7 @@ namespace Nike_Shop_Management.CloudService
 
         static ServiceConfig()
         {
-  
+
             ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap
             {
                 ExeConfigFilename = "..\\..\\CloudService\\CloudIServiceConfig.config"

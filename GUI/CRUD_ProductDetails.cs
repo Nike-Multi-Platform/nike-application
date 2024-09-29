@@ -1,15 +1,11 @@
-﻿using System;
+﻿using Nike_Shop_Management.BLL;
+using Nike_Shop_Management.CloudService;
+using Nike_Shop_Management.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Nike_Shop_Management.DTO;
-using Nike_Shop_Management.BLL;
-using Nike_Shop_Management.CloudService;
 
 namespace Nike_Shop_Management.GUI
 {
@@ -24,7 +20,7 @@ namespace Nike_Shop_Management.GUI
         public int ProductParentID { get; set; }
         public CRUD_ProductDetails()
         {
-            InitializeComponent();         
+            InitializeComponent();
             listView1.Click += ListView1_Click;
             btnAdd.Click += BtnAdd_Click;
             btnEdit.Click += BtnEdit_Click;
@@ -35,13 +31,14 @@ namespace Nike_Shop_Management.GUI
         {
             AddProductColor ad = new AddProductColor();
             TypeSize typeSize = pcM.GetTypeSize(ProductParentID);
-            ad.SetCondition(typeSize);
+            ad.SetConditionSize(typeSize);
+            ad.ProductParentID = ProductParentID;
             ad.ShowDialog();
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            if(productColorsDTO!=null)
+            if (productColorsDTO != null)
             {
                 backgroundWorker1.RunWorkerAsync();
             }
@@ -118,7 +115,14 @@ namespace Nike_Shop_Management.GUI
                     item.SubItems.Add(product.product_img);
                     item.SubItems.Add(product.supplier_id.ToString());
                     img_product.ImageLocation = CloudIService.GetImageUrlByPublicId(product.product_img);
-                    img_product.Load();
+                    try
+                    {
+                        img_product.Load();
+                    }
+                    catch (Exception)
+                    {
+                        img_product.Image = img_product.ErrorImage;
+                    }  
                     imageListSmall.Images.Add(img_product.Image);
                     imageListLarge.Images.Add(img_product.Image);
                     imageListLarge.ColorDepth = ColorDepth.Depth32Bit;
@@ -141,7 +145,7 @@ namespace Nike_Shop_Management.GUI
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(u_PictureBox.PathThumbail);
-             string linkHolder = "Nike-application/" + fileNameWithoutExtension;
+            string linkHolder = "Nike-application/" + fileNameWithoutExtension;
             productColorsDTO.product_color_shown = txColorShown.Text;
             productColorsDTO.product_description = tx_description.Text;
             productColorsDTO.product_description2 = tx_description2.Text;
@@ -152,14 +156,15 @@ namespace Nike_Shop_Management.GUI
             productColorsDTO.sale_prices = txSalePrices.Text;
             productColorsDTO.supplier_id = 1;
             int flag = pcM.Update(productColorsDTO);
-            if(flag==1)
+            if (flag == 1)
             {
                 MessageBox.Show("EDIT SUCCESSFULL");
             }
-            else {
+            else
+            {
                 MessageBox.Show("failed");
             }
-            
+
         }
     }
 }

@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Nike_Shop_Management.DAL;
 using Nike_Shop_Management.DTO;
-using Nike_Shop_Management.DAL;
+using System.Collections.Generic;
 namespace Nike_Shop_Management.BLL
 {
-    class ProductSizeManager 
+    class ProductSizeManager : IRepository<ProductSizeDTO>
     {
         private readonly ProductSizeRepository _productSizeRepository;
+
         public ProductSizeManager(ProductSizeRepository productSizeRepository)
         {
             _productSizeRepository = productSizeRepository;
         }
-
+        public ProductSizeManager()
+        {
+            _productSizeRepository = new ProductSizeRepository(new DbContextDataContext());
+        }
         /// <summary>
         /// id là id của thằng product
         /// </summary>
@@ -24,10 +24,40 @@ namespace Nike_Shop_Management.BLL
         {
             return _productSizeRepository.GetProductSizesByID(id);
         }
-        
-        public int Update (ProductSizeDTO productSizeDTO)
+
+        public int Update(ProductSizeDTO productSizeDTO)
         {
             return _productSizeRepository.Update(productSizeDTO);
+        }
+
+        public int Add(ProductSizeDTO entity)
+        {
+            return _productSizeRepository.Add(entity);
+        }
+
+        public int Delete(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<ProductSizeDTO> Search(string search)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<ProductSizeDTO> GetAll()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public ProductSizeDTO GetByID(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string Name()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

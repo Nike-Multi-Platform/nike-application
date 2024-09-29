@@ -2,9 +2,6 @@
 using Nike_Shop_Management.DTO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Nike_Shop_Management.BLL
 {
@@ -15,12 +12,19 @@ namespace Nike_Shop_Management.BLL
         {
             _productColorRepository = productColorRepository;
         }
-
+        public ProductColorManager()
+        {
+            _productColorRepository = new ProductColorRepository(new DbContextDataContext());
+        }
         public int Add(ProductColorsDTO entity)
         {
             return _productColorRepository.Add(entity);
         }
 
+        public ProductColorsDTO GetLast()
+        {
+            return _productColorRepository.GetLast();
+        }
         public int Delete(int id)
         {
             return _productColorRepository.Delete(id);
@@ -28,7 +32,7 @@ namespace Nike_Shop_Management.BLL
 
         public IEnumerable<ProductColorsDTO> GetAll()
         {
-            throw new NotImplementedException();
+            return _productColorRepository.GetAll();
         }
 
         public ProductColorsDTO GetByID(int id)
@@ -51,7 +55,7 @@ namespace Nike_Shop_Management.BLL
             return _productColorRepository.Update(enity);
         }
 
-       public ProductParentDTO BelongsTo()
+        public ProductParentDTO BelongsTo()
         {
             return _productColorRepository.BelongsTo();
         }

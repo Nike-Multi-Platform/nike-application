@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Nike_Shop_Management.DTO;
+using Nike_Shop_Management.MappingLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Nike_Shop_Management.MappingLayer;
-using Nike_Shop_Management.DTO;
 namespace Nike_Shop_Management.DAL
 {
     class ProductObjectRepository

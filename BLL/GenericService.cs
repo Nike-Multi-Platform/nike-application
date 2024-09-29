@@ -1,9 +1,5 @@
 ﻿using Nike_Shop_Management.DAL;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Nike_Shop_Management.BLL
 {
@@ -36,7 +32,7 @@ namespace Nike_Shop_Management.BLL
 
         public int Add(T entity)
         {
-           return _repository.Add(entity);
+            return _repository.Add(entity);
         }
 
         public int Update(T entity)
@@ -48,7 +44,7 @@ namespace Nike_Shop_Management.BLL
         {
             return _repository.Delete(id);
         }
-        
+
     }
 
 }

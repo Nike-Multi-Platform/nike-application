@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-
-namespace Nike_Shop_Management.DTO
+﻿namespace Nike_Shop_Management.DTO
 {
     public class UserAccountDTO
     {
@@ -18,7 +11,7 @@ namespace Nike_Shop_Management.DTO
         private string phone_number, address, first_name, last_name, url;
         private int? point;
         private int? member_tier;
-    
+
         public int user_id { get => id; set => id = value; }
         public string user_username { get => username; set => username = value; }
         public string user_password { get => password; set => password = value; }
@@ -31,7 +24,7 @@ namespace Nike_Shop_Management.DTO
         public int? user_member_tier { get => member_tier; set => member_tier = value; }
         public int? user_point { get => point; set => point = value; }
         public string user_url { get => url; set => url = value; }
-        
+
 
     }
 }

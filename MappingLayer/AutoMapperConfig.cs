@@ -1,9 +1,4 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Nike_Shop_Management.MappingLayer
 {
@@ -13,7 +8,8 @@ namespace Nike_Shop_Management.MappingLayer
 
         static AutoMapperConfig()
         {
-            var config = new MapperConfiguration(cfg => {
+            var config = new MapperConfiguration(cfg =>
+            {
                 cfg.AddProfile<MappingProfile>();
             });
 

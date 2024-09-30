@@ -280,4 +280,12 @@
       <Column Name="size_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.GetTheSizeProductCurrent" Method="GetTheSizeProductCurrent">
+    <Parameter Name="product_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetTheSizeProductCurrentResult">
+      <Column Name="size_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="size_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="product_size_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>

@@ -60,7 +60,7 @@ namespace Nike_Shop_Management.BLL
             return _productColorRepository.BelongsTo();
         }
 
-        internal List<ProductSizeDTO> GetProductSizesByID(int product_id)
+        internal List<GetTheSizeProductCurrentResult> GetProductSizesByID(int product_id)
         {
             return _productColorRepository.GetProductSize(product_id);
         }
@@ -80,5 +80,6 @@ namespace Nike_Shop_Management.BLL
         {
             return _productColorRepository.GetTypeSize(id);
         }
+       
     }
 }

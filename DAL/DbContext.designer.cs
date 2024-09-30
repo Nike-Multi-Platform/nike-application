@@ -335,6 +335,13 @@ namespace Nike_Shop_Management.DAL
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), product_id, typeSize);
 			return ((ISingleResult<GetTheSizeProductResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetTheSizeProductCurrent")]
+		public ISingleResult<GetTheSizeProductCurrentResult> GetTheSizeProductCurrent([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> product_id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), product_id);
+			return ((ISingleResult<GetTheSizeProductCurrentResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.bag")]
@@ -5852,6 +5859,68 @@ namespace Nike_Shop_Management.DAL
 				if ((this._size_name != value))
 				{
 					this._size_name = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetTheSizeProductCurrentResult
+	{
+		
+		private string _size_name;
+		
+		private int _size_id;
+		
+		private int _product_size_id;
+		
+		public GetTheSizeProductCurrentResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_size_name", DbType="NVarChar(50)")]
+		public string size_name
+		{
+			get
+			{
+				return this._size_name;
+			}
+			set
+			{
+				if ((this._size_name != value))
+				{
+					this._size_name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_size_id", DbType="Int NOT NULL")]
+		public int size_id
+		{
+			get
+			{
+				return this._size_id;
+			}
+			set
+			{
+				if ((this._size_id != value))
+				{
+					this._size_id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_product_size_id", DbType="Int NOT NULL")]
+		public int product_size_id
+		{
+			get
+			{
+				return this._product_size_id;
+			}
+			set
+			{
+				if ((this._product_size_id != value))
+				{
+					this._product_size_id = value;
 				}
 			}
 		}

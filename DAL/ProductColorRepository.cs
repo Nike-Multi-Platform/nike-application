@@ -164,9 +164,9 @@ namespace Nike_Shop_Management.DAL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public List<ProductSizeDTO> GetProductSize(int product_id)
+        public List<GetTheSizeProductCurrentResult> GetProductSize(int product_id)
         {
-            var list = _db.product_sizes.Where(t => t.product_id == product_id).ToList().Select(temp => AutoMapperConfig.Mapper.Map<product_size, ProductSizeDTO>(temp)).ToList();
+            var list = _db.GetTheSizeProductCurrent(product_id).ToList();
             return list;
         }
 

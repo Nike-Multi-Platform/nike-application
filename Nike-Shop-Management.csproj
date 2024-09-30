@@ -149,6 +149,12 @@
     <Compile Include="BLL\SupplierManager.cs" />
     <Compile Include="CustomControl\CancelButton.cs" />
     <Compile Include="CustomControl\PriceTextBox.cs" />
+    <Compile Include="GUI\EditProductSizeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\EditProductSizeForm.Designer.cs">
+      <DependentUpon>EditProductSizeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAL\GoodReceiptDetailsRepository.cs" />
     <Compile Include="DAL\GoodReceiptRepository.cs" />
     <Compile Include="DAL\SizeRepository.cs" />
@@ -294,6 +300,9 @@
     <Compile Include="u_PictureBox.Designer.cs">
       <DependentUpon>u_PictureBox.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI\EditProductSizeForm.resx">
+      <DependentUpon>EditProductSizeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\AddProductColor.resx">
       <DependentUpon>AddProductColor.cs</DependentUpon>
     </EmbeddedResource>
@@ -386,6 +395,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <None Include="Resources\edit-tool.png" />
     <None Include="Resources\delete.png" />
     <None Include="Resources\default.png" />
     <None Include="Resources\air_jordan_1_mid_white_black_thumbnail.png" />

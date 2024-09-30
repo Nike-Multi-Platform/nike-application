@@ -59,5 +59,10 @@ namespace Nike_Shop_Management.BLL
         {
             throw new System.NotImplementedException();
         }
+
+        public List<SizeDTO> GetProductSizeInventory(int product_id,TypeSize typeSize)
+        {
+            return _productSizeRepository.GetProductSizeInventory(product_id, typeSize);
+        }
     }
 }

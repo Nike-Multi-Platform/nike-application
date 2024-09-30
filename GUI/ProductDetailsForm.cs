@@ -25,7 +25,26 @@ namespace Nike_Shop_Management.GUI
             btnAdd.Click += BtnAdd_Click;
             btnEdit.Click += BtnEdit_Click;
             btnDelete.Click += BtnDelete_Click;
+            btnEditSize.Click += BtnEditSize_Click;
             comboSize.SelectedValueChanged += ComboSize_SelectedValueChanged;
+        }
+
+        private void BtnEditSize_Click(object sender, EventArgs e)
+        {
+            if(listView1.SelectedItems.Count > 0)
+            {
+                EditProductSizeForm edit = new EditProductSizeForm();
+                TypeSize typeSize = pcM.GetTypeSize(ProductParentID);
+                edit.InitData(Product_id, typeSize);
+                edit.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("CHua chon sp");
+                return;
+            }
+          
+            
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
@@ -73,7 +92,16 @@ namespace Nike_Shop_Management.GUI
         {
             if (flag)
             {
-                lbl_quantity.Text = pcM.GetQuantity((int)comboSize.SelectedValue).ToString();
+                try
+                {
+                    lbl_quantity.Text = pcM.GetQuantity((int)comboSize.SelectedValue).ToString();
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
         }
 

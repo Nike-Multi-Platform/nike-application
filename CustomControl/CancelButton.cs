@@ -1,14 +1,10 @@
-﻿using CloudinaryDotNet.Core;
+﻿using ComponentFactory.Krypton.Toolkit;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Nike_Shop_Management.CustomControl
 {
-    public class CancelButton : Button
+    public class CancelButton : KryptonButton
     {
         public CancelButton()
         {

@@ -5,14 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using ComponentFactory.Krypton.Toolkit;
 namespace Nike_Shop_Management.CustomControl
 {
-    public class PriceTextBox : TextBox
+    public class PriceTextBox : ComponentFactory.Krypton.Toolkit.KryptonTextBox
     {
         private ErrorProvider error = new ErrorProvider();
         public PriceTextBox()
         {
+            this.Text = "";
             this.KeyPress += new KeyPressEventHandler(PriceTextBox_KeyPress);
         }
 

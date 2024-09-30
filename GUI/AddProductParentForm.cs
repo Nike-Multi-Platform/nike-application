@@ -21,7 +21,7 @@ namespace Nike_Shop_Management.GUI
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            if (txtPrice.Text.Length == 0 || txtProductName.Text.Length == 0)
+            if (txPrice.Text.Length == 0 || txtProductName.Text.Length == 0)
             {
                 MessageBox.Show("Don't leave blank!");
                 return;
@@ -117,7 +117,7 @@ namespace Nike_Shop_Management.GUI
             ProductParentManager ppM = new ProductParentManager(new DAL.ProductParentRepository(new DAL.DbContextDataContext()));
             ProductParentDTO productParentDTO = new ProductParentDTO();
             productParentDTO.product_parent_name = txtProductName.Text;
-            productParentDTO.product_price = txtPrice.Text;
+            productParentDTO.product_price = txPrice.Text;
             productParentDTO.is_new_release = true;
             productParentDTO.sub_categories_id = selectedSubcategory.sub_categories_id;
             productParentDTO.product_icons_id = 1;

@@ -32,7 +32,6 @@ namespace Nike_Shop_Management.GUI
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtProductName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.txtPrice = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel7 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel8 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.comboProductCategoriesFileter = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
@@ -40,9 +39,10 @@ namespace Nike_Shop_Management.GUI
             this.kryptonLabel6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.ComboSubCategoriesFilter = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.btnAdd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.u_PictureBox = new Nike_Shop_Management.u_PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.cancelButton1 = new Nike_Shop_Management.CustomControl.CancelButton();
+            this.txPrice = new Nike_Shop_Management.CustomControl.PriceTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.comboProductCategoriesFileter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboProductObjectFilter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboSubCategoriesFilter)).BeginInit();
@@ -71,14 +71,6 @@ namespace Nike_Shop_Management.GUI
             this.txtProductName.Size = new System.Drawing.Size(200, 27);
             this.txtProductName.TabIndex = 6;
             this.txtProductName.Text = "kryptonTextBox1";
-            // 
-            // txtPrice
-            // 
-            this.txtPrice.Location = new System.Drawing.Point(315, 314);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(200, 27);
-            this.txtPrice.TabIndex = 7;
-            this.txtPrice.Text = "kryptonTextBox2";
             // 
             // kryptonLabel7
             // 
@@ -138,14 +130,6 @@ namespace Nike_Shop_Management.GUI
             this.btnAdd.TabIndex = 22;
             this.btnAdd.Values.Text = "Add";
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(315, 381);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(76, 47);
-            this.btnCancel.TabIndex = 23;
-            this.btnCancel.Values.Text = "Cancel";
-            // 
             // u_PictureBox
             // 
             this.u_PictureBox.Location = new System.Drawing.Point(59, 54);
@@ -160,12 +144,29 @@ namespace Nike_Shop_Management.GUI
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+            // cancelButton1
+            // 
+            this.cancelButton1.Location = new System.Drawing.Point(277, 384);
+            this.cancelButton1.Name = "cancelButton1";
+            this.cancelButton1.Size = new System.Drawing.Size(124, 44);
+            this.cancelButton1.TabIndex = 24;
+            this.cancelButton1.Values.Text = "Cancel";
+            // 
+            // txPrice
+            // 
+            this.txPrice.Location = new System.Drawing.Point(312, 314);
+            this.txPrice.Name = "txPrice";
+            this.txPrice.Size = new System.Drawing.Size(203, 27);
+            this.txPrice.TabIndex = 25;
+            this.txPrice.Text = "priceTextBox1";
+            // 
             // AddProductParentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(579, 526);
-            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.txPrice);
+            this.Controls.Add(this.cancelButton1);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.kryptonLabel6);
             this.Controls.Add(this.ComboSubCategoriesFilter);
@@ -173,7 +174,6 @@ namespace Nike_Shop_Management.GUI
             this.Controls.Add(this.kryptonLabel8);
             this.Controls.Add(this.comboProductCategoriesFileter);
             this.Controls.Add(this.comboProductObjectFilter);
-            this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.txtProductName);
             this.Controls.Add(this.kryptonLabel2);
             this.Controls.Add(this.kryptonLabel1);
@@ -194,7 +194,6 @@ namespace Nike_Shop_Management.GUI
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel2;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtProductName;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtPrice;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel7;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel8;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox comboProductCategoriesFileter;
@@ -202,7 +201,8 @@ namespace Nike_Shop_Management.GUI
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel6;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox ComboSubCategoriesFilter;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnAdd;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private CustomControl.CancelButton cancelButton1;
+        private CustomControl.PriceTextBox txPrice;
     }
 }

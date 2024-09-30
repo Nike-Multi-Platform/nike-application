@@ -42,7 +42,6 @@ namespace Nike_Shop_Management.GUI
             this.comboProductCategories = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.btnShowMore = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.comboSubCategories = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.txProductPrice = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txProductName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.u_PictureBox = new Nike_Shop_Management.u_PictureBox();
             this.kryptonLabel10 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -67,6 +66,7 @@ namespace Nike_Shop_Management.GUI
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.panel_product_parent = new System.Windows.Forms.FlowLayoutPanel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.txProductPrice = new Nike_Shop_Management.CustomControl.PriceTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboProductObject)).BeginInit();
@@ -93,6 +93,7 @@ namespace Nike_Shop_Management.GUI
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.txProductPrice);
             this.kryptonPanel1.Controls.Add(this.lbl_count_types);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel7);
             this.kryptonPanel1.Controls.Add(this.btnAdd);
@@ -105,7 +106,6 @@ namespace Nike_Shop_Management.GUI
             this.kryptonPanel1.Controls.Add(this.comboProductCategories);
             this.kryptonPanel1.Controls.Add(this.btnShowMore);
             this.kryptonPanel1.Controls.Add(this.comboSubCategories);
-            this.kryptonPanel1.Controls.Add(this.txProductPrice);
             this.kryptonPanel1.Controls.Add(this.txProductName);
             this.kryptonPanel1.Controls.Add(this.u_PictureBox);
             this.kryptonPanel1.Controls.Add(this.kryptonLabel10);
@@ -213,14 +213,6 @@ namespace Nike_Shop_Management.GUI
             this.comboSubCategories.Name = "comboSubCategories";
             this.comboSubCategories.Size = new System.Drawing.Size(182, 25);
             this.comboSubCategories.TabIndex = 16;
-            // 
-            // txProductPrice
-            // 
-            this.txProductPrice.Location = new System.Drawing.Point(174, 417);
-            this.txProductPrice.Name = "txProductPrice";
-            this.txProductPrice.Size = new System.Drawing.Size(180, 27);
-            this.txProductPrice.TabIndex = 15;
-            this.txProductPrice.Text = "kryptonTextBox4";
             // 
             // txProductName
             // 
@@ -437,6 +429,14 @@ namespace Nike_Shop_Management.GUI
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+            // txProductPrice
+            // 
+            this.txProductPrice.Location = new System.Drawing.Point(174, 427);
+            this.txProductPrice.Name = "txProductPrice";
+            this.txProductPrice.Size = new System.Drawing.Size(191, 27);
+            this.txProductPrice.TabIndex = 29;
+            this.txProductPrice.Text = "priceTextBox1";
+            // 
             // MangerProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -497,7 +497,6 @@ namespace Nike_Shop_Management.GUI
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel9;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel8;
         private u_PictureBox u_PictureBox;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txProductPrice;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txProductName;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnShowMore;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel19;
@@ -517,5 +516,6 @@ namespace Nike_Shop_Management.GUI
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel7;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lbl_count_types;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private CustomControl.PriceTextBox txProductPrice;
     }
 }

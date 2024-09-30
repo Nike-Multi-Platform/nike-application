@@ -12,19 +12,45 @@ namespace Nike_Shop_Management.GUI
     public partial class ProductDetailsForm : Form
     {
         CloudIService CloudIService;
-        ServiceConfig ServiceConfig;
         bool flag = false;
         ProductColorsDTO productColorsDTO;
         ProductColorManager pcM = new ProductColorManager(new DAL.ProductColorRepository(new DAL.DbContextDataContext()));
         public int Product_id { get; set; }
         public int ProductParentID { get; set; }
+        List<ProductSizeDTO> listSize;
         public ProductDetailsForm()
         {
             InitializeComponent();
             listView1.Click += ListView1_Click;
             btnAdd.Click += BtnAdd_Click;
             btnEdit.Click += BtnEdit_Click;
+            btnDelete.Click += BtnDelete_Click;
             comboSize.SelectedValueChanged += ComboSize_SelectedValueChanged;
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure delete this item?",
+                                          "Message",
+                                          MessageBoxButtons.YesNo,
+                                          MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                if (listSize != null)
+                {
+                    foreach (var item in listSize)
+                    {
+                        pcM.DeleteProductSize(item.product_size_id);
+                    }
+                    int flag = pcM.Delete(Product_id);
+                    if(flag==1)
+                    {
+                        MessageBox.Show("Deleted");
+                        return;
+
+                    }
+                }
+            }
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -64,11 +90,10 @@ namespace Nike_Shop_Management.GUI
         public void BindingData(int product_id, int supplier_id)
         {
             Product_id = product_id;
-            List<ProductSizeDTO> listSize = pcM.GetProductSizesByID(product_id);
+            listSize = pcM.GetProductSizesByID(product_id);
             List<SupplierDTO> listSupplier = pcM.GetSuppliers(supplier_id);
             if (listSize.Count > 0 && listSupplier.Count > 0)
             {
-
                 comboSize.DataSource = listSize;
                 comboSize.DisplayMember = "size_id";
                 comboSize.ValueMember = "product_size_id";
@@ -122,7 +147,7 @@ namespace Nike_Shop_Management.GUI
                     catch (Exception)
                     {
                         img_product.Image = img_product.ErrorImage;
-                    }  
+                    }
                     imageListSmall.Images.Add(img_product.Image);
                     imageListLarge.Images.Add(img_product.Image);
                     imageListLarge.ColorDepth = ColorDepth.Depth32Bit;

@@ -64,5 +64,12 @@ namespace Nike_Shop_Management.DAL
                 return 0;
             }
         }
+        
+        public List<SizeDTO> GetProductSizeInventory(int product_id, TypeSize typeSize)
+        {
+            var list = _db.GetTheSizeProduct(product_id, (int)typeSize).ToList().Select(t=>AutoMapperConfig.Mapper.Map<GetTheSizeProductResult, SizeDTO>(t)).ToList();
+
+            return list;
+        }
     }
 }

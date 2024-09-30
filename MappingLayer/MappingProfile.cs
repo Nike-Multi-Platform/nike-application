@@ -52,6 +52,8 @@ namespace Nike_Shop_Management.MappingLayer
 
             CreateMap<SupplierDTO, supplier>();
             CreateMap<supplier, SupplierDTO>();
+
+            CreateMap<GetTheSizeProductResult, SizeDTO>();
         }
     }
 }

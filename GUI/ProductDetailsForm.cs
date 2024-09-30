@@ -1,5 +1,6 @@
 ﻿using Nike_Shop_Management.BLL;
 using Nike_Shop_Management.CloudService;
+using Nike_Shop_Management.DAL;
 using Nike_Shop_Management.DTO;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Nike_Shop_Management.GUI
         ProductColorManager pcM = new ProductColorManager(new DAL.ProductColorRepository(new DAL.DbContextDataContext()));
         public int Product_id { get; set; }
         public int ProductParentID { get; set; }
-        List<ProductSizeDTO> listSize;
+        List<GetTheSizeProductCurrentResult> listSize;
         public ProductDetailsForm()
         {
             InitializeComponent();
@@ -122,8 +123,11 @@ namespace Nike_Shop_Management.GUI
             List<SupplierDTO> listSupplier = pcM.GetSuppliers(supplier_id);
             if (listSize.Count > 0 && listSupplier.Count > 0)
             {
+                // cần người =)) đổi chỗ này sang bảng size haha =))))
+                // nghĩa là hiện tại đang bị hiển thị là size_id chứ không phải size_name
+                // nên là nó bị sai về mặt display dữ liệu
                 comboSize.DataSource = listSize;
-                comboSize.DisplayMember = "size_id";
+                comboSize.DisplayMember = "size_name";
                 comboSize.ValueMember = "product_size_id";
                 comboSupplier.DataSource = listSupplier;
                 comboSupplier.DisplayMember = "supplier_name";

@@ -147,12 +147,8 @@
     <Compile Include="BLL\GoodReceiptManager.cs" />
     <Compile Include="BLL\SizeManager.cs" />
     <Compile Include="BLL\SupplierManager.cs" />
-    <Compile Include="CustomControl\CancelButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControl\PriceTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="CustomControl\CancelButton.cs" />
+    <Compile Include="CustomControl\PriceTextBox.cs" />
     <Compile Include="DAL\GoodReceiptDetailsRepository.cs" />
     <Compile Include="DAL\GoodReceiptRepository.cs" />
     <Compile Include="DAL\SizeRepository.cs" />
@@ -174,11 +170,11 @@
     <Compile Include="GUI\AddProductParentForm.Designer.cs">
       <DependentUpon>AddProductParentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CRUD_ProductDetails.cs">
+    <Compile Include="GUI\ProductDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CRUD_ProductDetails.Designer.cs">
-      <DependentUpon>CRUD_ProductDetails.cs</DependentUpon>
+    <Compile Include="GUI\ProductDetailsForm.Designer.cs">
+      <DependentUpon>ProductDetailsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Loading.cs">
       <SubType>Form</SubType>
@@ -310,8 +306,8 @@
     <Compile Include="u_SpinnerLoading.Designer.cs">
       <DependentUpon>u_SpinnerLoading.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="GUI\CRUD_ProductDetails.resx">
-      <DependentUpon>CRUD_ProductDetails.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\ProductDetailsForm.resx">
+      <DependentUpon>ProductDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Loading.resx">
       <DependentUpon>Loading.cs</DependentUpon>

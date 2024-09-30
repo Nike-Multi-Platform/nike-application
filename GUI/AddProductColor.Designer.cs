@@ -36,7 +36,6 @@ namespace Nike_Shop_Management.GUI
             this.txSizeAndFit = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.comboSupplier = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.tx_more_info = new System.Windows.Forms.RichTextBox();
-            this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnAdd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonLabel12 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel7 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -44,13 +43,14 @@ namespace Nike_Shop_Management.GUI
             this.kryptonLabel9 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txColorShown = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.txSalePrices = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.lbl_ = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.checked_list_Size = new ComponentFactory.Krypton.Toolkit.KryptonCheckedListBox();
             this.u_PictureBox = new Nike_Shop_Management.u_PictureBox();
+            this.cancelButton1 = new Nike_Shop_Management.CustomControl.CancelButton();
+            this.txSalePrices = new Nike_Shop_Management.CustomControl.PriceTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.comboSupplier)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,14 +104,6 @@ namespace Nike_Shop_Management.GUI
             this.tx_more_info.Size = new System.Drawing.Size(521, 96);
             this.tx_more_info.TabIndex = 64;
             this.tx_more_info.Text = "";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(751, 584);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(159, 42);
-            this.btnCancel.TabIndex = 63;
-            this.btnCancel.Values.Text = "Cancel";
             // 
             // btnAdd
             // 
@@ -168,13 +160,6 @@ namespace Nike_Shop_Management.GUI
             this.kryptonLabel6.TabIndex = 51;
             this.kryptonLabel6.Values.Text = "sale prices";
             // 
-            // txSalePrices
-            // 
-            this.txSalePrices.Location = new System.Drawing.Point(904, 106);
-            this.txSalePrices.Name = "txSalePrices";
-            this.txSalePrices.Size = new System.Drawing.Size(208, 27);
-            this.txSalePrices.TabIndex = 50;
-            // 
             // kryptonLabel3
             // 
             this.kryptonLabel3.Location = new System.Drawing.Point(229, 459);
@@ -223,11 +208,29 @@ namespace Nike_Shop_Management.GUI
             this.u_PictureBox.Size = new System.Drawing.Size(176, 207);
             this.u_PictureBox.TabIndex = 46;
             // 
+            // cancelButton1
+            // 
+            this.cancelButton1.Location = new System.Drawing.Point(767, 585);
+            this.cancelButton1.Name = "cancelButton1";
+            this.cancelButton1.Size = new System.Drawing.Size(137, 40);
+            this.cancelButton1.TabIndex = 75;
+            this.cancelButton1.Values.Text = "Cancel";
+            // 
+            // txSalePrices
+            // 
+            this.txSalePrices.Location = new System.Drawing.Point(904, 109);
+            this.txSalePrices.Name = "txSalePrices";
+            this.txSalePrices.Size = new System.Drawing.Size(212, 27);
+            this.txSalePrices.TabIndex = 76;
+            this.txSalePrices.Text = "priceTextBox1";
+            // 
             // AddProductColor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1168, 648);
+            this.Controls.Add(this.txSalePrices);
+            this.Controls.Add(this.cancelButton1);
             this.Controls.Add(this.checked_list_Size);
             this.Controls.Add(this.kryptonLabel1);
             this.Controls.Add(this.tx_description2);
@@ -236,7 +239,6 @@ namespace Nike_Shop_Management.GUI
             this.Controls.Add(this.txSizeAndFit);
             this.Controls.Add(this.comboSupplier);
             this.Controls.Add(this.tx_more_info);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.kryptonLabel12);
             this.Controls.Add(this.kryptonLabel7);
@@ -244,7 +246,6 @@ namespace Nike_Shop_Management.GUI
             this.Controls.Add(this.kryptonLabel9);
             this.Controls.Add(this.txColorShown);
             this.Controls.Add(this.kryptonLabel6);
-            this.Controls.Add(this.txSalePrices);
             this.Controls.Add(this.kryptonLabel3);
             this.Controls.Add(this.kryptonLabel2);
             this.Controls.Add(this.lbl_);
@@ -267,7 +268,6 @@ namespace Nike_Shop_Management.GUI
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txSizeAndFit;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox comboSupplier;
         private System.Windows.Forms.RichTextBox tx_more_info;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnAdd;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel12;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel7;
@@ -275,12 +275,13 @@ namespace Nike_Shop_Management.GUI
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel9;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txColorShown;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel6;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txSalePrices;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel3;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel2;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lbl_;
         private u_PictureBox u_PictureBox;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckedListBox checked_list_Size;
+        private CustomControl.CancelButton cancelButton1;
+        private CustomControl.PriceTextBox txSalePrices;
     }
 }

@@ -61,7 +61,7 @@ namespace Nike_Shop_Management.GUI
             if (productParentClicked != null)
             {
 
-                CRUD_ProductDetails crud = new CRUD_ProductDetails();
+                ProductDetailsForm crud = new ProductDetailsForm();
                 crud.PaintData(productParentClicked.product_parent_id);
                 crud.ShowDialog();
             }
@@ -109,7 +109,7 @@ namespace Nike_Shop_Management.GUI
         {
             if (productParentClicked != null)
             {
-                CRUD_ProductDetails crud = new CRUD_ProductDetails();
+                ProductDetailsForm crud = new ProductDetailsForm();
                 crud.PaintData(productParentClicked.product_parent_id);
                 crud.ShowDialog();
             }

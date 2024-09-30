@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Nike_Shop_Management.GUI
 {
-    public partial class CRUD_ProductDetails : Form
+    public partial class ProductDetailsForm : Form
     {
         CloudIService CloudIService;
         ServiceConfig ServiceConfig;
@@ -18,7 +18,7 @@ namespace Nike_Shop_Management.GUI
         ProductColorManager pcM = new ProductColorManager(new DAL.ProductColorRepository(new DAL.DbContextDataContext()));
         public int Product_id { get; set; }
         public int ProductParentID { get; set; }
-        public CRUD_ProductDetails()
+        public ProductDetailsForm()
         {
             InitializeComponent();
             listView1.Click += ListView1_Click;
@@ -80,7 +80,7 @@ namespace Nike_Shop_Management.GUI
             if (productColorsDTO != null)
             {
                 txColorShown.Text = productColorsDTO.product_color_shown;
-                txSalePrices.Text = productColorsDTO.sale_prices;
+                tx_price.Text = productColorsDTO.sale_prices;
                 txSizeAndFit.Text = productColorsDTO.product_size_and_fit;
                 txSolds.Text = productColorsDTO.sold;
                 txStylecode.Text = productColorsDTO.product_style_code;
@@ -153,7 +153,7 @@ namespace Nike_Shop_Management.GUI
             productColorsDTO.product_more_info = tx_more_info.Text;
             productColorsDTO.product_size_and_fit = txSizeAndFit.Text;
             productColorsDTO.product_style_code = txStylecode.Text;
-            productColorsDTO.sale_prices = txSalePrices.Text;
+            productColorsDTO.sale_prices = tx_price.Text;
             productColorsDTO.supplier_id = 1;
             int flag = pcM.Update(productColorsDTO);
             if (flag == 1)

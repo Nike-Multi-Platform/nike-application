@@ -36,7 +36,7 @@ namespace Nike_Shop_Management.GUI
             this.ListSizeInventory = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.ListSizeCurrent = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.cancelButton1 = new Nike_Shop_Management.CustomControl.CancelButton();
-            this.kryptonButton3 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.ListSizeInventory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListSizeCurrent)).BeginInit();
             this.SuspendLayout();
@@ -99,20 +99,20 @@ namespace Nike_Shop_Management.GUI
             this.cancelButton1.TabIndex = 10;
             this.cancelButton1.Values.Text = "cancelButton1";
             // 
-            // kryptonButton3
+            // btnSave
             // 
-            this.kryptonButton3.Location = new System.Drawing.Point(236, 196);
-            this.kryptonButton3.Name = "kryptonButton3";
-            this.kryptonButton3.Size = new System.Drawing.Size(85, 27);
-            this.kryptonButton3.TabIndex = 11;
-            this.kryptonButton3.Values.Text = "kryptonButton3";
+            this.btnSave.Location = new System.Drawing.Point(236, 196);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(85, 27);
+            this.btnSave.TabIndex = 11;
+            this.btnSave.Values.Text = "Save";
             // 
             // EditProductSizeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(452, 236);
-            this.Controls.Add(this.kryptonButton3);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cancelButton1);
             this.Controls.Add(this.ListSizeCurrent);
             this.Controls.Add(this.ListSizeInventory);
@@ -139,6 +139,6 @@ namespace Nike_Shop_Management.GUI
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView ListSizeInventory;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView ListSizeCurrent;
         private CustomControl.CancelButton cancelButton1;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton3;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnSave;
     }
 }

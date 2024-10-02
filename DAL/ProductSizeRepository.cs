@@ -71,5 +71,10 @@ namespace Nike_Shop_Management.DAL
 
             return list;
         }
+
+        internal List<SizeDTO> GetProductSizeCurrent(int product_id, TypeSize typeSize)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

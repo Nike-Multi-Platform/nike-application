@@ -64,5 +64,9 @@ namespace Nike_Shop_Management.BLL
         {
             return _productSizeRepository.GetProductSizeInventory(product_id, typeSize);
         }
+        public List<SizeDTO> GetProductSizeCurrent(int product_id,TypeSize typeSize)
+        {
+            return _productSizeRepository.GetProductSizeCurrent(product_id, typeSize);
+        }
     }
 }

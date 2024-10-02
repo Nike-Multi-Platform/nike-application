@@ -54,6 +54,15 @@ namespace Nike_Shop_Management.MappingLayer
             CreateMap<supplier, SupplierDTO>();
 
             CreateMap<GetTheSizeProductResult, SizeDTO>();
+
+
+            CreateMap<SizeDTO, GetTheSizeProductCurrentResult>()
+         .ForMember(dest => dest.size_id, opt => opt.MapFrom(src => src.size_id))
+         .ForMember(dest => dest.size_name, opt => opt.MapFrom(src => src.size_name));
+
+            CreateMap<GetTheSizeProductCurrentResult, SizeDTO>()
+                .ForMember(dest => dest.size_id, otp => otp.MapFrom(src => src.size_id))
+              .ForMember(dest => dest.size_name, opt => opt.MapFrom(src => src.size_name));
         }
     }
 }

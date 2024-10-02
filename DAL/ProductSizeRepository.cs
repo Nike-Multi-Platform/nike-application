@@ -49,6 +49,26 @@ namespace Nike_Shop_Management.DAL
             }
         }
 
+        internal int Delete(int product_size_id)
+        {
+            try
+            {
+                var exits = _db.product_sizes.Where(t => t.product_size_id == product_size_id).FirstOrDefault();
+                if(exits!=null)
+                {
+                    _db.product_sizes.DeleteOnSubmit(exits);
+                    _db.SubmitChanges();
+                    return 1;
+                }
+                return 0;
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+        }
+
         internal int Add(ProductSizeDTO entity)
         {
             try

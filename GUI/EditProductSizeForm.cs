@@ -10,7 +10,11 @@ namespace Nike_Shop_Management.GUI
     public partial class EditProductSizeForm : Form
     {
         List<SizeDTO> listInventory;
+        List<int> listCurrentTemp = new List<int>();
         List<GetTheSizeProductCurrentResult> listCurrent;
+        public int ProductID { get; set; }
+        ProductSizeManager pzM;
+
         public EditProductSizeForm()
         {
             InitializeComponent();
@@ -21,10 +25,31 @@ namespace Nike_Shop_Management.GUI
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 2; i++)
+            foreach (var item in listCurrentTemp)
             {
-
+                pzM.Delete(item);
             }
+
+            for (int i = 0; i < ListSizeCurrent.RowCount - 1; i++)
+            {
+                if (ListSizeCurrent[2, i].Value != null)
+                {
+                    // bỏ qua nè
+                    continue;
+                }
+                else
+                {
+                    // thêm vào nè
+                    pzM.Add(new ProductSizeDTO()
+                    {
+                        product_id = ProductID,
+                        size_id = int.Parse(ListSizeCurrent[0, i].Value.ToString()),
+                        soluong = 0
+                    });
+                }
+            }
+            MessageBox.Show("Finished");
+            this.Close();
         }
 
         private void BtnRightToLeft_Click(object sender, EventArgs e)
@@ -32,6 +57,12 @@ namespace Nike_Shop_Management.GUI
             if (ListSizeCurrent.SelectedRows != null)
             {
                 var valueSelected = ListSizeCurrent.CurrentRow;
+                if (valueSelected.Cells[2].Value != null)
+                {
+                    listCurrentTemp.Add(int.Parse(valueSelected.Cells[2].Value.ToString()));
+                    Console.WriteLine(listCurrentTemp.Count);
+                }
+
                 ListSizeCurrent.Rows.Remove(valueSelected);
                 ListSizeInventory.Rows.Add(new object[] { valueSelected.Cells[0].Value.ToString(), valueSelected.Cells[1].Value.ToString(), valueSelected.Cells[2].Value != null ? valueSelected.Cells[2].Value.ToString() : null });
             }
@@ -41,15 +72,22 @@ namespace Nike_Shop_Management.GUI
         {
             if (ListSizeInventory.SelectedRows != null)
             {
+
                 var valueSelected = ListSizeInventory.CurrentRow;
+                if (valueSelected.Cells[2].Value != null)
+                {
+                    listCurrentTemp.Remove(int.Parse(valueSelected.Cells[2].Value.ToString()));
+                }
+
                 ListSizeInventory.Rows.Remove(valueSelected);
-                ListSizeCurrent.Rows.Add(new object[] {valueSelected.Cells[0].Value.ToString(), valueSelected.Cells[1].Value.ToString(), valueSelected.Cells[2].Value != null ? valueSelected.Cells[2].Value.ToString() : null});
+                ListSizeCurrent.Rows.Add(new object[] { valueSelected.Cells[0].Value.ToString(), valueSelected.Cells[1].Value.ToString(), valueSelected.Cells[2].Value != null ? valueSelected.Cells[2].Value.ToString() : null });
             }
         }
 
         public void InitData(int product_id, TypeSize typeSize)
         {
-            ProductSizeManager pzM = new ProductSizeManager();
+            pzM = new ProductSizeManager();
+            ProductID = product_id;
             listInventory = pzM.GetProductSizeInventory(product_id, typeSize);
             ListSizeInventory.Columns.Clear();
             ListSizeInventory.Columns.Add("size_id", "Size ID");

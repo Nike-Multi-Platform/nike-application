@@ -34,10 +34,14 @@ namespace Nike_Shop_Management.BLL
         {
             return _productSizeRepository.Add(entity);
         }
-
-        public int Delete(int id)
+        /// <summary>
+        /// truyền vào product_size_id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int Delete(int product_size_id)
         {
-            throw new System.NotImplementedException();
+            return _productSizeRepository.Delete(product_size_id);
         }
 
         public IEnumerable<ProductSizeDTO> Search(string search)
